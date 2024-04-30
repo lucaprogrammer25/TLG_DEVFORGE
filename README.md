@@ -7,7 +7,7 @@ Sviluppare un'applicazione e-commerce in cui il cliente può aggiungere prodotti
 
 Integrazione dei Prodotti:
 
-I prodotti saranno integrati tramite l'API fakeapi.platzi.com. La navigazione dell'app includerà:
+I prodotti saranno integrati tramite l'API https://fakeapi.platzi.com/. La navigazione dell'app includerà:
 
 Home page
 Pagina dei prodotti
