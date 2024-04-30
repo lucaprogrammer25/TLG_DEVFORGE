@@ -1,34 +1,30 @@
-# TLG_DEVFORGE
-Semplice App E-commerce con React.ts
+# React + TypeScript + Vite
 
-Sviluppare un'applicazione e-commerce in cui il cliente può aggiungere prodotti al carrello e completare l'acquisto. Utilizzando React.ts come linguaggio di programmazione, Sass per lo stile e Contentful per il contenuto.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Integrazione dei Prodotti:
+Currently, two official plugins are available:
 
-I prodotti saranno integrati tramite l'API fakeapi.platzi.com. La navigazione dell'app includerà:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Home page
-Pagina dei prodotti
-Carrello
-Pagina dei Prodotti:
+## Expanding the ESLint configuration
 
-La pagina dei prodotti visualizzerà una lista di prodotti presi dall'API, con un pulsante "Add to Cart" per ogni prodotto. Implementeremo un sistema di infinity scroll, load more o paginazione per gestire la visualizzazione dei prodotti. Durante il caricamento dei dati, sarà mostrato un componente di caricamento. Il layout sarà responsivo:
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Su desktop: 4 prodotti per riga su tre colonne
-Su tablet: 2 prodotti per riga su 6 colonne
-Su mobile: 12 prodotti per riga su una colonna
-Pagina del Carrello:
+- Configure the top-level `parserOptions` property like this:
 
-La pagina del carrello includerà un'icona del carrello che, al click, aprirà una sidebar per visualizzare il carrello. Ogni elemento nel carrello includerà l'immagine del prodotto, il nome e il prezzo. Sarà possibile gestire le quantità dei prodotti nel carrello e rimuovere prodotti. Selezionando la modalità di pagamento, sarà richiesto un indirizzo di spedizione.
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Metodi di Pagamento:
-
-I metodi di pagamento includeranno "alla consegna" e carta di credito. Se viene selezionata la carta di credito, verrà richiesto un form per le informazioni della carta. Se viene selezionato il pagamento alla consegna, verranno aggiunti 10 euro al totale dell'ordine.
-
-Altre Funzionalità:
-
-Implementare un sistema di registrazione con Local Storage per il login.
-La lingua principale dell'app sarà l'inglese.
-Implementare un possibile sistema di promozione: se nel carrello sono presenti almeno tre prodotti e il totale supera i 1000 euro, i due prodotti meno cari saranno gratuiti.
-Aggiungere un'opzione per il dark mode.
-Dopo il pagamento, reindirizzare alla pagina di ringraziamento.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
