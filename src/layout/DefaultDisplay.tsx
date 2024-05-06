@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 interface Props {
   // Definisci le tue props qui
@@ -6,9 +7,11 @@ interface Props {
 
 const DefaultDisplay: React.FC<Props> = ({ /* props */ }) => {
   return (
-    <div>
-      {/* Contenuto del componente */}
-    </div>
+    <>
+    {/* Navbar */}
+    <Outlet/>
+    {/* Footer */}
+    </>
   );
 };
 
