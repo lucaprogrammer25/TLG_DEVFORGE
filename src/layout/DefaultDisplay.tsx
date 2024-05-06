@@ -10,7 +10,7 @@ const DefaultDisplay: React.FC<Props> = ({ /* props */ }) => {
     <>
     {/* Navbar */}
     <Outlet/>
-    {/* Footer */}
+    {/* Footer */ }
     </>
   );
 };
