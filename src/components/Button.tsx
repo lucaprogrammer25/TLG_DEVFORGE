@@ -7,7 +7,7 @@ interface Props {
 const Button: React.FC<Props> = ({ /* props */ }) => {
   return (
     <div>
-      {/* Contenuto del componente */}
+      <p>prova</p>
     </div>
   );
 };
