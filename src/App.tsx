@@ -20,6 +20,7 @@ const App: React.FC = () => {
       <Buttontmg onClick={handleClick2} label="see more ..." />
       <Buttontmg onClick={handleClick} label="subscribe" />
       <Buttontmg onClick={handleClick} label="GO to PAY" />
+      <Buttontmg onClick={handleClick} label="PAY" />
     </>
   );
 };
