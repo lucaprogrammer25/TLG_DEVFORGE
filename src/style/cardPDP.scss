@@ -1,0 +1,84 @@
+.containerCardPDP {
+    margin: 0 auto;
+    max-width: 400px;
+    max-height: 600px;
+}
+
+.containerImgPDP img {
+    width: 400px;
+    height: 500px;
+    object-fit:cover;
+}
+
+.descriptionCardPDP {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.containerPricePDP {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.detailsPDP{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sizeCard{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.sizeContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: 35px;
+    justify-content: space-around;
+}
+
+.itemSize{
+    color:rgb(175, 173, 173);
+    cursor:pointer
+}
+
+
+.itemSizeOnActive{
+    color: black;
+    cursor:pointer;
+}
+
+.colorCard{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.colorsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+
+.squareGreen{
+    width: 50px;
+    height: 50px;
+    background-color: #027c6d
+}
+
+.squareRed{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+}
+
+.squareYellow{
+    width: 50px;
+    height: 50px;
+    background-color: yellow
+}
