@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 interface Props {
   // Definisci le tue props qui
@@ -8,7 +9,7 @@ interface Props {
 const DefaultDisplay: React.FC<Props> = ({ /* props */ }) => {
   return (
     <>
-    {/* Navbar */}
+    <Navbar/>
     <Outlet/>
     {/* Footer */ }
     </>
