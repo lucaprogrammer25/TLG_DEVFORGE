@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Props } from "../interfaces/type";
 
 const CardPDP: React.FC= () => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -11,14 +10,17 @@ const CardPDP: React.FC= () => {
     return (
         <>
             <div className="containerCardPDP">
+                <div className='wrapperImg'>
                 <div className='containerImgPDP'>
                     <img src="https://www.jeans.ch/out/pictures/ys_generated/635_762_85__sharp/out/pictures/master/product/1/marc-o-polo-stripe-t-shirt-slim-fit-multi-white_m24-2114-51298-i16_1.png" alt="" />
                 </div> 
-                <div className='descriptionCardPDP'>
-                    <h2>Vestito bellissimo</h2>
+                <div className='infoCardPDP'>
+                    <h2 className='titleCardPDP'>Vestito bellissimo</h2>
                     <div className='containerPricePDP'>
                         <p>19.99$</p>
                         <button>Add to Cart</button>
+                        </div>
+                    </div>
                     </div>
                     <div className='detailsPDP'>
                         <h3>Description</h3>
@@ -41,7 +43,7 @@ const CardPDP: React.FC= () => {
                             <div className="squareRed"></div>
                         </div>
                     </div>
-                </div>
+              
             </div>    
         </>
     );

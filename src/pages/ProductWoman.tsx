@@ -2,7 +2,7 @@ import Card from "../components/CardPLP";
 import {  useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { ProductJson } from "../interfaces/type";
 import { useEffect } from "react";
-import fetchDataContentful from "../redux/fetchContentful";
+import fetchDataContentful from "../redux/fetchProducts";
 
 const ProductWoman: React.FC = () => {
   

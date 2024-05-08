@@ -1,7 +1,7 @@
 import {  useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { ProductJson } from "../interfaces/type";
 import { useEffect } from "react";
-import fetchDataContentful from "../redux/fetchContentful";
+import fetchDataContentful from "../redux/fetchProducts";
 import CardPLP from "../components/CardPLP";
 
 const ProductMen: React.FC = () => {
