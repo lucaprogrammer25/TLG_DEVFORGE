@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SubscribeInput.css"
+import "../../style/NewsLetter/SubscribeInput.scss";
 
 interface FormState {
   email: string;
@@ -37,22 +37,28 @@ const NewsletterForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Subscribe to our News Letter </label>
-      <input
-      className="subscribeInput"
-        type="email"
-        id="email"
-        value={formState.email}
-        onChange={handleEmailChange}
-        required
-      />
-      <button type="submit" disabled={formState.status === "submitting"}>
-        Subscribe
-      </button>
-      {formState.status === "submitted" && <p>Thank you for subscribing!</p>}
-      {formState.status === "error" && <p>Sorry, there was a problem.</p>}
-    </form>
+    <>
+      <div className="divForm">
+        <form className="form" onSubmit={handleSubmit}>
+          <label htmlFor="email">subscribe to our News Letter </label>
+          <input
+            className="subscribeInput"
+            type="email"
+            id="email"
+            value={formState.email}
+            onChange={handleEmailChange}
+            required
+          />
+          <button type="submit" disabled={formState.status === "submitting"}>
+            Subscribe da 
+          </button>
+          {formState.status === "submitted" && (
+            <p>Thank you for subscribing!</p>
+          )}
+          {formState.status === "error" && <p>Sorry, there was a problem.</p>}
+        </form>
+      </div>
+    </>
   );
 };
 

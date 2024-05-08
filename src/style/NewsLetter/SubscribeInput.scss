@@ -1,4 +1,29 @@
-.subscribeInput{
-    background-color: red;
-    color: blue;
+.divForm {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-color:#f3f3f3;
+}
+
+.form {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 60px;
+}
+
+.subscribeInput {
+  background-color: #d9d9d9;
+  border: #989180 0.25rem solid;
+  color: black;
+  height: 40px;
+  width: 350px;
+  font-size: 50%;
+}
+
+button[type=submit]{
+    color: red;
 }
