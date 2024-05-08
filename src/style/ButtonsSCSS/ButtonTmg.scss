@@ -20,6 +20,7 @@ $button-transform-active: translateY(4px);
 
   &:hover {
     border-color: $button-hover-border-color;
+    cursor: pointer;
   }
 
   &:active {

@@ -1,0 +1,16 @@
+.ButtonTmgCss3 {
+  color: black;
+  background-color: inherit;
+  border: none;
+
+  &:hover {
+    text-decoration: underline;
+    border: none;
+    text-underline-offset: 0.5rem;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

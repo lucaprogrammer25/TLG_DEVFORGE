@@ -3,13 +3,13 @@
   background-color: inherit;
   border: none;
 }
-
 .ButtonTmgCss3:hover {
   text-decoration: underline;
   border: none;
-  text-underline-offset: 0.5rem
+  text-underline-offset: 0.5rem;
 }
-
 .ButtonTmgCss3:focus {
   outline: none;
 }
+
+/*# sourceMappingURL=ButtonTmg3.css.map */
