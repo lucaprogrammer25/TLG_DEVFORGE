@@ -1,6 +1,5 @@
 # React + TypeScript + Vite
 
-
 Semplice App E-commerce con React.ts
 
 Sviluppare un'applicazione e-commerce in cui il cliente può aggiungere prodotti al carrello e completare l'acquisto. Utilizzando React.ts come linguaggio di programmazione, Sass per lo stile e Contentful per il contenuto.
