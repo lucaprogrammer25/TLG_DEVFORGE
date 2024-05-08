@@ -1,6 +1,7 @@
 // variabili colore
 $gold: #a89156;
 $lightBlack: #2f2f2f;
+$backgroundFooter: #f3f3f3;
 
 // codice
 
@@ -13,8 +14,8 @@ footer {
   border-top: 0.3rem solid $gold;
   width: 100%;
   height: min-content;
-  background-color: $lightBlack;
-  color: white;
+  background-color: $backgroundFooter;
+  color: $lightBlack;
   display: flex;
   flex-direction: column;
 }
