@@ -1,0 +1,115 @@
+.containerCardPDP {
+    margin: 0 auto;
+    max-width: 400px;
+    max-height: 600px;
+  
+    .containerImgPDP {
+      img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+      }
+    }
+  
+    .titleCardPDP {
+      margin-bottom: 2rem;
+    }
+  
+    .descriptionCardPDP {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  
+    .containerPricePDP {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+  
+      p {
+        font-size: 26px;
+        font-weight: 600;
+      }
+    }
+  
+    .detailsPDP {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .sizeCard {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-bottom: 3rem;
+  
+      .sizeContainer {
+        display: flex;
+        flex-direction: row;
+        font-size: 35px;
+        justify-content: space-around;
+      }
+  
+      .itemSize {
+        color: rgb(175, 173, 173);
+        cursor: pointer;
+      }
+  
+      .itemSizeOnActive {
+        color: black;
+        cursor: pointer;
+      }
+    }
+  
+    .colorCard {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+  
+      .colorsContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+  
+        .squareGreen,
+        .squareRed,
+        .squareYellow {
+          width: 50px;
+          height: 50px;
+        }
+  
+        .squareGreen {
+          background-color: #027c6d;
+        }
+  
+        .squareRed {
+          background-color: red;
+        }
+  
+        .squareYellow {
+          background-color: yellow;
+        }
+      }
+    }
+  
+    @media screen and (min-width: 478px) {
+      .wrapperImg {
+        display: flex;
+        flex-direction: row;
+        text-wrap: nowrap;
+      }
+  
+      .infoCardPDP {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        justify-content: space-between;
+      }
+  
+      .containerPricePDP {
+        flex-direction: column;
+      }
+    }
+  }
+  
