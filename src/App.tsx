@@ -2,6 +2,8 @@
 import React from "react";
 import "./App.css";
 import Buttontmg from "./components/ButtonTmg";
+import Buttontmg2 from "./components/ButtonTmg2";
+import Buttontmg3 from "./components/ButtonTmg3";
 
 const App: React.FC = () => {
   const handleClick = () => {
@@ -17,8 +19,8 @@ const App: React.FC = () => {
   return (
     <>
       <Buttontmg onClick={handleAddToCart} label="ADD TO CART" />
-      <Buttontmg onClick={handleClick2} label="see more ..." />
-      <Buttontmg onClick={handleClick} label="subscribe" />
+      <Buttontmg2 onClick={handleClick2} label="see more ..." />
+      <Buttontmg3 onClick={handleClick} label="subscribe" />
       <Buttontmg onClick={handleClick} label="GO to PAY" />
       <Buttontmg onClick={handleClick} label="PAY" />
     </>
