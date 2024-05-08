@@ -1,0 +1,199 @@
+/* SIDEBAR */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+.navbarPromotion{
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .navbarPromotionContent {
+        flex: 1; 
+        text-align: center;
+    }
+    .navbarPromotionButton    {
+        font-family: 'Jost', sans-serif;
+        background-color: black;
+        color: white;
+        border:none;
+        margin-left:auto;
+    }
+}
+
+
+
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Jost', sans-serif;
+    
+    .navbarTitleName{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; 
+            .navbarTitleNameSubTitle{
+                font-style: italic;
+            }
+    }
+    .navbarMenuItem{
+        display: flex;
+        flex-direction: row;
+        align-items: center;  
+        gap: 12rem;
+        .navbarMenuItemAccessoriesTitle{
+            cursor:pointer;
+        }
+    }
+    
+}
+
+    
+
+.navbarServiceMenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+/* .navbarMenuItemMen,
+.navbarMenuItemWomen,
+.navbarMenuItemAccessories {
+
+}
+    
+ */
+.navbarHoverMen ,
+ .navbarHoverWomen {
+    position: absolute; 
+    background-color: rgb(255, 255, 255); 
+    padding: 1rem;
+    border-top: none; 
+    width:max-content; 
+    top:4rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/* 
+HAMBURGER MENU  */
+
+ .visuallyHidden {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.hamburger {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.hamburger .bar {
+    padding: 0;
+    width: 30px;
+    height: 4px;
+    background-color: maroon;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.4s ease-in-out;
+    position: absolute; 
+}
+
+.bar1 {
+    top: 0;
+}
+
+.bar2,
+.bar3 {
+    top: 13.5px;
+}
+
+.bar3 {
+    right: 0;
+}
+
+.bar4 {
+    bottom: 0;
+}
+
+
+
+
+.hamburger3 .bar1 {
+    transform-origin: 5%;
+}
+
+.hamburger3 .bar4 {
+    transform-origin: 5%;
+}
+
+.checkbox3:checked + label > .hamburger3 > .bar1{
+    transform: rotate(45deg);
+    height: 3px;
+    width: 42px;
+}
+
+.checkbox3:checked + label > .hamburger3 > .bar3{
+    transform: rotate(45deg);
+    height: 3px;
+    background-color: transparent;
+}
+
+.checkbox3:checked + label > .hamburger3 > .bar2{
+    transform: rotate(-45deg);
+    height: 3px;
+    background-color: transparent;
+}
+
+.checkbox3:checked + label > .hamburger3 > .bar4{
+    transform: rotate(-45deg);
+    height: 3px;
+    width: 42px;
+}
+
+/* MEDIA QUERY  */
+
+@media only screen and (max-width: 600px) {
+    
+    .navbarServiceMenu{
+        display: none;
+    }
+    .navbarMenuItemMen,
+    .navbarMenuItemWomen     {
+        display: none;
+    }
+    .navbarMenuItem{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        display: none;
+    }
+}

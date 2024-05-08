@@ -1,11 +1,19 @@
-import NewsletterForm from './components/NewsLetter/newsLetter'
+import { Route, Routes } from 'react-router-dom'
+import DefaultDisplay from './layout/DefaultDisplay'
+import Home from './pages/Home'
 
 function App() {
 
 
   return (
     <>
-    <NewsletterForm/>
+    <Routes>
+      <Route path="/" element={<DefaultDisplay/>}>
+        <Route path="/" element={<Home/>}/>
+        
+      </Route>
+
+    </Routes>
     </>
   )
 }
