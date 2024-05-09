@@ -1,10 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+const api = JSON.stringify(import.meta.env.VITE_REACT_FETCH_API)
+
 const fetchDataContentful = createAsyncThunk(
     'contentful/fetchData',
     async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/product');
+            const response = await fetch(api);
             if (response.ok) {
                 const data = await response.json();
                 return data

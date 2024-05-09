@@ -17,6 +17,9 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+            const api = JSON.stringify(import.meta.env.VITE_REACT_FETCH_API)
+            console.log(api);
+            
         }, 5000);
 
         return () => clearInterval(interval);
