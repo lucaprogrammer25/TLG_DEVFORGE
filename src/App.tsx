@@ -4,9 +4,12 @@ import Home from './pages/Home'
 
 function App() {
 
+const App: React.FC = () => {
+
 
   return (
     <>
+
     <Routes>
       <Route path="/" element={<DefaultDisplay/>}>
         <Route path="/" element={<Home/>}/>
@@ -15,7 +18,7 @@ function App() {
 
     </Routes>
     </>
-  )
+  );
+};
 }
-
-export default App
+export default App;
