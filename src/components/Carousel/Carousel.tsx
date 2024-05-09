@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../style/CarouselScss/Carousel.scss";
+import Buttontmg3 from "../Buttons/ButtonTmg3";
 
 interface CarouselProps {
   images: string[];
@@ -18,7 +19,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
+    setCurrentIndex((prevIndex) => (prevIndex + 1));
   };
 
   const goToPrev = () => {
@@ -28,7 +29,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       goToNext();
-    }, 2000);
+    }, 90000);
 
     return () => clearInterval(timer);
   }, [goToNext]);
@@ -53,7 +54,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
   return (
     <div className="carousel-container">
-      <button onClick={goToPrev}>Prev</button>
+      <Buttontmg3 onClick={goToPrev} label="Prev"/>
       <div>
         <div className="carousel-images">
           {getVisibleImages().map((src, index) => (
@@ -61,7 +62,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
           ))}
         </div>
       </div>
-      <button onClick={goToNext}>Next</button>
+      <Buttontmg3 onClick={goToNext} label="Next"/>
     </div>
   );
 };

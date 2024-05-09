@@ -5,35 +5,44 @@ $items-to-show: 4;
   display: flex;
   align-items: center;
   width: 100%;
-  position: relative; 
+  position: relative;
 
   .carousel-images {
     display: flex;
     transition: transform $transition-time ease;
-    width: 100%; 
-    overflow: hidden;
+    width: 100%;
     gap: 20px;
     padding: 5rem;
 
     img {
+      overflow: hidden;
       display: flex;
       transition: transform $transition-time ease;
-      width: 100%; 
-      overflow: hidden;
+      width: 100%;
       gap: 20px;
 
+      &:hover {
+        transform: scale(1.05); // Slightly zoom in on hover
+        cursor: pointer;
+      }
+
       &:last-child {
-        margin-right: 0; 
+        margin-right: 0;
       }
     }
   }
 
   button {
     padding: 10px 20px;
-    background-color: red;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: white;
+    height: 100%;
+
+    &:hover {
+      color: black;
+    }
 
     &:first-of-type {
       left: 0;
