@@ -1,9 +1,9 @@
-import ProductMen from "./ProductMen"
-
 
 const Home = () => {
   return (
-    <ProductMen/>
+    <>
+      <h1>HOME</h1>
+    </>
   )
 }
 

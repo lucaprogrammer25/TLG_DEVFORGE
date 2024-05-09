@@ -1,8 +1,8 @@
-import Card from "../components/CardPLP";
 import {  useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { ProductJson } from "../interfaces/type";
 import { useEffect } from "react";
 import fetchDataContentful from "../redux/fetchProducts";
+import CardPLP from "../components/CardPLP";
 
 const ProductWoman: React.FC = () => {
   
@@ -17,7 +17,7 @@ const ProductWoman: React.FC = () => {
 
     
   if (!data || error) {
-    return <div>Errore caricamento dati</div>;
+    return <div>Error data loading</div>;
   }
 
   return (
@@ -28,7 +28,7 @@ const ProductWoman: React.FC = () => {
         data.map((item: ProductJson) => {
           if (item.gender === "woman") {
             return (
-              <Card
+              <CardPLP
                 key={item.id}
                 id={item.id}
                 category={item.category}

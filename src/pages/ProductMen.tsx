@@ -17,7 +17,7 @@ const ProductMen: React.FC = () => {
 
     
   if (!data || error) {
-    return <div>Errore caricamento dati</div>;
+    return <div>Error data loading</div>;
   }
 
   return (

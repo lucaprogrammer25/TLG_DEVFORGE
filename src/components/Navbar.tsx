@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import shoppingBag from "../assets/icons/shopping-bag.svg"
 import profile from "../assets/icons/profile.svg"
 
+
 const Navbar: React.FC = () => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
@@ -17,9 +18,6 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
-            const api = JSON.stringify(import.meta.env.VITE_REACT_FETCH_API)
-            console.log(api);
-            
         }, 5000);
 
         return () => clearInterval(interval);
@@ -35,18 +33,20 @@ const Navbar: React.FC = () => {
             <nav>
                 <div className="navbar">
                     <div className="navbarLogo">
-                        <img src="logo.png" alt="the modern boutique logo" />
+                       <Link to="/"><img src="logo.png" alt="the modern boutique logo" /></Link> 
                     </div>
                     <div className="navbarTitleName">
                         <h1>TMB</h1>
                         <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
                     </div>
                     <div className="navbarMenuItem">
-                        <div className="navbarMenuItemMen"
+                   
+                      <div className="navbarMenuItemMen"
                             onMouseEnter={() => setHiddenMen(false)}
                             onMouseLeave={() => setHiddenMen(true)}
-                        >
-                            Men
+                        > <Link className="linkTag" to="/men">  
+                           <span>Men</span>
+                           </Link>
                             {hiddenMen ? null :
                                 <div className="navbarHoverMen">
                                     <div className="navbarHoverMenShirt">
@@ -78,11 +78,15 @@ const Navbar: React.FC = () => {
                                     </div>
                                 </div>}
                         </div>
+                        
+                        
                         <div className="navbarMenuItemWomen"
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
                         >
-                            Women
+                            <Link className="linkTag" to="/woman">
+                            <span>Women</span>
+                            </Link>
                             {hiddenWomen ? null :
                                 <div className="navbarHoverWomen">
                                     <div className="navbarHoverWomenShirt">
@@ -118,19 +122,26 @@ const Navbar: React.FC = () => {
                                 </div>}
 
                         </div>
+                      
+                        
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
-                                {/* <Link to="/accessories"> */}Accessories {/* </Link> */}
+                            <Link className="linkTag" to="/accessories"> 
+                                <span>Accessories</span>
+                        </Link>
                             </p>
                         </div>
                     </div>
                     <div className="navbarServiceMenu">
-                        <div className="navbarServiceMenuProfile">
+                        <Link to="/login"><div className="navbarServiceMenuProfile">
                             <img src={profile} alt="" />
                         </div>
+                        </Link>
+                        <Link to="/cart">
                         <div className="navbarServiceMenuCart">
                             <img src={shoppingBag} alt="SVG Image" />
                         </div>
+                        </Link>
                     </div>
                     {/* MOBILE MENU  */}
                     <div className="container">
