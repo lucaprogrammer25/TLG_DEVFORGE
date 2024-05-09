@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const api = JSON.stringify(import.meta.env.VITE_REACT_FETCH_API)
+const api = import.meta.env.VITE_REACT_FETCH_API;
 
 const fetchDataContentful = createAsyncThunk(
     'contentful/fetchData',

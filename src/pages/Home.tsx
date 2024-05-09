@@ -1,8 +1,9 @@
+import ProductMen from "./ProductMen"
 
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <ProductMen/>
   )
 }
 
