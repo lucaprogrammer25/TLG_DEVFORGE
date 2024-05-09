@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import DefaultDisplay from './layout/DefaultDisplay'
-import Home from './pages/Home'
+import HeroSection from './pages/HeroSection';
 
 
 
@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
     <Routes>
       <Route path="/" element={<DefaultDisplay/>}>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<HeroSection/>}/>
         
       </Route>
 

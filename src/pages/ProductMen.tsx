@@ -1,23 +1,23 @@
 import {  useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { ProductJson } from "../interfaces/type";
 import { useEffect } from "react";
-import fetchDataContentful from "../redux/fetchProducts";
+import fetchDataProduct from "../redux/fetchProducts";
 import CardPLP from "../components/CardPLP";
 
 const ProductMen: React.FC = () => {
   
-  const { data, error } = useTypeSelector((state) => state.contentful); 
+  const { data, error } = useTypeSelector((state) => state.product); 
   const dispatch = useTypeDispatch();
   
   useEffect(() => {
-    dispatch(fetchDataContentful())
+    dispatch(fetchDataProduct())
   },[dispatch])
 
   console.log(data);
 
     
   if (!data || error) {
-    return <div>Errore caricamento dati</div>;
+    return <div>Error loading data </div>;
   }
 
   return (
