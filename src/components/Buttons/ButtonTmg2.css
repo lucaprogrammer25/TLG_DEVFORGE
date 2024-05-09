@@ -1,0 +1,24 @@
+.ButtonTmgCss2 {
+  color: black;
+  background: linear-gradient(to top, black 100%, transparent 100%);
+  transition: 0.5s;
+  background-size: 100% 0%;
+  background-repeat: no-repeat;
+  border-top: 2px solid black;
+  border-radius: 0;
+  transform: rotate(180deg);
+}
+.ButtonTmgCss2:hover {
+  color: white;
+  background-size: 100% 100%;
+  border: none;
+}
+.ButtonTmgCss2:focus {
+  outline: none;
+}
+.ButtonTmgCss2 span {
+  display: block;
+  transform: rotate(180deg);
+}
+
+/*# sourceMappingURL=ButtonTmg2.css.map */

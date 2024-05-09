@@ -1,0 +1,140 @@
+// variabili colore
+$gold: #a89156;
+$lightBlack: #2f2f2f;
+$backgroundFooter: #f3f3f3;
+
+// codice
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+  border-top: 0.3rem solid $gold;
+  width: 100%;
+  height: min-content;
+  background-color: $backgroundFooter;
+  color: $lightBlack;
+  display: flex;
+  flex-direction: column;
+}
+
+.centerText {
+  text-align: center;
+  color: $gold;
+  margin-top: 3rem;
+}
+
+.linkBox {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 2rem;
+  margin-right: 15rem;
+
+  .manBox {
+    h3 {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .manLinkBox {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-left: 1.5rem;
+
+      p {
+        margin: 1rem;
+        margin-top: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .womanBox {
+    h3 {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .womanLinkBox {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-left: 1.5rem;
+
+      p {
+        margin: 1rem;
+        margin-top: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .accessoriesLink {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .clientAssistanceBox {
+    .assistanceLinkBox {
+      p {
+        margin-left: 1rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .legalAreaBox {
+    .legalLinkBox {
+      p {
+        margin-left: 1rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-size: 10px;
+    margin-left: 0.5rem;
+    position: relative;
+    top: 15px;
+    left: 5px;
+  }
+
+  .logoBox {
+    display: flex;
+    margin: 0.3rem;
+
+    .socialLogo {
+      width: 60px;
+      height: 60px;
+      margin: 0.3rem;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    
+    }
+  }
+}

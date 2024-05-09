@@ -1,0 +1,26 @@
+.ButtonTmgCss {
+  background-color: #2c2c2c;
+  color: #a89156;
+  border-radius: 2px;
+  border: 0.35rem solid #a89156;
+  font-size: 1rem;
+  margin: 2rem;
+}
+.ButtonTmgCss:focus {
+  outline: none;
+}
+.ButtonTmgCss:hover {
+  border-color: #a89156;
+  cursor: pointer;
+}
+.ButtonTmgCss:active {
+  transform: translateY(4px);
+}
+@media screen and (max-width: 992px) {
+  .ButtonTmgCss {
+    font-size: 0.5rem;
+    border: 0.2rem solid #a89156;
+  }
+}
+
+/*# sourceMappingURL=ButtonTmg.css.map */
