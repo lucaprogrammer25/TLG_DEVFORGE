@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ContentfulProduct } from "../interfaces/type";
+import { Product } from "../interfaces/type";
 import fetchDataProduct from "./fetchProducts";
 
 
-const initialState: ContentfulProduct = {
+const initialState: Product = {
     data: [],
     error: null,
     loading: false
@@ -29,16 +29,16 @@ const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-          .addCase(fetchDataproduct.pending, (state) => {
+          .addCase(fetchDataProduct.pending, (state) => {
             state.loading = true;
             state.error = null;
           })
-          .addCase(fetchDataproduct.fulfilled, (state, action:PayloadAction<any>) => {
+          .addCase(fetchDataProduct.fulfilled, (state, action:PayloadAction<any>) => {
             state.data = action.payload;
             state.loading = false;
             state.error = null;
           })
-          .addCase(fetchDataproduct.rejected, (state, action:PayloadAction<any>) => {
+          .addCase(fetchDataProduct.rejected, (state, action:PayloadAction<any>) => {
             state.loading = false;
             state.error =  action.payload
           });

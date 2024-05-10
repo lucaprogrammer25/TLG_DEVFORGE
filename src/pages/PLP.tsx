@@ -13,8 +13,9 @@ const PLP: React.FC = () => {
   useEffect(() => {
     dispatch(fetchDataContentful());
   }, [dispatch]);
-
-    const plpImage = !category && gender === 'men'  ? {imageMen} : !category && gender === 'women' {imageWoman} : '';
+    const imageMan = 'https://hips.hearstapps.com/hmg-prod/images/outfit-autunnali-moda-uomo-2018-3-ok-1-1539004468.jpg';
+    const imageWomen = 'https://images.pexels.com/photos/19956458/pexels-photo-19956458/free-photo-of-moda-occhiali-da-sole-donna-estate.jpeg'
+    const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
     
 
 
@@ -26,6 +27,7 @@ const PLP: React.FC = () => {
 
   return (
     <section>
+      <img className="imageProduct" src={plpImage} alt="" />
       <h1 id="titleProductPage">Product</h1>
       <div className="containerCards">
         {data
