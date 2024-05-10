@@ -3,26 +3,23 @@ import fetchDataContentful from "../redux/fetchContentful";
 import { useEffect } from "react";
 
 const HeroSection = () => {
-  const { data, error } = useTypeSelector((state) => state.contentful)
+  const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
-
-// console.log(data,error);
   
+  const landingImage =  data.items && data.items[1]?.fields.bannerImage.fields.file.url;
+  console.log(data.items);
+  
+
   useEffect(() => {
-    dispatch(fetchDataContentful())
-    console.log(data);
-    
+    dispatch(fetchDataContentful()) 
   },[dispatch])
-
-  
-  
-
   
   return (
-    <div className="heroSectionContainer">
-        <img  src="" className="heroSectionImage"alt="landing image"></img>
-    </div>
-    
+    <>
+        <div className="heroSectionContainer">
+          <img  src={landingImage} className="heroSectionImage"alt="landing image"></img>
+      </div>   
+    </>
   )
 }
 
