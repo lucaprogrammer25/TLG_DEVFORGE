@@ -22,7 +22,7 @@ const PLP: React.FC = () => {
     <section>
       <div className="containerCards">
         {data
-          .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) //il parametro gender verrà preso a prescindere dal parametro category
+          .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) //il parametro gender verrà preso a prescindere dal parametro category, prenderà i filtri dai params di useParams scritti nell'URL
           .map((item: ProductJson) => (
             <CardPLP
               key={item.id}
