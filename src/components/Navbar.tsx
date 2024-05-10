@@ -99,12 +99,13 @@ const Navbar: React.FC = () => {
                                     <div className="navbarHoverWomenShirt">
 
                                         <h1>
-                                            {/* <Link to="/womenShirt"> */}shirt {/* </Link> */}
+                                          shirt
                                         </h1>
-                                        {/* <Link to="/menShirt" > */}<img src="" alt="Women-tshirt" />{/* </Link> */}
+                                       <img src="" alt="Women-tshirt" />
 
                                     </div>
                                     </Link>
+                                    <Link className="linkTag" to="/women/trousers">
                                     <div className="navbarHoverWomenTrousers">
                                         {/* <Link to={"trousers"}/> */}
                                         <h1>
@@ -113,6 +114,8 @@ const Navbar: React.FC = () => {
                                         {/* <Link to="/menShirt" > */}<img src="" alt="Women-trousers" /> {/* </Link> */}
 
                                     </div>
+                                    </Link>
+                                    <Link className="linkTag" to="/women/dresses">
                                     <div className="navbarHoverWomenDresses">
                                         {/* <Link to={"dress"}/> */}
                                         <h1>
@@ -120,6 +123,8 @@ const Navbar: React.FC = () => {
                                         </h1>
                                         {/* <Link to="/menDress" > */}<img src="" alt="Women-Dress" /> {/* </Link> */}
                                     </div>
+                                    </Link>
+                                    <Link className="linkTag" to="/women/shoes">
                                     <div className="navbarHoverWomenShoes">
                                         {/* <Link to={"shoe"}/> */}
                                         <h1>
@@ -127,18 +132,20 @@ const Navbar: React.FC = () => {
                                         </h1>
                                         {/* <Link to="/menShoe" > */}<img src="" alt="Women-shoe" /> {/* </Link> */}
                                     </div>
+                                    </Link>
                                 </div>}
 
                         </div>
                       
-                        
+                        <Link className="linkTag" to="/accessories"> 
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
-                            <Link className="linkTag" to="/accessories"> 
+                            
                                 <span>Accessories</span>
-                        </Link>
+                       
                             </p>
                         </div>
+                        </Link>
                     </div>
                     <div className="navbarServiceMenu">
                         <Link to="/login"><div className="navbarServiceMenuProfile">
