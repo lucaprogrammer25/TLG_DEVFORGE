@@ -44,31 +44,36 @@ const Navbar: React.FC = () => {
                       <div className="navbarMenuItemMen"
                             onMouseEnter={() => setHiddenMen(false)}
                             onMouseLeave={() => setHiddenMen(true)}
-                        > <Link className="linkTag" to="/men">  
+                        > 
+                        <Link className="linkTag" to="/men">  
                            <span>Men</span>
                            </Link>
                             {hiddenMen ? null :
                                 <div className="navbarHoverMen">
+                                    <Link className="linkTag" to="/men/T-shirts">  
                                     <div className="navbarHoverMenShirt">
-                                        {/* <Link to="/menShirt" > */}<img src="" alt="Men-tshirt" />{/* </Link> */}
+                                       <img src="" alt="Men-tshirt" />
                                         <p>
-                                            {/* <Link to="/menShirt"> */}Shirt {/* </Link> */}
+                                            Shirt 
                                         </p>
                                     </div>
+                                    </Link>
+                                    <Link className="linkTag" to="/men/trousers">
                                     <div className="navbarHoverMenTrousers">
-                                        <Link to={"trousers"} />
                                         <h1>
-                                            {/* <Link to="/menTrousers"> */}Trousers{/* </Link> */}
+                                           Trousers
                                         </h1>
                                         {/* <Link to="/menTrousers" > */}<img src="" alt="Men-Trousers" />{/* </Link> */}
-                                    </div>
+                                    </div></Link> 
+                                        <Link className="linkTag" to="/men/Dresses">
                                     <div className="navbarHoverMenDresses">
-                                        <Link to={"dress"} />
                                         <h1>
                                             {/* <Link to="/menDress"> */}Dress {/* </Link> */}
                                         </h1>
                                         {/* <Link to="/menDress" > */}<img src="" alt="Men-Dress" />{/* </Link> */}
                                     </div>
+                                    </Link>
+                                    <Link className="linkTag" to="/men/shoes">
                                     <div className="navbarHoverMenShoes">
 
                                         <h1>
@@ -76,6 +81,7 @@ const Navbar: React.FC = () => {
                                         </h1>
                                         {/* <Link to="/menShoes" > */}<img src="" alt="Men-tshoes" />{/* </Link> */}
                                     </div>
+                                    </Link>
                                 </div>}
                         </div>
                         
@@ -84,11 +90,12 @@ const Navbar: React.FC = () => {
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
                         >
-                            <Link className="linkTag" to="/woman">
+                            <Link className="linkTag" to="/women">
                             <span>Women</span>
                             </Link>
                             {hiddenWomen ? null :
                                 <div className="navbarHoverWomen">
+                                    <Link className="linkTag" to="/women/T-shirts">
                                     <div className="navbarHoverWomenShirt">
 
                                         <h1>
@@ -97,6 +104,7 @@ const Navbar: React.FC = () => {
                                         {/* <Link to="/menShirt" > */}<img src="" alt="Women-tshirt" />{/* </Link> */}
 
                                     </div>
+                                    </Link>
                                     <div className="navbarHoverWomenTrousers">
                                         {/* <Link to={"trousers"}/> */}
                                         <h1>

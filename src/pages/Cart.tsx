@@ -3,9 +3,14 @@ import React from 'react';
 
 const Cart: React.FC = ({ /* props */ }) => {
   return (
-    <div>
+    <>
+    <section>
+      <div>
        CART
-    </div>
+     </div>
+    </section>
+    </>
+    
   );
 };
 
