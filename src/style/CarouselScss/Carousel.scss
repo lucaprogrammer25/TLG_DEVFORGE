@@ -1,15 +1,13 @@
-$transition-time: 0.5s;
-$items-to-show: 4;
-
 .carousel-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 100%;
   position: relative;
 
   .carousel-images {
     display: flex;
-    transition: transform $transition-time ease;
+    flex-direction: row;
     width: 100%;
     gap: 20px;
     padding: 5rem;
@@ -17,12 +15,12 @@ $items-to-show: 4;
     img {
       overflow: hidden;
       display: flex;
-      transition: transform $transition-time ease;
-      width: 100%;
+      width: 120px;
+      height: 120px;
       gap: 20px;
 
       &:hover {
-        transform: scale(1.05); // Slightly zoom in on hover
+        transform: scale(1.05);
         cursor: pointer;
       }
 

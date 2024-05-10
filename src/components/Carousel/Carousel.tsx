@@ -1,25 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "../../style/CarouselScss/Carousel.scss";
 import Buttontmg3 from "../Buttons/ButtonTmg3";
+import { useTypeDispatch, useTypeSelector } from "../../redux/typeHooks";
+import fetchDataContentful from "../../redux/fetchProducts";
 
 interface CarouselProps {
   images: string[];
 }
 
+
+
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const getItemsToShow = () => {
     if (window.innerWidth <= 480) {
-      return 1;
+      return 2;
     }
     return 4;
   };
+  
+  const {data , error}=useTypeSelector((state)=>state.contentful)
+  
+  const dispatch = useTypeDispatch()
+  useEffect(()=>{
+    dispatch(fetchDataContentful())
+  },[dispatch])
+  console.log(data);
+  
+
 
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
   const totalImages = images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
   };
 
   const goToPrev = () => {
@@ -29,7 +43,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       goToNext();
-    }, 90000);
+    }, 3000);
 
     return () => clearInterval(timer);
   }, [goToNext]);
@@ -39,9 +53,9 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       setItemsToShow(getItemsToShow());
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const getVisibleImages = () => {
@@ -54,15 +68,15 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
   return (
     <div className="carousel-container">
-      <Buttontmg3 onClick={goToPrev} label="Prev"/>
+      <Buttontmg3 onClick={goToPrev} label="Prev" />
       <div>
         <div className="carousel-images">
           {getVisibleImages().map((src, index) => (
-            <img className="imgCarousel" key={index} src={src} />
+            <img key={index} src={src} />
           ))}
         </div>
       </div>
-      <Buttontmg3 onClick={goToNext} label="Next"/>
+      <Buttontmg3 onClick={goToNext} label="Next" />
     </div>
   );
 };
