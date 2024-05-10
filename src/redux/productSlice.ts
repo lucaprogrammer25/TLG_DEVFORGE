@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ContentfulProduct } from "../interfaces/type";
-import fetchDataContentful from "./fetchProducts";
+import fetchDataProduct from "./fetchProducts";
 
 
 const initialState: ContentfulProduct = {
@@ -9,8 +9,8 @@ const initialState: ContentfulProduct = {
     loading: false
 }
 
-const contentfulSlice = createSlice({
-    name: 'contentful',
+const productSlice = createSlice({
+    name: 'product',
     initialState,
     reducers: {
       setData(state, action: PayloadAction<[] | null>) {
@@ -29,20 +29,20 @@ const contentfulSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-          .addCase(fetchDataContentful.pending, (state) => {
+          .addCase(fetchDataproduct.pending, (state) => {
             state.loading = true;
             state.error = null;
           })
-          .addCase(fetchDataContentful.fulfilled, (state, action:PayloadAction<any>) => {
+          .addCase(fetchDataproduct.fulfilled, (state, action:PayloadAction<any>) => {
             state.data = action.payload;
             state.loading = false;
             state.error = null;
           })
-          .addCase(fetchDataContentful.rejected, (state, action:PayloadAction<any>) => {
+          .addCase(fetchDataproduct.rejected, (state, action:PayloadAction<any>) => {
             state.loading = false;
             state.error =  action.payload
           });
       },
   });
 
-  export default contentfulSlice.reducer;
+  export default productSlice.reducer;
