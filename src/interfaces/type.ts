@@ -18,6 +18,7 @@ export type Props = {
     image:string;
     price: number;
     alternative:string;
+    goToPDP:any;
   }
   
   export interface Product {

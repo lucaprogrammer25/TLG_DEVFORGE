@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import PLP from './pages/PLP';
+import ProductDirectPage from './pages/ProductDirectPage';
 
 
 const App: React.FC = () => {
@@ -18,7 +19,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home/>}/>
          <Route path="/:gender/:category?/:id?" element={<PLP />} /> {/* il parametro category è opzionale */}
         <Route path="login" element={<Login />} />
-        <Route path="cart" element={<Cart />} />
+        <Route path="pdp/:id" element={<ProductDirectPage />} />
       </Route>
     </Routes>
   );
