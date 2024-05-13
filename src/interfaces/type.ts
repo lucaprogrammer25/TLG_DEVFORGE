@@ -20,9 +20,14 @@ export type Props = {
     alternative:string;
   }
   
-  export interface ContentfulProduct {
+  export interface Product {
     data: [] | null;
     error: string |null;
     loading: boolean;
   }
   
+  export interface Contentful {
+    data:any;
+    error:string | null ;
+    loading?: boolean;
+   }

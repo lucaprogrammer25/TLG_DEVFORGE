@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const api = import.meta.env.VITE_REACT_FETCH_API;
 
-const fetchDataContentful = createAsyncThunk(
-    'contentful/fetchData',
+const fetchDataProduct = createAsyncThunk(
+    'product/fetchData',
     async () => {
         try {
             const response = await fetch(api);
@@ -19,4 +19,4 @@ const fetchDataContentful = createAsyncThunk(
     }
 );
 
-export default fetchDataContentful;
+export default fetchDataProduct;
