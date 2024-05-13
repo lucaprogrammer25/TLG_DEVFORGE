@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import shoppingBag from "../assets/icons/shopping-bag.svg"
+import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks"
+import fetchDataContentful from "../redux/fetchContentful";
+import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 
 const Navbar: React.FC = () => {
@@ -8,8 +10,37 @@ const Navbar: React.FC = () => {
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [contentIndex, setContentIndex] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(true);
-    const contents = ["New offer buy a minimun of 3 items and if the amount is above 1000$ the 2 lowest are free", "Look up our new summer collection available in the mordern botique store", "Free shipping and deliviries for orders above 2000$"]
+    const [animateContent, setAnimateContent] = useState<boolean>(false);
 
+    const { data } = useTypeSelector((state) => state.contentful)
+    const dispatch = useTypeDispatch();
+
+    const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
+    const contents = data?.items?.[2]?.fields?.promotion ?? [];
+    const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
+    const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
+    /* console.log(data?.items?.[2].fields.menDropDown); */
+    
+
+    const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
+        <div key={index} className={`navbarHoverWomen${item.fields.name}`}>
+            <Link to={"/"} />
+            <h1>{item.fields.name}</h1>
+            <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
+        </div>
+    ));
+    const MenDropdownItems = menDropdown.map((item:any, index:number) => (
+        <div key={index} className={`navbarHoverMen${item.fields.name}`}>
+            <Link to={"/"} />
+            <h1>{item.fields.name}</h1>
+            <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
+        </div>
+    ));
+
+    useEffect(() => {
+        dispatch(fetchDataContentful())     
+    }, [dispatch])
+    
     const handleClose = () => {
         setVisible(false);
     };
@@ -17,104 +48,47 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
-        }, 5000);
-        
+            setAnimateContent(true);
+            setTimeout(() => setAnimateContent(false), 4000);
+        }, 6000);
         return () => clearInterval(interval);
-    }, []);
+    }, [contents]);
+
 
     return (
         <>
             {visible && (
                 <div className="navbarPromotion">
-                    <span className="navbarPromotionContent">{contents[contentIndex]}</span>
+                    <span className={`navbarPromotionContent ${animateContent ? 'fadeIn' : ''}`}>
+                        {contents[contentIndex]}
+                    </span>
                     <button className="navbarPromotionButton" onClick={handleClose}>X</button>
                 </div>
             )}
             <nav>
                 <div className="navbar">
-                    <div className="navbarLogo">
-                        <img src="logo.png" alt="the modern boutique logo" />
+                    <div className="navbarLogoContainer">
+                        <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
                     </div>
                     <div className="navbarTitleName">
                         <h1>TMB</h1>
                         <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
                     </div>
                     <div className="navbarMenuItem">
-                        <div className="navbarMenuItemMen"
+                        <div
+                            className="navbarMenuItemMen"
                             onMouseEnter={() => setHiddenMen(false)}
                             onMouseLeave={() => setHiddenMen(true)}
                         >
                             Men
-                            {hiddenMen ? null :
-                                <div className="navbarHoverMen">
-                                    <div className="navbarHoverMenShirt">
-                                        {/* <Link to="/menShirt" > */}<img src="" alt="Men-tshirt" />{/* </Link> */}
-                                        <p>
-                                            {/* <Link to="/menShirt"> */}Shirt {/* </Link> */}
-                                        </p>
-                                    </div>
-                                    <div className="navbarHoverMenTrousers">
-                                        <Link to={"trousers"} />
-                                        <h1>
-                                            {/* <Link to="/menTrousers"> */}Trousers{/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menTrousers" > */}<img src="" alt="Men-Trousers" />{/* </Link> */}
-                                    </div>
-                                    <div className="navbarHoverMenDresses">
-                                        <Link to={"dress"} />
-                                        <h1>
-                                            {/* <Link to="/menDress"> */}Dress {/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menDress" > */}<img src="" alt="Men-Dress" />{/* </Link> */}
-                                    </div>
-                                    <div className="navbarHoverMenShoes">
-
-                                        <h1>
-                                            {/* <Link to="/menShoes" > */}<img src="" alt="Men-Shoes" />{/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menShoes" > */}<img src="" alt="Men-tshoes" />{/* </Link> */}
-                                    </div>
-                                </div>}
+                            {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
                         </div>
                         <div className="navbarMenuItemWomen"
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
                         >
                             Women
-                            {hiddenWomen ? null :
-                                <div className="navbarHoverWomen">
-                                    <div className="navbarHoverWomenShirt">
-
-                                        <h1>
-                                            {/* <Link to="/womenShirt"> */}shirt {/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menShirt" > */}<img src="" alt="Women-tshirt" />{/* </Link> */}
-
-                                    </div>
-                                    <div className="navbarHoverWomenTrousers">
-                                        {/* <Link to={"trousers"}/> */}
-                                        <h1>
-                                            {/* <Link to="/womenTrousers"> */}Trousers {/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menShirt" > */}<img src="" alt="Women-trousers" /> {/* </Link> */}
-
-                                    </div>
-                                    <div className="navbarHoverWomenDresses">
-                                        {/* <Link to={"dress"}/> */}
-                                        <h1>
-                                            {/* <Link to="/womenDress"> */}Dress {/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menDress" > */}<img src="" alt="Women-Dress" /> {/* </Link> */}
-                                    </div>
-                                    <div className="navbarHoverWomenShoes">
-                                        {/* <Link to={"shoe"}/> */}
-                                        <h1>
-                                            {/* <Link to="/womenShoe"> */}Shoe {/* </Link> */}
-                                        </h1>
-                                        {/* <Link to="/menShoe" > */}<img src="" alt="Women-shoe" /> {/* </Link> */}
-                                    </div>
-                                </div>}
-
+                            {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
                         </div>
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
@@ -124,10 +98,11 @@ const Navbar: React.FC = () => {
                     </div>
                     <div className="navbarServiceMenu">
                         <div className="navbarServiceMenuProfile">
-                            <img src={profile} alt="" />
+                            <img src={profile} alt="profile-icon" />
                         </div>
                         <div className="navbarServiceMenuCart">
-                            <img src={shoppingBag} alt="SVG Image" />
+                            <img src={shoppingBag} alt="cart-icon" />
+                            <span>(`{/* ${counter} */}0`)</span>
                         </div>
                     </div>
                     {/* MOBILE MENU  */}

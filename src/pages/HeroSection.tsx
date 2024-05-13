@@ -7,7 +7,7 @@ const HeroSection = () => {
   const dispatch = useTypeDispatch();
   
   const landingImage =  data.items && data.items[1]?.fields.bannerImage.fields.file.url;
-  console.log(data.items);
+  
   
 
   useEffect(() => {
