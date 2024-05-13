@@ -10,20 +10,37 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+
     .navbarPromotionContent {
-        flex: 1; 
+        display: inline-block;
+        margin: 0 auto;
         text-align: center;
-    }
+        white-space: nowrap;
+        opacity: 0; 
+        transition: opacity 1s ease-in-out; 
+        &:hover{
+            cursor:pointer;;
+            border-bottom: 1px solid white;
+        }
+    } 
     .navbarPromotionButton    {
         font-family: 'Jost', sans-serif;
         background-color: black;
         color: white;
-        border:none;
-        margin-left:auto;
+        border:none;    
+        padding-inline-end: 1rem;
+        font-size: 1.2rem;    
     }
 }
-
-
+.navbarPromotionButton:hover{
+    cursor:pointer;
+}
+.navbarPromotionContent.fadeIn {
+    opacity: 1;
+    
+}
 
 .navbar{
     width: 100%;
@@ -32,7 +49,16 @@
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
     font-family: 'Jost', sans-serif;
-    
+    height: 100%;
+    .navbarLogoContainer{
+        width: 10%;
+        padding-inline-start: 1rem;
+       /*  margin-top:1rem; */
+        .navbarLogo{
+            width: 18rem;
+            height: 100%;
+        }
+    }
     .navbarTitleName{
             display: flex;
             flex-direction: column;
@@ -54,7 +80,10 @@
     
 }
 
-    
+    .navbarHoverImage{
+        height: 20rem;
+        width: 20rem;
+    }
 
 .navbarServiceMenu{
     display: flex;
@@ -69,6 +98,7 @@
 }
     
  */
+ 
 .navbarHoverMen ,
  .navbarHoverWomen {
     position: absolute; 

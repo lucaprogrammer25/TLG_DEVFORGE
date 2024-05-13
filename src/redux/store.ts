@@ -4,7 +4,7 @@ import contentfulSlice from "./contentfulSlice";
 
 const rootReducer = combineReducers({
   product: productSlice,
-  contentful: contentfulSlice,
+   contentful: contentfulSlice,
 });
 
 const store = configureStore({
