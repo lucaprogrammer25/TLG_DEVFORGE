@@ -38,7 +38,6 @@ const DefaultDisplay = () => {
     <Navbar/>
     <Outlet/>
     {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
-       <Outlet/>
     <Footer/>
     </>
   );
