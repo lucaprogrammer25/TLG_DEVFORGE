@@ -1,8 +1,13 @@
 import React from 'react';
 import { Props } from "../interfaces/type";
+import Buttontmg3 from './Buttons/ButtonTmg3';
 
 
 const CardPLP: React.FC<Props> = ({ image, title, price, alternative }:Props) => {
+  const addToCart = () => {
+    console.log('Add to cart test');
+    
+  }
   return (
     <>
     <div className="containerCardPLP">
@@ -13,7 +18,7 @@ const CardPLP: React.FC<Props> = ({ image, title, price, alternative }:Props) =>
            <p>{title}</p>
            <div className='containerPricePLP'>
             <p>{price}</p>
-           <button>Add to Cart</button>
+           <Buttontmg3 label='Add to cart' onClick={addToCart} />
            </div>
            </div>
            </div>    

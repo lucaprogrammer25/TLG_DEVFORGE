@@ -2,14 +2,13 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BackToTopButton from '../components/BackToTop';
-import  { useState, useEffect } from 'react';
-
+/* import BackToTopButton from '../components/BackToTop'; */
+/* import  { useState, useEffect } from 'react';*/ 
 
 
 
 const DefaultDisplay = () => {
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  /* const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,12 +32,13 @@ const DefaultDisplay = () => {
       top: 0,
       behavior: 'smooth',
     });
-  }
+  } */
   return (
     <>
     <Navbar/>
     <Outlet/>
-    <BackToTopButton onClick={handleBackToTopClick}/>
+    {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
+       <Outlet/>
     <Footer/>
     </>
   );

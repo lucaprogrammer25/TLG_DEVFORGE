@@ -2,7 +2,7 @@ $button-background: #2c2c2c;
 $button-color: #a89156;
 $button-border-width: 0.35rem;
 $button-font-size: 1rem;
-$button-margin: 2rem;
+// $button-margin: 2rem;
 $button-hover-border-color: #a89156;
 $button-transform-active: translateY(4px);
 
@@ -12,7 +12,7 @@ $button-transform-active: translateY(4px);
   border-radius: 2px;
   border: $button-border-width solid $button-color;
   font-size: $button-font-size;
-  margin: $button-margin;
+  // margin: $button-margin;
 
   &:focus {
     outline: none;

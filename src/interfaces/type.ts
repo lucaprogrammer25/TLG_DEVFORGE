@@ -25,7 +25,10 @@ export type Props = {
     error: string |null;
     loading?: boolean;
   }
-   export interface Contentful {
+
+
+  
+  export interface Contentful {
     data:any;
     error:string | null ;
     loading?: boolean;
