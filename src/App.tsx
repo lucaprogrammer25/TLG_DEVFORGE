@@ -3,7 +3,6 @@ import DefaultDisplay from './layout/DefaultDisplay'
 import HeroSection from './pages/HeroSection';
 
 
-
 const App: React.FC = () => {
 
   return (

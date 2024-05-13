@@ -40,7 +40,6 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         dispatch(fetchDataContentful())     
     }, [dispatch])
-    
     const handleClose = () => {
         setVisible(false);
     };
