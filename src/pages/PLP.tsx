@@ -9,7 +9,7 @@ import fetchDataProduct from "../redux/fetchProducts";
 const PLP: React.FC = () => {
   const { gender, category = '' } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
   const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
-  const { data, error: errorContentful} = useTypeSelector((state) => state.contentful)
+  const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  console.log( data.items);
+  console.log(product);
   
     const imageMan = data.items && data.items[0].fields.men.fields.file.url;
     const imageWomen = data.items && data.items[0].fields.women.fields.file.url

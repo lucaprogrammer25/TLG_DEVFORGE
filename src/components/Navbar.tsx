@@ -14,27 +14,30 @@ const Navbar: React.FC = () => {
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
-
     const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
     const contents = data?.items?.[2]?.fields?.promotion ?? [];
     const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
+    
     const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
     /* console.log(data?.items?.[2].fields.menDropDown); */
     
 
     const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
+        <Link to={`women/${item.fields.description}`}>
         <div key={index} className={`navbarHoverWomen${item.fields.name}`}>
-            <Link to={"/"} />
+             
             <h1>{item.fields.name}</h1>
             <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
         </div>
+        </Link>
     ));
     const MenDropdownItems = menDropdown.map((item:any, index:number) => (
+        <Link to={`men/${item.fields.description}`}>
         <div key={index} className={`navbarHoverMen${item.fields.name}`}>
-            <Link to={"/"} />
             <h1>{item.fields.name}</h1>
             <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
         </div>
+         </Link>
     ));
 
     useEffect(() => {
@@ -75,7 +78,7 @@ const Navbar: React.FC = () => {
                         <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
                     </div>
                     <div className="navbarMenuItem">
-                        <div
+                      <Link className="linkTag" to='/men'> <div
                             className="navbarMenuItemMen"
                             onMouseEnter={() => setHiddenMen(false)}
                             onMouseLeave={() => setHiddenMen(true)}
@@ -83,6 +86,7 @@ const Navbar: React.FC = () => {
                             Men
                             {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
                         </div>
+                        </Link> 
                         <div className="navbarMenuItemWomen"
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
