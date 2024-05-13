@@ -26,3 +26,8 @@ export type Props = {
     loading: boolean;
   }
   
+  export interface Contentful {
+    data:any;
+    error:string | null ;
+    loading?: boolean;
+   }
