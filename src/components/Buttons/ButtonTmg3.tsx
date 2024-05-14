@@ -2,8 +2,8 @@ import React from "react";
 import "./ButtonTmg3.css";
 
 interface ButtonTmgProps {
-  onClick: () => void; // Definisce prop per la funzione
   label: string; // Aggiunge una prop per il testo del bottone
+  onClick: any
 }
 
 const Buttontmg3: React.FC<ButtonTmgProps> = ({ onClick, label}) => {

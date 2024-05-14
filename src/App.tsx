@@ -3,7 +3,6 @@ import DefaultDisplay from './layout/DefaultDisplay'
 
 import HeroSection from './pages/HeroSection';
 import Login from './pages/Login';
-import Cart from './pages/Cart';
 import PLP from './pages/PLP';
 import ProductDirectPage from './pages/ProductDirectPage';
 
