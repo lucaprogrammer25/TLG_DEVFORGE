@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
 import fetchDataProduct from '../redux/fetchProducts';
 import { useParams } from "react-router-dom";
-import { ProductJson } from '../interfaces/type';
 import CardPDP from '../components/CardPDP';
+import { ProductJson } from '../interfaces/type';
 
 const ProductDirectPage: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Assicura che id sia di tipo stringa
@@ -15,7 +15,7 @@ const ProductDirectPage: React.FC = () => {
     }, [dispatch]);
 
     // Trova il prodotto corrispondente all'id dalla URL
-    const selectedProduct: ProductJson | undefined = product?.find((item: ProductJson) => item.id.toString() === id);
+    const selectedProduct: any | undefined = product?.find((item: any) => item.id.toString() === id);
 
     if (!selectedProduct || error) {
         return <div>Errore caricamento dati</div>;
@@ -24,8 +24,9 @@ const ProductDirectPage: React.FC = () => {
     return (
         <div>
             <CardPDP
-                key={selectedProduct.id}
+                id={selectedProduct.id}
                 title={selectedProduct.name}
+                alternative={selectedProduct.name}
                 description={selectedProduct.description}
                 price={selectedProduct.price}
                 image={selectedProduct.image}

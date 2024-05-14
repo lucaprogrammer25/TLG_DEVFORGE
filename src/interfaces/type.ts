@@ -11,14 +11,14 @@ export interface ProductJson {
 
   
 export type Props = {
-    id:number,
+    id:number;
     category?: string;
     title: string;
     description:string;
     image:string;
     price: number;
     alternative:string;
-    goToPDP:any;
+    goToPDP?:any;
   }
   
   export interface Product {

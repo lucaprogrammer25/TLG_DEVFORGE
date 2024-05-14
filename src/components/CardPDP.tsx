@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Props } from "../interfaces/type";
 
-const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
+const CardPDP: React.FC<Props>= ({id, image, title, price, description}: Props) => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
     const handleClickClassSize = (size: string) => {
