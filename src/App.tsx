@@ -4,7 +4,6 @@ import DefaultDisplay from './layout/DefaultDisplay'
 import HeroSection from './pages/HeroSection';
 import Home from './pages/Home'
 import Login from './pages/Login';
-import Cart from './pages/Cart';
 import PLP from './pages/PLP';
 
 
@@ -18,7 +17,6 @@ const App: React.FC = () => {
         <Route path="/" element={<Home/>}/>
          <Route path="/:gender/:category?/:id?" element={<PLP />} /> {/* il parametro category è opzionale */}
         <Route path="login" element={<Login />} />
-        <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
   );

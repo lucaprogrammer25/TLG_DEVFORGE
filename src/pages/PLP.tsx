@@ -5,11 +5,15 @@ import CardPLP from "../components/CardPLP";
 import { ProductJson } from "../interfaces/type";
 import fetchDataContentful from "../redux/fetchContentful";
 import fetchDataProduct from "../redux/fetchProducts";
+import { addToCart } from "../redux/cartSlice";
 
 const PLP: React.FC = () => {
   const { gender, category = '' } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
   const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
   const { data } = useTypeSelector((state) => state.contentful)
+  const { cartItems } = useTypeSelector((state) => state.cart)
+  console.log(cartItems);
+  
   const dispatch = useTypeDispatch();
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  console.log(product);
+  // console.log(product);
   
     const imageMan = data.items && data.items[0].fields.men.fields.file.url;
     const imageWomen = data.items && data.items[0].fields.women.fields.file.url
@@ -41,16 +45,18 @@ const PLP: React.FC = () => {
           .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) //il parametro gender verrà preso a prescindere dal parametro category, prenderà i filtri dai params di useParams scritti nell'URL
           .map((item: ProductJson) => (
             <CardPLP
-              key={item.id}
-              id={item.id}
-              category={item.category}
-              title={item.name}
-              description={item.description}
-              price={item.price}
-              image={item.image}
-              alternative={`${item.gender} ${item.category}`}
-            />
-          ))}
+                  key={item.id}
+                  id={item.id}
+                  category={item.category}
+                  title={item.name}
+                  description={item.description}
+                  price={item.price}
+                  image={item.image}
+                  alternative={`${item.gender} ${item.category}`}
+                  addToCart={() => dispatch(addToCart({ item }))}
+                  />
+
+            ))}
       </div>
       </div>
     </section>
