@@ -1,5 +1,11 @@
+.wrapCard{
+    display: flex;
+    flex-direction: column;
+}
+
 .containerCardPLP {
     margin: 0 auto;
+    margin-bottom: 2rem;
     max-width: 400px;
     max-height: 600px;
 }
@@ -8,6 +14,7 @@
     width: 400px;
     height: 500px;
     object-fit:cover;
+    cursor: pointer;
 }
 
 .descriptionCardPLP {

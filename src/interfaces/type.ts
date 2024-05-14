@@ -11,18 +11,26 @@ export interface ProductJson {
 
   
 export type Props = {
-    id:number,
+    id:number;
     category?: string;
     title: string;
     description:string;
     image:string;
     price: number;
     alternative:string;
+    goToPDP?:any;
   }
   
-  export interface ContentfulProduct {
+  export interface Product {
     data: [] | null;
     error: string |null;
-    loading: boolean;
+    loading?: boolean;
   }
+
+
   
+  export interface Contentful {
+    data:any;
+    error:string | null ;
+    loading?: boolean;
+   }

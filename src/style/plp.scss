@@ -1,0 +1,15 @@
+.containerCards{
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+};
+
+#titleProductPage{
+       font-weight: normal;
+       text-align: left;
+       font-size: 4rem
+}
+
+.imageProduct{
+       width: 100%;
+}

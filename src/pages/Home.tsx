@@ -10,6 +10,7 @@ interface Product {
   category: string;
 }
 
+
 const Home = () => {
   const { data, error } = useTypeSelector((state) => state.contentful);
   console.log(data);
