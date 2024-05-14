@@ -9,7 +9,12 @@ interface CarouselProps {
   category: string[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images, names, prices, category }) => {
+const Carousel: React.FC<CarouselProps> = ({
+  images,
+  names,
+  prices,
+  category,
+}) => {
   console.log("Images:", images);
   console.log("Names:", names);
   console.log("Prices:", prices);
@@ -23,9 +28,15 @@ const Carousel: React.FC<CarouselProps> = ({ images, names, prices, category }) 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentCategory, setCurrentCategory] = useState("T-shirts");
 
-  const filteredImages = images.filter((_, index) => category[index] === currentCategory);
-  const filteredNames = names.filter((_, index) => category[index] === currentCategory);
-  const filteredPrices = prices.filter((_, index) => category[index] === currentCategory);
+  const filteredImages = images.filter(
+    (_, index) => category[index] === currentCategory
+  );
+  const filteredNames = names.filter(
+    (_, index) => category[index] === currentCategory
+  );
+  const filteredPrices = prices.filter(
+    (_, index) => category[index] === currentCategory
+  );
 
   const totalFilteredImages = filteredImages.length;
 
@@ -34,11 +45,13 @@ const Carousel: React.FC<CarouselProps> = ({ images, names, prices, category }) 
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalFilteredImages) % totalFilteredImages);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + totalFilteredImages) % totalFilteredImages
+    );
   };
 
   useEffect(() => {
-    const timer = setInterval(goToNext, 3000);
+    const timer = setInterval(goToNext, 90000);
     return () => clearInterval(timer);
   }, [totalFilteredImages]);
 
@@ -51,7 +64,11 @@ const Carousel: React.FC<CarouselProps> = ({ images, names, prices, category }) 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getVisibleItems = (): { src: string; name: string; price: string }[] => {
+  const getVisibleItems = (): {
+    src: string;
+    name: string;
+    price: string;
+  }[] => {
     const indexes = Array.from(
       { length: itemsToShow },
       (_, i) => (currentIndex + i) % totalFilteredImages
@@ -69,21 +86,44 @@ const Carousel: React.FC<CarouselProps> = ({ images, names, prices, category }) 
     console.log("Current Category:", category);
   };
 
+  const handleClickWoman = () => {
+    alert("al momento niente");
+  };
+
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">
-        <span onClick={() => handleCategoryClick("T-shirts")}>T-shirts</span>
-        <span onClick={() => handleCategoryClick("trousers")}>Trousers</span>
-        <span onClick={() => handleCategoryClick("Dresses")}>Dresses</span>
+        <span className="ButtonTmgCss3" onClick={() => handleClickWoman()}>
+          Woman
+        </span>
+        <span
+          className="ButtonTmgCss3"
+          onClick={() => handleCategoryClick("T-shirts")}
+        >
+          T-shirts
+        </span>
+        <span
+          className="ButtonTmgCss3"
+          onClick={() => handleCategoryClick("trousers")}
+        >
+          Trousers
+        </span>
+        <span
+          className="ButtonTmgCss3"
+          onClick={() => handleCategoryClick("Dresses")}
+        >
+          Dresses
+        </span>
       </div>
-      <div>
+      <div className="productDescription">
         <Buttontmg3 onClick={goToPrev} label="Prev" />
         <div className="carousel-images">
           {getVisibleItems().map((item, index) => (
             <div key={index} className="carousel-image">
               <img src={item.src} alt={`Slide ${index}`} />
-              <p className="carousel-image-name">{item.name}</p>
-              <p className="carousel-image-price">€{item.price}</p>
+              <p className="carousel-image-name">
+                {item.name} <br />€{item.price}
+              </p>
             </div>
           ))}
         </div>

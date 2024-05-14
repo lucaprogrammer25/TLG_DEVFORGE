@@ -4,11 +4,12 @@
   cursor: pointer;
 }
 
+
+
 .carousel-container {
   justify-content: center;
   align-items: center;
   width: 100%;
-  border: 3px solid blue;
   height: 600px;
   position: relative;
 
@@ -17,12 +18,11 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    height: auto;
     max-height: 550px;
     padding: 3rem;
-    border: 2px solid red;
     overflow: hidden;
-    row-gap: 10px;
+    gap: 20px;
+  
 
     .carousel-image {
       flex-grow: 1;
@@ -31,10 +31,15 @@
       max-width: 230px;
       width: auto;
       height: auto;
+      p {
+        color: transparent;}
+  
+        &:hover{
+          p{color: black;}
+        }
 
       img {
         display: block;
-        border: 3px solid gree;
         width: 100%;
         min-width: auto;
         height: 100%;
@@ -59,9 +64,12 @@
     padding: 10px 20px;
     position: absolute;
     display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
+    color: transparent;
     height: 100%;
 
     &:hover {
@@ -86,8 +94,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 3px solid blue;
-    height: 600px;
+    height: 400px;
     position: relative;
     .carousel-image {
       flex-grow: 1;
@@ -96,10 +103,15 @@
       max-width: 230px;
       width: auto;
       height: 500px;
+      p {
+        color: purple;}
+  
+        &:hover{
+          p{color: black;}
+        }
     }
     img {
       display: block;
-      border: 3px solid green;
       width: 100%;
       min-width: auto;
       height: 400px;
