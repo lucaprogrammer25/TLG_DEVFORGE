@@ -5,13 +5,14 @@ import CardPLP from "../components/CardPLP";
 import { ProductJson } from "../interfaces/type";
 import fetchDataContentful from "../redux/fetchContentful";
 import fetchDataProduct from "../redux/fetchProducts";
-import { addToCart } from "../redux/cartSlice";
+import { addToCart, clearCart, decrease, removeFromCart } from "../redux/cartSlice";
 
 const PLP: React.FC = () => {
   const { gender, category = '' } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
   const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
   const { data } = useTypeSelector((state) => state.contentful)
   const { cartItems } = useTypeSelector((state) => state.cart)
+  const { cartTotalQuantity, cartTotalPrice } = useTypeSelector((state) => state.cart)
   console.log(cartItems);
   
   const dispatch = useTypeDispatch();
@@ -54,9 +55,11 @@ const PLP: React.FC = () => {
                   image={item.image}
                   alternative={`${item.gender} ${item.category}`}
                   addToCart={() => dispatch(addToCart( item ))}
+                  remove={() => dispatch(decrease(item))}
                   />
 
             ))}
+           <span>{cartTotalQuantity}</span>
       </div>
       </div>
     </section>

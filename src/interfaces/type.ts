@@ -19,6 +19,7 @@ export type Props = {
     price: number;
     alternative:string;
     addToCart?: any
+    remove:any
   }
   
   export interface Product {
@@ -40,5 +41,6 @@ export type Props = {
     title: string;
     price: number;
     cartQuantity: number;
+    quantity:number
 }
 
