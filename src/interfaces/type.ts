@@ -39,6 +39,6 @@ export type Props = {
     id: number;
     title: string;
     price: number;
-    quantity: number;
+    cartQuantity: number;
 }
 
