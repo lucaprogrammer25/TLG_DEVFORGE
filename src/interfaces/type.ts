@@ -11,7 +11,7 @@ export interface ProductJson {
 
   
 export type Props = {
-    id:number,
+    id:number;
     category?: string;
     title: string;
     description:string;
@@ -19,6 +19,7 @@ export type Props = {
     price: number;
     alternative:string;
     addToCart?: any;
+    goToPDP?:any;
   }
   
   export interface Product {

@@ -21,14 +21,10 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  // console.log(product);
   
     const imageMan = data.items && data.items[0].fields.men.fields.file.url;
     const imageWomen = data.items && data.items[0].fields.women.fields.file.url
     const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
-    
-
-
 
 
   if (!product || errorProduct) {
