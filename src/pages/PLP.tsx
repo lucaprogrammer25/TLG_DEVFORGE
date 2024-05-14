@@ -53,7 +53,7 @@ const PLP: React.FC = () => {
                   price={item.price}
                   image={item.image}
                   alternative={`${item.gender} ${item.category}`}
-                  addToCart={() => dispatch(addToCart({ item }))}
+                  addToCart={() => dispatch(addToCart( item ))}
                   />
 
             ))}
