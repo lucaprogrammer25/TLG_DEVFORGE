@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
-import fetchDataContentful from "../redux/fetchProducts";
+import fetchDataProduct from "../redux/fetchProducts";
 
 interface Product {
   image: string;
@@ -11,13 +11,13 @@ interface Product {
 }
 
 
-const Home = () => {
-  const { data, error } = useTypeSelector((state) => state.contentful);
+const CarouselPage = () => {
+  const { data, error } = useTypeSelector((state) => state.product);
   console.log(data);
 
   const dispatch = useTypeDispatch();
   useEffect(() => {
-    dispatch(fetchDataContentful());
+    dispatch(fetchDataProduct());
   }, [dispatch]);
 
   const dataImages = data ? data.map((item: Product) => item.image) : [];
@@ -31,7 +31,6 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Carosello troppo bello</h1>
       {dataImages.length > 0 ? (
         <Carousel
           images={dataImages}
@@ -46,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CarouselPage;
