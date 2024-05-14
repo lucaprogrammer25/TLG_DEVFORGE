@@ -51,7 +51,7 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   useEffect(() => {
-    const timer = setInterval(goToNext, 90000);
+    const timer = setInterval(goToNext, 3000);
     return () => clearInterval(timer);
   }, [totalFilteredImages]);
 
