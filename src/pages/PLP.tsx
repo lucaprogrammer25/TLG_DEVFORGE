@@ -1,6 +1,6 @@
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CardPLP from "../components/CardPLP";
 import { ProductJson } from "../interfaces/type";
 import fetchDataContentful from "../redux/fetchContentful";
@@ -12,14 +12,14 @@ const PLP: React.FC = () => {
   const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
   const { data } = useTypeSelector((state) => state.contentful)
 
-  
-  
-  const dispatch = useTypeDispatch();
 
+  const dispatch = useTypeDispatch();
   useEffect(() => {
     dispatch(fetchDataContentful());
     dispatch(fetchDataProduct());
   }, [dispatch]);
+
+  const navigate = useNavigate()
 
   
     const imageMan = data.items && data.items[0].fields.men.fields.file.url;
@@ -49,6 +49,7 @@ const PLP: React.FC = () => {
                   price={item.price}
                   image={item.image}
                   alternative={`${item.gender} ${item.category}`}
+                  goToPDP={() => navigate(`/pdp/${item.id}`)}
                   addToCart={() => dispatch(addToCart( item ))}
                   />
             ))}
