@@ -3,7 +3,7 @@ import { Props } from "../interfaces/type";
 import Buttontmg3 from './Buttons/ButtonTmg3';
 
 
-const CardPLP: React.FC<Props> = ({ image, title, price, alternative, addToCart, remove }:Props) => {
+const CardPLP: React.FC<Props> = ({ image, title, price, alternative, addToCart }:Props) => {
 
   return (
     <>
@@ -16,7 +16,6 @@ const CardPLP: React.FC<Props> = ({ image, title, price, alternative, addToCart,
            <div className='containerPricePLP'>
             <p>{price}</p>
            <Buttontmg3 label='Add to cart' onClick={addToCart} />
-           <Buttontmg3 label='Remove' onClick={remove} />
            </div>
            </div>
            </div>    

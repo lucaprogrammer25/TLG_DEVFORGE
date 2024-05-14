@@ -18,8 +18,7 @@ export type Props = {
     image:string;
     price: number;
     alternative:string;
-    addToCart?: any
-    remove:any
+    addToCart?: any;
   }
   
   export interface Product {
