@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../style/Cart/Cart.scss";
-import ShippingAddressForm from "./ShippingInfo";
 import "../style/ButtonsSCSS/ButtonTmg3.scss";
 
 const CartApp: React.FC = () => {
@@ -100,7 +99,6 @@ const CartApp: React.FC = () => {
         {activeTabs.includes("Shipping info") && (
           <div className="CheckoutTabPage">
             <div>Shipping Information Content</div>
-            <ShippingAddressForm />
             <div className="buttonsTabs">
               <button className="ButtonTmgCss3" onClick={handleBackToProduct}>
                 Back to Product
