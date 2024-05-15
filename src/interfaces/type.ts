@@ -18,6 +18,7 @@ export type Props = {
     image:string;
     price: number;
     alternative:string;
+    addToCart?: any;
     goToPDP?:any;
   }
   
@@ -34,3 +35,12 @@ export type Props = {
     error:string | null ;
     loading?: boolean;
    }
+
+   export interface Cart {
+    id: number;
+    title: string;
+    price: number;
+    cartQuantity: number;
+    quantity:number
+}
+

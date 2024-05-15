@@ -21,8 +21,15 @@ const Carousel: React.FC<CarouselProps> = ({
   console.log("Category:", category);
 
   const getItemsToShow = (): number => {
-    return window.innerWidth <= 480 ? 1 : 4;
+    if (window.innerWidth <= 480) {
+      return 1;
+    } else if (window.innerWidth <= 920) {
+      return 3;
+    } else {
+      return 4;
+    }
   };
+  
 
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
   const [currentIndex, setCurrentIndex] = useState(0);
