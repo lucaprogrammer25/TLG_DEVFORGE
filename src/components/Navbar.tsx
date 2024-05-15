@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks"
 import fetchDataContentful from "../redux/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
+import SidebarCart from "./SidebarCart";
+import { selectCartTotalPrice, selectCartTotalQuantity } from "../redux/cartSlice";
 
 const Navbar: React.FC = () => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -11,33 +13,32 @@ const Navbar: React.FC = () => {
     const [contentIndex, setContentIndex] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(true);
     const [animateContent, setAnimateContent] = useState<boolean>(false);
+    const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
+    const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
     const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
     const contents = data?.items?.[2]?.fields?.promotion ?? [];
     const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
-    
     const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
-    /* console.log(data?.items?.[2].fields.menDropDown); */
-    
 
     const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
-        <Link to={`women/${item.fields.description}`}>
-        <div key={index} className={`navbarHoverWomen${item.fields.name}`}>
-             
-            <h1>{item.fields.name}</h1>
-            <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
-        </div>
+        <Link to={`women/${item.fields.description}`} key={index}>
+            <div className={`navbarHoverWomen${item.fields.name}`}>
+                <h1>{item.fields.name}</h1>
+                <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
+            </div>
         </Link>
     ));
+    
     const MenDropdownItems = menDropdown.map((item:any, index:number) => (
-        <Link to={`men/${item.fields.description}`}>
-        <div key={index} className={`navbarHoverMen${item.fields.name}`}>
-            <h1>{item.fields.name}</h1>
-            <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
-        </div>
-         </Link>
+        <Link to={`men/${item.fields.description}`} key={index}>
+            <div className={`navbarHoverMen${item.fields.name}`}>
+                <h1>{item.fields.name}</h1>
+                <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
+            </div>
+        </Link>
     ));
 
     useEffect(() => {
@@ -47,6 +48,18 @@ const Navbar: React.FC = () => {
     const handleClose = () => {
         setVisible(false);
     };
+
+    const handleCartClick = () => {
+        setSidebarCartActive(prevState => !prevState);
+    };
+
+    useEffect(() => {
+        if (sidebarCartActive) {
+            document.body.classList.add("sidebar-open");
+        } else {
+            document.body.classList.remove("sidebar-open");
+        }
+    }, [sidebarCartActive]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -78,15 +91,17 @@ const Navbar: React.FC = () => {
                         <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
                     </div>
                     <div className="navbarMenuItem">
-                      <Link className="linkTag" to='/men'> <div
-                            className="navbarMenuItemMen"
-                            onMouseEnter={() => setHiddenMen(false)}
-                            onMouseLeave={() => setHiddenMen(true)}
-                        >
-                            Men
-                            {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
-                        </div>
+                        <Link className="linkTag" to='/men'>
+                            <div
+                                className="navbarMenuItemMen"
+                                onMouseEnter={() => setHiddenMen(false)}
+                                onMouseLeave={() => setHiddenMen(true)}
+                            >
+                                Men
+                                {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
+                            </div>
                         </Link> 
+                        <Link className="linkTag" to='/women'>
                         <div className="navbarMenuItemWomen"
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
@@ -94,19 +109,22 @@ const Navbar: React.FC = () => {
                             Women
                             {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
                         </div>
+                        </Link>
+                        <Link className="linkTag" to='/accessories'>
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
-                                {/* <Link to="/accessories"> */}Accessories {/* </Link> */}
+                                Accessories
                             </p>
                         </div>
+                        </Link>
                     </div>
                     <div className="navbarServiceMenu">
                         <div className="navbarServiceMenuProfile">
                             <img src={profile} alt="profile-icon" />
                         </div>
                         <div className="navbarServiceMenuCart">
-                            <img src={shoppingBag} alt="cart-icon" />
-                            <span>(`{/* ${counter} */}0`)</span>
+                            <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
+                            <span>{`('${cartTotalQuantity}')`}</span>
                         </div>
                     </div>
                     {/* MOBILE MENU  */}
@@ -123,6 +141,9 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </nav>
+            <div className={`sidebarCart ${sidebarCartActive ? "active" : !sidebarCartActive ? "inactive" : "" }`}>
+                <SidebarCart label="Close" closeSideCart={handleCartClick} />
+            </div>
         </>
     );
 };

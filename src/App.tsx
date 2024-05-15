@@ -9,6 +9,7 @@ import ProductDirectPage from './pages/ProductDirectPage';
 
 const App: React.FC = () => {
   return (
+    <>
     <Routes>
       <Route path="/" element={<DefaultDisplay/>}>
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Route path="pdp/:id" element={<ProductDirectPage />} />
       </Route>
     </Routes>
+    </>
   );
 };
 
