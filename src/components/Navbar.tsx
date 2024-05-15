@@ -73,10 +73,6 @@ const Navbar: React.FC = () => {
                     <div className="navbarLogoContainer">
                         <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
                     </div>
-                    <div className="navbarTitleName">
-                        <h1>TMB</h1>
-                        <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
-                    </div>
                     <div className="navbarMenuItem">
                       <Link className="linkTag" to='/men'> <div
                             className="navbarMenuItemMen"

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import "./style/defaultVariables.scss";
 @import "./style/ButtonsSCSS/ButtonTmg.scss";
 @import "./style/ButtonsSCSS/ButtonTmg2.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
@@ -9,6 +9,7 @@
 @import './style/plp.scss';
 @import "./style/Footer.scss";
 @import "./style/heroSection.scss";
+@import "./style/CarouselScss/Carousel.scss";
 
 * {
   margin: 0;
@@ -17,7 +18,7 @@
 }
 
 body{
-  font-family: "Jost", sans-serif;
+  font-family: $primaryFont;
 }
 
 section{
