@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import DefaultDisplay from './layout/DefaultDisplay'
-
 import HeroSection from './pages/HeroSection';
 import Login from './pages/Login';
 import PLP from './pages/PLP';
 import ProductDirectPage from './pages/ProductDirectPage';
+import FinalCheck from './pages/FinalCheck';
 
 
 const App: React.FC = () => {
@@ -14,10 +14,11 @@ const App: React.FC = () => {
 
         <Route path="/" element={<HeroSection/>}/>
 
-         <Route path="/:gender/:category?/:id?" element={<PLP />} /> {/* il parametro category è opzionale */}
-        <Route path="login" element={<Login />} />
-        <Route path="pdp/:id" element={<ProductDirectPage />} />
+         <Route path="/:gender/:category?/:id?" element={<PLP />}/> {/* il parametro category è opzionale */}
+        <Route path="login" element={<Login />}/>
+        <Route path="pdp/:id" element={<ProductDirectPage />}/>
       </Route>
+        <Route path="/finalcheck" element={<FinalCheck />}/>
     </Routes>
   );
 };
