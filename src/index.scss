@@ -17,6 +17,28 @@
   box-sizing: border-box;
 }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #a7a5a5 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #a7a5a5;
+    border-radius: 26px;
+    border: 7px dashed #ffffff;
+  }
+
 body{
   font-family: "Jost", sans-serif;
 }

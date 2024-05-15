@@ -5,7 +5,7 @@ import fetchDataContentful from "../redux/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 import SidebarCart from "./SidebarCart";
-import { selectCartTotalPrice, selectCartTotalQuantity } from "../redux/cartSlice";
+import { selectCartTotalQuantity } from "../redux/cartSlice";
 
 const Navbar: React.FC = () => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -14,6 +14,7 @@ const Navbar: React.FC = () => {
     const [visible, setVisible] = useState<boolean>(true);
     const [animateContent, setAnimateContent] = useState<boolean>(false);
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
+    const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
 
     const { data } = useTypeSelector((state) => state.contentful)
@@ -51,15 +52,17 @@ const Navbar: React.FC = () => {
 
     const handleCartClick = () => {
         setSidebarCartActive(prevState => !prevState);
-    };
-
-    useEffect(() => {
         if (sidebarCartActive) {
-            document.body.classList.add("sidebar-open");
+            setSidebarCartStyle({ display: "none" });
         } else {
-            document.body.classList.remove("sidebar-open");
+            setSidebarCartStyle({ display: "unset" });
         }
-    }, [sidebarCartActive]);
+    };
+    
+    const handleSidebarCartClose = () => {
+        setSidebarCartActive(false);
+        setSidebarCartStyle({ display: "unset" });
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -84,11 +87,9 @@ const Navbar: React.FC = () => {
             <nav>
                 <div className="navbar">
                     <div className="navbarLogoContainer">
+                        <Link className="linkTag" to='/'>
                         <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
-                    </div>
-                    <div className="navbarTitleName">
-                        <h1>TMB</h1>
-                        <h3 className="navbarTitleNameSubTitle">The modern boutique</h3>
+                        </Link>
                     </div>
                     <div className="navbarMenuItem">
                         <Link className="linkTag" to='/men'>
@@ -141,9 +142,12 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </nav>
-            <div className={`sidebarCart ${sidebarCartActive ? "active" : !sidebarCartActive ? "inactive" : "" }`}>
-                <SidebarCart label="Close" closeSideCart={handleCartClick} />
-            </div>
+            { cartTotalQuantity !== 0 ?
+                <div className={`sidebarCart ${ !sidebarCartActive ? "inactive" : sidebarCartActive ? "active"  : "" }`} style={sidebarCartStyle}>
+                <SidebarCart label="CLOSE" closeSideCart={handleSidebarCartClose} />
+            </div> : null
+            }
+            
         </>
     );
 };
