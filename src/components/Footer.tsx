@@ -72,6 +72,7 @@ const Footer: React.FC = ({}) => {
           </p>
           <div className="logoBox">
             <a
+              title="tlg git hub"
               href="https://github.com/lucaprogrammer25/TLG_DEVFORGE"
               target="blank"
               className="socialLogo"
@@ -89,6 +90,7 @@ const Footer: React.FC = ({}) => {
               </svg>
             </a>
             <a
+              title="tlg social"
               href="https://www.instagram.com/"
               target="blank"
               className="socialLogo"
@@ -121,6 +123,7 @@ const Footer: React.FC = ({}) => {
               </svg>
             </a>
             <a
+              title="tlg facebook"
               href="https://www.facebook.com/?locale=it_IT"
               target="blank"
               className="socialLogo"

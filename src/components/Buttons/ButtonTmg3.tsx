@@ -2,7 +2,7 @@ import React from "react";
 import "./ButtonTmg3.css";
 
 interface ButtonTmgProps {
-  label: string; // Aggiunge una prop per il testo del bottone
+  label: string; 
   onClick: any
 }
 

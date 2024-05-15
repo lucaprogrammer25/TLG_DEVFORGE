@@ -53,6 +53,8 @@ export interface FormData {
   country: string;
   province: string;
   phoneNumber: string;
+  phonePrefix?:number;
+  
 }
 
 export interface FormDataBilling {

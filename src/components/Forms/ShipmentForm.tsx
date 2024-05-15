@@ -12,7 +12,7 @@ interface Props {
 
 const FormFields: React.FC<Props> = ({ formData, handleInputChange, countryOptions, prefixOptions,billing }) => {
   return (
-    <ul>
+    <ul className='shipmentFormList'>
       <li>
         <label htmlFor="email">{billing}Email:</label>
         <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required aria-label="Email" />
@@ -49,7 +49,7 @@ const FormFields: React.FC<Props> = ({ formData, handleInputChange, countryOptio
       </li>
       <li>
         <label htmlFor="phoneNumber">Phone Number:</label>
-        <select id="prefix" name="prefix" value={formData} onChange={handleInputChange} required aria-label="Prefix">
+        <select id="prefix" name="prefix" value={formData.phonePrefix} onChange={handleInputChange} required aria-label="Prefix">
           <option value="">Select Prefix</option>
           {Object.entries(prefixOptions).map(([country, prefix]) => (
             <option key={prefix} value={prefix}>
