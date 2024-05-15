@@ -14,6 +14,8 @@ const App: React.FC = () => {
       <Route path="/" element={<DefaultDisplay/>}>
 
         <Route path="/" element={<HeroSection/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        
 
          <Route path="/:gender/:category?/:id?" element={<PLP />} /> {/* il parametro category è opzionale */}
         <Route path="login" element={<Login />} />
