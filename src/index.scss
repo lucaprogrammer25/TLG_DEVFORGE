@@ -9,15 +9,38 @@
 @import './style/plp.scss';
 @import "./style/Footer.scss";
 @import "./style/heroSection.scss";
+@import "./style/sidebarCart.scss";
 @import "./style/CarouselScss/Carousel.scss";
 @import "./style/paymentSucced.scss";
 @import "./style/paymentFailed.scss";
-
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #a7a5a5 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #a7a5a5;
+    border-radius: 26px;
+    border: 7px dashed #ffffff;
+  }
 
 body{
   font-family: $primaryFont;

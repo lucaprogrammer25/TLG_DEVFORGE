@@ -3,7 +3,6 @@ import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
 import fetchDataProduct from '../redux/fetchProducts';
 import { useParams } from "react-router-dom";
 import CardPDP from '../components/CardPDP';
-import { ProductJson } from '../interfaces/type';
 
 const ProductDirectPage: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Assicura che id sia di tipo stringa
