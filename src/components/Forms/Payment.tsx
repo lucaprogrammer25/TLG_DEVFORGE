@@ -25,10 +25,10 @@ const PaymentForm: React.FC = () => {
     const { name, value } = event.target ;
     let formattedValue = value;
     if (name === 'cardNumber') {
-      const isHyphen = value.slice(-1) === ' ';
+      const isHyphen = value.slice(-1) === '-';
       formattedValue = value.replace(/\D/g, '') 
                            .slice(0, 16)      
-                           .replace(/(\d{4})/g, '$1 ') 
+                           .replace(/(\d{4})/g, '$1-') 
                            .slice(0, 19);    
        if ((event.nativeEvent as any).inputType === 'deleteContentBackward' && isHyphen) {
        formattedValue = formattedValue.slice(0, -1); 
@@ -70,39 +70,43 @@ const PaymentForm: React.FC = () => {
     <div>
       <h2>Payment Options</h2>
       <form onSubmit={handleFormSubmit}>
-        <div>
-          <input
-            type="radio"
-            id="cash-on-delivery"
-            name="paymentMethod"
-            value="cash-on-delivery"
-            checked={paymentMethod === 'cash-on-delivery'}
-            onChange={handlePaymentMethodChange}
-          />
-          <label htmlFor="cash-on-delivery">Pay on Delivery (+ €20)</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="credit-card"
-            name="paymentMethod"
-            value="credit-card"
-            checked={paymentMethod === 'credit-card'}
-            onChange={handlePaymentMethodChange}
-          />
-          <label htmlFor="credit-card">Pay with Credit Card</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="paypal"
-            name="paymentMethod"
-            value="paypal"
-            checked={paymentMethod === 'paypal'}
-            onChange={handlePaymentMethodChange}
-          />
-          <label htmlFor="paypal">Pay with PayPal</label>
-        </div>
+      <div>   
+  <input
+    type="radio"
+    id="cash-on-delivery"
+    name="paymentMethod"
+    value="cash-on-delivery"
+    checked={paymentMethod === 'cash-on-delivery'}
+    onChange={handlePaymentMethodChange}
+    className="styled-radio"
+  />
+  <label htmlFor="cash-on-delivery">Pay on Delivery (+ €20)</label>
+</div>
+<div>
+  <input
+    type="radio"
+    id="credit-card"
+    name="paymentMethod"
+    value="credit-card"
+    checked={paymentMethod === 'credit-card'}
+    onChange={handlePaymentMethodChange}
+    className="styled-radio"
+  />
+  <label htmlFor="credit-card">Pay with Credit Card</label>
+</div>
+<div>
+  <input
+    type="radio"
+    id="paypal"
+    name="paymentMethod"
+    value="paypal"
+    checked={paymentMethod === 'paypal'}
+    onChange={handlePaymentMethodChange}
+    className="styled-radio"
+  />
+  <label htmlFor="paypal">Pay with PayPal</label>
+</div>
+
         {paymentMethod === 'credit-card' && (
           <div className='paymentForm'>
             <label htmlFor="Card Number">Card Number:</label>

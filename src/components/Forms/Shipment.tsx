@@ -1,66 +1,90 @@
-import React from 'react';
-import { FormData } from '../../interfaces/type';
+import React, { useState } from 'react';
+import FormFields from './ShipmentForm';
+import PaymentForm from './Payment';
+import Buttontmg2 from '../Buttons/ButtonTmg2';
 
-interface Props {
-  formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  countryOptions: string[];
-  prefixOptions: { [key: string]: string };
-  billing?: string;
-  phonePrefix: string; 
-}
+const ShipmentForm: React.FC = () => {
+  const [showBillingAddress, setShowBillingAddress] = useState(false);
 
-const FormFields: React.FC<Props> = ({ formData, handleInputChange, countryOptions, prefixOptions, billing, phonePrefix }) => {
+  const handleCheckboxChange = () => {
+    setShowBillingAddress(!showBillingAddress);
+  };
+
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    lastName: '',
+    address: '',
+    postalCode: '',
+    country: '',
+    province: '',
+    phoneNumber: '',
+  });
+
+  const [selectedCountry, setSelectedCountry] = useState('');
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
+    setSelectedCountry(value);
+    setFormData({ ...formData, country: value });
+  };
+
+  const [phonePrefix, setPhonePrefix] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    if (name === 'prefix') {
+      setPhonePrefix(value);
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const countryOptions = ['Choose a country', 'Spain', 'Germany', 'France', 'Italy'];
+
+  const prefixOptions = {
+    Spain: '+34',
+    Germany: '+49',
+    France: '+33',
+    Italy: '+39',
+  };
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Submitted Form Data:', formData);
+  };
+
   return (
-    <ul className='shipmentFormList'>
-      <li>
-        <label htmlFor="email">{billing}Email:</label>
-        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required aria-label="Email" />
-      </li>
-      <li>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required aria-label="Name" />
-      </li>
-      <li>
-        <label htmlFor="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleInputChange} required aria-label="Last Name" />
-      </li>
-      <li>
-        <label htmlFor="address">{billing}Address:</label>
-        <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} required aria-label="Address" />
-      </li>
-      <li>
-        <label htmlFor="postalCode">{billing}Postal Code:</label>
-        <input type="text" id="postalCode" name="postalCode" value={formData.postalCode} onChange={handleInputChange} required aria-label="Postal Code" />
-      </li>
-      <li>
-        <label htmlFor="country">Country:</label>
-        <select id="country" name="country" value={formData.country} onChange={handleInputChange} required aria-label="Country">
-          {countryOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </li>
-      <li>
-        <label htmlFor="province">Province:</label>
-        <input type="text" id="province" name="province" value={formData.province} onChange={handleInputChange} required aria-label="Province" />
-      </li>
-      <li>
-        <label htmlFor="phoneNumber">Phone Number:</label>
-        <select id="prefix" name="prefix" value={phonePrefix} onChange={handleInputChange} required aria-label="Prefix">
-          <option value="">Select Prefix</option>
-          {Object.entries(prefixOptions).map(([country, prefix]) => (
-            <option key={prefix} value={prefix}>
-              {country} {prefix}
-            </option>
-          ))}
-        </select>
-        <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required aria-label="Phone Number" />
-      </li>
-    </ul>
+    <div className='shipmentContainer'>
+      <form onSubmit={handleFormSubmit}>
+        <h2>Shipment Information</h2>
+        <FormFields
+          formData={formData}
+          countryOptions={countryOptions}
+          prefixOptions={prefixOptions}
+          phonePrefix={phonePrefix}
+          selectedCountry={selectedCountry}
+          handleCountryChange={handleCountryChange}
+          handleInputChange={handleInputChange}
+        />
+        <label htmlFor="showBillingAddress">
+          <input type="checkbox" id="showBillingAddress" onChange={handleCheckboxChange} checked={showBillingAddress} />
+          Use a different address for billing
+        </label>
+        {showBillingAddress && (
+          <FormFields
+            formData={formData}
+            handleInputChange={handleInputChange}
+            countryOptions={countryOptions}
+            prefixOptions={prefixOptions}
+            billing='Billing '
+          />
+        )}
+        <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+      </form>
+      <PaymentForm />
+    </div>
   );
 };
 
-export default FormFields;
+export default ShipmentForm;
