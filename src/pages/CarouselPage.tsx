@@ -8,8 +8,8 @@ interface Product {
   name: string;
   price: string;
   category: string;
+  id: string;
 }
-
 
 const CarouselPage = () => {
   const { data, error } = useTypeSelector((state) => state.product);
@@ -24,10 +24,12 @@ const CarouselPage = () => {
   const dataProduct = data ? data.map((item: Product) => item.name) : [];
   const dataPrice = data ? data.map((item: Product) => item.price) : [];
   const dataCategory = data ? data.map((item: Product) => item.category) : [];
+  const id = data ? data.map((item: Product) => item.id) : [];
 
   if (error) {
     return <div>Error loading data!</div>;
   }
+
 
   return (
     <div>
@@ -37,6 +39,8 @@ const CarouselPage = () => {
           names={dataProduct}
           prices={dataPrice}
           category={dataCategory}
+          id={id}
+          
         />
       ) : (
         <div>Loading images...</div>

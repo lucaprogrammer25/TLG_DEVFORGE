@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ScrollToTopButton from "./Buttons/ScrollToTop";
 
 const Footer: React.FC = ({}) => {
   return (
@@ -141,6 +142,9 @@ const Footer: React.FC = ({}) => {
                 ></path>
               </svg>
             </a>
+            <div>
+            </div>
+        <ScrollToTopButton/>
           </div>
         </div>
       </footer>

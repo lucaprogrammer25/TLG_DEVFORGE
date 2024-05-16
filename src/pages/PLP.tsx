@@ -8,10 +8,11 @@ import fetchDataProduct from "../redux/fetchProducts";
 import { addToCart } from "../redux/cartSlice";
 
 const PLP: React.FC = () => {
-  const { gender, category = '' } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
-  const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
-  const { data } = useTypeSelector((state) => state.contentful)
-
+  const { gender, category = "" } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
+  const { data: product, error: errorProduct } = useTypeSelector(
+    (state) => state.product
+  );
+  const { data } = useTypeSelector((state) => state.contentful);
 
   const dispatch = useTypeDispatch();
   useEffect(() => {
@@ -19,13 +20,16 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
-    const imageMan = data.items && data.items[0].fields.men.fields.file.url;
-    const imageWomen = data.items && data.items[0].fields.women.fields.file.url
-    const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
-
+  const imageMan = data.items && data.items[0].fields.men.fields.file.url;
+  const imageWomen = data.items && data.items[0].fields.women.fields.file.url;
+  const plpImage =
+    !category && gender === "men"
+      ? imageMan
+      : !category && gender === "women"
+      ? imageWomen
+      : "";
 
   if (!product || errorProduct) {
     return <div>Errore caricamento dati</div>;
@@ -35,25 +39,29 @@ const PLP: React.FC = () => {
     <section>
       <img className="imageProduct" src={plpImage} alt="" />
       <div className="wrapCard">
-      <h1 id="titleProductPage">Product</h1>
-      <div className="containerCards">
-        {product
-          .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) //il parametro gender verrà preso a prescindere dal parametro category, prenderà i filtri dai params di useParams scritti nell'URL
-          .map((item: ProductJson) => (
-            <CardPLP
-                  key={item.id}
-                  id={item.id}
-                  category={item.category}
-                  title={item.name}
-                  description={item.description}
-                  price={item.price}
-                  image={item.image}
-                  alternative={`${item.gender} ${item.category}`}
-                  goToPDP={() => navigate(`/pdp/${item.id}`)}
-                  addToCart={() => dispatch(addToCart( item ))}
-                  />
+        <h1 id="titleProductPage">Product</h1>
+        <div className="containerCards">
+          {product
+            .filter(
+              (item: ProductJson) =>
+                item.gender === gender &&
+                (!category || item.category === category)
+            ) //il parametro gender verrà preso a prescindere dal parametro category, prenderà i filtri dai params di useParams scritti nell'URL
+            .map((item: ProductJson) => (
+              <CardPLP
+                key={item.id}
+                id={item.id}
+                category={item.category}
+                title={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+                alternative={`${item.gender} ${item.category}`}
+                goToPDP={() => navigate(`/pdp/${item.id}`)}
+                addToCart={() => dispatch(addToCart(item))}
+              />
             ))}
-      </div>
+        </div>
       </div>
     </section>
   );

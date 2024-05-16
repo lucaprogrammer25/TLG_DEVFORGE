@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "../../style/CarouselScss/Carousel.scss";
 import Buttontmg3 from "../Buttons/ButtonTmg3";
+import { useNavigate } from "react-router-dom";
 
 interface CarouselProps {
   images: string[];
   names: string[];
   prices: string[];
   category: string[];
+  id: string[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({
   images,
   names,
   prices,
+  id,
   category,
 }) => {
   console.log("Images:", images);
@@ -42,6 +45,10 @@ const Carousel: React.FC<CarouselProps> = ({
     (_, index) => category[index] === currentCategory
   );
   const filteredPrices = prices.filter(
+    (_, index) => category[index] === currentCategory
+  );
+  
+  const filteredId = id.filter(
     (_, index) => category[index] === currentCategory
   );
 
@@ -75,6 +82,7 @@ const Carousel: React.FC<CarouselProps> = ({
     src: string;
     name: string;
     price: string;
+    id:string;
   }[] => {
     const indexes = Array.from(
       { length: itemsToShow },
@@ -84,6 +92,8 @@ const Carousel: React.FC<CarouselProps> = ({
       src: filteredImages[index],
       name: filteredNames[index],
       price: filteredPrices[index],
+      id: filteredId[index],
+      
     }));
   };
 
@@ -96,6 +106,9 @@ const Carousel: React.FC<CarouselProps> = ({
   const handleClickWoman = () => {
     alert("al momento niente");
   };
+
+  const navigate = useNavigate();
+
 
   return (
     <div className="carousel-container">
@@ -126,7 +139,7 @@ const Carousel: React.FC<CarouselProps> = ({
         <Buttontmg3 onClick={goToPrev} label="Prev" />
         <div className="carousel-images">
           {getVisibleItems().map((item, index) => (
-            <div key={index} className="carousel-image">
+            <div key={index} className="carousel-image" onClick={() => navigate(`/pdp/${item.id}`)}>
               <img src={item.src} alt={`Slide ${index}`} />
               <p className="carousel-image-name">
                 {item.name} <br />€{item.price}
