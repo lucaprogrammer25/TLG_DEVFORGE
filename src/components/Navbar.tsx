@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks"
+import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
 import fetchDataContentful from "../redux/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
