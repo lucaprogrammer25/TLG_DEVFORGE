@@ -127,6 +127,7 @@ const CartApp: React.FC = () => {
         )}
       </div>
     </div>
+
   );
 };
 
