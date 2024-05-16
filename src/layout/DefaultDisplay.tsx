@@ -2,7 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import NewsletterForm from '../components/NewsLetter/newsLetter';
+
 /* import BackToTopButton from '../components/BackToTop'; */
 /* import  { useState, useEffect } from 'react';*/ 
 
@@ -34,11 +34,14 @@ const DefaultDisplay = () => {
       behavior: 'smooth',
     });
   } */
+  
+  
+
   return (
     <>
     <Navbar/>
-       <Outlet/>
-    <NewsletterForm/>
+    <Outlet/>
+    {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
     <Footer/>
     </>
   );

@@ -4,6 +4,7 @@ import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
 import fetchDataContentful from "../redux/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
+import langauge from "../assets/icons/world svg.svg"
 import SidebarCart from "./SidebarCart";
 import { selectCartTotalQuantity } from "../redux/cartSlice";
 
@@ -120,6 +121,9 @@ const Navbar: React.FC = () => {
                         </Link>
                     </div>
                     <div className="navbarServiceMenu">
+                        <div className="navbarServiceMenuLanguage">
+                            <img src={langauge} alt="language-icon" />
+                        </div>
                         <div className="navbarServiceMenuProfile">
                             <img src={profile} alt="profile-icon" />
                         </div>
@@ -129,17 +133,7 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
                     {/* MOBILE MENU  */}
-                    <div className="container">
-                        <input type="checkbox" id="checkbox3" aria-label="checkbox" className="visuallyHidden" />
-                        <label htmlFor="checkbox3">
-                            <div className="hamburger">
-                                <span className="barBar1"></span>
-                                <span className="barBar2"></span>
-                                <span className="barBar3"></span>
-                                <span className="barBar4"></span>
-                            </div>
-                        </label>
-                    </div>
+                   
                 </div>
             </nav>
             { cartTotalQuantity !== 0 ?

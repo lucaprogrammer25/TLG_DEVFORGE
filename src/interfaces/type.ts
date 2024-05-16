@@ -9,6 +9,29 @@ export interface ProductJson {
   quantity: string;
 }
 
+export interface FormData {
+  email: string;
+  name: string;
+  lastName: string;
+  address: string;
+  postalCode: string;
+  country: string;
+  province: string;
+  phoneNumber: string;
+  phonePrefix?:number;
+  
+}
+
+export interface FormDataBilling {
+  billingAddress: string;
+  billingPostalCode: string;
+  billingCountry: string;
+  billingProvince: string;
+  billingPhoneNumber: string;
+  billingPrefix: string;
+}
+
+export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 export type Props = {
   id: number;
   category?: string;

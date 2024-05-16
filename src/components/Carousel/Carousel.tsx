@@ -15,10 +15,10 @@ const Carousel: React.FC<CarouselProps> = ({
   prices,
   category,
 }) => {
-  console.log("Images:", images);
+/*   console.log("Images:", images);
   console.log("Names:", names);
   console.log("Prices:", prices);
-  console.log("Category:", category);
+  console.log("Category:", category); */
 
   const getItemsToShow = (): number => {
     if (window.innerWidth <= 480) {
@@ -89,7 +89,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const handleCategoryClick = (category: string) => {
     setCurrentCategory(category);
-    setCurrentIndex(0); // Reset index to 0 when category changes
+    setCurrentIndex(0); 
     console.log("Current Category:", category);
   };
 
