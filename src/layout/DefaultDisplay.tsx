@@ -38,7 +38,6 @@ const DefaultDisplay = () => {
     <>
     <Navbar/>
        <Outlet/>
-    <Outlet/>
     <NewsletterForm/>
     <Footer/>
     </>
