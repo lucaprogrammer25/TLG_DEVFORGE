@@ -1,5 +1,5 @@
-$button-background: #2c2c2c;
-$button-color: #a89156;
+@import "../defaultVariables.scss";
+
 $button-border-width: 0.35rem;
 $button-font-size: 1rem;
 // $button-margin: 2rem;
@@ -7,10 +7,10 @@ $button-hover-border-color: #a89156;
 $button-transform-active: translateY(4px);
 
 .ButtonTmgCss {
-  background-color: $button-background;
-  color: $button-color;
+  background-color: $lightBlack;
+  color: $gold;
   border-radius: 2px;
-  border: $button-border-width solid $button-color;
+  border: $button-border-width solid $gold;
   font-size: $button-font-size;
   // margin: $button-margin;
 
@@ -29,6 +29,6 @@ $button-transform-active: translateY(4px);
 
   @media screen and (max-width: 992px) {
     font-size: 0.5rem;
-    border: 0.2rem solid $button-color;
+    border: 0.2rem solid $gold;
   }
 }

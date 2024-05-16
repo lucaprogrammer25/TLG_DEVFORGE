@@ -85,8 +85,11 @@
 }
 
 @media (max-width: 478px) {
-  img {
-    height: 400px;
+  .carousel-image{
+    img {
+      height: 400px;
+    }
+
   }
   .carousel-container {
     justify-content: center;
@@ -100,6 +103,13 @@
       display: block;
       max-width: 230px;
       width: auto;
+      height: 500px;
+      p {
+        color: purple;}
+  
+        &:hover{
+          p{color: Black;}
+        }
       height: auto;
 
     }

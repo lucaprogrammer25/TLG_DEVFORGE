@@ -2,7 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
+import ShipmentForm from '../components/Forms/Shipment';
 
 /* import BackToTopButton from '../components/BackToTop'; */
 /* import  { useState, useEffect } from 'react';*/ 
@@ -43,6 +43,7 @@ const DefaultDisplay = () => {
     <Navbar/>
     <Outlet/>
     {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
+    <ShipmentForm />
     <Footer/>
     </>
   );

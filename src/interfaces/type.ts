@@ -1,47 +1,12 @@
 export interface ProductJson {
-    category: string;
-    description: string;
-    gender: string;
-    id: number;
-    image: string;
-    name: string;
-    price: number;
-    quantity: string;
-  }
-
-  
-export type Props = {
-    id:number;
-    category?: string;
-    title: string;
-    description:string;
-    image:string;
-    price: number;
-    alternative:string;
-    addToCart?: any;
-    goToPDP?:any;
-  }
-  
-  export interface Product {
-    data: [] | null;
-    error: string |null;
-    loading?: boolean;
-  }
-
-
-  
-  export interface Contentful {
-    data:any;
-    error:string | null ;
-    loading?: boolean;
-   }
-
-   export interface Cart {
-    id: number;
-    title: string;
-    price: number;
-    cartQuantity: number;
-    quantity:number
+  category: string;
+  description: string;
+  gender: string;
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  quantity: string;
 }
 
 export interface FormData {
@@ -67,3 +32,40 @@ export interface FormDataBilling {
 }
 
 export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+export type Props = {
+  id: number;
+  category?: string;
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+  alternative: string;
+  addToCart?: any;
+  goToPDP?: any;
+};
+
+export interface Product {
+  data: [] | null;
+  error: string | null;
+  loading?: boolean;
+}
+
+export interface Contentful {
+  data: any;
+  error: string | null;
+  loading?: boolean;
+}
+
+export interface Cart {
+  id: number;
+  price: number;
+  image:string;
+  name:string;
+  cartQuantity: number;
+  quantity: number;
+}
+
+export interface SidebarCartType {
+  label: string;
+  closeSideCart: any;
+}

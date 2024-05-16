@@ -66,7 +66,7 @@ const cartSlice = createSlice({
 export const selectCartTotalPrice = (state:any) => {
   const totalPrice = state.cart.cartItems.reduce((total:any, item:any) => total + item.price * item.quantity, 0);
   console.log('Total Price:', totalPrice);
-  return totalPrice;
+  return totalPrice.toFixed(2);
 };
 
 export const selectCartTotalQuantity = (state:any) => {
