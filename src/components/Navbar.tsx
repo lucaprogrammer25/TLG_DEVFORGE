@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
-import fetchDataContentful from "../redux/fetchContentful";
+import fetchDataContentful from "../redux/fetch/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 import langauge from "../assets/icons/world svg.svg"
 import SidebarCart from "./SidebarCart";
-import { selectCartTotalQuantity } from "../redux/cartSlice";
+import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
+import { FormattedMessage } from "react-intl";
+interface NavbarProps {
+    changeLocale: (newLocale: string) => void;
+  }
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [contentIndex, setContentIndex] = useState<number>(0);
@@ -74,6 +78,10 @@ const Navbar: React.FC = () => {
         return () => clearInterval(interval);
     }, [contents]);
 
+    const handleLanguageChange = (newLocale: string) => {
+        changeLocale(newLocale);
+        
+      };
 
     return (
         <>
@@ -99,7 +107,7 @@ const Navbar: React.FC = () => {
                                 onMouseEnter={() => setHiddenMen(false)}
                                 onMouseLeave={() => setHiddenMen(true)}
                             >
-                                Men
+                                <FormattedMessage id="men" defaultMessage="Men"/>
                                 {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
                             </div>
                         </Link> 
@@ -108,20 +116,20 @@ const Navbar: React.FC = () => {
                             onMouseEnter={() => setHiddenWomen(false)}
                             onMouseLeave={() => setHiddenWomen(true)}
                         >
-                            Women
+                            <FormattedMessage id="women" defaultMessage="Women"/>
                             {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
                         </div>
                         </Link>
                         <Link className="linkTag" to='/accessories'>
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
-                                Accessories
+                                <FormattedMessage id="accessories" defaultMessage="Accessories"/>
                             </p>
                         </div>
                         </Link>
                     </div>
                     <div className="navbarServiceMenu">
-                        <div className="navbarServiceMenuLanguage">
+                        <div className="navbarServiceMenuLanguage" onClick={() => handleLanguageChange('en')}>
                             <img src={langauge} alt="language-icon" />
                         </div>
                         <div className="navbarServiceMenuProfile">
@@ -131,9 +139,7 @@ const Navbar: React.FC = () => {
                             <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
                             <span>{`('${cartTotalQuantity}')`}</span>
                         </div>
-                    </div>
-                    {/* MOBILE MENU  */}
-                   
+                    </div>                   
                 </div>
             </nav>
             { cartTotalQuantity !== 0 ?

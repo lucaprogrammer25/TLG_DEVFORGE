@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
-import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/cartSlice';
+import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
 import { SidebarCartType } from '../interfaces/type';
 import Buttontmg2 from './Buttons/ButtonTmg2';
 import { useNavigate } from 'react-router-dom';

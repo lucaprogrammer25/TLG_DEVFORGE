@@ -6,9 +6,11 @@ import Footer from '../components/Footer';
 /* import BackToTopButton from '../components/BackToTop'; */
 /* import  { useState, useEffect } from 'react';*/ 
 
+interface DefaultDisplayProps {
+  changeLocale: (newLocale: string) => void;
+}
 
-
-const DefaultDisplay = () => {
+const DefaultDisplay: React.FC<DefaultDisplayProps> = ({changeLocale}) => {
   /* const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const DefaultDisplay = () => {
 
   return (
     <>
-    <Navbar/>
+    <Navbar changeLocale={changeLocale} />
     <Outlet/>
     {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
     <Footer/>
