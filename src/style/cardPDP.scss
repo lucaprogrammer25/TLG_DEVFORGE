@@ -1,10 +1,12 @@
+
 .containerCardPDP {
   margin: 0 auto;
   max-width: 400px;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 
 .containerImgPDP {
     img {
+      margin-top: 1rem;
       width: 400px;
       height: 500px;
       object-fit: cover;
@@ -12,7 +14,7 @@
   }
 
 .titleCardPDP {
-    margin-bottom: 2rem;
+    margin: 0 2rem;
   }
 
   .descriptionCardPDP {
@@ -30,6 +32,16 @@
     p {
       font-size: 26px;
       font-weight: 600;
+      margin: 2rem;
+    }
+    button {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 400;
+      text-align: center;
+      width: 8rem;
+      height: 2rem;
+      margin: 2rem;
     }
   }
 
@@ -52,12 +64,12 @@
     }
 
     .itemSize {
-      color: rgb(175, 173, 173);
+      color: $white;
       cursor: pointer;
     }
 
     .itemSizeOnActive {
-      color: black;
+      color: $lightBlack;
       cursor: pointer;
     }
   }

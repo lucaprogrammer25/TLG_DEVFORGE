@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import "./style/defaultVariables.scss";
 @import "./style/ButtonsSCSS/ButtonTmg.scss";
 @import "./style/ButtonsSCSS/ButtonTmg2.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
@@ -10,8 +10,11 @@
 @import "./style/Footer.scss";
 @import "./style/heroSection.scss";
 @import "./style/sidebarCart.scss";
-
+@import "./style/CarouselScss/Carousel.scss";
+@import "./style/paymentSucced.scss";
+@import "./style/paymentFailed.scss";
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -40,7 +43,7 @@
   }
 
 body{
-  font-family: "Jost", sans-serif;
+  font-family: $primaryFont;
 }
 
 section{

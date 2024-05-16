@@ -1,12 +1,11 @@
 /* SIDEBAR */
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
 .navbarPromotion{
-    font-family: 'Jost', sans-serif;
+    font-family: $primaryFont;
     display: flex;
     justify-content: space-between;
-    background-color: black;
-    color: white;
+    background-color: $lightBlack;
+    color: $white;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -22,13 +21,13 @@
         transition: opacity 1s ease-in-out; 
         &:hover{
             cursor:pointer;;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid $white;
         }
     } 
     .navbarPromotionButton    {
-        font-family: 'Jost', sans-serif;
-        background-color: black;
-        color: white;
+        font-family: $primaryFont;
+        background-color: $lightBlack;
+        color: $white;
         border:none;    
         padding-inline-end: 1rem;
         font-size: 1.2rem;    
@@ -51,8 +50,8 @@
     display: flex;
     flex-direction: row ;
     justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    font-family: 'Jost', sans-serif;
+    background-color: $white;
+    font-family: $primaryFont;
     height: 100%;
     .navbarLogoContainer{
         width: 10%;
@@ -105,12 +104,20 @@
  
 .navbarHoverMen ,
  .navbarHoverWomen {
-    position: absolute; 
-    background-color: rgb(255, 255, 255); 
+    width: 100%;
+    position: absolute;
+    background-color: $white; 
     padding: 1rem;
-    border-top: none; 
+    border-top: none;
+    border-radius: 1rem;
     width:max-content; 
-    top:4rem;
+    top:5rem;
+    left: 10rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    .navbarHoverImage {
+        margin: 1rem;
+    }
   }
 
 
@@ -134,9 +141,6 @@ HAMBURGER MENU  */
     margin: -1px; padding: 0; border: 0; 
 }
 
-h1 {
-    text-align: center;
-}
 
 
 .hamburger {
