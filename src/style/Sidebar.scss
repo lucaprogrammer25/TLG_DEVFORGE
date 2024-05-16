@@ -1,7 +1,6 @@
 /* SIDEBAR */
 
 .navbarPromotion{
-    font-family: $primaryFont;
     display: flex;
     justify-content: space-between;
     background-color: $lightBlack;
@@ -25,7 +24,6 @@
         }
     } 
     .navbarPromotionButton    {
-        font-family: $primaryFont;
         background-color: $lightBlack;
         color: $white;
         border:none;    
@@ -51,7 +49,6 @@
     flex-direction: row ;
     justify-content: space-between;
     background-color: $white;
-    font-family: $primaryFont;
     height: 100%;
     .navbarLogoContainer{
         width: 10%;

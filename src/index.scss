@@ -14,12 +14,14 @@
 @import "./style/CarouselScss/Carousel.scss";
 @import "./style/paymentSucced.scss";
 @import "./style/paymentFailed.scss";
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Jost", sans-serif;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -44,12 +46,15 @@
     border: 7px dashed #ffffff;
   }
 
-body{
-  font-family: $primaryFont;
-}
+
 
 section{
   max-width: 2000px;
   margin: 0 auto;
   margin-bottom: 4rem;
+}
+
+.linkTag{
+  text-decoration: none;
+  color: black;
 }
