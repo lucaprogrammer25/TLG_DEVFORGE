@@ -31,6 +31,8 @@ const NewsletterForm: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setFormState({ email: "", status: "submitted" });
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // Aspetta 5 secondi prima di rimuovere lo stato "submitted"
+      setFormState({ email: "", status: "idle" }); // Rimuovi lo stato dopo 5 secondi
     } catch (error) {
       setFormState({ ...formState, status: "error" });
     }
@@ -40,7 +42,11 @@ const NewsletterForm: React.FC = () => {
     <>
       <div className="divForm">
         <form className="form" onSubmit={handleSubmit}>
-          <label htmlFor="email">subscribe to our News Letter </label>
+          <label htmlFor="email">
+            <h2>Join our community and stay updated on all our products</h2>
+            <p>ricevi nuovi coupon</p>
+            <p>resta aggiornato su tutte le nostre offerte</p>
+          </label>
           <input
             className="subscribeInput"
             type="email"
@@ -49,8 +55,12 @@ const NewsletterForm: React.FC = () => {
             onChange={handleEmailChange}
             required
           />
-          <button type="submit" disabled={formState.status === "submitting"}>
-            Subscribe da 
+          <button
+            type="submit"
+            className="ButtonTmgCss3"
+            disabled={formState.status === "submitting"}
+          >
+            Subscribe
           </button>
           {formState.status === "submitted" && (
             <p>Thank you for subscribing!</p>
