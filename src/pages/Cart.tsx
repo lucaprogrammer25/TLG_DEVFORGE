@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/Cart/Cart.scss";
-import "../style/ButtonsSCSS/ButtonTmg3.scss";
+  import "../style/ButtonsSCSS/ButtonTmg3.scss";
 
 const CartApp: React.FC = () => {
   const [activeTabs, setActiveTabs] = useState<string[]>(["Cart"]);
