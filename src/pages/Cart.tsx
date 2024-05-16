@@ -1,134 +1,78 @@
-import React, { useState } from "react";
-import "../style/Cart/Cart.scss";
-  import "../style/ButtonsSCSS/ButtonTmg3.scss";
+import React, { useEffect } from 'react';
+import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
+import { addToCart, clearCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/cartSlice';
+import fetchDataContentful from "../redux/fetchContentful";
+import trashCanIcon from "../assets/icons/trash-can-svgrepo-com.svg"
+import { useNavigate } from 'react-router-dom';
 
-const CartApp: React.FC = () => {
-  const [activeTabs, setActiveTabs] = useState<string[]>(["Cart"]);
+interface Props {}
 
-  const handleGoToShippingInfo = () => {
-    setActiveTabs(["Cart", "Shipping info"]);
-  };
-
-  const handleGoToCheckout = () => {
-    setActiveTabs(["Cart", "Shipping info", "Checkout"]);
-  };
-
-  const handleBackToProduct = () => {
-    setActiveTabs(["Cart"]);
-  };
-
-  const handleBackToShippingAddress = () => {
-    setActiveTabs(["Cart", "Shipping info"]);
-  };
+const Cart: React.FC<Props> = () => {
+  const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
+  const cartTotalPrice = useTypeSelector(selectCartTotalPrice);
+  const dispatch = useTypeDispatch()
+  const navigate = useNavigate()
+  const { cartItems } = useTypeSelector((state) => state.cart);
+  const { data } = useTypeSelector((state) => state.contentful)
+  const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
+  console.log(cartItems);
+  useEffect(() => {
+    dispatch(fetchDataContentful())     
+  }, [dispatch])
+  
 
   return (
-    <div className="tabs-horizontal">
-      <div className="tabs">
-        <div
-          className={`ButtonTmgCss3 ${
-            activeTabs.includes("Cart") ? "active" : ""
-          }`}
-          onClick={() => setActiveTabs(["Cart"])}
-        >
-          1. Cart
+    <div className='containerCart'>
+       <img onClick={() => navigate("/")} className='logoCart' src={logo} alt=""  />
+      <div className='wrapperTitleCart'>
+        <div className='titleCart'>
+        <h3>Cart</h3>
+        <h3>(Items {cartTotalQuantity})</h3>
         </div>
-        <div
-          className={`ButtonTmgCss3 ${
-            activeTabs.includes("Shipping info") ? "active" : ""
-          }`}
-          onClick={handleGoToShippingInfo}
-        >
-          2. Shipping info
-        </div>
-        <div
-          className={`ButtonTmgCss3 ${
-            activeTabs.includes("Checkout") ? "active" : ""
-          }`}
-          onClick={handleGoToCheckout}
-        >
-          3. Checkout
-        </div>
+        <img onClick={() => dispatch(clearCart())} src={trashCanIcon} alt="icon trash can" />
       </div>
-
-      <div className="tab-content">
-        {activeTabs.includes("Cart") && (
-          <div className="tab-cart">
-            <div className="CheckoutTabPage">
-              <div>Carrello (1 prodotto)</div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>PRODUCT</th>
-                    <th>QUANTITY</th>
-                    <th>PRICE</th>
-                    <th>TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>Prodotti scelti</td>
-                    <td>Quantità prodotti</td>
-                    <td> wdw</td>
-                    <td>Totale</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="buttonsTabs">
-                <button
-                  className="ButtonTmgCss3"
-                  onClick={handleGoToShippingInfo}
-                >
-                  Go to Address
-                </button>
+      <div></div>
+      <div className='productMenu'>
+        <div className='wrapperProduct'>
+          {cartTotalQuantity !== 0 ? (
+             <div className='titleProduct'>
+          <span >Product</span>
+          </div>) : null }
+        <div className='containerProduct'>
+          {cartItems.map((item) => (
+            <div className='product' key={item.id}>
+              <img src={item.image} alt={item.name} />
+              <div className='wrapperInfoProduct'>
+                <div className='infoProduct'>
+              <span>{item.name}</span>
+              <span>${item.price}</span>
               </div>
+              <div className='quantityProduct'>
+                <div className='buttonCart'>
+              <button onClick={() => dispatch(decrease(item))} className="cartButton"><span>-</span></button>
+              <span>{item.quantity}</span>
+              <button onClick={() => dispatch(addToCart(item))} className="cartButton"><span>+</span></button>
+              </div>
+              <button className='cartButton' onClick={() => dispatch(removeFromCart(item))}>REMOVE</button>
+              </div>
+              </div>
+              
             </div>
-          </div>
-        )}
-        {activeTabs.includes("Shipping info") && (
-          <div className="CheckoutTabPage">
-            <div>Shipping Information Content</div>
-            <div className="buttonsTabs">
-              <button className="ButtonTmgCss3" onClick={handleBackToProduct}>
-                Back to Product
-              </button>
-              <button className="ButtonTmgCss3" onClick={handleGoToCheckout}>
-               Got Pay
-              </button>
-            </div>
-          </div>
-        )}
-        {activeTabs.includes("Checkout") && (
-          <div className="CheckoutTabPage">
-            <div>Checkout Content</div>
-            <div className="buttonsTabs">
-              <button className="ButtonTmgCss3" onClick={handleBackToProduct}>
-              Back to Product
-              </button>
-              <button
-                className="ButtonTmgCss3"
-                onClick={handleBackToShippingAddress}
-              >
-                Back to Address
-              </button>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
+        {
+          cartTotalQuantity !== 0 ? (<div className='totalContainer'>
+          <span>TOTAL:${cartTotalPrice} </span> 
+        </div>) : null
+        }
+        
+        </div>
+        <div>
+         
+        </div>
       </div>
     </div>
-
   );
 };
 
-export default CartApp;
+export default Cart;
