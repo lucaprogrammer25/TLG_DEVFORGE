@@ -66,6 +66,5 @@ export interface Cart {
 }
 
 export interface SidebarCartType {
-  label: string;
   closeSideCart: any;
 }

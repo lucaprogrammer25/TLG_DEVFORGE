@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Buttontmg2 from '../Buttons/ButtonTmg2';
+import { FormattedMessage } from 'react-intl';
+import Buttontmg3 from '../Buttons/ButtonTmg3';
 
 const PaymentForm: React.FC = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -68,112 +69,112 @@ const PaymentForm: React.FC = () => {
 
   return (
     <div>
-      <h2>Payment Options</h2>
-      <form onSubmit={handleFormSubmit}>
-      <div>   
-  <input
-    type="radio"
-    id="cash-on-delivery"
-    name="paymentMethod"
-    value="cash-on-delivery"
-    checked={paymentMethod === 'cash-on-delivery'}
-    onChange={handlePaymentMethodChange}
-    className="styled-radio"
-  />
-  <label htmlFor="cash-on-delivery">Pay on Delivery (+ €20)</label>
-</div>
-<div>
-  <input
-    type="radio"
-    id="credit-card"
-    name="paymentMethod"
-    value="credit-card"
-    checked={paymentMethod === 'credit-card'}
-    onChange={handlePaymentMethodChange}
-    className="styled-radio"
-  />
-  <label htmlFor="credit-card">Pay with Credit Card</label>
-</div>
-<div>
-  <input
-    type="radio"
-    id="paypal"
-    name="paymentMethod"
-    value="paypal"
-    checked={paymentMethod === 'paypal'}
-    onChange={handlePaymentMethodChange}
-    className="styled-radio"
-  />
-  <label htmlFor="paypal">Pay with PayPal</label>
-</div>
-
-        {paymentMethod === 'credit-card' && (
-          <div className='paymentForm'>
-            <label htmlFor="Card Number">Card Number:</label>
-            <input
-              type="text"
-              id="card-number"
-              name="cardNumber"
-              value={creditCardInfo.cardNumber}
-              onChange={handleInputChange}
-              maxLength={19}
-              pattern="\d{4} \d{4} \d{4} \d{4}"
-              required
-            />
-            <label htmlFor="Expiration Month">Expiration Month:</label>
-            <select
-              aria-label="expiration month"
-              id="expiration-month"
-              name="expirationMonth"
-              value={creditCardInfo.expirationMonth}
-              onChange={handleInputChange}
-              title="Expiration Month"
-            >
-              <option value="">Expiration Month</option>
-              {monthOptions}
-            </select>
-            <label htmlFor="Expiration Year">Expiration Year:</label>
-            <select
-              title="Expiration Year"
-              aria-label="expiration year"
-              id="expiration-year"
-              name="expirationYear"
-              value={creditCardInfo.expirationYear}
-              onChange={handleInputChange}
-            >
-              <option value="">Expiration Year</option>
-              {yearOptions}
-            </select>
-            <label htmlFor="CVC">CVC:</label>
-            <input
-              type="text"
-              id="cvc"
-              name="cvc"
-              value={creditCardInfo.cvc}
-              onChange={handleInputChange}
-              maxLength={3}
-              pattern="\d*"
-/>
-            <label htmlFor="Card holder name ">Holder name:</label>
-            <input
-              type="text"
-              id="card-holder-name"
-              name="cardHolderName"
-              value={creditCardInfo.cardHolderName}
-              onChange={handleInputChange}             
-            />
-          </div>
-        )}
-        {paypalSelected && (
-          <div>
-            <button >Pay with PayPal</button>
-          </div>
-        )}
-        {!paypalSelected && (
-          <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
-        )}
-      </form>
+  <h2><FormattedMessage id="payment options" /></h2>
+  <form onSubmit={handleFormSubmit}>
+    <div>   
+      <input
+        type="radio"
+        id="cash-on-delivery"
+        name="paymentMethod"
+        value="cash-on-delivery"
+        checked={paymentMethod === 'cash-on-delivery'}
+        onChange={handlePaymentMethodChange}
+        className="styled-radio"
+      />
+      <label htmlFor="cash-on-delivery"><FormattedMessage id="pay on delivery" /></label>
     </div>
+    <div>
+      <input
+        type="radio"
+        id="credit-card"
+        name="paymentMethod"
+        value="credit-card"
+        checked={paymentMethod === 'credit-card'}
+        onChange={handlePaymentMethodChange}
+        className="styled-radio"
+      />
+      <label htmlFor="credit-card"><FormattedMessage id="pay with credit card" /></label>
+    </div>
+    <div>
+      <input
+        type="radio"
+        id="paypal"
+        name="paymentMethod"
+        value="paypal"
+        checked={paymentMethod === 'paypal'}
+        onChange={handlePaymentMethodChange}
+        className="styled-radio"
+      />
+      <label htmlFor="paypal"><FormattedMessage id="pay with paypal" /></label>
+    </div>
+
+    {paymentMethod === 'credit-card' && (
+      <div className='paymentForm'>
+        <label htmlFor="Card Number"><FormattedMessage id="card number" /></label>
+        <input
+          type="text"
+          id="card-number"
+          name="cardNumber"
+          value={creditCardInfo.cardNumber}
+          onChange={handleInputChange}
+          maxLength={19}
+          pattern="\d{4} \d{4} \d{4} \d{4}"
+          required
+        />
+        <label htmlFor="Expiration Month"><FormattedMessage id="expiration month" /></label>
+        <select
+          aria-label="expiration month"
+          id="expiration-month"
+          name="expirationMonth"
+          value={creditCardInfo.expirationMonth}
+          onChange={handleInputChange}
+          title="Expiration Month"
+        >
+          <option value=""><FormattedMessage id="expiration month" /></option>
+          {monthOptions}
+        </select>
+        <label htmlFor="Expiration Year"><FormattedMessage id="expiration year" /></label>
+        <select
+          title="Expiration Year"
+          aria-label="expiration year"
+          id="expiration-year"
+          name="expirationYear"
+          value={creditCardInfo.expirationYear}
+          onChange={handleInputChange}
+        >
+          <option value=""><FormattedMessage id="expiration year" /></option>
+          {yearOptions}
+        </select>
+        <label htmlFor="CVC"><FormattedMessage id="cvc" /></label>
+        <input
+          type="text"
+          id="cvc"
+          name="cvc"
+          value={creditCardInfo.cvc}
+          onChange={handleInputChange}
+          maxLength={3}
+          pattern="\d*"
+        />
+        <label htmlFor="Holder name "><FormattedMessage id="holder name" /></label>
+        <input
+          type="text"
+          id="card-holder-name"
+          name="cardHolderName"
+          value={creditCardInfo.cardHolderName}
+          onChange={handleInputChange}             
+        />
+      </div>
+    )}
+    {paypalSelected && (
+      <div>
+        <button><FormattedMessage id="pay with paypal" /></button>
+      </div>
+    )}
+    {!paypalSelected && (
+      <Buttontmg3 label="go to checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+    )}
+  </form>
+</div>
   );
 };
 

@@ -4,7 +4,8 @@ import { FormattedMessage } from "react-intl";
 
 interface ButtonTmgProps {
   label: string; 
-  onClick: any
+  onClick: any;
+  classButton?:string;
 }
 
 const Buttontmg3: React.FC<ButtonTmgProps> = ({ onClick, label}) => {

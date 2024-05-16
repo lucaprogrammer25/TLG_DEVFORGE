@@ -2,7 +2,8 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
+import PaymentForm from '../components/Forms/Payment';
+import ShipmentForm from '../components/Forms/Shipment';
 /* import BackToTopButton from '../components/BackToTop'; */
 /* import  { useState, useEffect } from 'react';*/ 
 
@@ -44,6 +45,7 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({changeLocale}) => {
     <Navbar changeLocale={changeLocale} />
     <Outlet/>
     {/* <BackToTopButton onClick={handleBackToTopClick}/> */}
+    <ShipmentForm/>
     <Footer/>
     </>
   );

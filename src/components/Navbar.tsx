@@ -144,7 +144,7 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
             </nav>
             { cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${ !sidebarCartActive ? "inactive" : sidebarCartActive ? "active"  : "" }`} style={sidebarCartStyle}>
-                <SidebarCart label="CLOSE" closeSideCart={handleSidebarCartClose} />
+                <SidebarCart closeSideCart={handleSidebarCartClose} />
             </div> : null
             }
             

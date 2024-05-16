@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FormFields from './ShipmentForm';
 import PaymentForm from './Payment';
 import Buttontmg2 from '../Buttons/ButtonTmg2';
+import { FormattedMessage } from 'react-intl';
 
 const ShipmentForm: React.FC = () => {
   const [showBillingAddress, setShowBillingAddress] = useState(false);
@@ -29,7 +30,7 @@ const ShipmentForm: React.FC = () => {
     setFormData({ ...formData, country: value });
   };
 
-  const [phonePrefix, setPhonePrefix] = useState('');
+  const [phonePrefix , setPhonePrefix] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,9 +41,9 @@ const ShipmentForm: React.FC = () => {
     }
   };
 
-  const countryOptions = ['Choose a country', 'Spain', 'Germany', 'France', 'Italy'];
+  const countryOptions = [<FormattedMessage id="choose a country"/> as any, 'Spain', 'Germany', 'France', 'Italy'];
 
-  const prefixOptions = {
+  const prefixOptions:any = {
     Spain: '+34',
     Germany: '+49',
     France: '+33',
@@ -69,7 +70,7 @@ const ShipmentForm: React.FC = () => {
         />
         <label htmlFor="showBillingAddress">
           <input type="checkbox" id="showBillingAddress" onChange={handleCheckboxChange} checked={showBillingAddress} />
-          Use a different address for billing
+          <FormattedMessage id="different address"/>
         </label>
         {showBillingAddress && (
           <FormFields
@@ -80,7 +81,7 @@ const ShipmentForm: React.FC = () => {
             billing='Billing '
           />
         )}
-        <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+        {/* <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} /> */}
       </form>
       <PaymentForm />
     </div>
