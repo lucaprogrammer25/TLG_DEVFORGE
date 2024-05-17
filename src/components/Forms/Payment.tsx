@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import Buttontmg2 from '../Buttons/ButtonTmg2';
+import { useTypeDispatch, useTypeSelector } from '../../redux/typeHooks';
+import { addShipping, removeShipping } from '../../redux/cartSlice';
+// import { addShipping } from '../../redux/cartSlice';
 
 const PaymentForm: React.FC = () => {
+  const {cartItems} = useTypeSelector((state) => state.cart )
   const [paymentMethod, setPaymentMethod] = useState('');
   const [creditCardInfo, setCreditCardInfo] = useState({
     cardNumber: '',
@@ -11,15 +15,24 @@ const PaymentForm: React.FC = () => {
     cardHolderName: '',
   });
   const [paypalSelected, setPaypalSelected] = useState(false);
-
+  const dispatch = useTypeDispatch()
+  console.log(paymentMethod);
+  
+  
   const handlePaymentMethodChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.value);
     if (event.target.value === 'paypal') {
+      dispatch(removeShipping(0))
       setPaypalSelected(true);
+    } else if (event.target.value === 'cash-on-delivery') {
+      dispatch(addShipping(20));
+      console.log(cartItems);
     } else {
+      dispatch(removeShipping(20))
       setPaypalSelected(false);
     }
   };
+ 
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target ;
@@ -80,7 +93,7 @@ const PaymentForm: React.FC = () => {
     onChange={handlePaymentMethodChange}
     className="styled-radio"
   />
-  <label htmlFor="cash-on-delivery">Pay on Delivery (+ €20)</label>
+  <label htmlFor="cash-on-delivery">Pay on Delivery (+ $20)</label>
 </div>
 <div>
   <input

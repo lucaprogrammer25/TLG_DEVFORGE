@@ -16,6 +16,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({label, closeSideCart}:SidebarCa
 
   const handleClickCheckout = () => {
     navigate("/cart")
+    document.body.classList.remove('sidebar-open');
   }
 
   
@@ -50,7 +51,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({label, closeSideCart}:SidebarCa
       <p>TOTAL</p>
       <p>{`$${CartTotalPrice}`}</p>
       </div>
-          <Buttontmg2 onClick={handleClickCheckout} classButton='buttonCheckout' label='GO TO CHECKOUT'/>
+          <Buttontmg2 onClick={handleClickCheckout}  classButton='buttonCheckout' label='GO TO CHECKOUT'/>
           <div className='buttonPaypal'>
             <img src={iconP} alt="" />
             <img src={iconPaypal} alt="" />

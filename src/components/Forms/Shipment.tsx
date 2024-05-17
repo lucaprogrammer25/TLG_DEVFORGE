@@ -82,7 +82,7 @@ const ShipmentForm: React.FC = () => {
         )}
         <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
       </form>
-      <PaymentForm />
+      <PaymentForm/>
     </div>
   );
 };

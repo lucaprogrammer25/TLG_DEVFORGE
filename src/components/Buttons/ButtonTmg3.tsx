@@ -7,7 +7,7 @@ interface ButtonTmgProps {
 }
 
 const Buttontmg3: React.FC<ButtonTmgProps> = ({ onClick, label}) => {
-  return <button className="ButtonTmgCss3" onClick={onClick}>{label}</button>;
+  return <button className={`ButtonTmgCss3`} onClick={onClick}>{label}</button>;
 };
 
 export default Buttontmg3;
