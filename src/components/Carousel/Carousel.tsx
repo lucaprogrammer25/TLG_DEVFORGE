@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../style/CarouselScss/Carousel.scss";
 import Buttontmg3 from "../Buttons/ButtonTmg3";
+import "../../style/ButtonsSCSS/ButtonTmg3.scss"
 
 interface CarouselProps {
   images: string[];
@@ -123,7 +124,7 @@ const Carousel: React.FC<CarouselProps> = ({
         </span>
       </div>
       <div className="productDescription">
-        <Buttontmg3 onClick={goToPrev} label="Prev" />
+        <Buttontmg3 className="ButtonTmgCss3" onClick={goToPrev} label="Prev" />
         <div className="carousel-images">
           {getVisibleItems().map((item, index) => (
             <div key={index} className="carousel-image">
@@ -134,7 +135,7 @@ const Carousel: React.FC<CarouselProps> = ({
             </div>
           ))}
         </div>
-        <Buttontmg3 onClick={goToNext} label="Next" />
+        <Buttontmg3 className="ButtonTmgCss3" onClick={goToNext} label="Next" />
       </div>
     </div>
   );
