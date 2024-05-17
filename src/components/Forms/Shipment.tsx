@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import FormFields from './ShipmentForm';
 import PaymentForm from './Payment';
-import Buttontmg2 from '../Buttons/ButtonTmg2';
 
 const ShipmentForm: React.FC = () => {
   const [showBillingAddress, setShowBillingAddress] = useState(false);
@@ -22,6 +22,7 @@ const ShipmentForm: React.FC = () => {
   });
 
   const [selectedCountry, setSelectedCountry] = useState('');
+  const [phonePrefix , setPhonePrefix] = useState('');
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
@@ -29,7 +30,6 @@ const ShipmentForm: React.FC = () => {
     setFormData({ ...formData, country: value });
   };
 
-  const [phonePrefix, setPhonePrefix] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,14 +40,17 @@ const ShipmentForm: React.FC = () => {
     }
   };
 
-  const countryOptions = ['Choose a country', 'Spain', 'Germany', 'France', 'Italy'];
+const countryOptions = [<FormattedMessage id="choose a country"/> as any,
+                          <FormattedMessage id="spain" defaultMessage="Spain"/>, 
+                          <FormattedMessage id="germany" defaultMessage="Germany"/>, 
+                          <FormattedMessage id="france" defaultMessage="France"/>, 
+                          <FormattedMessage id="italy" defaultMessage="Italy"/>, ];
 
-  const prefixOptions = {
-    Spain: '+34',
-    Germany: '+49',
-    France: '+33',
-    Italy: '+39',
-  };
+const prefixOptions = [<FormattedMessage id="prefix"/> as any,
+                          <FormattedMessage id="spain prefix" defaultMessage="Spain + 34"/>, 
+                          <FormattedMessage id="germany prefix" defaultMessage="Germany + 49 "/>, 
+                          <FormattedMessage id="france prefix" defaultMessage="France + 33"/>, 
+                          <FormattedMessage id="italy prefix" defaultMessage="Italy + 39"/>, ];
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,14 +65,13 @@ const ShipmentForm: React.FC = () => {
           formData={formData}
           countryOptions={countryOptions}
           prefixOptions={prefixOptions}
-          phonePrefix={phonePrefix}
           selectedCountry={selectedCountry}
           handleCountryChange={handleCountryChange}
           handleInputChange={handleInputChange}
         />
         <label htmlFor="showBillingAddress">
           <input type="checkbox" id="showBillingAddress" onChange={handleCheckboxChange} checked={showBillingAddress} />
-          Use a different address for billing
+          <FormattedMessage id="different address"/>
         </label>
         {showBillingAddress && (
           <FormFields
@@ -80,7 +82,7 @@ const ShipmentForm: React.FC = () => {
             billing='Billing '
           />
         )}
-        <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+        {/* <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} /> */}
       </form>
       <PaymentForm />
     </div>

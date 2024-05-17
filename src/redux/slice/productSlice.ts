@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Product } from "../interfaces/type";
-import fetchDataProduct from "./fetchProducts";
+import { Product } from "../../interfaces/type";
+import fetchDataProduct from "../fetch/fetchProducts";
 
 
 const initialState: Product = {

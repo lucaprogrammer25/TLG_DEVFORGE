@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
-import fetchDataProduct from "../redux/fetchProducts";
+import fetchDataProduct from "../redux/fetch/fetchProducts";
 
 interface Product {
   image: string;
