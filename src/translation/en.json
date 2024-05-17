@@ -45,7 +45,14 @@
     "last name": "Last Name:",
     "choose a country":"Choose a country",
     "prefix":"Choose a prefix",
-    "different address":"Choose a different address for billing "
+    "different address":"Choose a different address for billing ",
+    "italy":"Italy",
+    "france":"France",
+    "germanyp":"Germany",
+    "spain prefix":"Spain +34 ",
+    "italy prefix":"Italy + 39",
+    "france prefix":"France + 33",
+    "germany prefix":"Germany + 49"
 
   }
   

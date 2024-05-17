@@ -43,7 +43,15 @@
 "phone number": "Numero di telefono:",
 "name":"Nome:",
 "last name":"Cognome:",
-"choose a country":"Scegli una nazione",
-"prefix":"Scelgi un prefisso",
-"different address":"Scegli un indirizzo diverso per la fatturazione"
+"choose a country":"Scegli una nazione:",
+"prefix":"Scelgi un prefisso:",
+"different address":"Scegli un indirizzo diverso per la fatturazione",
+"italy":"Italia",
+"france":"Francia",
+"germany":"Germania",
+"spain":"Spagna",
+"spain prefix":"Spagna +34 ",
+"italy prefix":"Italia + 39",
+"france prefix":"Francia + 33",
+"germany prefix":"Germania + 49"
 }

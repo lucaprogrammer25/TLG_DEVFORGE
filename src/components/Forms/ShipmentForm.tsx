@@ -1,17 +1,9 @@
 import React from 'react';
-import { FormData } from '../../interfaces/type';
+import { PropsForms} from '../../interfaces/type';
 import { FormattedMessage } from 'react-intl';
 
-interface Props {
-  formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  countryOptions: string[];
-  prefixOptions: { [key: string]: string },
-  billing?:string;
-}
 
-
-const FormFields: React.FC<Props> = ({ formData, handleInputChange, countryOptions, prefixOptions}) => {
+const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, countryOptions, prefixOptions}) => {
   return (
     <ul className='shipmentFormList'>
       <li>
@@ -52,9 +44,9 @@ const FormFields: React.FC<Props> = ({ formData, handleInputChange, countryOptio
         <label htmlFor="phoneNumber"><FormattedMessage id="phone number"/></label>
         <select id="prefix" name="prefix" value={formData.phonePrefix} onChange={handleInputChange} required aria-label="Prefix">
           <option value=""> </option>
-          {Object.entries(prefixOptions).map(([country, prefix]) => (
-            <option key={prefix} value={prefix}>
-              {country} {prefix}
+          {prefixOptions.map((option:any) => (
+            <option key={option} value={option}>
+              {option}
             </option>
           ))}
         </select>
