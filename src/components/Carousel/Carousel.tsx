@@ -18,11 +18,6 @@ const Carousel: React.FC<CarouselProps> = ({
   gender,
   id,
 }) => {
-  console.log("Images:", images);
-  console.log("Names:", names);
-  console.log("Prices:", prices);
-  console.log("Gender:", gender);
-
   const getItemsToShow = (): number => {
     if (window.innerWidth <= 480) {
       return 1;
@@ -121,7 +116,6 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   const navigate = useNavigate();
-
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">

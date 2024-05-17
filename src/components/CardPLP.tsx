@@ -15,7 +15,7 @@ const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, a
            <p>{title}</p>
            <div className='containerPricePLP'>
             <p>{price}€</p>
-           <Buttontmg3 label='Add to cart' onClick={addToCart} />
+           <Buttontmg3 label={"add to cart"} onClick={addToCart} />
            </div>
            </div>
            </div>    

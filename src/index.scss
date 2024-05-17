@@ -3,21 +3,25 @@
 @import "./style/ButtonsSCSS/ButtonTmg2.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
 @import "./style/NewsLetter/SubscribeInput.scss";
-@import "./style/Sidebar.scss";
+@import "./style/navbar.scss";
 @import './style/cardPLP.scss';
 @import './style/cardPDP.scss';
 @import './style/plp.scss';
 @import "./style/Footer.scss";
 @import "./style/heroSection.scss";
+@import "./style/Payment/Payment.scss";
 @import "./style/sidebarCart.scss";
 @import "./style/CarouselScss/Carousel.scss";
 @import "./style/paymentSucced.scss";
 @import "./style/paymentFailed.scss";
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Jost", sans-serif;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -42,12 +46,15 @@
     border: 7px dashed #ffffff;
   }
 
-body{
-  font-family: $primaryFont;
-}
+
 
 section{
   max-width: 2000px;
   margin: 0 auto;
   margin-bottom: 4rem;
+}
+
+.linkTag{
+  text-decoration: none;
+  color: black;
 }

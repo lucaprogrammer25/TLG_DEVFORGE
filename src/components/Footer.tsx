@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ScrollToTopButton from "./Buttons/ScrollToTop";
+import { FormattedMessage } from "react-intl"; // Import FormattedMessage
 
-const Footer: React.FC = ({}) => {
+const Footer: React.FC = () => {
   return (
     <>
       <footer>
@@ -11,68 +11,143 @@ const Footer: React.FC = ({}) => {
           <div className="ourProductsBox">
             <div className="manBox">
               <Link className="linkTag" to="/men">
-                <h3>Man Products</h3>
+                <h3>
+                  <FormattedMessage id="men" defaultMessage="Men Products" />
+                </h3>
               </Link>
               <div className="manLinkBox">
                 <Link className="linkTag" to="/men/T-shirts">
-                  <p>t-shirts</p>
+                  <p>
+                    <FormattedMessage id="shirt" defaultMessage="T-shirts" />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/men/trousers">
-                  <p>trousers</p>
+                  <p>
+                    <FormattedMessage
+                      id="trousers"
+                      defaultMessage="Trousers"
+                    />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/men/Dresses">
-                <p>suit</p>
+                  <p>
+                    <FormattedMessage id="dress" defaultMessage="Dress" />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/men/shoes">
-                <p>shoes</p>
+                  <p>
+                    <FormattedMessage id="shoes" defaultMessage="Shoes" />
+                  </p>
                 </Link>
               </div>
             </div>
             <div className="womanBox">
-              <h3>Woman Products</h3>
+              <h3>
+                <FormattedMessage
+                  id="women"
+                  defaultMessage="Women Products"
+                />
+              </h3>
               <div className="womanLinkBox">
-              <Link className="linkTag" to="/women/T-shirts">
-                  <p>t-shirts</p>
+                <Link className="linkTag" to="/women/T-shirts">
+                  <p>
+                    <FormattedMessage id="shirt" defaultMessage="T-shirts" />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/women/trousers">
-                  <p>trousers</p>
+                  <p>
+                    <FormattedMessage
+                      id="trousers"
+                      defaultMessage="Trousers"
+                    />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/women/Dresses">
-                <p>dress</p>
+                  <p>
+                    <FormattedMessage id="dress" defaultMessage="Dress" />
+                  </p>
                 </Link>
                 <Link className="linkTag" to="/women/shoes">
-                <p>shoes</p>
+                  <p>
+                    <FormattedMessage id="shoes" defaultMessage="Shoes" />
+                  </p>
                 </Link>
               </div>
             </div>
-           <Link className="linkTag" to="/accessories"> 
-           <h3 className="accessoriesLink">Accessories</h3>
-           </Link>
+            <Link className="linkTag" to="/accessories">
+              <h3 className="accessoriesLink">
+                <FormattedMessage
+                  id="accessories"
+                  defaultMessage="Accessories"
+                />
+              </h3>
+            </Link>
           </div>
           <div className="clientAssistanceBox">
-            <h3>Client Assistance</h3>
+            <h3>
+              <FormattedMessage
+                id="client"
+                defaultMessage="Client Assistance"
+              />
+            </h3>
             <div className="assistanceLinkBox">
-              <p>Refunds</p>
-              <p>Shipping and deliveries</p>
-              <p> Payments</p>
-              <p>Contact us</p>
+              <p>
+                <FormattedMessage id="refunds" defaultMessage="Refunds" />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="shipping and deliveries"
+                  defaultMessage="Shipping and Deliveries"
+                />
+              </p>
+              <p>
+                <FormattedMessage id="payment" defaultMessage="Payments" />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="contact us"
+                  defaultMessage="Contact Us"
+                />
+              </p>
             </div>
           </div>
           <div className="legalAreaBox">
-            <h3>Legal Area</h3>
+            <h3>
+              <FormattedMessage
+                id="legal area"
+                defaultMessage="Legal Area"
+              />
+            </h3>
             <div className="legalLinkBox">
-              <p>Who we are</p>
-              <p>Terms and conditions</p>
-              <p>Privacy information</p>
+              <p>
+                <FormattedMessage id="who are we" defaultMessage="Who Are We" />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="terms and conditions"
+                  defaultMessage="Terms and Conditions"
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  id="privacy information"
+                  defaultMessage="Privacy Information"
+                />
+              </p>
             </div>
           </div>
         </div>
         <div className="bottom">
           <p>
-            © TMB - The Modern Boutique S.R.L 2024 - All rights are reserved.
+            © TMB - The Modern Boutique S.R.L 2024 -{" "}
+            <FormattedMessage
+              id="right"
+              defaultMessage="All rights are reserved."
+            />
           </p>
           <div className="logoBox">
             <a
+              title="tlg git hub"
               href="https://github.com/lucaprogrammer25/TLG_DEVFORGE"
               target="blank"
               className="socialLogo"
@@ -90,6 +165,7 @@ const Footer: React.FC = ({}) => {
               </svg>
             </a>
             <a
+              title="tlg social"
               href="https://www.instagram.com/"
               target="blank"
               className="socialLogo"
@@ -122,6 +198,7 @@ const Footer: React.FC = ({}) => {
               </svg>
             </a>
             <a
+              title="tlg facebook"
               href="https://www.facebook.com/?locale=it_IT"
               target="blank"
               className="socialLogo"
@@ -144,7 +221,6 @@ const Footer: React.FC = ({}) => {
             </a>
             <div>
             </div>
-        <ScrollToTopButton/>
           </div>
         </div>
       </footer>
