@@ -7,7 +7,7 @@ interface CarouselProps {
   images: string[];
   names: string[];
   prices: string[];
-  gender: string[]; // Aggiunta la prop gender
+  gender: string[];
   id: string[];
 }
 
@@ -15,7 +15,7 @@ const Carousel: React.FC<CarouselProps> = ({
   images,
   names,
   prices,
-  gender, // Aggiunta la prop gender
+  gender,
   id,
 }) => {
   console.log("Images:", images);
@@ -35,7 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentGender, setCurrentGender] = useState("women"); // Impostato il genere iniziale su "woman women"
+  const [currentGender, setCurrentGender] = useState("women");
 
   const filteredImages = images.filter(
     (_, index) => gender[index] === currentGender
@@ -67,7 +67,7 @@ const Carousel: React.FC<CarouselProps> = ({
     } else {
       setCurrentIndex(shuffledIndexes[currentIndex]);
     }
-  }, [totalFilteredImages]); // Effetto eseguito solo se il numero totale di immagini cambia
+  }, [totalFilteredImages]); 
 
   const getVisibleItems = (): {
     src: string;
@@ -116,7 +116,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const handleGenderClick = (gender: string) => {
     setCurrentGender(gender);
-    setCurrentIndex(0); // Reset index to 0 when gender changes
+    setCurrentIndex(0);
     console.log("Current Gender:", gender);
   };
 
@@ -137,7 +137,6 @@ const Carousel: React.FC<CarouselProps> = ({
         >
           Men
         </span>
-        {/* Aggiungi altri bottoni per altri generi se necessario */}
       </div>
       <div className="productDescription">
         <Buttontmg3 onClick={goToPrev} label="Prev" />
