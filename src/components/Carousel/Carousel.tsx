@@ -37,12 +37,58 @@ const Carousel: React.FC<CarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentGender, setCurrentGender] = useState("women"); // Impostato il genere iniziale su "woman women"
 
-  const filteredImages = images.filter((_, index) => gender[index] === currentGender);
-  const filteredNames = names.filter((_, index) => gender[index] === currentGender);
-  const filteredPrices = prices.filter((_, index) => gender[index] === currentGender);
+  const filteredImages = images.filter(
+    (_, index) => gender[index] === currentGender
+  );
+  const filteredNames = names.filter(
+    (_, index) => gender[index] === currentGender
+  );
+  const filteredPrices = prices.filter(
+    (_, index) => gender[index] === currentGender
+  );
   const filteredId = id.filter((_, index) => gender[index] === currentGender);
 
   const totalFilteredImages = filteredImages.length;
+
+  useEffect(() => {
+    const shuffledIndexes = JSON.parse(
+      sessionStorage.getItem("shuffledIndexes") || "[]"
+    );
+    if (shuffledIndexes.length === 0) {
+      const newShuffledIndexes = Array.from(
+        { length: totalFilteredImages },
+        (_, i) => i
+      ).sort(() => Math.random() - 0.5);
+      sessionStorage.setItem(
+        "shuffledIndexes",
+        JSON.stringify(newShuffledIndexes)
+      );
+      setCurrentIndex(newShuffledIndexes[0]);
+    } else {
+      setCurrentIndex(shuffledIndexes[currentIndex]);
+    }
+  }, [totalFilteredImages]); // Effetto eseguito solo se il numero totale di immagini cambia
+
+  const getVisibleItems = (): {
+    src: string;
+    name: string;
+    price: string;
+    id: string;
+  }[] => {
+    const shuffledIndexes = JSON.parse(
+      sessionStorage.getItem("shuffledIndexes") || "[]"
+    );
+    const visibleIndexes = shuffledIndexes.slice(
+      currentIndex,
+      currentIndex + itemsToShow
+    );
+    return visibleIndexes.map((index:any) => ({
+      src: filteredImages[index],
+      name: filteredNames[index],
+      price: filteredPrices[index],
+      id: filteredId[index],
+    }));
+  };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalFilteredImages);
@@ -68,24 +114,6 @@ const Carousel: React.FC<CarouselProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getVisibleItems = (): {
-    src: string;
-    name: string;
-    price: string;
-    id: string;
-  }[] => {
-    const indexes = Array.from(
-      { length: itemsToShow },
-      (_, i) => (currentIndex + i) % totalFilteredImages
-    );
-    return indexes.map((index) => ({
-      src: filteredImages[index],
-      name: filteredNames[index],
-      price: filteredPrices[index],
-      id: filteredId[index],
-    }));
-  };
-
   const handleGenderClick = (gender: string) => {
     setCurrentGender(gender);
     setCurrentIndex(0); // Reset index to 0 when gender changes
@@ -97,10 +125,16 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">
-        <span className="ButtonTmgCss3" onClick={() => handleGenderClick("women")}>
+        <span
+          className="ButtonTmgCss3"
+          onClick={() => handleGenderClick("women")}
+        >
           Women
         </span>
-        <span className="ButtonTmgCss3" onClick={() => handleGenderClick("men")}>
+        <span
+          className="ButtonTmgCss3"
+          onClick={() => handleGenderClick("men")}
+        >
           Men
         </span>
         {/* Aggiungi altri bottoni per altri generi se necessario */}
@@ -109,7 +143,11 @@ const Carousel: React.FC<CarouselProps> = ({
         <Buttontmg3 onClick={goToPrev} label="Prev" />
         <div className="carousel-images">
           {getVisibleItems().map((item, index) => (
-            <div key={index} className="carousel-image" onClick={() => navigate(`/pdp/${item.id}`)}>
+            <div
+              key={index}
+              className="carousel-image"
+              onClick={() => navigate(`/pdp/${item.id}`)}
+            >
               <img src={item.src} alt={`Slide ${index}`} />
               <p className="carousel-image-name">
                 {item.name} <br />€{item.price}
