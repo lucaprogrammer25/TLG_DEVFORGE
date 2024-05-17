@@ -23,7 +23,10 @@ const Cart: React.FC<Props> = () => {
 
   return (
     <div className='containerCart'>
+      <div className='wrapperButtonPLP'>
        <img onClick={() => navigate("/")} className='logoCart' src={logo} alt=""  />
+       <span onClick={() => navigate("/")} >{`< Indietro`}</span>
+       </div>
       <div className='wrapperTitleCart'>
         <div className='titleCart'>
         <h3>Cart</h3>
@@ -34,10 +37,6 @@ const Cart: React.FC<Props> = () => {
       <div></div>
       <div className='productMenu'>
         <div className='wrapperProduct'>
-          {cartTotalQuantity !== 0 ? (
-             <div className='titleProduct'>
-          <span >Product</span>
-          </div>) : null }
         <div className='containerProduct'>
           {cartItems.map((item) => (
             <div className='product' key={item.id}>
@@ -62,7 +61,21 @@ const Cart: React.FC<Props> = () => {
         </div>
         {
           cartTotalQuantity !== 0 ? (<div className='totalContainer'>
-          <span>TOTAL:${cartTotalPrice} </span> 
+            <span>SUMMARY</span>
+            <div className='containerCartPrice'>
+              <span>YOUR CART</span>
+              <span>${cartTotalPrice} </span> 
+              </div>
+            <div className='containerCartPrice'>
+              <span>SHIPPING</span>
+              <span>$0</span> 
+              </div>
+              <hr />
+              <div className='containerCartPrice'>
+              <span>TOTAL ORDER</span>
+              <span>${cartTotalPrice}</span>  
+              </div>
+             
         </div>) : null
         }
         

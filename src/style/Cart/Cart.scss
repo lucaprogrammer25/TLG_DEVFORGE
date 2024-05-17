@@ -1,18 +1,32 @@
 .containerCart{
   display: flex;
   flex-direction: column;
-  padding-inline-start: 15px;
-    padding-inline-end: 15px;
+  padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+    .wrapperButtonPLP{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      span{
+        cursor: pointer;
+        color: rgb(182, 177, 177);
+      }
+      img{
+        cursor:pointer
+      }
+    }
   h3{
     font-weight: 300;
   }
   .logoCart{
-    padding-inline-start: 25px;
-    padding-inline-end: 25px;
-    padding-block-start: 25px;
-    padding-block-end: 25px;
+    padding-inline-end: 1.56rem;
+    padding-block-start: 1.56rem;
+    padding-block-end: 1.56rem;
+    width: 200px
   }
 }
+
 
 .wrapperProductCart{
   display: flex;
@@ -38,12 +52,10 @@
   position: relative;
     display: flex;
     justify-content: space-around;
-    float: right;
     width: 100%;
     text-transform: uppercase;
     z-index: 2;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    margin-block-start: 3rem;
 
 }
 
@@ -71,13 +83,16 @@
 .wrapperProduct{
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .product{
   display: flex;
   gap: 1rem;
+  width: 100%;
  img{
-      width: 30%;
+      width: 25%;
+      clip:rect(0, 0, 10px, 20px);
   }
 }
 
@@ -98,11 +113,58 @@
   .buttonCart{
     display: flex;
     flex-direction: row;
-    gap: 4px;
+    gap: 8px;
+    align-items: center;
   }
 }
 }
 
+.cartButton{
+  span{
+    font-size: 20px;
+  }
+}
+
 .totalContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-block-start: 2rem;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  background-color: rgb(128, 128, 128,0.5);
+  :first-child{
+    text-align: center;
+  }
+
+}
+
+.containerCartPrice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+@media screen and (min-width: 940px){
+   .wrapperProduct{
+    flex-direction: row;
+   }
+
+   .containerCart{
+    padding-inline-start: 6rem;
+    padding-inline-end: 6rem;
+   }
+
+  .containerProduct{
+    max-width: 60%;
+  }
+
+  .totalContainer{
+    width: 40%;
+  }
+
+  .totalContainer{
+    height: fit-content;
+  }
 }

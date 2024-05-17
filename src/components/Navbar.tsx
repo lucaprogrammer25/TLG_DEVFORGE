@@ -66,6 +66,15 @@ const Navbar: React.FC = () => {
     };
 
     useEffect(() => {
+        if (sidebarCartActive && cartTotalQuantity !== 0 ) {
+            document.body.classList.add('sidebar-open');
+        } else {
+            document.body.classList.remove('sidebar-open');
+        }
+    }, [sidebarCartActive]);
+    
+
+    useEffect(() => {
         const interval = setInterval(() => {
             setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
             setAnimateContent(true);
@@ -112,7 +121,7 @@ const Navbar: React.FC = () => {
                             {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
                         </div>
                         </Link>
-                        <Link className="linkTag" to='/accessories'>
+                        <Link className="linkTag" to='/unisex'>
                         <div className="navbarMenuItemAccessories">
                             <p className="navbarMenuItemAccessoriesTitle">
                                 Accessories
