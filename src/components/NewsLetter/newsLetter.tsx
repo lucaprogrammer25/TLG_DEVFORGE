@@ -31,8 +31,11 @@ const NewsletterForm: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setFormState({ email: "", status: "submitted" });
-      await new Promise((resolve) => setTimeout(resolve, 5000)); // Aspetta 5 secondi prima di rimuovere lo stato "submitted"
-      setFormState({ email: "", status: "idle" }); // Rimuovi lo stato dopo 5 secondi
+
+      // Dopo 5 secondi, resetta lo stato a "idle"
+      setTimeout(() => {
+        setFormState({ email: "", status: "idle" });
+      }, 5000);
     } catch (error) {
       setFormState({ ...formState, status: "error" });
     }
@@ -44,8 +47,8 @@ const NewsletterForm: React.FC = () => {
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="email">
             <h2>Join our community and stay updated on all our products</h2>
-            <p>ricevi nuovi coupon</p>
-            <p>resta aggiornato su tutte le nostre offerte</p>
+            <p>Ricevi nuovi coupon</p>
+            <p>Resta aggiornato su tutte le nostre offerte</p>
           </label>
           <input
             className="subscribeInput"
@@ -57,15 +60,23 @@ const NewsletterForm: React.FC = () => {
           />
           <button
             type="submit"
-            className="ButtonTmgCss3"
+            className="ButtonTmgCss2"
             disabled={formState.status === "submitting"}
           >
+            <span>
             Subscribe
+            </span>
           </button>
-          {formState.status === "submitted" && (
-            <p>Thank you for subscribing!</p>
-          )}
-          {formState.status === "error" && <p>Sorry, there was a problem.</p>}
+          <div
+            className={`subscribeThank ${
+              formState.status === "submitted" ? "show" : ""
+            }`}
+          >
+            {formState.status === "submitted" && (
+              <p>Thank you for subscribing!</p>
+            )}
+            {formState.status === "error" && <p>Sorry, there was a problem.</p>}
+          </div>
         </form>
       </div>
     </>

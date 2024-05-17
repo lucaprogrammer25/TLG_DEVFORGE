@@ -7,7 +7,7 @@ interface CarouselProps {
   images: string[];
   names: string[];
   prices: string[];
-  category: string[];
+  gender: string[]; // Aggiunta la prop gender
   id: string[];
 }
 
@@ -15,13 +15,13 @@ const Carousel: React.FC<CarouselProps> = ({
   images,
   names,
   prices,
+  gender, // Aggiunta la prop gender
   id,
-  category,
 }) => {
   console.log("Images:", images);
   console.log("Names:", names);
   console.log("Prices:", prices);
-  console.log("Category:", category);
+  console.log("Gender:", gender);
 
   const getItemsToShow = (): number => {
     if (window.innerWidth <= 480) {
@@ -32,25 +32,15 @@ const Carousel: React.FC<CarouselProps> = ({
       return 4;
     }
   };
-  
 
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentCategory, setCurrentCategory] = useState("T-shirts");
+  const [currentGender, setCurrentGender] = useState("women"); // Impostato il genere iniziale su "woman women"
 
-  const filteredImages = images.filter(
-    (_, index) => category[index] === currentCategory
-  );
-  const filteredNames = names.filter(
-    (_, index) => category[index] === currentCategory
-  );
-  const filteredPrices = prices.filter(
-    (_, index) => category[index] === currentCategory
-  );
-  
-  const filteredId = id.filter(
-    (_, index) => category[index] === currentCategory
-  );
+  const filteredImages = images.filter((_, index) => gender[index] === currentGender);
+  const filteredNames = names.filter((_, index) => gender[index] === currentGender);
+  const filteredPrices = prices.filter((_, index) => gender[index] === currentGender);
+  const filteredId = id.filter((_, index) => gender[index] === currentGender);
 
   const totalFilteredImages = filteredImages.length;
 
@@ -82,7 +72,7 @@ const Carousel: React.FC<CarouselProps> = ({
     src: string;
     name: string;
     price: string;
-    id:string;
+    id: string;
   }[] => {
     const indexes = Array.from(
       { length: itemsToShow },
@@ -93,47 +83,27 @@ const Carousel: React.FC<CarouselProps> = ({
       name: filteredNames[index],
       price: filteredPrices[index],
       id: filteredId[index],
-      
     }));
   };
 
-  const handleCategoryClick = (category: string) => {
-    setCurrentCategory(category);
-    setCurrentIndex(0); // Reset index to 0 when category changes
-    console.log("Current Category:", category);
-  };
-
-  const handleClickWoman = () => {
-    alert("al momento niente");
+  const handleGenderClick = (gender: string) => {
+    setCurrentGender(gender);
+    setCurrentIndex(0); // Reset index to 0 when gender changes
+    console.log("Current Gender:", gender);
   };
 
   const navigate = useNavigate();
 
-
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">
-        <span className="ButtonTmgCss3" onClick={() => handleClickWoman()}>
-          Woman
+        <span className="ButtonTmgCss3" onClick={() => handleGenderClick("women")}>
+          Women
         </span>
-        <span
-          className="ButtonTmgCss3"
-          onClick={() => handleCategoryClick("T-shirts")}
-        >
-          T-shirts
+        <span className="ButtonTmgCss3" onClick={() => handleGenderClick("men")}>
+          Men
         </span>
-        <span
-          className="ButtonTmgCss3"
-          onClick={() => handleCategoryClick("trousers")}
-        >
-          Trousers
-        </span>
-        <span
-          className="ButtonTmgCss3"
-          onClick={() => handleCategoryClick("Dresses")}
-        >
-          Dresses
-        </span>
+        {/* Aggiungi altri bottoni per altri generi se necessario */}
       </div>
       <div className="productDescription">
         <Buttontmg3 onClick={goToPrev} label="Prev" />
