@@ -28,3 +28,23 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+    .loadMorePlpButton {
+        background-color: rgba(211, 211, 211, 0.5);
+        padding: 1rem 2rem;
+        cursor: pointer;
+        border: none;
+        width: 10rem; /* Adjust width as needed */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+
+      }
+      
+      .loadMorePlpButton:hover {
+        background-color: rgba(211, 211, 211, 0.8); 
+      }
+       
+  
