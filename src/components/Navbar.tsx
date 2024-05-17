@@ -6,6 +6,7 @@ import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 import SidebarCart from "./SidebarCart";
 import { selectCartTotalQuantity } from "../redux/cartSlice";
+import SidebarMenu from "./SidebarMenu";
 
 const Navbar: React.FC = () => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -16,6 +17,8 @@ const Navbar: React.FC = () => {
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
+    const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
+    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ display: "none" });
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
@@ -62,6 +65,15 @@ const Navbar: React.FC = () => {
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "unset" });
+    };
+    const handleSidebarMenu = () => {
+        if (!sidebarMenuActive) {
+            setSidebarMenuActive(true);
+            setSidebarMenuStyle({ display: "unset" });
+        } else {
+            setSidebarMenuActive(false);
+            setSidebarMenuStyle({ display: "none" });
+        } ;
     };
 
     useEffect(() => {
@@ -129,25 +141,43 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
                     {/* MOBILE MENU  */}
-                    <div className="container">
-                        <input type="checkbox" id="checkbox3" aria-label="checkbox" className="visuallyHidden" />
-                        <label htmlFor="checkbox3">
-                            <div className="hamburger">
-                                <span className="barBar1"></span>
-                                <span className="barBar2"></span>
-                                <span className="barBar3"></span>
-                                <span className="barBar4"></span>
-                            </div>
-                        </label>
-                    </div>
                 </div>
             </nav>
+                    <div className="mobileBar">
+                        <div className="mobileBarLogoContainer">
+                            <Link className="linkTag" to='/'>
+                                <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
+                            </Link>
+                        </div>
+                            <div className="mobileBarServiceMenu">
+                            <div className="mobileBarServiceMenuProfile">
+                                <img src={profile} alt="profile-icon" />
+                            </div>
+                            <div className="mobileBarServiceMenuCart">
+                                <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
+                                <span>{`('${cartTotalQuantity}')`}</span>
+                            </div>
+                        <div className="hamburgerLogoContainer" onClick={handleSidebarMenu}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 18L20 18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 12L20 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        </div>
+
+                    </div>
             { cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${ !sidebarCartActive ? "inactive" : sidebarCartActive ? "active"  : "" }`} style={sidebarCartStyle}>
-                <SidebarCart label="CLOSE" closeSideCart={handleSidebarCartClose} />
-            </div> : null
+                    <SidebarCart label="CLOSE" closeSideCart={handleSidebarCartClose} />
+                </div> : null
             }
             
+            {
+                <div style={sidebarMenuStyle}>
+                    <SidebarMenu />
+                </div>  
+            }
         </>
     );
 };
