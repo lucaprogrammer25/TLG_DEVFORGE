@@ -1,5 +1,5 @@
 import React from "react";
-import "./ButtonTmg3.css";
+import "../../style/ButtonsSCSS/ButtonTmg3.scss";
 import { FormattedMessage } from "react-intl";
 
 interface ButtonTmgProps {
