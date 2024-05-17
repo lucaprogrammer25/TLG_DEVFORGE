@@ -20,13 +20,16 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
-    const imageMan = data.items && data.items[0].fields.men.fields.file.url;
-    const imageWomen = data.items && data.items[0].fields.women.fields.file.url
-    const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
-
+  const imageMan = data.items && data.items[0].fields.men.fields.file.url;
+  const imageWomen = data.items && data.items[0].fields.women.fields.file.url;
+  const plpImage =
+    !category && gender === "men"
+      ? imageMan
+      : !category && gender === "women"
+      ? imageWomen
+      : "";
 
   if (!product || errorProduct) {
     return <div><FormattedMessage id="error"/></div>;
@@ -54,7 +57,7 @@ const PLP: React.FC = () => {
                   addToCart={() => dispatch(addToCart( item ))}
                   />
             ))}
-      </div>
+        </div>
       </div>
     </section>
   );
