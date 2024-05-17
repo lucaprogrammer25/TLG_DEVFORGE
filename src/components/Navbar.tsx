@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
+import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
+import { FormattedMessage } from "react-intl";
 import fetchDataContentful from "../redux/fetch/fetchContentful";
+import SidebarCart from "./SidebarCart";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 import langauge from "../assets/icons/world svg.svg"
-import SidebarCart from "./SidebarCart";
-import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
-import { FormattedMessage } from "react-intl";
 interface NavbarProps {
     changeLocale: (newLocale: string) => void;
-  }
+}
 
-const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
+const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [contentIndex, setContentIndex] = useState<number>(0);
@@ -20,11 +20,12 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
     const [animateContent, setAnimateContent] = useState<boolean>(false);
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
+    const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
-    const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
+    const logo = data.items && data.items[2]?.fields.logoNavbar.fields.file.url
     const contents = data?.items?.[2]?.fields?.promotion ?? [];
     const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
     const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
@@ -37,8 +38,8 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
             </div>
         </Link>
     ));
-    
-    const MenDropdownItems = menDropdown.map((item:any, index:number) => (
+
+    const MenDropdownItems = menDropdown.map((item: any, index: number) => (
         <Link to={`men/${item.fields.description}`} key={index}>
             <div className={`navbarHoverMen${item.fields.name}`}>
                 <h1>{item.fields.name}</h1>
@@ -48,9 +49,9 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
     ));
 
     useEffect(() => {
-        dispatch(fetchDataContentful())     
+        dispatch(fetchDataContentful())
     }, [dispatch])
-    
+
     const handleClose = () => {
         setVisible(false);
     };
@@ -63,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
             setSidebarCartStyle({ display: "unset" });
         }
     };
-    
+
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "unset" });
@@ -80,8 +81,8 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
 
     const handleLanguageChange = (newLocale: string) => {
         changeLocale(newLocale);
-        
-      };
+
+    };
 
     return (
         <>
@@ -97,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
                 <div className="navbar">
                     <div className="navbarLogoContainer">
                         <Link className="linkTag" to='/'>
-                        <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
+                            <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
                         </Link>
                     </div>
                     <div className="navbarMenuItem">
@@ -107,31 +108,41 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
                                 onMouseEnter={() => setHiddenMen(false)}
                                 onMouseLeave={() => setHiddenMen(true)}
                             >
-                                <FormattedMessage id="men" defaultMessage="Men"/>
+                                <FormattedMessage id="men" defaultMessage="Men" />
                                 {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
                             </div>
-                        </Link> 
+                        </Link>
                         <Link className="linkTag" to='/women'>
-                        <div className="navbarMenuItemWomen"
-                            onMouseEnter={() => setHiddenWomen(false)}
-                            onMouseLeave={() => setHiddenWomen(true)}
-                        >
-                            <FormattedMessage id="women" defaultMessage="Women"/>
-                            {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
-                        </div>
+                            <div className="navbarMenuItemWomen"
+                                onMouseEnter={() => setHiddenWomen(false)}
+                                onMouseLeave={() => setHiddenWomen(true)}
+                            >
+                                <FormattedMessage id="women" defaultMessage="Women" />
+                                {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
+                            </div>
                         </Link>
                         <Link className="linkTag" to='/accessories'>
-                        <div className="navbarMenuItemAccessories">
-                            <p className="navbarMenuItemAccessoriesTitle">
-                                <FormattedMessage id="accessories" defaultMessage="Accessories"/>
-                            </p>
-                        </div>
+                            <div className="navbarMenuItemAccessories">
+                                <p className="navbarMenuItemAccessoriesTitle">
+                                    <FormattedMessage id="accessories" defaultMessage="Accessories" />
+                                </p>
+                            </div>
                         </Link>
                     </div>
                     <div className="navbarServiceMenu">
-                        <div className="navbarServiceMenuLanguage" onClick={() => handleLanguageChange('en')}>
+                        <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={langauge} alt="language-icon" />
                         </div>
+                        {languageMenuVisible && (
+                            <div className="navbarServiceMenuLanguageMenu">
+                                <div onClick={() => handleLanguageChange('en')}>
+                                    <FormattedMessage id="english" defaultMessage="English" />
+                                </div>
+                                <div onClick={() => handleLanguageChange('it')}>
+                                    <FormattedMessage id="italian" defaultMessage="Italian" />
+                                </div>
+                            </div>
+                        )}
                         <div className="navbarServiceMenuProfile">
                             <img src={profile} alt="profile-icon" />
                         </div>
@@ -139,15 +150,15 @@ const Navbar: React.FC<NavbarProps> = ({changeLocale}) => {
                             <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
                             <span>{`('${cartTotalQuantity}')`}</span>
                         </div>
-                    </div>                   
+                    </div>
                 </div>
             </nav>
-            { cartTotalQuantity !== 0 ?
-                <div className={`sidebarCart ${ !sidebarCartActive ? "inactive" : sidebarCartActive ? "active"  : "" }`} style={sidebarCartStyle}>
-                <SidebarCart closeSideCart={handleSidebarCartClose} />
-            </div> : null
+            {cartTotalQuantity !== 0 ?
+                <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
+                    <SidebarCart closeSideCart={handleSidebarCartClose} />
+                </div> : null
             }
-            
+
         </>
     );
 };

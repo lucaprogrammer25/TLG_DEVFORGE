@@ -27,7 +27,7 @@
     "close": "Close",
     "go to checkout": "Go to checkout",
     "payment options": "Payment Options",
-    "pay on delivery": "Pay on Delivery (+ €20)",
+    "pay on delivery": "Pay on Delivery (+ €10)",
     "pay with credit card": "Pay with Credit Card",
     "pay with paypal": "Pay with PayPal",
     "card number": "Card Number",
@@ -53,6 +53,5 @@
     "italy prefix":"Italy + 39",
     "france prefix":"France + 33",
     "germany prefix":"Germany + 49"
-
   }
   

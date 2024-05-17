@@ -10,7 +10,6 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-
     .navbarPromotionContent {
         display: inline-block;
         margin: 0 auto;
@@ -19,8 +18,11 @@
         opacity: 0; 
         transition: opacity 1s ease-in-out; 
         &:hover{
-            cursor:pointer;;
+            cursor:pointer;
             border-bottom: 1px solid $white;
+        }
+        .fadeIn{
+            opacity: 1;
         }
     } 
     .navbarPromotionButton    {
@@ -28,7 +30,8 @@
         color: $white;
         border:none;    
         padding-inline-end: 1rem;
-        font-size: 1.2rem;    
+        font-size: 1.2rem; 
+
     }
 }
 .navbarPromotionButton:hover{
@@ -36,12 +39,9 @@
 }
 .navbarPromotionContent.fadeIn {
     opacity: 1;
-    
+   
 }
 
-.navbarServiceMenuCart img{
-    cursor: pointer;
-}
 
 .navbar{
     width: 100%;
@@ -53,7 +53,6 @@
     .navbarLogoContainer{
         width: 10%;
         padding-inline-start: 1rem;
-       /*  margin-top:1rem; */
         .navbarLogo{
             width: 18rem;
             height: 100%;
@@ -91,14 +90,25 @@
     align-items: center;
     gap: 2rem;
     cursor: pointer;
+    position: relative;
+    .navbarServiceMenuLanguageMenu {
+        position: absolute;
+        inset-inline-start: 0;
+        inset-block-start: 100%; 
+        background-color: white;
+        border: 1px solid #ddd;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+        z-index: 1000;
+        & > div {
+          padding: 0.5rem 0.75rem; 
+          cursor: pointer;
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+      }
 }
-/* .navbarMenuItemMen,
-.navbarMenuItemWomen,
-.navbarMenuItemAccessories {
 
-}
-    
- */
  
 .navbarHoverMen ,
  .navbarHoverWomen {
@@ -117,9 +127,11 @@
         margin: 1rem;
     }
   }
-
-
-
+  .navbarServiceMenu {
+    position: relative;
+    
+  }
+  
 
 
 
@@ -145,7 +157,6 @@ HAMBURGER MENU  */
 /* MEDIA QUERY  */
 
 @media only screen and (max-width: 600px) {
-    
     .navbarServiceMenu{
         display: none;
     }
