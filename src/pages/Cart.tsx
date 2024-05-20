@@ -15,12 +15,11 @@ const Cart: React.FC<Props> = () => {
   const cartTotalPrice = useTypeSelector(selectCartTotalPrice);
   const dispatch = useTypeDispatch()
   const navigate = useNavigate()
+  
   const { cartItems } = useTypeSelector((state) => state.cart);
   const { data } = useTypeSelector((state) => state.contentful)
-  console.log(cartItems);
   
   const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
-  console.log(cartItems);
   useEffect(() => {
     dispatch(fetchDataContentful())     
   }, [dispatch])
@@ -33,17 +32,13 @@ const Cart: React.FC<Props> = () => {
     return item.shipment; 
 });
 
-const totalPrice = Number(shipmentValue[0]) == 20.00 ? Number(cartTotalPrice) + Number(shipmentValue[0]) : cartTotalPrice
+const totalPrice = Number(shipmentValue[0]) == 20 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2): cartTotalPrice;
 
-  
-  
-  
-
-  return (
+return (
     <div className='containerCart'>
       <div className='wrapperButtonPLP'>
        <img onClick={() => navigate("/")} className='logoCart' src={logo} alt=""  />
-       <span onClick={() => navigate("/")} >{`< Indietro`}</span>
+       <span onClick={() => navigate("/")} >{`< Go to back`}</span>
        </div>
       <div className='wrapperTitleCart'>
         <div className='titleCart'>
@@ -103,7 +98,7 @@ const totalPrice = Number(shipmentValue[0]) == 20.00 ? Number(cartTotalPrice) + 
         <div>
          
         </div>
-      </div>) : null
+      </div>) : <h3 className='goBackButton'>Go back to shopping</h3>
       }
     </div>
   );

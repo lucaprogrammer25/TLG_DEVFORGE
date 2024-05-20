@@ -11,7 +11,7 @@ interface CartState {
     error: string | null;
 }
 
-const initialState: CartState = {
+const defaultInitialState: CartState = {
     cartItems: [],
     quantity: 0,
     cartTotalPrice: 0,
@@ -19,6 +19,30 @@ const initialState: CartState = {
     shipment: 0,
     loading: false,
     error: null,
+};
+
+const loadStateFromLocalStorage = (): CartState => {
+    try {
+        const serializedState = localStorage.getItem('cartState');
+        if (serializedState === null) {
+            return defaultInitialState;
+        }
+        return JSON.parse(serializedState);
+    } catch (e) {
+        console.warn("Could not load state from localStorage", e);
+        return defaultInitialState;
+    }
+};
+
+const initialState: CartState = loadStateFromLocalStorage();
+
+const saveStateToLocalStorage = (state: CartState) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('cartState', serializedState);
+    } catch (e) {
+        console.warn("Could not save state to localStorage", e);
+    }
 };
 
 const cartSlice = createSlice({
@@ -35,41 +59,39 @@ const cartSlice = createSlice({
                 const newItem = { ...action.payload, quantity: 1, shipment: state.shipment };
                 state.cartItems = [...state.cartItems, newItem];
             }
+            saveStateToLocalStorage(state);
         },
         removeFromCart(state, action) {
-            const nextCartItems = state.cartItems.filter((cartItem) =>
-                cartItem.id !== action.payload.id)
-
-            state.cartItems = nextCartItems
+            state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+            saveStateToLocalStorage(state);
         },
         decrease(state, action) {
-            const itemIndex = state.cartItems.findIndex(cartItem =>
-                cartItem.id === action.payload.id)
-            if (state.cartItems[itemIndex].quantity >= 1) {
-                state.cartItems[itemIndex].quantity -= 1
+            const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id);
+            if (state.cartItems[itemIndex].quantity > 1) {
+                state.cartItems[itemIndex].quantity -= 1;
+            } else {
+                state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
             }
-            if (state.cartItems[itemIndex].quantity < 1) {
-                const nextCartItems = state.cartItems.filter((cartItem) =>
-                    cartItem.id !== action.payload.id)
-                state.cartItems = nextCartItems
-            }
+            saveStateToLocalStorage(state);
         },
         clearCart(state) {
-            state.cartItems = []
+            state.cartItems = [];
+            saveStateToLocalStorage(state);
         },
-        addShipping(state, action) {
+        addShipping(state) {
             state.cartItems = state.cartItems.map(item => ({
                 ...item,
-                shipment: item.shipment = 20.00
+                shipment: 20
             }));
+            saveStateToLocalStorage(state);
         },
-        removeShipping(state, action) {
+        removeShipping(state) {
             state.cartItems = state.cartItems.map(item => ({
                 ...item,
-                shipment: item.shipment = 0
+                shipment: 0
             }));
+            saveStateToLocalStorage(state);
         }
-
     }
 });
 

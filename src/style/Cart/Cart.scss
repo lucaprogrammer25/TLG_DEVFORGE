@@ -1,178 +1,187 @@
-.containerCart{
+.containerCart {
   display: flex;
   flex-direction: column;
   padding-inline-start: 1rem;
-    padding-inline-end: 1rem;
-    .wrapperButtonPLP{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      span{
-        cursor: pointer;
-        color: rgb(182, 177, 177);
-      }
-      img{
-        cursor:pointer
-      }
+  padding-inline-end: 1rem;
+
+  .wrapperButtonPLP {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      cursor: pointer;
+      color: rgb(182, 177, 177);
     }
-  h3{
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  h3 {
     font-weight: 300;
   }
-  .logoCart{
+
+  .logoCart {
     padding-inline-end: 1.56rem;
     padding-block-start: 1.56rem;
     padding-block-end: 1.56rem;
-    width: 200px
+    width: 12.5rem; // 200px
   }
 }
 
-
-.wrapperProductCart{
+.wrapperProductCart {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.wrapperTitleCart{
+.wrapperTitleCart {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  img{
+
+  img {
     cursor: pointer;
   }
 }
 
-.titleCart{
+.titleCart {
   display: flex;
   gap: 0.4rem;
 }
 
-.productMenu{
+.productMenu {
   position: relative;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    text-transform: uppercase;
-    z-index: 2;
-    margin-block-start: 3rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-transform: uppercase;
+  z-index: 2;
+  margin-block-start: 3rem;
 
+  &:first-child {
+    width: 30%;
+  }
 }
 
-.productMenu:first-child{
-  width: 30%;
-}
-
-.containerProduct{
+.containerProduct {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-height: 750px;
-  overflow-y: scroll;
-  .titleProduct{
+  max-height: 46.875rem; // 750px
+  overflow-y: auto;
+
+  .titleProduct {
     position: fixed;
     z-index: 2;
     height: 3rem;
-    width: 25%;
-    background-color: white;
     width: 30%;
+    background-color: white;
     text-align: center;
   }
 }
 
-.wrapperProduct{
+.wrapperProduct {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   gap: 1rem;
 }
 
-.product{
+.product {
   display: flex;
   gap: 1rem;
   width: 100%;
- img{
-      width: 25%;
-      clip:rect(0, 0, 10px, 20px);
+
+  img {
+    width: 25%;
+    clip: rect(0, 0, 0.625rem, 1.25rem); // rect(0, 0, 10px, 20px)
   }
 }
 
-.wrapperInfoProduct{
+.wrapperInfoProduct {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 202px;
-.infoProduct{
-  display: flex;
-  flex-direction: column;
-}
-.quantityProduct{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 16px;
-  .buttonCart{
+  max-width: 12.625rem; // 202px
+
+  .infoProduct {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quantityProduct {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    justify-content: space-between;
+    font-size: 1rem; // 16px
+    width: 11rem;
     align-items: center;
+
+    .buttonCart {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem; // 8px
+      align-items: center;
+    }
   }
 }
-}
 
-.cartButton{
-  span{
-    font-size: 20px;
+.cartButton {
+  span {
+    font-size: 1.25rem; // 20px
   }
 }
 
-.totalContainer{
+.totalContainer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-block-start: 2rem;
   padding-inline: 2rem;
   padding-block: 2rem;
-  background-color: rgb(128, 128, 128,0.5);
-  :first-child{
+  background-color: rgba(128, 128, 128, 0.5);
+
+  &:first-child {
     text-align: center;
   }
-
 }
 
-.containerCartPrice{
+.containerCartPrice {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.containerPayment{
+.containerPayment {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 75%;
 }
 
-
-@media screen and (min-width: 940px){
-   .wrapperProduct{
-    flex-direction: row;
-   }
-
-   .containerCart{
+@media screen and (min-width: 940px) {
+  .containerCart {
     padding-inline-start: 6rem;
     padding-inline-end: 6rem;
-   }
-
-  .containerProduct{
-    max-width: 60%;
   }
 
-  .totalContainer{
+  .wrapperProduct {
+    flex-direction: row;
+  }
+
+  .containerProduct {
+    max-width: 50%;
+  }
+
+  .totalContainer {
     width: 100%;
+    height: fit-content;
   }
 
-  .totalContainer{
-    height: fit-content;
+  .containerPayment {
+    width: 50%;
   }
 }

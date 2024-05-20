@@ -28,7 +28,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({label, closeSideCart}:SidebarCa
       </div>
       <div className='contentCart'>
           {cartItems.map((item) => (
-            <div key={item.id} className='boxProduct'> {/* Assicurati di includere una chiave univoca */}
+            <div key={item.id} className='boxProduct'>
               <img src={item.image} alt="cart product" />
               <div className='productDetails'>
                 <div>
