@@ -79,7 +79,7 @@ const PLP: React.FC = () => {
       </div>
         {isLoadMoreVisible && (
           <div onClick={handleLoadMore} className="loadMorePlpButton">
-            <span>Load More</span>
+            <span><FormattedMessage id="load more" defaultMessage="Load more"/></span>
             <span>{`${displayedCards} - ${maxItems}`}</span>
           </div>
         )}
