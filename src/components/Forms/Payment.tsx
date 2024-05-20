@@ -22,13 +22,13 @@ const PaymentForm: React.FC = () => {
   const handlePaymentMethodChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.value);
     if (event.target.value === 'paypal') {
-      dispatch(removeShipping(0))
+      dispatch(removeShipping())
       setPaypalSelected(true);
     } else if (event.target.value === 'cash-on-delivery') {
-      dispatch(addShipping(20));
+      dispatch(addShipping());
       console.log(cartItems);
     } else {
-      dispatch(removeShipping(20))
+      dispatch(removeShipping())
       setPaypalSelected(false);
     }
   };
