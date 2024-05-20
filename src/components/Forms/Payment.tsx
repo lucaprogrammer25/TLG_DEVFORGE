@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Buttontmg2 from '../Buttons/ButtonTmg2';
 import { useTypeDispatch, useTypeSelector } from '../../redux/typeHooks';
 import { addShipping, removeShipping } from '../../redux/slice/cartSlice';
 import { FormattedMessage } from 'react-intl';
