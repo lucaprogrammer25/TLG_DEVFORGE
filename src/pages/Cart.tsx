@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
-import { addToCart, clearCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/cartSlice';
-import fetchDataContentful from "../redux/fetchContentful";
+import { addToCart, clearCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
+import fetchDataContentful from "../redux/fetch/fetchContentful";
 import trashCanIcon from "../assets/icons/trash-can-svgrepo-com.svg"
 import { useNavigate } from 'react-router-dom';
 import ShipmentForm from '../components/Forms/Shipment';
