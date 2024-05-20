@@ -1,27 +1,42 @@
-import { Route, Routes } from 'react-router-dom'
-import DefaultDisplay from './layout/DefaultDisplay'
+import { Route, Routes } from 'react-router-dom';
+import { IntlProvider } from 'react-intl';
+import { useState } from 'react';
+import DefaultDisplay from './layout/DefaultDisplay';
 import HeroSection from './pages/HeroSection';
 import Login from './pages/Login';
 import PLP from './pages/PLP';
 import ProductDirectPage from './pages/ProductDirectPage';
 import Cart from './pages/Cart';
 import FinalCheck from './pages/FinalCheck';
-
-
+import messagesInItalian from './translation/it.json';
+import messagesInEnglish from './translation/en.json';
 
 const App: React.FC = () => {
+  const [locale, setLocale] = useState('it');
+
+  const messages = {
+    en: messagesInEnglish,
+    it: messagesInItalian,
+  }[locale];
+  
+  const changeLocale = (newLocale: string) => {
+    setLocale(newLocale);
+  };
+
   return (
     <>
-    <Routes>
-      <Route path="/" element={<DefaultDisplay/>}>
-        <Route path="/" element={<HeroSection/>}/>
-         <Route path="/:gender/:category?/:id?" element={<PLP />} /> {/* il parametro category è opzionale */}
-        <Route path="login" element={<Login />} />
-        <Route path="pdp/:id" element={<ProductDirectPage />} />
-      </Route>
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/finalcheck" element={<FinalCheck />}/>
-    </Routes>
+      <IntlProvider locale={locale} messages={messages} defaultLocale="it">
+        <Routes>
+          <Route path="/" element={<DefaultDisplay changeLocale={changeLocale} />}>
+            <Route path="/" element={<HeroSection />} />
+            <Route path="/:gender/:category?/:id?" element={<PLP />} />
+            <Route path="login" element={<Login />} />
+            <Route path="pdp/:id" element={<ProductDirectPage />} />
+            <Route path="/cart" element={<Cart />} />
+          </Route>
+          <Route path="/finalcheck" element={<FinalCheck />} />
+        </Routes>
+      </IntlProvider>
     </>
   );
 };

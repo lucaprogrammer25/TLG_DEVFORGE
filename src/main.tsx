@@ -1,11 +1,13 @@
+import { BrowserRouter, } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Profiler, ProfilerOnRenderCallback } from 'react'
 import App from './App.tsx'
-import './index.scss'
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
 import store from './redux/store.ts'
+import './index.scss'
+
+
 
 // const onRenderCallback:ProfilerOnRenderCallback = (
 //   id:any, // the "id" prop of the Profiler tree that has just committed
@@ -23,10 +25,10 @@ import store from './redux/store.ts'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <Profiler id='myApp' onRender={onRenderCallback}>
   <React.StrictMode>
-      <Provider store={store}>
-    <BrowserRouter>
-    <App/>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
     </Provider>
   </React.StrictMode>
   // </Profiler>

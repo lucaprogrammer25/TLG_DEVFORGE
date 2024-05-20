@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
-import fetchDataProduct from '../redux/fetchProducts';
+import fetchDataProduct from '../redux/fetch/fetchProducts';
 import { useParams } from "react-router-dom";
 import CardPDP from '../components/CardPDP';
 

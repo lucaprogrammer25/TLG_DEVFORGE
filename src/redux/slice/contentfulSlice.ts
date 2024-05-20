@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {Contentful } from "../interfaces/type";
-import fetchDataContentful from "./fetchContentful";
+import {Contentful } from "../../interfaces/type";
+import fetchDataContentful from "../fetch/fetchContentful";
 
 
 const initialState: Contentful = {

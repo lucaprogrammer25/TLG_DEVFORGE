@@ -17,19 +17,11 @@ export interface FormData {
   postalCode: string;
   country: string;
   province: string;
-  phoneNumber: string;
-  phonePrefix?:number;
+  phoneNumber?: string;
+  phonePrefix?:any;
   
 }
 
-export interface FormDataBilling {
-  billingAddress: string;
-  billingPostalCode: string;
-  billingCountry: string;
-  billingProvince: string;
-  billingPhoneNumber: string;
-  billingPrefix: string;
-}
 
 export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 export type Props = {
@@ -67,6 +59,15 @@ export interface Cart {
 }
 
 export interface SidebarCartType {
-  label: string;
   closeSideCart: any;
+}
+
+export interface PropsForms {
+  formData: FormData;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  countryOptions: string[];
+  prefixOptions: any,
+  billing?:string;
+  selectedCountry?:any,
+  handleCountryChange?:any;
 }

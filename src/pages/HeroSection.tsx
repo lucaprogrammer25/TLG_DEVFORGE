@@ -1,5 +1,5 @@
 import { useTypeSelector ,useTypeDispatch} from "../redux/typeHooks"
-import fetchDataContentful from "../redux/fetchContentful";
+import fetchDataContentful from "../redux/fetch/fetchContentful";
 import { useEffect } from "react";
 import CarouselPage from "./CarouselPage";
 

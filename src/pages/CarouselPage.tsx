@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
-import fetchDataProduct from "../redux/fetchProducts";
+import fetchDataProduct from "../redux/fetch/fetchProducts";
 
 interface Product {
   image: string;
   name: string;
   price: string;
-  category: string;
+  gender: string;
+  id: string;
 }
-
 
 const CarouselPage = () => {
   const { data, error } = useTypeSelector((state) => state.product);
@@ -23,7 +23,8 @@ const CarouselPage = () => {
   const dataImages = data ? data.map((item: Product) => item.image) : [];
   const dataProduct = data ? data.map((item: Product) => item.name) : [];
   const dataPrice = data ? data.map((item: Product) => item.price) : [];
-  const dataCategory = data ? data.map((item: Product) => item.category) : [];
+  const id = data ? data.map((item: Product) => item.id) : [];
+  const dataGender = data ? data.map((item: Product) => item.gender) : [];
 
   if (error) {
     return <div>Error loading data!</div>;
@@ -36,7 +37,8 @@ const CarouselPage = () => {
           images={dataImages}
           names={dataProduct}
           prices={dataPrice}
-          category={dataCategory}
+          id={id}
+          gender={dataGender}
         />
       ) : (
         <div>Loading images...</div>

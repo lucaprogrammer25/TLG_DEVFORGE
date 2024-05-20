@@ -1,14 +1,15 @@
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CardPLP from "../components/CardPLP";
+import { FormattedMessage } from "react-intl";
 import { ProductJson } from "../interfaces/type";
-import fetchDataContentful from "../redux/fetchContentful";
-import fetchDataProduct from "../redux/fetchProducts";
-import { addToCart } from "../redux/cartSlice";
+import CardPLP from "../components/CardPLP";
+import { addToCart }  from "../redux/slice/cartSlice";
+import fetchDataContentful from "../redux/fetch/fetchContentful";
+import fetchDataProduct from "../redux/fetch/fetchProducts";
 
 const PLP: React.FC = () => {
-  const { gender, category = '' } = useParams(); // Qui do un valore a category in modo da renderlo opzionale
+  const { gender, category = '' } = useParams(); 
   const { data:product, error: errorProduct  } = useTypeSelector((state) => state.product);
   const { data } = useTypeSelector((state) => state.contentful)
 
@@ -19,16 +20,19 @@ const PLP: React.FC = () => {
     dispatch(fetchDataProduct());
   }, [dispatch]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
-    const imageMan = data.items && data.items[0].fields.men.fields.file.url;
-    const imageWomen = data.items && data.items[0].fields.women.fields.file.url
-    const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
-
+  const imageMan = data.items && data.items[0].fields.men.fields.file.url;
+  const imageWomen = data.items && data.items[0].fields.women.fields.file.url;
+  const plpImage =
+    !category && gender === "men"
+      ? imageMan
+      : !category && gender === "women"
+      ? imageWomen
+      : "";
 
   if (!product || errorProduct) {
-    return <div>Errore caricamento dati</div>;
+    return <div><FormattedMessage id="error"/></div>;
   }
 
   return (
@@ -38,7 +42,7 @@ const PLP: React.FC = () => {
       <h1 id="titleProductPage">Product</h1>
       <div className="containerCards">
         {product
-          .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) //il parametro gender verrà preso a prescindere dal parametro category, prenderà i filtri dai params di useParams scritti nell'URL
+          .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category)) 
           .map((item: ProductJson) => (
             <CardPLP
                   key={item.id}
@@ -53,7 +57,7 @@ const PLP: React.FC = () => {
                   addToCart={() => dispatch(addToCart( item ))}
                   />
             ))}
-      </div>
+        </div>
       </div>
     </section>
   );
