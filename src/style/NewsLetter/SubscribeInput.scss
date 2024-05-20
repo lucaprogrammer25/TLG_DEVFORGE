@@ -34,12 +34,15 @@
   }
 }
 
-h2 {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.divForm{
+  h2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
 }
 
 .subscribeInput {
@@ -57,8 +60,10 @@ label {
   align-items: center;
 }
 
-p {
-  font-size: 1rem;
+.divForm{
+  p {
+    font-size: 1rem;
+  }
 }
 
 .subscribeThank {
