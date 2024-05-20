@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <Route path="pdp/:id" element={<ProductDirectPage />} />
         <Route path="/cart" element={<Cart />} />
       </Route>
-        <Route path="/finalcheck" element={<FinalCheck />}/>
+      <Route path="/finalcheck" element={<FinalCheck />}/>
     </Routes>
     </>
   );

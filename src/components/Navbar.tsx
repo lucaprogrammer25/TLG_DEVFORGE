@@ -140,9 +140,9 @@ const Navbar: React.FC = () => {
                             <span>{`('${cartTotalQuantity}')`}</span>
                         </div>
                     </div>
-                    {/* MOBILE MENU  */}
                 </div>
             </nav>
+                    {/* MOBILE MENU  */}
                     <div className="mobileBar">
                         <div className="mobileBarLogoContainer">
                             <Link className="linkTag" to='/'>
