@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Props } from "../interfaces/type";
 
-const CardPDP: React.FC<Props>= ({id, image, title, price, description}: Props) => {
+const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+    useEffect(() => {  // aggiunto che quando arrivi in questa pagina ti porta in alto
+        window.scrollTo(0, 0);
+    }, []); 
+
 
     const handleClickClassSize = (size: string) => {
         setSelectedSize(size);
@@ -19,7 +24,7 @@ const CardPDP: React.FC<Props>= ({id, image, title, price, description}: Props) 
                     <h2 className='titleCardPDP'>{title}</h2>
                     <div className='containerPricePDP'>
                         <p>{price}€</p>
-                        <button>Add to Cart</button>
+                        <button className='ButtonTmgCss3'>Add to Cart</button>
                         </div>
                     </div>
                     </div>

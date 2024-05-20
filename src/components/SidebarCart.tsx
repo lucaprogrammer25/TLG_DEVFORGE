@@ -4,9 +4,9 @@ import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTo
 import { SidebarCartType } from '../interfaces/type';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
-import Buttontmg3 from './Buttons/ButtonTmg3';
 import iconP from '../assets/icons/iconP.svg'
 import iconPaypal from '../assets/icons/iconPaypal.svg'
+import Buttontmg3 from './Buttons/ButtonTmg3';
 
 
 const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType) => {
@@ -18,6 +18,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
 
   const handleClickCheckout = () => {
     navigate("/cart")
+    document.body.classList.remove('sidebar-open');
   }
 
   
@@ -29,7 +30,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
       </div>
       <div className='contentCart'>
           {cartItems.map((item) => (
-            <div key={item.id} className='boxProduct'> 
+            <div key={item.id} className='boxProduct'>
               <img src={item.image} alt="cart product" />
               <div className='productDetails'>
                 <div>

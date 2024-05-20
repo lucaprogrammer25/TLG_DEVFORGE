@@ -53,6 +53,7 @@ export interface Cart {
   price: number;
   image:string;
   name:string;
+  shipment: number;
   cartQuantity: number;
   quantity: number;
 }

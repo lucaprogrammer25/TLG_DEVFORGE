@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl"; // Import FormattedMessage
-import Facebook from "../assets/icons/icon_facebook.svg";
 
 const Footer: React.FC = () => {
   return (
@@ -220,6 +219,8 @@ const Footer: React.FC = () => {
                 ></path>
               </svg>
             </a>
+            <div>
+            </div>
           </div>
         </div>
       </footer>
