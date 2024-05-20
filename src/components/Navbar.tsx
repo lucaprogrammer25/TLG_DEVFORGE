@@ -25,10 +25,10 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
-    const logo = data.items && data.items[2]?.fields.logoNavbar.fields.file.url
-    const contents = data?.items?.[2]?.fields?.promotion ?? [];
-    const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
-    const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
+    const logo = data.items && data.items[0]?.fields.logoNavbar.fields.file.url
+    const contents = data?.items?.[0]?.fields?.promotion ?? [];
+    const menDropdown = data?.items?.[0]?.fields?.menDropDown ?? [];
+    const womenDropdown = data?.items?.[0]?.fields?.womenDropDown ?? [];
 
     const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
         <Link to={`women/${item.fields.description}`} key={index}>

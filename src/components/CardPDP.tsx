@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Props } from "../interfaces/type";
+import Buttontmg3 from './Buttons/ButtonTmg3';
 
-const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
+const CardPDP: React.FC<Props>= ({image, title, price, description, addToCart}: Props) => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
     useEffect(() => {  // aggiunto che quando arrivi in questa pagina ti porta in alto
@@ -48,7 +49,7 @@ const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
                     </div>
                      <div className='containerPricePDP'>
                         <p>{price}€</p>
-                        <button className='ButtonTmgCss3'>Add to Cart</button>
+                        <Buttontmg3 className='ButtonTmgCss3' label={"add to cart"} onClick={addToCart} />
                         </div>
                     </div>
                    
