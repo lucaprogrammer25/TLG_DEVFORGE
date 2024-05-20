@@ -179,11 +179,11 @@ const PaymentForm: React.FC = () => {
     )}
     {paypalSelected && (
       <div>
-        <button><FormattedMessage id="pay with paypal" /></button>
+        <button className='buttonBlackPWhite'><FormattedMessage id="pay with paypal" /></button>
       </div>
     )}
     {!paypalSelected && (
-      <Buttontmg3 label="go to checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+      <Buttontmg3 label="go to checkout" className='buttonBlackPWhite' onClick={handleFormSubmit} />
     )}
   </form>
 </div>
