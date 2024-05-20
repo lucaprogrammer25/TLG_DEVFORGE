@@ -1,122 +1,189 @@
-.tabs-horizontal {
-  .tabs {
-    justify-content: space-evenly;
+.containerCart {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+
+  .wrapperButtonPLP {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #ccc;
-  }
+    justify-content: space-between;
+    align-items: center;
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    thead,
-    tbody {
-      display: flex;
-      flex-direction: column;
+    span {
+      cursor: pointer;
+      color: rgb(182, 177, 177);
     }
 
-    tr {
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-
-      th,
-      td {
-        flex: 1;
-        display: flex;
-        align-items: flex-end; // Allinea il contenuto in basso
-        justify-content: center; // Centra il contenuto orizzontalmente
-        padding: 10px;
-        text-align: center;
-      }
-      td {
-        height: 300px;
-        padding: 20px;
-      }
-
-      th {
-        border-bottom: 1px solid black;
-        padding: 20px;
-      }
+    img {
+      cursor: pointer;
     }
   }
 
-  .ButtonTmgCss3 {
-    padding: 10px 20px;
-    cursor: pointer;
-    border-bottom: none;
-    margin: 0;
-    text-align: center;
-
-    &:hover {
-      font-weight: bold;
-      border-bottom: 2px solid #000;
-      text-decoration: none;
-    }
-    &.active {
-      font-weight: bold;
-      border-bottom: 2px solid #000;
-    }
+  h3 {
+    font-weight: 300;
   }
 
-  .tab-content {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+  .logoCart {
+    padding-inline-end: 1.56rem;
+    padding-block-start: 1.56rem;
+    padding-block-end: 1.56rem;
+    width: 12.5rem; // 200px
   }
 }
 
-.product_in_carrel {
+.wrapperProductCart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wrapperTitleCart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.titleCart {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.productMenu {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-transform: uppercase;
+  z-index: 2;
+  margin-block-start: 3rem;
+
+  &:first-child {
+    width: 30%;
+  }
+}
+
+.containerProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-height: 46.875rem; // 750px
+  overflow-y: auto;
+
+  .titleProduct {
+    position: fixed;
+    z-index: 2;
+    height: 3rem;
+    width: 30%;
+    background-color: white;
+    text-align: center;
+  }
+}
+
+.wrapperProduct {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.product {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+
+  img {
+    width: 25%;
+    clip: rect(0, 0, 0.625rem, 1.25rem); // rect(0, 0, 10px, 20px)
+  }
+}
+
+.wrapperInfoProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 12.625rem; // 202px
+
+  .infoProduct {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quantityProduct {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1rem; // 16px
+    width: 11rem;
+    align-items: center;
+
+    .buttonCart {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem; // 8px
+      align-items: center;
+    }
+  }
+}
+
+.cartButton {
+  span {
+    font-size: 1.25rem; // 20px
+  }
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-start: 2rem;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  background-color: rgba(128, 128, 128, 0.5);
+
+  &:first-child {
+    text-align: center;
+  }
+}
+
+.containerCartPrice {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.product_in_carrel {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  justify-content: center; /* Centra la griglia orizzontalmente */
-  align-items: center; /* Centra i figli verticalmente */
-
-  > div {
-    padding: 10px;
-    border: 1px solid #ccc;
-    justify-self: center; /* Centra i figli orizzontalmente all'interno delle colonne */
-  }
-}
-
-.buttonsTabs {
+.containerPayment {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-@media screen and (max-width: 480px) {
-  table thead,
-  table tbody,
-  table tr {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    tr:last-child td:nth-last-child(-n + 4) {
-      border: 1px solid black;
-    }
+@media screen and (min-width: 940px) {
+  .containerCart {
+    padding-inline-start: 6rem;
+    padding-inline-end: 6rem;
   }
 
-  table th,
-  table td {
-    display: flex;
-    flex: 1;
+  .wrapperProduct {
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  table th {
-    justify-content: flex-end;
+  .containerProduct {
+    max-width: 50%;
   }
 
-  table td {
-    justify-content: flex-start;
+  .totalContainer {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .containerPayment {
+    width: 50%;
   }
 }
