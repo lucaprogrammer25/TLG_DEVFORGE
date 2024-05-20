@@ -4,7 +4,7 @@ import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTo
 import { SidebarCartType } from '../interfaces/type';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
-import Buttontmg3 from './Buttons/ButtonTmg3';
+import Buttontmg2 from './Buttons/ButtonTmg3';
 import iconP from '../assets/icons/iconP.svg'
 import iconPaypal from '../assets/icons/iconPaypal.svg'
 
@@ -18,6 +18,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
 
   const handleClickCheckout = () => {
     navigate("/cart")
+    document.body.classList.remove('sidebar-open');
   }
 
   
@@ -29,7 +30,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
       </div>
       <div className='contentCart'>
           {cartItems.map((item) => (
-            <div key={item.id} className='boxProduct'> 
+            <div key={item.id} className='boxProduct'>
               <img src={item.image} alt="cart product" />
               <div className='productDetails'>
                 <div>
@@ -52,7 +53,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
       <p><FormattedMessage id="total" defaultMessage="Total"/></p>
       <p>{`$${CartTotalPrice}`}</p>
       </div>
-          <Buttontmg3 label={"go to checkout"} classButton="ButtonTmgCss3"onClick={handleClickCheckout} />
+          <Buttontmg2 onClick={handleClickCheckout}  classButton='buttonCheckout' label='GO TO CHECKOUT'/>
           <div className='buttonPaypal'>
             <img src={iconP} alt="" />
             <img src={iconPaypal} alt="" />

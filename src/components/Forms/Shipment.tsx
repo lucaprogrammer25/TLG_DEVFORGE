@@ -84,7 +84,7 @@ const prefixOptions = [<FormattedMessage id="prefix"/> as any,
         )}
         {/* <Buttontmg2 label="Checkout" classButton='checkoutPayment' onClick={handleFormSubmit} /> */}
       </form>
-      <PaymentForm />
+      <PaymentForm/>
     </div>
   );
 };

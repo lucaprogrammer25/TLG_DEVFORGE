@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import Buttontmg2 from '../Buttons/ButtonTmg2';
+import { useTypeDispatch, useTypeSelector } from '../../redux/typeHooks';
+import { addShipping, removeShipping } from '../../redux/slice/cartSlice';
 import { FormattedMessage } from 'react-intl';
 import Buttontmg3 from '../Buttons/ButtonTmg3';
-
 const PaymentForm: React.FC = () => {
+  const {cartItems} = useTypeSelector((state) => state.cart )
   const [paymentMethod, setPaymentMethod] = useState('');
   const [creditCardInfo, setCreditCardInfo] = useState({
     cardNumber: '',
@@ -12,15 +15,24 @@ const PaymentForm: React.FC = () => {
     cardHolderName: '',
   });
   const [paypalSelected, setPaypalSelected] = useState(false);
-
+  const dispatch = useTypeDispatch()
+  console.log(paymentMethod);
+  
+  
   const handlePaymentMethodChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.value);
     if (event.target.value === 'paypal') {
+      dispatch(removeShipping())
       setPaypalSelected(true);
+    } else if (event.target.value === 'cash-on-delivery') {
+      dispatch(addShipping());
+      console.log(cartItems);
     } else {
+      dispatch(removeShipping())
       setPaypalSelected(false);
     }
   };
+ 
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target ;
