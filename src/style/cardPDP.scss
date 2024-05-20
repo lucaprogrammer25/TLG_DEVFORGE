@@ -1,21 +1,34 @@
 
 .containerCardPDP {
   margin: 0 auto;
-  max-width: 400px;
-  margin-bottom: 4rem;
+  margin-block-end: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
 
 .containerImgPDP {
     img {
-      margin-top: 1rem;
       width: 400px;
       height: 500px;
       object-fit: cover;
     }
   }
 
-.titleCardPDP {
-    margin: 0 2rem;
+  .wrapperImg{
+    margin-block-start: 2rem;
   }
+
+  .contentProducts{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .containerPricePDP {
+    order: 3;
+  }
+
 
   .descriptionCardPDP {
     display: flex;
@@ -27,12 +40,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 3rem;
+    margin-block-end: 3rem;
+    max-width: 400px;
+    align-items: center;
 
     p {
-      font-size: 26px;
-      font-weight: 600;
-      margin: 2rem;
+      font-size: 20px;
+      font-weight: 400;
     }
     button {
       cursor: pointer;
@@ -41,30 +55,33 @@
       text-align: center;
       width: 8rem;
       height: 2rem;
-      margin: 2rem;
     }
   }
 
   .detailsPDP {
     display: flex;
     flex-direction: column;
+    p{
+      text-wrap: wrap;
+      max-width: 20rem;
+    }
   }
 
   .sizeCard {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    gap: 1.5rem;
+    margin-block-end: 3rem;
 
     .sizeContainer {
       display: flex;
       flex-direction: row;
       font-size: 35px;
-      justify-content: space-around;
+      justify-content: space-between;
     }
 
     .itemSize {
-      color: $white;
+      color: #ababab;
       cursor: pointer;
     }
 
@@ -83,6 +100,7 @@
       display: flex;
       flex-direction: row;
       gap: 2rem;
+      padding-block-end: 0.35rem;
 
       .squareGreen,
       .squareRed,
@@ -105,22 +123,31 @@
     }
   }
 
-  @media screen and (min-width: 478px) {
+  @media screen and (min-width: 700px) {
+    .containerCardPDP {
+      margin: 0 auto;
+      margin-block-end: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
     .wrapperImg {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       text-wrap: nowrap;
+    }
+
+    .contentProducts{
+      display: flex;
+      flex-direction: row;
     }
 
     .infoCardPDP {
       display: flex;
       flex-direction: column;
-      margin-top: 3rem;
       justify-content: space-between;
-    }
-
-    .containerPricePDP {
-      flex-direction: column;
-    }
+    }   
   }
-}
+

@@ -17,17 +17,12 @@ const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
         <>
             <div className="containerCardPDP">
                 <div className='wrapperImg'>
+                    <div className='contentProducts'>
                 <div className='containerImgPDP'>
                     <img src={image} alt="" />
                 </div> 
                 <div className='infoCardPDP'>
                     <h2 className='titleCardPDP'>{title}</h2>
-                    <div className='containerPricePDP'>
-                        <p>{price}€</p>
-                        <button className='ButtonTmgCss3'>Add to Cart</button>
-                        </div>
-                    </div>
-                    </div>
                     <div className='detailsPDP'>
                         <h3>Description</h3>
                         <p> {description}</p>
@@ -49,6 +44,15 @@ const CardPDP: React.FC<Props>= ({image, title, price, description}: Props) => {
                             <div className="squareRed"></div>
                         </div>
                     </div>
+                    </div>
+                    </div>
+                     <div className='containerPricePDP'>
+                        <p>{price}€</p>
+                        <button className='ButtonTmgCss3'>Add to Cart</button>
+                        </div>
+                    </div>
+                   
+                   
               
             </div>    
         </>

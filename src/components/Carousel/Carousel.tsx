@@ -133,7 +133,7 @@ const Carousel: React.FC<CarouselProps> = ({
         </span>
       </div>
       <div className="productDescription">
-        <Buttontmg3 onClick={goToPrev} label="Prev" />
+        <Buttontmg3 className="ButtonTmgCss3" onClick={goToPrev} label="Prev" />
         <div className="carousel-images">
           {getVisibleItems().map((item, index) => (
             <div
@@ -148,7 +148,7 @@ const Carousel: React.FC<CarouselProps> = ({
             </div>
           ))}
         </div>
-        <Buttontmg3 onClick={goToNext} label="Next" />
+        <Buttontmg3 className="ButtonTmgCss3" onClick={goToNext} label="Next" />
       </div>
     </div>
   );
