@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Buttontmg2 from '../Buttons/ButtonTmg2';
 import { useTypeDispatch, useTypeSelector } from '../../redux/typeHooks';
 import { addShipping, removeShipping } from '../../redux/slice/cartSlice';
 import { FormattedMessage } from 'react-intl';
@@ -179,11 +178,11 @@ const PaymentForm: React.FC = () => {
     )}
     {paypalSelected && (
       <div>
-        <button><FormattedMessage id="pay with paypal" /></button>
+        <button className='buttonBlackPWhite'><FormattedMessage id="pay with paypal" /></button>
       </div>
     )}
     {!paypalSelected && (
-      <Buttontmg3 label="go to checkout" classButton='checkoutPayment' onClick={handleFormSubmit} />
+      <Buttontmg3 label="go to checkout" className='buttonBlackPWhite' onClick={handleFormSubmit} />
     )}
   </form>
 </div>

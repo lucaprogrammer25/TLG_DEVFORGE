@@ -91,7 +91,7 @@ return (
              
         </div>
         }
-        <Buttontmg3 label='go to checkout' onClick={handleClickShipment}/>
+        <Buttontmg3 className='buttonBlackPWhite' label='go to checkout' onClick={handleClickShipment}/>
         {shipment ? <ShipmentForm/> : null }
         </div>
         </div>
