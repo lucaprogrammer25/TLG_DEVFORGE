@@ -31,15 +31,13 @@
         border:none;    
         padding-inline-end: 1rem;
         font-size: 1.2rem; 
-
     }
 }
 .navbarPromotionButton:hover{
     cursor:pointer;
 }
 .navbarPromotionContent.fadeIn {
-    opacity: 1;
-   
+    opacity: 1;   
 }
 
 
@@ -111,7 +109,8 @@
  
 .navbarHoverMen ,
  .navbarHoverWomen {
-    width: 100%;
+    width: 100%; 
+    cursor: pointer;
     position: absolute;
     background-color: $white; 
     padding: 1rem;
@@ -124,11 +123,11 @@
     grid-template-columns: repeat(4, 1fr);
     .navbarHoverImage {
         margin: 1rem;
+        cursor: pointer;
     }
   }
   .navbarServiceMenu {
-    position: relative;
-    
+    position: relative;   
   }
   
 
