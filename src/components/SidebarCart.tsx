@@ -52,7 +52,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
       <p><FormattedMessage id="total" defaultMessage="Total"/></p>
       <p>{`$${CartTotalPrice}`}</p>
       </div>
-          <Buttontmg3 label={"go to checkout"} className="buttonGoToCheckout"onClick={handleClickCheckout} />
+          <Buttontmg3 label={"go to checkout"} className="buttonWhitePBlack"onClick={handleClickCheckout} />
           <div className='buttonPaypal'>
             <img src={iconP} alt="" />
             <img src={iconPaypal} alt="" />
