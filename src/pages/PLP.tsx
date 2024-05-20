@@ -46,7 +46,10 @@ const PLP: React.FC = () => {
     setDisplayedCards(prevCount => Math.min(prevCount + 12, product.length));
   };
 
-  const isLoadMoreVisible = maxItems ? displayedCards < maxItems : true;
+ 
+  const isLoadMoreVisible =
+  (category === '' || category === 'accessories') && (maxItems ? displayedCards < maxItems : true);
+
 
 
   return (
