@@ -2,43 +2,18 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import NewsletterForm from '../components/NewsLetter/newsLetter';
-/* import BackToTopButton from '../components/BackToTop'; */
-/* import  { useState, useEffect } from 'react';*/ 
+interface DefaultDisplayProps {
+  changeLocale: (newLocale: string) => void;
+}
 
+const DefaultDisplay: React.FC<DefaultDisplayProps> = ({changeLocale}) => {
+ 
+  
 
-
-const DefaultDisplay = () => {
-  /* const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) { 
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const handleBackToTopClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  } */
   return (
     <>
-    <Navbar/>
-       <Outlet/>
-    <NewsletterForm/>
+    <Navbar changeLocale={changeLocale} />
+    <Outlet/>
     <Footer/>
     </>
   );

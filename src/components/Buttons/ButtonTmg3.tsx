@@ -1,13 +1,15 @@
 import React from "react";
-import "./ButtonTmg3.css";
+import "../../style/ButtonsSCSS/ButtonTmg3.scss";
+import { FormattedMessage } from "react-intl";
 
 interface ButtonTmgProps {
-  label: string; // Aggiunge una prop per il testo del bottone
-  onClick: any
+  label: string; 
+  onClick: any;
+  className?:string;
 }
 
-const Buttontmg3: React.FC<ButtonTmgProps> = ({ onClick, label}) => {
-  return <button className="ButtonTmgCss3" onClick={onClick}>{label}</button>;
+const Buttontmg3: React.FC<ButtonTmgProps> = ({ onClick, label, className}) => {
+  return <button className={className} onClick={onClick}><FormattedMessage id={label} defaultMessage={label}/></button>;
 };
 
 export default Buttontmg3;

@@ -1,0 +1,80 @@
+.shipmentContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row ;
+    justify-content: center;
+    align-content: center;
+    list-style: none;
+    
+    .shipmentFormList {
+      list-style: none;
+      
+      input {
+        border: none; 
+        border-bottom: 1px solid black; 
+        margin-bottom: 2%;
+        width: 55%;
+      }
+      select {
+        border: none; 
+        border-bottom: 1px solid black; 
+        margin-bottom: 5%;
+      }
+      label {
+        width: 65%;
+        margin-right: 5%;
+        display: flex;
+        flex-direction: row;
+      }
+
+    }
+  }
+
+  .paymentForm{
+    display: flex;
+    flex-direction: column;
+    input {
+      border: none; 
+      border-bottom: 1px solid black; 
+      margin-bottom: 2%;
+    }
+    select {
+      border: none; 
+      border-bottom: 1px solid black; 
+      margin-bottom: 5%;
+    }
+    label {
+      width: 65%;
+      margin-right: 5%;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5%;
+    }
+
+}
+
+.styled-radio {
+  display: none;
+
+  + label {
+    position: relative;
+    padding-inline-start: 30px; 
+      &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0.9rem;
+          height: 0.9rem; 
+          border: 1px solid #000; 
+          
+      }
+
+     
+  }
+
+  &:checked + label:before {
+      background-color: #000; 
+  }
+}
+

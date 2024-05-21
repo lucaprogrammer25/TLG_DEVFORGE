@@ -1,7 +1,6 @@
 /* SIDEBAR */
 
 .navbarPromotion{
-    font-family: $primaryFont;
     display: flex;
     justify-content: space-between;
     position: sticky;
@@ -12,7 +11,6 @@
     justify-content: center;
     width: 100%;
     overflow: hidden;
-
     .navbarPromotionContent {
         display: inline-block;
         margin: 0 auto;
@@ -21,31 +19,26 @@
         opacity: 0; 
         transition: opacity 1s ease-in-out; 
         &:hover{
-            cursor:pointer;;
+            cursor:pointer;
             border-bottom: 1px solid $white;
+        }
+        .fadeIn{
+            opacity: 1;
         }
     } 
     .navbarPromotionButton    {
-        font-family: $primaryFont;
         background-color: $lightBlack;
         color: $white;
         border:none;    
         padding-inline-end: 1rem;
-        font-size: 1.2rem;    
+        font-size: 1.2rem; 
     }
 }
 .navbarPromotionButton:hover{
     cursor:pointer;
 }
 .navbarPromotionContent.fadeIn {
-    opacity: 1;
-    
-}
-.navbarServiceMenu {
-    margin-right: 1rem;
-}
-.navbarServiceMenuCart img{
-    cursor: pointer;
+    opacity: 1;   
 }
 
 .navbar{
@@ -58,7 +51,6 @@
     .navbarLogoContainer{
         width: max-content;
         padding-inline-start: 1rem;
-       /*  margin-top:1rem; */
         .navbarLogo{
             width: 15rem;
             height: 100%;
@@ -85,7 +77,6 @@
     }
     
 }
-
     .navbarHoverImage{
         height: 20rem;
         width: 20rem;
@@ -96,18 +87,31 @@
     flex-direction: row;
     align-items: center;
     gap: 2rem;
+    cursor: pointer;
+    position: relative;
+    .navbarServiceMenuLanguageMenu {
+        position: absolute;
+        inset-inline-start: 0;
+        inset-block-start: 100%; 
+        background-color: white;
+        border: 1px solid #ddd;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+        z-index: 1000;
+        & > div {
+          padding: 0.5rem 0.75rem; 
+          cursor: pointer;
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+      }
 }
-/* .navbarMenuItemMen,
-.navbarMenuItemWomen,
-.navbarMenuItemAccessories {
 
-}
-    
- */
  
 .navbarHoverMen ,
  .navbarHoverWomen {
-    width: 100%;
+    width: 100%; 
+    cursor: pointer;
     position: absolute;
     background-color: white; 
     padding: 1rem;
@@ -120,11 +124,13 @@
     grid-template-columns: repeat(4, 1fr);
     .navbarHoverImage {
         margin: 1rem;
+        cursor: pointer;
     }
   }
-
-
-
+  .navbarServiceMenu {
+    position: relative;   
+  }
+  
 
 
 
@@ -206,13 +212,11 @@
     .dropDownMan,
     .dropDownWoman {
         h3 {
-            font-family: $primaryFont;
             font-size: 1.5rem;
             font-weight: bold;
             color: black;
         }
         p {
-            font-family: $primaryFont;
             font-size: 1.1rem;
             color: black;
             margin-inline-start: 0.5rem;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
-import fetchDataContentful from "../redux/fetchContentful";
+import fetchDataContentful from "../redux/fetch/fetchContentful";
 import shoppingBag from "../assets/icons/bag.svg"
 import profile from "../assets/icons/profile.svg"
 import SidebarCart from "./SidebarCart";
-import { selectCartTotalQuantity } from "../redux/cartSlice";
+import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
 import SidebarMenu from "./SidebarMenu";
 import mobileLogo from "../assets/icons/OnlyLogo.png"
 import hamburgerMenu from "../assets/icons/burger-menu.svg"
