@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../../redux/typeHooks';
 import { addShipping, removeShipping } from '../../redux/slice/cartSlice';
+import iconP from '../../assets/icons/iconP.svg'
+import iconPaypal from '../../assets/icons/iconPaypal.svg'
 import { FormattedMessage } from 'react-intl';
 import Buttontmg3 from '../Buttons/ButtonTmg3';
+import CheckOut from '../Paypal/CheckOut';
 const PaymentForm: React.FC = () => {
+  const [checkOutDivOpen, setCheckOutDivOpen] = useState(false);
   const {cartItems} = useTypeSelector((state) => state.cart )
   const [paymentMethod, setPaymentMethod] = useState('');
   const [creditCardInfo, setCreditCardInfo] = useState({
@@ -25,6 +29,7 @@ const PaymentForm: React.FC = () => {
       setPaypalSelected(true);
     } else if (event.target.value === 'cash-on-delivery') {
       dispatch(addShipping());
+      setPaypalSelected(false);
       console.log(cartItems);
     } else {
       dispatch(removeShipping())
@@ -77,6 +82,18 @@ const PaymentForm: React.FC = () => {
       </option>
     );
   });
+
+  const openCheckOut = ()=> {
+    if (checkOutDivOpen == false){
+      setCheckOutDivOpen(true)
+    } else {
+      setCheckOutDivOpen(false)
+    }
+    
+  }
+
+  console.log(checkOutDivOpen);
+  
 
   return (
     <div>
@@ -178,7 +195,11 @@ const PaymentForm: React.FC = () => {
     )}
     {paypalSelected && (
       <div>
-        <button className='buttonBlackPWhite'><FormattedMessage id="pay with paypal" /></button>
+        <div onClick={openCheckOut} className='buttonPaypal'>
+            <img src={iconP} alt="" />
+            <img src={iconPaypal} alt="" />
+          {checkOutDivOpen && (<CheckOut closeCheckOut={openCheckOut} />)}
+          </div>
       </div>
     )}
     {!paypalSelected && (
