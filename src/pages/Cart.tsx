@@ -59,6 +59,7 @@ return (
               <div className='wrapperInfoProduct'>
                 <div className='infoProduct'>
               <span>{item.name}</span>
+              <span>Size: {item.size}</span>
               <span>${item.price}</span>
               </div>
               <div className='quantityProduct'>

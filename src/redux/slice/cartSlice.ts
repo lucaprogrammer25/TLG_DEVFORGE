@@ -9,6 +9,7 @@ const defaultInitialState: CartState = {
     shipment: 0,
     loading: false,
     error: null,
+    size:""
 };
 
 const loadStateFromLocalStorage = (): CartState => {
@@ -40,10 +41,10 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
-            const existingItem = state.cartItems.find(item => item.id === action.payload.id);
+            const existingItem = state.cartItems.find(item => item.id === action.payload.id && item.size === action.payload.size);
             if (existingItem) {
                 state.cartItems = state.cartItems.map(item =>
-                    item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+                    item.id === action.payload.id && item.size === action.payload.size ? { ...item, quantity: item.quantity + 1 } : item
                 );
             } else {
                 const newItem = { ...action.payload, quantity: 1, shipment: state.shipment };
@@ -52,15 +53,15 @@ const cartSlice = createSlice({
             saveStateToLocalStorage(state);
         },
         removeFromCart(state, action) {
-            state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+            state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
             saveStateToLocalStorage(state);
         },
         decrease(state, action) {
-            const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id);
+            const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id && cartItem.size === action.payload.size);
             if (state.cartItems[itemIndex].quantity > 1) {
                 state.cartItems[itemIndex].quantity -= 1;
             } else {
-                state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+                state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
             }
             saveStateToLocalStorage(state);
         },

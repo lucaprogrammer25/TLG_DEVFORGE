@@ -56,6 +56,7 @@ export interface Cart {
   shipment: number;
   cartQuantity: number;
   quantity: number;
+  size:string
 }
 
 export interface CartState {
@@ -66,6 +67,7 @@ export interface CartState {
   shipment: number;
   loading: boolean;
   error: string | null;
+  size:string
 }
 
 export interface SidebarCartType {
