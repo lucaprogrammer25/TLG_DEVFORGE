@@ -35,7 +35,8 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
               <div className='productDetails'>
                 <div>
               <p>{item.name}</p>
-              <p>{item.price}</p>
+              <p>Size: {item.size}</p>
+              <p>${item.price}</p>
               </div>
               <div className='wrapperOptionsCart'>
               <div className='cartDetail'>
