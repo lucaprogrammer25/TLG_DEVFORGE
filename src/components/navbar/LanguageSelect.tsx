@@ -16,6 +16,7 @@ const LanguageSelect: React.FC<LanguageSelectProps> = ({ handleLanguageChange, h
                 <FormattedMessage id="italian" defaultMessage="Italian" />
             </div>
         </div>
+        
     );
 };
 

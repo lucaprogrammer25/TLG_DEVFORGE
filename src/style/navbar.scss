@@ -40,21 +40,21 @@
     opacity: 1;   
 }
 
-
 .navbar{
     width: 100%;
     display: flex;
     flex-direction: row ;
     justify-content: space-between;
-    background-color: $white;
+    background-color: white;
     height: 100%;
     .navbarLogoContainer{
-        width: 10%;
+        width: max-content;
         padding-inline-start: 1rem;
         .navbarLogo{
-            width: 18rem;
+            width: 15rem;
             height: 100%;
         }
+       
     }
     .navbarTitleName{
             display: flex;
@@ -88,23 +88,22 @@
     gap: 2rem;
     cursor: pointer;
     position: relative;
-    .navbarServiceMenuLanguageMenu {
-        position: absolute;
-        inset-inline-start: 0;
-        inset-block-start: 100%; 
-        background-color: white;
-        border: 1px solid #ddd;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
-        z-index: 1000;
-        & > div {
-          padding: 0.5rem 0.75rem; 
-          cursor: pointer;
-          &:hover {
-            background-color: #f0f0f0;
-          }
-        }
-      }
 }
+.navbarServiceMenuLanguageMenu {
+    position: absolute;
+    inset-block-start: 100%; 
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    & > div {
+      padding: 0.5rem 0.75rem; 
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
 
  
 .navbarHoverMen ,
@@ -112,7 +111,7 @@
     width: 100%; 
     cursor: pointer;
     position: absolute;
-    background-color: $white; 
+    background-color: white; 
     padding: 1rem;
     border-top: none;
     border-radius: 1rem;
@@ -138,37 +137,147 @@
 
 
 
-/* 
-HAMBURGER MENU  */
+/* HAMBURGER MENU  */
 
- .visuallyHidden {
-    position: absolute; 
-    overflow: hidden; 
-    clip: rect(0 0 0 0); 
-    height: 1px; width: 1px; 
-    margin: -1px; padding: 0; border: 0; 
+.mobileBar {    
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    position: sticky;
+    top: 0;
+    flex-direction: row ;
+    justify-content: space-between;
+    background-color: white;
+    height: 100%;
+    .mobileBarLogoContainer {
+        width: min-content;
+        padding-inline-start: 1rem;
+        margin-right: auto;
+        .mobileBarLogo {
+            width: 15rem;
+        }
+
+    }
+    .mobileBarServiceMenu {
+        display: flex;
+        
+
+        .hamburgerLogoContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 1rem;
+            .hamburgerLogo {
+                width: 1.5rem;
+                height: 2rem;
+            }
+        }
+        .mobileBarServiceMenuLanguage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 1.5rem;
+        }
+
+        .mobileBarServiceMenuProfile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .mobileBarServiceMenuCart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+    }
+
+}
+.sidebarBox {
+    z-index: 1;
+    position: fixed;
+    width: 50%;
+    height: 100%; 
+    background-color: white;
+    transition: right 0.5s ease-in;
 }
 
+.sidebarMenuDropdown {
+    display: flex;
+    flex-direction: column; 
+    gap: 1rem;
+    padding-block-start: 1.875rem;
+    padding-block-end: 1.875rem;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
 
+    .dropDownMan,
+    .dropDownWoman {
+        h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: black;
+        }
+        p {
+            font-size: 1.1rem;
+            color: black;
+            margin-inline-start: 0.5rem;
+            margin-top: 0.2rem;
+        }
+    }
+}
 
+/* LINK */
+
+.linkTag{
+    text-decoration: none;
+    color: black;
+}
 
 /* MEDIA QUERY  */
 
+@media only screen and (max-width: 1060px) {
+    
+    .navbar {
+        display: none;
+    }
+
+    .mobileBarLogo600px {
+        display: none;
+    }
+
+
+}
+
+@media only screen and (min-width: 1060px) {
+    .sidebarBox {
+        display: none;
+    }
+    .mobileBar {
+        display: none;
+    }
+
+
+
+}
+
 @media only screen and (max-width: 600px) {
-    .navbarServiceMenu{
+
+    .mobileBarLogo {
         display: none;
     }
-    .navbarMenuItemMen,
-    .navbarMenuItemWomen     {
-        display: none;
+
+    .mobileBarLogo600px {
+        display: unset;
+        width: 3.9rem ;
     }
-    .navbarMenuItem{
-        display: none;
+
+    .sidebarBox {
+        width: 100%;
     }
 }
 
-@media only screen and (min-width: 600px) {
-    .container {
-        display: none;
-    }
-}

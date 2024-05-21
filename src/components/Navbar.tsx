@@ -2,18 +2,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
+import fetchDataContentful from "../redux/fetch/fetchContentful";
 import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
+import SidebarMenu from "./SidebarMenu";
 import { FormattedMessage } from "react-intl";
 import { NavbarProps } from "../interfaces/type";
-import fetchDataContentful from "../redux/fetch/fetchContentful";
 import getBase64FromUrl from "../hooks/imagesToString";
 import DropdownItems from "./navbar/Dropdown";
 import SidebarCart from "./SidebarCart";
+import LanguageSelect from "./navbar/LanguageSelect";
+import Promotion from "./navbar/Promotion";
+import mobileLogo from "../assets/icons/OnlyLogo.png"
+import hamburgerMenu from "../assets/icons/burger-menu.svg"
+import hamburgerMenuClose from "../assets/icons/x-close.svg"
 import shoppingBag from "../assets/icons/bag.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
-import LanguageSelect from "./navbar/LanguageSelect";
-import Promotion from "./navbar/Promotion";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -22,6 +26,10 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
+    
+    const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
+    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%"});
+    const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
 
     const { data } = useTypeSelector((state) => state.contentful);
     const dispatch = useTypeDispatch();
@@ -80,6 +88,17 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "unset" });
+    };
+    const handleSidebarMenu = () => {
+        if (!sidebarMenuActive) {
+            setSidebarMenuActive(true);
+            setSidebarMenuStyle({ right: "0"});
+            setSidebarMenuIcon(hamburgerMenuClose)
+        } else {
+            setSidebarMenuActive(false);
+            setSidebarMenuStyle({ right: "-100%"});
+            setSidebarMenuIcon(hamburgerMenu)
+        } ;
     };
 
     useEffect(() => {
@@ -151,11 +170,41 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </div>
                 </div>
             </nav>
+                    {/* MOBILE MENU  */}
+                    <div className="mobileBar">
+                        <div className="mobileBarLogoContainer">
+                            <Link className="linkTag" to='/'>
+                                <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
+                                <img className="mobileBarLogo600px" src={mobileLogo} alt="TMB" />
+                            </Link>
+                        </div>
+                        <div className="mobileBarServiceMenu">
+                            <div className="mobileBarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
+                            <img src={language} alt="language-icon" />
+                            {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu}/>}
+                            </div>
+                            <div className="mobileBarServiceMenuProfile">
+                                <img src={profile} alt="profile-icon" />
+                            </div>
+                            <div className="mobileBarServiceMenuCart">
+                                <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
+                                <span>{`('${cartTotalQuantity}')`}</span>
+                            </div>
+                            <div className="hamburgerLogoContainer" onClick={handleSidebarMenu}>
+                                <img src={sidebarMenuIcon} alt={hamburgerMenu} className="hamburgerLogo"/>
+                            </div>
+                        </div>
+
+                    </div>
+
             {cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
                     <SidebarCart closeSideCart={handleSidebarCartClose} />
                 </div> : null
             }
+            <div className="sidebarBox" style={sidebarMenuStyle}>
+                <SidebarMenu closeSideMenu={handleSidebarMenu}/>
+            </div>
 
         </>
     );
