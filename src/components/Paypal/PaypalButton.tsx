@@ -12,10 +12,12 @@ declare global {
 }
 
 const initialOptions = {
-   "clientId": "AQeudPAOCE1BgK2BQ4LXBWo-nUwNpjM4KCGjNMyTCHxONCYXIBrdaoC0YDR-NAh6LG7kOLvyitgTSxSE",
+    "clientId": "AQeudPAOCE1BgK2BQ4LXBWo-nUwNpjM4KCGjNMyTCHxONCYXIBrdaoC0YDR-NAh6LG7kOLvyitgTSxSE",
     currency: "EUR",
     intent: "capture",
+    "disable-funding": "credit,card",
 };
+
 
 const PaypalButton = ({ totalPrice }: PaypalButtonProps) => {
     const dispatch = useTypeDispatch();
@@ -31,7 +33,7 @@ const PaypalButton = ({ totalPrice }: PaypalButtonProps) => {
         window.handleApprovedPay = approvedPay;
 
         return () => {
-            // Clean up the event handler when component unmounts
+         
             window.handleApprovedPay = undefined;
         };
     }, [clearCartButton, navigate]);
@@ -39,18 +41,20 @@ const PaypalButton = ({ totalPrice }: PaypalButtonProps) => {
     return (
         <PayPalScriptProvider options={initialOptions}>
             <PayPalButtons
-                createOrder={(data,actions) => {
+                createOrder={(data, actions) => {
                     return actions.order.create({
+                        intent: "CAPTURE", 
                         purchase_units: [
                             {
                                 amount: {
-                                    value: totalPrice,
+                                    currency_code: "EUR",
+                                    value: totalPrice.toString(),
                                 },
                             },
                         ],
                     });
                 }}
-                onApprove={():any => {
+                onApprove={(): any => {
                     window.handleApprovedPay && window.handleApprovedPay();
                 }}
             />

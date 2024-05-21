@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
 import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
 import { SidebarCartType } from '../interfaces/type';
@@ -9,7 +8,6 @@ import Buttontmg3 from './Buttons/ButtonTmg3';
 
 
 const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType) => {
-  const [checkOutDivOpen, setCheckOutDivOpen] = useState(false);
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const CartTotalPrice = useTypeSelector(selectCartTotalPrice)
   const { cartItems } = useTypeSelector((state) => state.cart);
@@ -21,16 +19,6 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
     document.body.classList.remove('sidebar-open');
   }
 
-  const openCheckOut=()=>{
-    if (checkOutDivOpen == true){
-      setCheckOutDivOpen(false)
-    } else {
-      setCheckOutDivOpen(true)
-    }
-    
-  }
-
-  
   return (
     <>
       <div className='titleSidebar'>

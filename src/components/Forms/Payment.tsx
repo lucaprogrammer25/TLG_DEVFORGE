@@ -84,11 +84,7 @@ const PaymentForm: React.FC = () => {
   });
 
   const openCheckOut = ()=> {
-    if (checkOutDivOpen == false){
-      setCheckOutDivOpen(true)
-    } else {
-      setCheckOutDivOpen(false)
-    }
+   !checkOutDivOpen ? setCheckOutDivOpen(true) : setCheckOutDivOpen(false)
     
   }
 

@@ -112,6 +112,24 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         setLanguageMenuVisible(false);
     };
 
+    const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10 && !hasScrolled) {
+        setHasScrolled(true);
+        console.log('Hai scrollato di più di 10 pixel verso il basso!');
+         handleClose()
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasScrolled]);
+
     return (
         <>
             {visible && (

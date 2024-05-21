@@ -24,7 +24,7 @@ const PLP: React.FC = () => {
 
   useEffect(() => {
     if (product) {
-      const count = product.reduce((acc, item) => (item.gender === gender ? acc + 1 : acc), 0);
+      const count = product.reduce((acc, item:ProductJson) => (item.gender === gender ? acc + 1 : acc), 0);
       setMaxItems(count);
     }
   }, [product, gender]);
