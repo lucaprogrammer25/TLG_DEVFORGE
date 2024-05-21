@@ -1,5 +1,7 @@
+@import "../defaultVariables.scss";
+
 .ButtonTmgCss3 {
-  color: black;
+  color: $black;
   background-color: inherit;
   border: none;
 
@@ -16,22 +18,22 @@
 }
 
 .buttonBlackPWhite {
-  border: 1px solid black;
+  border: 1px solid $black;
   padding: 5px;
   border-radius: 1;
-  margin-bottom: 5px;
-  background-color: black;
-  color: white;
+  margin-block-end: 0.3125rem;
+  background-color: $black;
+  color: $white;
   cursor: pointer;
 }
 
 .buttonWhitePBlack {
-  border: 1px solid black;
+  border: 1px solid $black;
   padding: 5px;
   border-radius: 1;
-  margin-bottom: 5px;
-  background-color: white;
-  color: black;
+  margin-block-end: 0.3125rem;
+  background-color: $white;
+  color: $black;
   cursor: pointer;
 
 }

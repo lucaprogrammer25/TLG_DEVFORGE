@@ -1,18 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 @import "./style/defaultVariables.scss";
 @import "./style/NewsLetter/SubscribeInput.scss";
 @import "./style/navbar.scss";
-@import './style/cardPLP.scss';
-@import "./style//ButtonsSCSS/ButtonTmg3.scss";
-@import './style/cardPDP.scss';
+@import './style/Card/cardPLP.scss';
+@import './style/Card/cardPDP.scss';
 @import './style/plp.scss';
 @import "./style/Footer.scss";
 @import "./style/heroSection.scss";
 @import "./style/Payment/Payment.scss";
-@import "./style/sidebarCart.scss";
+@import "./style/Payment/paymentSucced.scss";
+@import "./style/Payment/paymentFailed.scss";
+@import "./style/Cart/sidebarCart.scss";
 @import "./style/CarouselScss/Carousel.scss";
-@import "./style/paymentSucced.scss";
-@import "./style/paymentFailed.scss";
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 @import "./style/Cart/Cart.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
 
@@ -22,14 +21,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Jost", sans-serif;
+  font-family: $fontSecondary;
 }
 
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #a7a5a5 #ffffff;
+    scrollbar-color: $scrollbarColor $white;
   }
 
   /* Chrome, Edge, and Safari */
@@ -38,13 +37,13 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: $white;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #a7a5a5;
+    background-color: $scrollbarColor;
     border-radius: 26px;
-    border: 7px dashed #ffffff;
+    border: 7px dashed $white;
   }
 
 
@@ -57,5 +56,5 @@ section{
 
 .linkTag{
   text-decoration: none;
-  color: black;
+  color: $black;
 }

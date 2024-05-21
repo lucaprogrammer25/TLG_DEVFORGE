@@ -1,36 +1,35 @@
-.succeedBox {
+.errorBox {
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    .succeedPBox {
+    .errorPBox {
         margin-top: 15rem;
         width: 50%;
         height: max-content;
         align-items: center;
         text-align: center;
         padding: 5rem;
-        .purchaseThanks {
+        .purchaseError {
             font-size: 45px;
             font-style: bolder;
-            margin-bottom: 7rem;
+            margin-block-start: 7rem;
         }
-        .purchaseSubtitle {
+        .errorSubtitle {
             font-size: x-large;
         }
 
     }
-    .progress-bar {
+    .progress-barError {
         width: 50%;
-        background-color: $white;
-        border-radius: 0px;
-        margin: 20px 0;
-        .progress {
-            height: 10px;
-            background-color: $gold;
-            border-radius: 0px;
+        background-color: $lightBlack;
+        margin-block-start:1.25rem; 
+        margin-block-end: 1.25rem;
+        .progressError {
+            height: 0.625rem;
+            background-color: $red;
             transition: width 0.5s;
           }
     }

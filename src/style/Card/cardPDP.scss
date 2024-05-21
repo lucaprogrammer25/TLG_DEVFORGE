@@ -48,12 +48,12 @@
     align-items: center;
 
     p {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 400;
     }
     button {
       cursor: pointer;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 400;
       text-align: center;
     }
@@ -76,7 +76,7 @@
     .sizeContainer {
       display: flex;
       flex-direction: row;
-      font-size: 35px;
+      font-size: 2.1875rem;
       justify-content: space-between;
     }
 
@@ -104,8 +104,8 @@
       .squareGreen,
       .squareRed,
       .squareYellow {
-        width: 50px;
-        height: 50px;
+        width: 3.125rem;
+        height: 3.125rem;
       }
 
       .squareGreen {
