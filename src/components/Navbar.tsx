@@ -7,25 +7,33 @@ import profile from "../assets/icons/profile.svg"
 import SidebarCart from "./SidebarCart";
 import { selectCartTotalQuantity } from "../redux/cartSlice";
 import SidebarMenu from "./SidebarMenu";
+import mobileLogo from "../assets/icons/OnlyLogo.png"
+import hamburgerMenu from "../assets/icons/burger-menu.svg"
+import hamburgerMenuClose from "../assets/icons/x-close.svg"
 
 const Navbar: React.FC = () => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [contentIndex, setContentIndex] = useState<number>(0);
+    
     const [visible, setVisible] = useState<boolean>(true);
     const [animateContent, setAnimateContent] = useState<boolean>(false);
+    
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
+    
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
+    
     const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
-    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ display: "none" });
+    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%"});
+    const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
 
     const { data } = useTypeSelector((state) => state.contentful)
     const dispatch = useTypeDispatch();
-    const logo =  data.items && data.items[2]?.fields.logoNavbar.fields.file.url
-    const contents = data?.items?.[2]?.fields?.promotion ?? [];
-    const menDropdown = data?.items?.[2]?.fields?.menDropDown ?? [];
-    const womenDropdown = data?.items?.[2]?.fields?.womenDropDown ?? [];
+    const logo =  data.items && data.items[0]?.fields.logoNavbar.fields.file.url
+    const contents = data?.items?.[0]?.fields?.promotion ?? [];
+    const menDropdown = data?.items?.[0]?.fields?.menDropDown ?? [];
+    const womenDropdown = data?.items?.[0]?.fields?.womenDropDown ?? [];
 
     const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
         <Link to={`women/${item.fields.description}`} key={index}>
@@ -56,9 +64,9 @@ const Navbar: React.FC = () => {
     const handleCartClick = () => {
         setSidebarCartActive(prevState => !prevState);
         if (sidebarCartActive) {
-            setSidebarCartStyle({ display: "none" });
+            setSidebarCartStyle({ display: "none",});
         } else {
-            setSidebarCartStyle({ display: "unset" });
+            setSidebarCartStyle({ display: "unset"});
         }
     };
     
@@ -69,10 +77,12 @@ const Navbar: React.FC = () => {
     const handleSidebarMenu = () => {
         if (!sidebarMenuActive) {
             setSidebarMenuActive(true);
-            setSidebarMenuStyle({ display: "unset" });
+            setSidebarMenuStyle({ right: "0"});
+            setSidebarMenuIcon(hamburgerMenuClose)
         } else {
             setSidebarMenuActive(false);
-            setSidebarMenuStyle({ display: "none" });
+            setSidebarMenuStyle({ right: "-100%"});
+            setSidebarMenuIcon(hamburgerMenu)
         } ;
     };
 
@@ -147,6 +157,7 @@ const Navbar: React.FC = () => {
                         <div className="mobileBarLogoContainer">
                             <Link className="linkTag" to='/'>
                                 <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
+                                <img className="mobileBarLogo600px" src={mobileLogo} alt="TMB" />
                             </Link>
                         </div>
                             <div className="mobileBarServiceMenu">
@@ -158,11 +169,7 @@ const Navbar: React.FC = () => {
                                 <span>{`('${cartTotalQuantity}')`}</span>
                             </div>
                         <div className="hamburgerLogoContainer" onClick={handleSidebarMenu}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24" fill="none">
-                            <path d="M4 18L20 18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M4 12L20 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
+                            <img src={sidebarMenuIcon} alt={hamburgerMenu} className="hamburgerLogo"/>
                         </div>
                         </div>
 
@@ -172,12 +179,9 @@ const Navbar: React.FC = () => {
                     <SidebarCart label="CLOSE" closeSideCart={handleSidebarCartClose} />
                 </div> : null
             }
-            
-            {
-                <div style={sidebarMenuStyle}>
-                    <SidebarMenu />
-                </div>  
-            }
+            <div className="sidebarBox" style={sidebarMenuStyle}>
+                <SidebarMenu closeSideMenu={handleSidebarMenu}/>
+            </div>
         </>
     );
 };

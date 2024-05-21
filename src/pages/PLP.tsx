@@ -22,8 +22,8 @@ const PLP: React.FC = () => {
   const navigate = useNavigate()
 
   
-    const imageMan = data.items && data.items[0].fields.men.fields.file.url;
-    const imageWomen = data.items && data.items[0].fields.women.fields.file.url
+    const imageMan = data.items && data.items[1].fields.men.fields.file.url;
+    const imageWomen = data.items && data.items[1].fields.women.fields.file.url
     const plpImage = !category && gender === 'men'  ? imageMan : !category && gender === 'women' ? imageWomen : '';
 
 
