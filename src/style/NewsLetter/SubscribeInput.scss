@@ -2,13 +2,14 @@
   display: flex;
   width: 100%;
   height: auto;
-  background-color: #f3f3f3;
+  background-color:$white;
 
   .ButtonTmgCss2 {
-    font-size: 1rem;
-
-    margin: 10px;
-    padding: 10px;
+   font-size: 1rem;
+   margin-block: 0.625rem; 
+   margin-inline: 0.625rem;
+   padding-block: 0.625rem; 
+   padding-inline: 0.625rem; 
   }
 }
 
@@ -48,9 +49,9 @@
 .subscribeInput {
   background-color: #d9d9d9;
   border: #989180 0.25rem solid;
-  color: black;
-  height: 40px;
-  width: 350px;
+  color:$black;
+  height: 2.5rem;
+  width: 21.875rem;
   font-size: 1rem;
 }
 
@@ -67,14 +68,14 @@ label {
 }
 
 .subscribeThank {
-  background-color: rgba($color: #000000, $alpha: 0.8);
+  background-color: rgba($color:$black, $alpha: 0.8);
   height: 10rem;
   width: 80%;
-  display: none; /* Inizialmente nascosto */
+  display: none; 
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: $white;
   font-size: 1.2rem;
   position: absolute;
   p {
@@ -99,5 +100,5 @@ label {
 }
 
 .subscribeThank.show {
-  display: flex; /* Mostra l'elemento quando la classe 'show' è aggiunta */
+  display: flex; 
 }

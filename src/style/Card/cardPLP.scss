@@ -1,27 +1,28 @@
-.wrapCard{
+.wrapCard {
     display: flex;
     flex-direction: column;
 }
 
 .containerCardPLP {
     margin: 0 auto;
-    margin-bottom: 2rem;
-    max-width: 400px;
-    max-height: 600px;
+    margin-bottom: 2rem; 
+    max-width: 25rem; 
+    max-height: 37.5rem; 
 }
 
 .containerImgPLP img {
-    width: 400px;
-    height: 500px;
-    object-fit:cover;
+    width: 25rem; 
+    height: 31.25rem; 
+    object-fit: cover;
     cursor: pointer;
 }
 
 .descriptionCardPLP {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2rem; 
 }
+
 
 .containerPricePLP {
     display: flex;
