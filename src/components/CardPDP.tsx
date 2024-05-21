@@ -21,6 +21,10 @@ const CardPDP: React.FC<Props>= ({image, title, price, description, addToCart}: 
                     <div className='contentProducts'>
                 <div className='containerImgPDP'>
                     <img src={image} alt="" />
+                    <div className='containerPricePDP'>
+                        <p>{price}€</p>
+                        <Buttontmg3 className='ButtonTmgCss3' label={"add to cart"} onClick={addToCart} />
+                        </div>
                 </div> 
                 <div className='infoCardPDP'>
                     <h2 className='titleCardPDP'>{title}</h2>
@@ -47,10 +51,7 @@ const CardPDP: React.FC<Props>= ({image, title, price, description, addToCart}: 
                     </div>
                     </div>
                     </div>
-                     <div className='containerPricePDP'>
-                        <p>{price}€</p>
-                        <Buttontmg3 className='ButtonTmgCss3' label={"add to cart"} onClick={addToCart} />
-                        </div>
+                   
                     </div>
                    
                    

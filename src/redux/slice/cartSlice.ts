@@ -1,15 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Cart } from "../../interfaces/type";
-
-interface CartState {
-    cartItems: Cart[];
-    quantity: number;
-    cartTotalQuantity: number;
-    cartTotalPrice: number;
-    shipment: number;
-    loading: boolean;
-    error: string | null;
-}
+import { CartState } from "../../interfaces/type";
 
 const defaultInitialState: CartState = {
     cartItems: [],
