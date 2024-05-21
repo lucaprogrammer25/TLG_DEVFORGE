@@ -56,6 +56,18 @@ export interface Cart {
   shipment: number;
   cartQuantity: number;
   quantity: number;
+  size:string
+}
+
+export interface CartState {
+  cartItems: Cart[];
+  quantity: number;
+  cartTotalQuantity: number;
+  cartTotalPrice: number;
+  shipment: number;
+  loading: boolean;
+  error: string | null;
+  size:string
 }
 
 export interface SidebarCartType {

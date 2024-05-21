@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     useEffect(() => {
         dispatch(fetchDataContentful());
-    }, [dispatch]);
+    }, [dispatch])
 
     useEffect(() => {
         const saveImagesToLocalStorage = async () => {

@@ -18,6 +18,8 @@ const Cart: React.FC<Props> = () => {
   const navigate = useNavigate()
   
   const { cartItems } = useTypeSelector((state) => state.cart);
+  console.log(cartItems);
+  
   const { data } = useTypeSelector((state) => state.contentful)
   
   const logo =  data.items && data.items[0]?.fields.logoNavbar.fields.file.url
@@ -58,6 +60,7 @@ return (
               <div className='wrapperInfoProduct'>
                 <div className='infoProduct'>
               <span>{item.name}</span>
+              <span>Size: {item.size}</span>
               <span>${item.price}</span>
               </div>
               <div className='quantityProduct'>
