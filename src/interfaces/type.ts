@@ -83,3 +83,11 @@ export interface PropsForms {
   selectedCountry?:any,
   handleCountryChange?:any;
 }
+
+export interface LanguageSelectProps {
+  handleLanguageChange: (locale: string) => void;
+  handleCloseMenu: () => void; 
+}
+export interface NavbarProps {
+  changeLocale: (newLocale: string) => void;
+}

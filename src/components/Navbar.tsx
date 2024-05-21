@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
 import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
 import { FormattedMessage } from "react-intl";
+import { NavbarProps } from "../interfaces/type";
 import fetchDataContentful from "../redux/fetch/fetchContentful";
+import getBase64FromUrl from "../hooks/imagesToString";
+import DropdownItems from "./navbar/Dropdown";
 import SidebarCart from "./SidebarCart";
-import shoppingBag from "../assets/icons/bag.svg"
-import profile from "../assets/icons/profile.svg"
-import langauge from "../assets/icons/world svg.svg"
-interface NavbarProps {
-    changeLocale: (newLocale: string) => void;
-}
+import shoppingBag from "../assets/icons/bag.svg";
+import profile from "../assets/icons/profile.svg";
+import language from "../assets/icons/world svg.svg";
+import LanguageSelect from "./navbar/LanguageSelect";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -23,46 +24,63 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
 
-    const { data } = useTypeSelector((state) => state.contentful)
+    const { data } = useTypeSelector((state) => state.contentful);
     const dispatch = useTypeDispatch();
-    const logo = data.items && data.items[0]?.fields.logoNavbar.fields.file.url
+    console.log(data)
+    const logo = data.items && data.items[0]?.fields.logoNavbar.fields.file.url;
     const contents = data?.items?.[0]?.fields?.promotion ?? [];
-    const menDropdown = data?.items?.[0]?.fields?.menDropDown ?? [];
-    const womenDropdown = data?.items?.[0]?.fields?.womenDropDown ?? [];
 
-    const WomenDropdownItems = womenDropdown.map((item: any, index: number) => (
-        <Link to={`women/${item.fields.description}`} key={index}>
-            <div className={`navbarHoverWomen${item.fields.name}`}>
-                <h1>{item.fields.name}</h1>
-                <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
-            </div>
-        </Link>
-    ));
+    const [menDropdown, setMenDropdown] = useState<any[]>(() => {
+        const storedMenDropdown = localStorage.getItem("menDropdown");
+        return storedMenDropdown ? JSON.parse(storedMenDropdown) : [];
+    });
 
-    const MenDropdownItems = menDropdown.map((item: any, index: number) => (
-        <Link to={`men/${item.fields.description}`} key={index}>
-            <div className={`navbarHoverMen${item.fields.name}`}>
-                <h1>{item.fields.name}</h1>
-                <img className="navbarHoverImage" src={item.fields.file.url} alt={item.fields.name} />
-            </div>
-        </Link>
-    ));
+    const [womenDropdown, setWomenDropdown] = useState<any[]>(() => {
+        const storedWomenDropdown = localStorage.getItem("womenDropdown");
+        return storedWomenDropdown ? JSON.parse(storedWomenDropdown) : [];
+    });
 
     useEffect(() => {
-        dispatch(fetchDataContentful())
-    }, [dispatch])
+        dispatch(fetchDataContentful());
+    }, [dispatch]);
+
+    useEffect(() => {
+        const saveImagesToLocalStorage = async () => {
+            if (data?.items) {
+                const menItems = data.items[0]?.fields?.menDropDown ?? [];
+                const womenItems = data.items[0]?.fields?.womenDropDown ?? [];
+
+                const menBase64Promises = menItems.map(async (item: any) => {
+                    const base64 = await getBase64FromUrl(`https:${item.fields.file.url}`);
+                    return { ...item, base64 };
+                });
+
+                const womenBase64Promises = womenItems.map(async (item: any) => {
+                    const base64 = await getBase64FromUrl(`https:${item.fields.file.url}`);
+                    return { ...item, base64 };
+                });
+
+                const menBase64Items = await Promise.all(menBase64Promises);
+                const womenBase64Items = await Promise.all(womenBase64Promises);
+
+                setMenDropdown(menBase64Items);
+                setWomenDropdown(womenBase64Items);
+
+                localStorage.setItem("menDropdown", JSON.stringify(menBase64Items));
+                localStorage.setItem("womenDropdown", JSON.stringify(womenBase64Items));
+            }
+        };
+
+        saveImagesToLocalStorage();
+    }, [data]);
 
     const handleClose = () => {
         setVisible(false);
     };
 
     const handleCartClick = () => {
-        setSidebarCartActive(prevState => !prevState);
-        if (sidebarCartActive) {
-            setSidebarCartStyle({ display: "none" });
-        } else {
-            setSidebarCartStyle({ display: "unset" });
-        }
+        setSidebarCartActive((prevState) => !prevState);
+        setSidebarCartStyle({ display: sidebarCartActive ? "none" : "unset" });
     };
 
     const handleSidebarCartClose = () => {
@@ -71,13 +89,12 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     };
 
     useEffect(() => {
-        if (sidebarCartActive && cartTotalQuantity !== 0 ) {
-            document.body.classList.add('sidebar-open');
+        if (sidebarCartActive && cartTotalQuantity !== 0) {
+            document.body.classList.add("sidebar-open");
         } else {
-            document.body.classList.remove('sidebar-open');
+            document.body.classList.remove("sidebar-open");
         }
-    }, [sidebarCartActive]);
-    
+    }, [sidebarCartActive, cartTotalQuantity]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -90,7 +107,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const handleLanguageChange = (newLocale: string) => {
         changeLocale(newLocale);
-
+    };
+    const handleCloseLanguageMenu = () => {
+        setLanguageMenuVisible(false);
     };
 
     return (
@@ -118,16 +137,17 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                                 onMouseLeave={() => setHiddenMen(true)}
                             >
                                 <FormattedMessage id="men" defaultMessage="Men" />
-                                {!hiddenMen && <div className="navbarHoverMen">{MenDropdownItems}</div>}
+                                {!hiddenMen && <div className="navbarHoverMen"><DropdownItems items={menDropdown} category="men" /></div>}
                             </div>
                         </Link>
                         <Link className="linkTag" to='/women'>
-                            <div className="navbarMenuItemWomen"
+                            <div
+                                className="navbarMenuItemWomen"
                                 onMouseEnter={() => setHiddenWomen(false)}
                                 onMouseLeave={() => setHiddenWomen(true)}
                             >
                                 <FormattedMessage id="women" defaultMessage="Women" />
-                                {!hiddenWomen && <div className="navbarHoverWomen">{WomenDropdownItems}</div>}
+                                {!hiddenWomen && <div className="navbarHoverWomen"><DropdownItems items={womenDropdown} category="women" /></div>}
                             </div>
                         </Link>
                         <Link className="linkTag" to='/unisex'>
@@ -140,18 +160,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </div>
                     <div className="navbarServiceMenu">
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
-                            <img src={langauge} alt="language-icon" />
+                            <img src={language} alt="language-icon" />
                         </div>
-                        {languageMenuVisible && (
-                            <div className="navbarServiceMenuLanguageMenu">
-                                <div onClick={() => handleLanguageChange('en')}>
-                                    <FormattedMessage id="english" defaultMessage="English" />
-                                </div>
-                                <div onClick={() => handleLanguageChange('it')}>
-                                    <FormattedMessage id="italian" defaultMessage="Italian" />
-                                </div>
-                            </div>
-                        )}
+                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu}/>}
                         <div className="navbarServiceMenuProfile">
                             <img src={profile} alt="profile-icon" />
                         </div>
@@ -173,3 +184,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 };
 
 export default Navbar;
+
+
+
+
