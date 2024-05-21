@@ -3,13 +3,12 @@
 .navbarPromotion{
     display: flex;
     justify-content: space-between;
-    position: sticky;
-    top: 0rem;
     background-color: $lightBlack;
     color: $white;
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
     overflow: hidden;
     .navbarPromotionContent {
         display: inline-block;
@@ -89,23 +88,22 @@
     gap: 2rem;
     cursor: pointer;
     position: relative;
-    .navbarServiceMenuLanguageMenu {
-        position: absolute;
-        inset-inline-start: 0;
-        inset-block-start: 100%; 
-        background-color: white;
-        border: 1px solid #ddd;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
-        z-index: 1000;
-        & > div {
-          padding: 0.5rem 0.75rem; 
-          cursor: pointer;
-          &:hover {
-            background-color: #f0f0f0;
-          }
-        }
-      }
 }
+.navbarServiceMenuLanguageMenu {
+    position: absolute;
+    inset-block-start: 100%; 
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    & > div {
+      padding: 0.5rem 0.75rem; 
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
 
  
 .navbarHoverMen ,
@@ -175,6 +173,14 @@
                 height: 2rem;
             }
         }
+        .mobileBarServiceMenuLanguage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 1.5rem;
+        }
+
         .mobileBarServiceMenuProfile {
             display: flex;
             justify-content: center;
@@ -243,6 +249,7 @@
     .mobileBarLogo600px {
         display: none;
     }
+
 
 }
 
