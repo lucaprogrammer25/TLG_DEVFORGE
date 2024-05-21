@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
@@ -12,13 +13,11 @@ import shoppingBag from "../assets/icons/bag.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
 import LanguageSelect from "./navbar/LanguageSelect";
+import Promotion from "./navbar/Promotion";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
-    const [contentIndex, setContentIndex] = useState<number>(0);
-    const [visible, setVisible] = useState<boolean>(true);
-    const [animateContent, setAnimateContent] = useState<boolean>(false);
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
@@ -26,7 +25,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const { data } = useTypeSelector((state) => state.contentful);
     const dispatch = useTypeDispatch();
-    console.log(data)
     const logo = data.items && data.items[0]?.fields.logoNavbar.fields.file.url;
     const contents = data?.items?.[0]?.fields?.promotion ?? [];
 
@@ -74,10 +72,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         saveImagesToLocalStorage();
     }, [data]);
 
-    const handleClose = () => {
-        setVisible(false);
-    };
-
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "unset" });
@@ -96,15 +90,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         }
     }, [sidebarCartActive, cartTotalQuantity]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
-            setAnimateContent(true);
-            setTimeout(() => setAnimateContent(false), 4000);
-        }, 6000);
-        return () => clearInterval(interval);
-    }, [contents]);
-
     const handleLanguageChange = (newLocale: string) => {
         changeLocale(newLocale);
     };
@@ -114,14 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     return (
         <>
-            {visible && (
-                <div className="navbarPromotion">
-                    <span className={`navbarPromotionContent ${animateContent ? 'fadeIn' : ''}`}>
-                        {contents[contentIndex]}
-                    </span>
-                    <button className="navbarPromotionButton" onClick={handleClose}>X</button>
-                </div>
-            )}
+            <Promotion contents={contents} />
             <nav>
                 <div className="navbar">
                     <div className="navbarLogoContainer">
