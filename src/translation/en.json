@@ -53,7 +53,14 @@
     "italy prefix":"Italy + 39",
     "france prefix":"France + 33",
     "germany prefix":"Germany + 49",
-    "load more":"Load more"
+    "load more":"Load more",
+    "summary":"Summary",
+    "shipping":"Shipping",
+    "your cart":"Your Cart",
+    "go back to shopping":"Go back to shopping",
+    "total price":"Total Price:",
+    "carts":"Cart",
+    "item":"Items"
 }
   
   

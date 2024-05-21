@@ -2,28 +2,28 @@ import { BrowserRouter, } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Profiler, ProfilerOnRenderCallback } from 'react'
+/* import { Profiler, ProfilerOnRenderCallback } from 'react' */
 import App from './App.tsx'
 import store from './redux/store.ts'
 import './index.scss'
 
 
 
- const onRenderCallback:ProfilerOnRenderCallback = (
-   id:any, 
+ const onRenderCallback/* :ProfilerOnRenderCallback */ = (
+ /*   id:any, 
    phase:any,  
    actualDuration:any, 
    baseDuration:any,  
    startTime:any,  
    commitTime:any,  
-   interactions:any 
+   interactions:any */
  ) => {
-   console.log({id, phase, actualDuration, baseDuration, startTime, commitTime, interactions});
+   /*console.log({id, phase, actualDuration, baseDuration, startTime, commitTime, interactions});*/
  }
-
+ 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-   <Profiler id='myApp' onRender={onRenderCallback}>
+   /* <Profiler id='myApp' onRender={onRenderCallback}> */
   <React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
     </Provider>
   </React.StrictMode>
-   </Profiler>
+   /* </Profiler> */
 )
 
 
