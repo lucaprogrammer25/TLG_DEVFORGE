@@ -79,3 +79,8 @@ export interface LanguageSelectProps {
 export interface NavbarProps {
   changeLocale: (newLocale: string) => void;
 }
+
+
+export interface PromotionProps {
+  contents: string[];
+}
