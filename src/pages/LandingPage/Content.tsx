@@ -1,46 +1,50 @@
 import { useTypeDispatch, useTypeSelector } from "../../redux/typeHooks";
 import fetchDataContentful from "../../redux/fetch/fetchContentful";
-import { useEffect } from "react";
-import { Link,useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Content = () => {
-   
-    const { data } = useTypeSelector((state) => state.contentful)
+    const { data } = useTypeSelector((state) => state.contentful);
     const dispatch = useTypeDispatch();
-    const location = useLocation();
+    const [hovered, setHovered] = useState("");
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-    const logoMen=data.items && data.items[0].fields.maleImage.fields.file.url
-    const logoWomen=data.items && data.items[0].fields.womenImage.fields.file.url
-    
-  useEffect(() => {
-    dispatch(fetchDataContentful()) 
-  },[dispatch]) 
+    const logoMen = data.items && data.items[0].fields.maleImage.fields.file.url;
+    const logoWomen = data.items && data.items[0].fields.womenImage.fields.file.url;
 
-  useEffect(() => {
-    console.log("Location changed:", location.pathname);
-    window.scrollTo(0, 0);
-}, [location]);
+    useEffect(() => {
+        dispatch(fetchDataContentful());
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 600);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [dispatch]);
 
-  
-  return (
-    
-    <>
-    <div className="contentImages">
-        <div className="contentMen">
-        <Link to="/men">
-            <img src={logoMen} 
-            alt="Men Clothes" />
-        </Link>
-        </div>
-        <div className="contentWomen">
-        <Link to="/women">
-            <img src={logoWomen} 
-            alt="Women Clothes"/>
-        </Link>
-        </div>
-    </div>
-    </>
-  )
-}
+    return (
+        <>
+            <div className="contentImages">
+                <div className="contentMen" onMouseEnter={() => setHovered("men")} onMouseLeave={() => setHovered("")}>
+                    <Link to="/men">
+                        <img src={logoMen} alt="Men Clothes" />
+                    </Link>
+                    {(isMobile || hovered === "men") && (
+                        <div className="tooltip top-left">Men Clothes</div>
+                    )}
+                </div>
+                <div className="contentWomen" onMouseEnter={() => setHovered("women")} onMouseLeave={() => setHovered("")}>
+                    <Link to="/women">
+                        <img src={logoWomen} alt="Women Clothes" />
+                    </Link>
+                    {(isMobile || hovered === "women") && (
+                        <div className="tooltip top-right">Women Clothes</div>
+                    )}
+                </div>
+            </div>
+        </>
+    );
+};
 
-export default Content
+export default Content;

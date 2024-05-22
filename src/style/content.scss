@@ -7,20 +7,52 @@
     align-items: center;
     width: calc(100% - 1rem); 
     margin: 0 auto; 
-
     .contentMen,
     .contentWomen {
-       
+        position: relative; 
         img {
             width: 100%;
             display: block;
+            transition: transform 0.5s ease-out;
+            &:hover {
+                border: 1px solid var(--primary);
+                transform: scale(1.08); 
+            }
+            &:not(:hover) {
+                transition: transform 0.5s ease-out; 
+            }
         }
+        .tooltip {
+            position: absolute; 
+            background-color: transparent;
+            color: $black; 
+            padding: 0.5rem;  
+            opacity: 0; 
+             transition: opacity 0.5s ease; 
+            &.top-left {
+                top: 0; 
+                left: 0; 
+            }
+            &.top-right {
+                top: 0; 
+                right: 0;
+            }
+        }
+        &:hover .tooltip {
+            opacity: 1; 
+        }
+    }
 
-        &:hover {
-            border: 1px solid var(--primary);
-            transform: scale(1.08);
-            transition: 0.5s;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+        .contentMen,
+        .contentWomen {
+            width: 100%;
+    
+            .tooltip {
+                opacity: 1; 
+            }
         }
     }
 }
-

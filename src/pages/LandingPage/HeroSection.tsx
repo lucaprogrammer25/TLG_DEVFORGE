@@ -3,6 +3,7 @@ import fetchDataContentful from "../../redux/fetch/fetchContentful";
 import { useEffect } from "react"; 
 import CarouselPage from "./CarouselPage";
 import Content from "./Content";
+import AnimatedComponent from "./AnimatedCard";
 /* import video from "../assets/contenful video.mp4" */
 
 const HeroSection = () => {
@@ -21,9 +22,10 @@ const HeroSection = () => {
     <>
         <div className="heroSectionContainer">
            {/* <img  src={landingImage} className="heroSectionImage"alt="landing image"></img> */}
-           <video src={landingImage} autoPlay muted loop playsInline /> 
+           <video src={landingImage} autoPlay muted loop playsInline controls={false} /> 
           <CarouselPage/>
           <Content/>
+          <AnimatedComponent/>
       </div>   
     </>
   )

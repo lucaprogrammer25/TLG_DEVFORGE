@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: row ;
     justify-content: space-between;
-    background-color: white;
+    background-color:$white;
     height: 100%;
     .navbarLogoContainer{
         width: max-content;
@@ -100,7 +100,7 @@
           padding: 0.5rem 0.75rem; 
           cursor: pointer;
           &:hover {
-            background-color: #f0f0f0;
+            background-color:$hoverGrey;
           }
         }
       }
@@ -116,7 +116,7 @@
       padding: 0.5rem 0.75rem; 
       cursor: pointer;
       &:hover {
-        background-color: #f0f0f0;
+        background-color:$hoverGrey;
       }
     }
   }
@@ -127,7 +127,7 @@
     width: 100%; 
     cursor: pointer;
     position: absolute;
-    background-color: white; 
+    background-color:$white; 
     padding: 1rem;
     border-top: none;
     border-radius: 1rem;
@@ -166,7 +166,7 @@
     top: 0;
     flex-direction: row ;
     justify-content: space-between;
-    background-color: white;
+    background-color:$white;
     height: 100%;
     .mobileBarLogoContainer {
         width: min-content;
@@ -221,7 +221,7 @@
     position: fixed;
     width: 50%;
     height: 100%; 
-    background-color: white;
+    background-color:$white;
     transition: right 0.5s ease-in;
 }
 
@@ -239,11 +239,11 @@
         h3 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: black;
+            color:$black;
         }
         p {
             font-size: 1.1rem;
-            color: black;
+            color:$black;
             margin-inline-start: 0.5rem;
             margin-top: 0.2rem;
         }
@@ -255,7 +255,7 @@
 
 .linkTag{
     text-decoration: none;
-    color: black;
+    color: $black;
 }
 
 /* MEDIA QUERY  */
