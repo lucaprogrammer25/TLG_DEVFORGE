@@ -28,8 +28,8 @@ const PLP: React.FC = () => {
     }
   }, [product, gender]);
 
-  const imageMan = data.items && data.items[1].fields.men.fields.file.url;
-  const imageWomen = data.items && data.items[1].fields.women.fields.file.url;
+  const imageMan = data.items && data.items[2].fields.men.fields.file.url;
+  const imageWomen = data.items && data.items[2].fields.women.fields.file.url;
   const plpImage =
     !category && gender === "men"
       ? imageMan
