@@ -19,8 +19,7 @@ const PaymentForm: React.FC = () => {
   });
   const [paypalSelected, setPaypalSelected] = useState(false);
   const dispatch = useTypeDispatch()
-  console.log(paymentMethod);
-  
+    
   
   const handlePaymentMethodChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.value);
@@ -194,8 +193,8 @@ const PaymentForm: React.FC = () => {
         <div onClick={openCheckOut} className='buttonPaypal'>
             <img src={iconP} alt="" />
             <img src={iconPaypal} alt="" />
-          {checkOutDivOpen && (<CheckOut closeCheckOut={openCheckOut} />)}
           </div>
+          {checkOutDivOpen && (<CheckOut closeCheckOut={openCheckOut} />)}
       </div>
     )}
     {!paypalSelected && (

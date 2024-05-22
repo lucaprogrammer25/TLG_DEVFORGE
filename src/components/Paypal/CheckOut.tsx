@@ -1,10 +1,8 @@
 import PaypalButton from "./PaypalButton";
 import { useTypeSelector } from "../../redux/typeHooks";
 import { selectCartTotalPrice } from "../../redux/slice/cartSlice";
+import { Paypal } from "../../interfaces/type";
 
-interface Paypal {
-    closeCheckOut: any
-}
 
 const CheckOut = ({ closeCheckOut }: Paypal) => {
     const cartTotalPrice = useTypeSelector(selectCartTotalPrice);
