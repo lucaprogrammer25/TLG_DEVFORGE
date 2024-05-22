@@ -18,12 +18,12 @@ export interface FormData {
   country: string;
   province: string;
   phoneNumber?: string;
-  phonePrefix?:any;
-  
+  phonePrefix?: any;
 }
 
-
-export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+export type InputChangeEvent = React.ChangeEvent<
+  HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+>;
 export type Props = {
   id: number;
   category?: string;
@@ -33,7 +33,7 @@ export type Props = {
   price: number;
   alternative: string;
   seeMoreButton?: any;
-  addToCart?:any
+  addToCart?: any;
   goToPDP?: any;
 };
 
@@ -52,12 +52,12 @@ export interface Contentful {
 export interface Cart {
   id: number;
   price: number;
-  image:string;
-  name:string;
+  image: string;
+  name: string;
   shipment: number;
   cartQuantity: number;
   quantity: number;
-  size:string
+  size: string;
 }
 
 export interface CartState {
@@ -68,7 +68,7 @@ export interface CartState {
   shipment: number;
   loading: boolean;
   error: string | null;
-  size:string
+  size: string;
 }
 
 export interface SidebarCartType {
@@ -77,29 +77,40 @@ export interface SidebarCartType {
 
 export interface PropsForms {
   formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   countryOptions: string[];
-  prefixOptions: any,
-  billing?:string;
-  selectedCountry?:any,
-  handleCountryChange?:any;
+  prefixOptions: any;
+  billing?: string;
+  selectedCountry?: any;
+  handleCountryChange?: any;
 }
 
 export interface LanguageSelectProps {
   handleLanguageChange: (locale: string) => void;
-  handleCloseMenu: () => void; 
+  handleCloseMenu: () => void;
 }
 export interface NavbarProps {
   changeLocale: (newLocale: string) => void;
 }
 
 export interface PaypalButtonProps {
-  totalPrice: number 
+  totalPrice: number;
 }
 
 export interface Paypal {
-  closeCheckOut: any
+  closeCheckOut: any;
 }
 export interface PromotionProps {
   contents: string[];
+}
+
+export interface CarouselProps {
+  images: string[];
+  names: string[];
+  prices: string[];
+  gender: string[];
+  category?:string[];
+  id: string[];
 }

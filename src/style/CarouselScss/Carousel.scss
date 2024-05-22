@@ -1,127 +1,130 @@
-.selectorCarouselCategory {
-  display: flex;
-  justify-content: space-evenly;
-  cursor: pointer;
-}
-
-.carousel-container {
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 37.5rem;
-  position: relative;
-
-  .carousel-images {
+  .selectorCarouselCategory {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    padding: 3rem;
-    gap: 1.25rem;
-
-    .carousel-image {
-      position: relative;
-      display: block;
-      max-width: 14.375rem; 
-      width: 100%;
-      height: 25rem; 
-      p {
-        color: transparent;
-      }
-
-      &:hover {
-        p {
-          color: black;
-        }
-      }
-
-      img {
-        display: block;
-        width: 100%;
-        min-width: auto;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.05);
-          cursor: pointer;
-        }
-      }
-
-      .carousel-image-name {
-        margin-block-start: 0.3125rem;
-        border-radius: 0.3125rem;
-        transition: bottom 0.3s ease;
-      }
-    }
+    justify-content: space-evenly;
+    cursor: pointer;
   }
 
-  button {
-    padding-block: 0.625rem; 
-    padding-inline: 1.25rem;
-    position: absolute;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-    color: transparent;
-    height: 100%;
-
-    &:hover {
-      color: black;
-    }
-
-    &:first-of-type {
-      left: 0;
-    }
-
-    &:last-of-type {
-      right: 0;
-    }
-  }
-}
-
-@media (max-width: 478px) {
-  .carousel-image {
-    img {
-      height:25rem
-    }
-  }
   .carousel-container {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 34.375rem;
+    height: 37.5rem;
     position: relative;
-    .carousel-image {
-      flex-grow: 1;
-      position: relative;
-      display: block;
-      max-width: 14.375rem;
-      width: auto;
-      height: 31.25rem
-      p {
-        color: purple;
-      }
 
-      &:hover {
+    .carousel-images {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+      padding: 3rem;
+      gap: 1.25rem;
+      transition: transform 0.5s ease; /* Smooth transition for the carousel movement */
+
+      .carousel-image {
+        position: relative;
+        display: block;
+        max-width: 14.375rem;
+        width: 100%;
+        height: 25rem; 
+        transition: transform 0.5s ease; /* Smooth transition for the carousel items */
+        
         p {
-          color: Black;
+          color: transparent;
+        }
+
+        &:hover {
+          p {
+            color: black;
+          }
+        }
+
+        img {
+          display: block;
+          width: 100%;
+          min-width: auto;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+          }
+        }
+
+        .carousel-image-name {
+          margin-block-start: 0.3125rem;
+          border-radius: 0.3125rem;
+          transition: bottom 0.3s ease;
         }
       }
-      height: auto;
     }
-    img {
+
+    button {
+      padding-block: 0.625rem; 
+      padding-inline: 1.25rem;
+      position: absolute;
       display: block;
-      width: 100%;
-      min-width: auto;
-      height: 25rem;
-      object-fit: cover;
-      transition: transform 0.3s ease;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      color: transparent;
+      height: 100%;
+
+      &:hover {
+        color: black;
+      }
+
+      &:first-of-type {
+        left: 0;
+      }
+
+      &:last-of-type {
+        right: 0;
+      }
     }
   }
-}
+
+  @media (max-width: 478px) {
+    .carousel-image {
+      img {
+        height: 25rem;
+      }
+    }
+    .carousel-container {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 34.375rem;
+      position: relative;
+      .carousel-image {
+        flex-grow: 1;
+        position: relative;
+        display: block;
+        max-width: 14.375rem;
+        width: auto;
+        height: 31.25rem;
+        p {
+          color: purple;
+        }
+
+        &:hover {
+          p {
+            color: Black;
+          }
+        }
+        height: auto;
+      }
+      img {
+        display: block;
+        width: 100%;
+        min-width: auto;
+        height: 25rem;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    }
+  }
