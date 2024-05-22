@@ -69,6 +69,7 @@ export interface CartState {
   loading: boolean;
   error: string | null;
   size:string
+  discount: number
 }
 
 export interface SidebarCartType {

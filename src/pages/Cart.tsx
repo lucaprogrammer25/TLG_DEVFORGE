@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
-import { addToCart, clearCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
+import { addToCart, clearCart, decrease, removeFromCart, selectCartDiscount, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import fetchDataContentful from "../redux/fetch/fetchContentful";
@@ -14,6 +14,8 @@ const Cart: React.FC<Props> = () => {
   const [shipment, setShipment] = useState(false)
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const cartTotalPrice = useTypeSelector(selectCartTotalPrice);
+  const discountTotalPrice = useTypeSelector(selectCartDiscount)
+  const discountTotalPriceNumber = Number(discountTotalPrice)
   const dispatch = useTypeDispatch()
   const navigate = useNavigate()
   
@@ -22,7 +24,7 @@ const Cart: React.FC<Props> = () => {
   
   const { data } = useTypeSelector((state) => state.contentful)
   
-  const logo =  data.items && data.items[0]?.fields.logoNavbar.fields.file.url
+  const logo =  data.items && data.items[1]?.fields.logoNavbar.fields.file.url
   useEffect(() => {
     dispatch(fetchDataContentful())     
   }, [dispatch])
@@ -34,6 +36,9 @@ const Cart: React.FC<Props> = () => {
   const shipmentValue: any = cartItems.map((item) => {
     return item.shipment; 
 });
+
+
+
 
 const totalPrice = Number(shipmentValue[0]) == 10 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2): cartTotalPrice;
 
@@ -54,8 +59,8 @@ return (
       <div className='productMenu'>
         <div className='wrapperProduct'>
         <div className='containerProduct'>
-          {cartItems.map((item) => (
-            <div className='product' key={item.id}>
+          {cartItems.map((item, index) => (
+            <div className='product' key={`${item.id}-${index}`}>
               <img src={item.image} alt={item.name} />
               <div className='wrapperInfoProduct'>
                 <div className='infoProduct'>
@@ -83,10 +88,18 @@ return (
               <span><FormattedMessage id="your cart" defaultMessage="Your Cart"/></span>
               <span>${cartTotalPrice} </span> 
               </div>
+              {shipmentValue[0] === 10 ? (
             <div className='containerCartPrice'>
               <span><FormattedMessage id="shippingt"defaultMessage="Shipping"/></span>
                 <span>${shipmentValue[0]}</span>
-              </div>
+              </div> ) : null
+              }
+              {discountTotalPriceNumber !== 0 ? (<div className='containerCartPrice'>
+              <span><FormattedMessage id="discount" defaultMessage="Discount"/></span>
+              <span>{`-$${discountTotalPriceNumber}`}</span>
+              </div>) :null
+              }
+              
               <hr />
               <div className='containerCartPrice'>
               <span><FormattedMessage id="total price" defaultMessage="Total Price:"/></span>
