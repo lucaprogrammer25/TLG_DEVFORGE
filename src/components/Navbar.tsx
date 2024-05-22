@@ -116,9 +116,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10 && !hasScrolled) {
+      if (window.scrollY > 20 && !hasScrolled) {
         setHasScrolled(true);
-        console.log('Hai scrollato di più di 10 pixel verso il basso!');
          handleClose()
       }
     };

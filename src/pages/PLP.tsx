@@ -2,7 +2,6 @@ import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { addToCart } from "../redux/slice/cartSlice";
 import { ProductJson } from "../interfaces/type";
 import CardPLP from "../components/CardPLP";
 import fetchDataContentful from "../redux/fetch/fetchContentful";
@@ -72,7 +71,7 @@ const PLP: React.FC = () => {
                 image={item.image}
                 alternative={`${item.gender} ${item.category}`}
                 goToPDP={() => navigate(`/pdp/${item.id}`)}
-                addToCart={() => dispatch(addToCart(item))}
+                seeMoreButton={() => navigate(`/pdp/${item.id}`)}
               />
             ))}
         </div>

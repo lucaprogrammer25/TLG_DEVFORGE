@@ -32,7 +32,8 @@ export type Props = {
   image: string;
   price: number;
   alternative: string;
-  addToCart?: any;
+  seeMoreButton?: any;
+  addToCart?:any
   goToPDP?: any;
 };
 

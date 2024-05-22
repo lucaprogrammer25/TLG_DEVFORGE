@@ -48,6 +48,7 @@ const CardPDP: React.FC<Props> = ({ image, title, price, description, addToCart 
                         <div className="sizeCard">
                             <h3>Size</h3>
                             <div className='sizeContainer'>
+                                <p className={selectedSize === 'XS' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('XS')}>XS</p>
                                 <p className={selectedSize === 'S' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('S')}>S</p>
                                 <p className={selectedSize === 'M' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('M')}>M</p>
                                 <p className={selectedSize === 'L' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('L')}>L</p>
