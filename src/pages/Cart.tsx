@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
 import { addToCart, clearCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
+import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 import fetchDataContentful from "../redux/fetch/fetchContentful";
 import trashCanIcon from "../assets/icons/trash-can-svgrepo-com.svg"
-import { useNavigate } from 'react-router-dom';
 import ShipmentForm from '../components/Forms/Shipment';
 import Buttontmg3 from '../components/Buttons/ButtonTmg3';
 
@@ -44,8 +45,8 @@ return (
        </div>
       <div className='wrapperTitleCart'>
         <div className='titleCart'>
-        <h3>Cart</h3>
-        <h3>(Items {cartTotalQuantity})</h3>
+        <h3><FormattedMessage id='carts'defaultMessage="Cart"/></h3>
+        <h3><FormattedMessage id='item'defaultMessage="Items"/> ({cartTotalQuantity})</h3>
         </div>
         <img onClick={() => dispatch(clearCart())} src={trashCanIcon} alt="icon trash can" />
       </div>
@@ -68,7 +69,7 @@ return (
               <span>{item.quantity}</span>
               <button onClick={() => dispatch(addToCart(item))} className="cartButton"><span>+</span></button>
               </div>
-              <button className='cartButton' onClick={() => dispatch(removeFromCart(item))}>REMOVE</button>
+              <button className='cartButton' onClick={() => dispatch(removeFromCart(item))}><FormattedMessage id="remove" defaultMessage="Remove"/></button>
               </div>
               </div>
             </div>
@@ -77,18 +78,18 @@ return (
         <div className='containerPayment'>
         {
           <div className='totalContainer'>
-            <span>SUMMARY</span>
+            <span><FormattedMessage id='summary' defaultMessage="Summary"/></span>
             <div className='containerCartPrice'>
-              <span>YOUR CART</span>
+              <span><FormattedMessage id="your cart" defaultMessage="Your Cart"/></span>
               <span>${cartTotalPrice} </span> 
               </div>
             <div className='containerCartPrice'>
-              <span>SHIPPING</span>
+              <span><FormattedMessage id="shippingt"defaultMessage="Shipping"/></span>
                 <span>${shipmentValue[0]}</span>
               </div>
               <hr />
               <div className='containerCartPrice'>
-              <span>TOTAL ORDER</span>
+              <span><FormattedMessage id="total price" defaultMessage="Total Price:"/></span>
               <span>${totalPrice}</span>
               </div>
              
@@ -101,7 +102,7 @@ return (
         <div>
          
         </div>
-      </div>) : <h3 className='goBackButton'>Go back to shopping</h3>
+      </div>) : <h3 className='goBackButton'><FormattedMessage id="go back to shopping" defaultMessage="Go back to shopping"/></h3>
       }
     </div>
   );

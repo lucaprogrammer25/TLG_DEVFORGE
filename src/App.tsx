@@ -34,7 +34,7 @@ const App: React.FC = () => {
             <Route path="pdp/:id" element={<ProductDirectPage />} />
           </Route>
             <Route path="/cart" element={<Cart />} />
-          <Route path="/finalcheck" element={<FinalCheck />} />
+            <Route path="/finalcheck" element={<FinalCheck />} />
         </Routes>
       </IntlProvider>
     </>

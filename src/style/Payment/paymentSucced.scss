@@ -1,35 +1,35 @@
-.errorBox {
+.succeedBox {
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    .errorPBox {
+    .succeedPBox {
         margin-top: 15rem;
         width: 50%;
         height: max-content;
         align-items: center;
         text-align: center;
         padding: 5rem;
-        .purchaseError {
-            font-size: 45px;
+        .purchaseThanks {
+            font-size: 2.8125rem;
             font-style: bolder;
             margin-bottom: 7rem;
         }
-        .errorSubtitle {
+        .purchaseSubtitle {
             font-size: x-large;
         }
 
     }
-    .progress-barError {
+    .progress-bar {
         width: 50%;
-        background-color: $lightBlack;
+        background-color: $white;
         border-radius: 0px;
         margin: 20px 0;
-        .progressError {
+        .progress {
             height: 10px;
-            background-color: red;
+            background-color: $gold;
             border-radius: 0px;
             transition: width 0.5s;
           }

@@ -11,13 +11,13 @@
       
       input {
         border: none; 
-        border-bottom: 1px solid black; 
+        border-bottom: 1px solid $black; 
         margin-bottom: 2%;
         width: 55%;
       }
       select {
         border: none; 
-        border-bottom: 1px solid black; 
+        border-bottom: 1px solid $black; 
         margin-bottom: 5%;
       }
       label {
@@ -35,12 +35,12 @@
     flex-direction: column;
     input {
       border: none; 
-      border-bottom: 1px solid black; 
+      border-bottom: 1px solid $black; 
       margin-bottom: 2%;
     }
     select {
       border: none; 
-      border-bottom: 1px solid black; 
+      border-bottom: 1px solid $black; 
       margin-bottom: 5%;
     }
     label {
@@ -58,7 +58,7 @@
 
   + label {
     position: relative;
-    padding-inline-start: 30px; 
+    padding-inline-start: 1.875 rem; 
       &:before {
           content: '';
           position: absolute;
@@ -66,15 +66,12 @@
           left: 0;
           width: 0.9rem;
           height: 0.9rem; 
-          border: 1px solid #000; 
-          
-      }
-
-     
+          border: 1px solid $black;     
+      }  
   }
 
   &:checked + label:before {
-      background-color: #000; 
+      background-color: $black; 
   }
 }
 

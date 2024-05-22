@@ -100,3 +100,6 @@ export interface PaypalButtonProps {
 export interface Paypal {
   closeCheckOut: any
 }
+export interface PromotionProps {
+  contents: string[];
+}
