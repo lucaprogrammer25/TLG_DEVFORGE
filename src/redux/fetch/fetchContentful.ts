@@ -17,7 +17,7 @@ const fetchDataContentful = createAsyncThunk(
             });
 
             const entries = await client.getEntries();
-            entries.items.map((item) => {
+            const sanitizedEntries = entries.items.map((item) => {
             const avatar = item.fields;
                 return avatar
             })

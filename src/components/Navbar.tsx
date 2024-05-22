@@ -116,22 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         setLanguageMenuVisible(false);
     };
 
-    const [hasScrolled, setHasScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20 && !hasScrolled) {
-        setHasScrolled(true);
-         handleClose()
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [hasScrolled]);
 
     return (
         <>
