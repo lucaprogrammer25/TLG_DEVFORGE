@@ -35,7 +35,7 @@ const Cart: React.FC<Props> = () => {
     return item.shipment; 
 });
 
-const totalPrice = Number(shipmentValue[0]) == 20 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2): cartTotalPrice;
+const totalPrice = Number(shipmentValue[0]) == 10 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2): cartTotalPrice;
 
 return (
     <div className='containerCart'>

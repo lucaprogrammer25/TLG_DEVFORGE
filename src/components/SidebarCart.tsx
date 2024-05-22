@@ -1,12 +1,10 @@
-import React from 'react';
 import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
 import { addToCart, decrease, removeFromCart, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice';
 import { SidebarCartType } from '../interfaces/type';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
-import iconP from '../assets/icons/iconP.svg'
-import iconPaypal from '../assets/icons/iconPaypal.svg'
 import Buttontmg3 from './Buttons/ButtonTmg3';
+
 
 
 const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType) => {
@@ -21,7 +19,6 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
     document.body.classList.remove('sidebar-open');
   }
 
-  
   return (
     <>
       <div className='titleSidebar'>
@@ -54,11 +51,10 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
       <p><FormattedMessage id="total" defaultMessage="Total"/></p>
       <p>{`$${CartTotalPrice}`}</p>
       </div>
+      <div style={{display:"flex", flexDirection:"row", gap:"2rem"}}>
           <Buttontmg3 label={"go to checkout"} className="buttonWhitePBlack"onClick={handleClickCheckout} />
-          <div className='buttonPaypal'>
-            <img src={iconP} alt="" />
-            <img src={iconPaypal} alt="" />
           </div>
+           
     </>
   );
 };

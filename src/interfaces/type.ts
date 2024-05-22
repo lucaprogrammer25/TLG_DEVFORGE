@@ -32,7 +32,8 @@ export type Props = {
   image: string;
   price: number;
   alternative: string;
-  addToCart?: any;
+  seeMoreButton?: any;
+  addToCart?:any
   goToPDP?: any;
 };
 
@@ -92,7 +93,13 @@ export interface NavbarProps {
   changeLocale: (newLocale: string) => void;
 }
 
+export interface PaypalButtonProps {
+  totalPrice: number 
+}
 
+export interface Paypal {
+  closeCheckOut: any
+}
 export interface PromotionProps {
   contents: string[];
 }

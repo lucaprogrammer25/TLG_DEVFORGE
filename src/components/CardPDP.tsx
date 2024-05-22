@@ -4,6 +4,7 @@ import Buttontmg3 from './Buttons/ButtonTmg3';
 
 const CardPDP: React.FC<Props> = ({ image, title, price, description, addToCart }: Props) => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
+    const [errorSize, setErrorSize] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -17,7 +18,10 @@ const CardPDP: React.FC<Props> = ({ image, title, price, description, addToCart 
         if (selectedSize) {
             addToCart(selectedSize);
         } else {
-            alert("Please select a size before adding to cart.");
+            setErrorSize(true)
+            setTimeout(() => {
+                setErrorSize(false)
+            }, 3500);
         }
     };
 
@@ -29,7 +33,10 @@ const CardPDP: React.FC<Props> = ({ image, title, price, description, addToCart 
                         <img src={image} alt="" />
                         <div className='containerPricePDP'>
                             <p>{price}€</p>
+                            <div className='buttonErrorPrice'>
                             <Buttontmg3 className='ButtonTmgCss3' label={"add to cart"} onClick={handleAddToCart} />
+                            {errorSize ? <span>Select size please!</span>: null}
+                            </div>
                         </div>
                     </div>
                     <div className='infoCardPDP'>
@@ -41,6 +48,7 @@ const CardPDP: React.FC<Props> = ({ image, title, price, description, addToCart 
                         <div className="sizeCard">
                             <h3>Size</h3>
                             <div className='sizeContainer'>
+                                <p className={selectedSize === 'XS' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('XS')}>XS</p>
                                 <p className={selectedSize === 'S' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('S')}>S</p>
                                 <p className={selectedSize === 'M' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('M')}>M</p>
                                 <p className={selectedSize === 'L' ? 'itemSizeOnActive' : 'itemSize'} onClick={() => handleClickClassSize('L')}>L</p>

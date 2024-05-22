@@ -72,7 +72,7 @@ const cartSlice = createSlice({
         addShipping(state) {
             state.cartItems = state.cartItems.map(item => ({
                 ...item,
-                shipment: 20
+                shipment: 10
             }));
             saveStateToLocalStorage(state);
         },

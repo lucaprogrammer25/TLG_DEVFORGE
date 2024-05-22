@@ -2,7 +2,7 @@ import PaymentFailed from "../components/PaymentFailed";
 import PaymentSucceed from "../components/PaymentSucceed";
 
 
-const paymentCheck: Boolean = false;
+const paymentCheck: Boolean = true;
 
 const FinalCheck = () => {
     return (
