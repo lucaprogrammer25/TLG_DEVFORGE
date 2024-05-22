@@ -1,0 +1,59 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+
+  .active {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+
+  .inactive {
+    animation: fadeOut 0.5s ease-out forwards;
+  }
+
+
+  .promoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 350px;
+    height: 100px;
+    background-color: white;
+    position: fixed;
+    bottom: 4rem;
+    right: 0;
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding-inline: 1rem;
+    z-index: 1500;
+  }
+  
+  .promoContainer p {
+    text-align: right;
+    letter-spacing: 0.1rem;
+  }
+  
+  @media screen and (min-width: 780px) {
+    .promoContainer {
+      bottom: 4rem;
+      right: 6rem;
+    }
+  }
+  
