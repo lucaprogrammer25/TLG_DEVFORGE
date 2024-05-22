@@ -78,7 +78,7 @@ const NewsletterForm: React.FC = () => {
           visible: false,
         }));
         localStorage.setItem("formVisibility", "hidden");
-      }, 10000);
+      }, 20000);
     } catch (error) {
       setFormState({ ...formState, status: "error" });
     }
