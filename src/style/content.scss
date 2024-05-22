@@ -1,0 +1,26 @@
+.contentImages {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; 
+    padding: 1rem; 
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 1rem); 
+    margin: 0 auto; 
+
+    .contentMen,
+    .contentWomen {
+       
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        &:hover {
+            border: 1px solid var(--primary);
+            transform: scale(1.08);
+            transition: 0.5s;
+        }
+    }
+}
+

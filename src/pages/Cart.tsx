@@ -22,7 +22,7 @@ const Cart: React.FC<Props> = () => {
   
   const { data } = useTypeSelector((state) => state.contentful)
   
-  const logo =  data.items && data.items[0]?.fields.logoNavbar.fields.file.url
+  const logo =  data.items && data.items[1]?.fields.logoNavbar.fields.file.url
   useEffect(() => {
     dispatch(fetchDataContentful())     
   }, [dispatch])

@@ -1,14 +1,15 @@
- import { useTypeSelector ,useTypeDispatch} from "../redux/typeHooks"
-import fetchDataContentful from "../redux/fetch/fetchContentful";
+ import { useTypeSelector ,useTypeDispatch} from "../../redux/typeHooks"
+import fetchDataContentful from "../../redux/fetch/fetchContentful";
 import { useEffect } from "react"; 
 import CarouselPage from "./CarouselPage";
+import Content from "./Content";
 /* import video from "../assets/contenful video.mp4" */
 
 const HeroSection = () => {
   const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
   
-  const landingImage =  data.items && data.items[2]?.fields.bannerImage.fields.file.url;
+  const landingImage =  data.items && data.items[3]?.fields.bannerImage.fields.file.url;
   
   
 
@@ -19,9 +20,10 @@ const HeroSection = () => {
   return (
     <>
         <div className="heroSectionContainer">
-           <img  src={landingImage} className="heroSectionImage"alt="landing image"></img>
-          {/* <video src={video} autoPlay muted loop playsInline /> */}
+           {/* <img  src={landingImage} className="heroSectionImage"alt="landing image"></img> */}
+           <video src={landingImage} autoPlay muted loop playsInline /> 
           <CarouselPage/>
+          <Content/>
       </div>   
     </>
   )

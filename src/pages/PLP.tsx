@@ -23,14 +23,19 @@ const PLP: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    window.scrollTo(0, 0); 
+}, []);
+
+
+  useEffect(() => {
     if (product) {
       const count = product.reduce((acc, item) => (item.gender === gender ? acc + 1 : acc), 0);
       setMaxItems(count);
     }
   }, [product, gender]);
 
-  const imageMan = data.items && data.items[1].fields.men.fields.file.url;
-  const imageWomen = data.items && data.items[1].fields.women.fields.file.url;
+  const imageMan = data.items && data.items[2].fields.men.fields.file.url;
+  const imageWomen = data.items && data.items[2].fields.women.fields.file.url;
   const plpImage =
     !category && gender === "men"
       ? imageMan
