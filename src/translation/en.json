@@ -60,7 +60,9 @@
     "go back to shopping":"Go back to shopping",
     "total price":"Total Price:",
     "carts":"Cart",
-    "item":"Items"
+    "item":"Items",
+    "discount":"Discount",
+    "promotionCart":"Promo active, we'll give you the two least expensive products for free!"
 }
   
   

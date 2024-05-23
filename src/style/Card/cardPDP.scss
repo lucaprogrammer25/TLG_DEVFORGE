@@ -10,7 +10,7 @@
 .containerImgPDP {
   margin: auto;
     img {
-      height: 31.5rem;
+      height: 22.5rem;
       object-fit: cover;
     }
   }
@@ -140,6 +140,15 @@
       justify-content: center;
       align-items: center;
     }
+
+    .containerImgPDP {
+      margin: auto;
+        img {
+          height: 31.5rem;
+          object-fit: cover;
+        }
+      }
+    
     
     .wrapperImg {
       display: flex;

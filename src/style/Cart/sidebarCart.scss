@@ -133,6 +133,19 @@ body.sidebar-open {
     cursor: pointer;
 }
 
+.wrapperPrice{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.discountContainer{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
 @media screen and (min-width: 992px) {
    
     @keyframes slideIn {

@@ -9,7 +9,8 @@ const defaultInitialState: CartState = {
     shipment: 0,
     loading: false,
     error: null,
-    size:""
+    size: "",
+    discount: 0 
 };
 
 const loadStateFromLocalStorage = (): CartState => {
@@ -36,6 +37,24 @@ const saveStateToLocalStorage = (state: CartState) => {
     }
 };
 
+const calculateDiscount = (cartItems: any[]): number => {
+    const itemPrices: number[] = [];
+
+    cartItems.forEach(item => {
+        for (let i = 0; i < item.quantity; i++) {
+            itemPrices.push(item.price);
+        }
+    });
+
+    if (itemPrices.length < 2) return 0;
+
+    itemPrices.sort((a, b) => a - b);
+
+    const discount = itemPrices[0] + itemPrices[1];
+    return discount;
+};
+
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
@@ -50,10 +69,14 @@ const cartSlice = createSlice({
                 const newItem = { ...action.payload, quantity: 1, shipment: state.shipment };
                 state.cartItems = [...state.cartItems, newItem];
             }
+            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
             saveStateToLocalStorage(state);
         },
         removeFromCart(state, action) {
             state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
+            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
             saveStateToLocalStorage(state);
         },
         decrease(state, action) {
@@ -63,10 +86,13 @@ const cartSlice = createSlice({
             } else {
                 state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
             }
+            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
             saveStateToLocalStorage(state);
         },
         clearCart(state) {
             state.cartItems = [];
+            state.discount = 0;
             saveStateToLocalStorage(state);
         },
         addShipping(state) {
@@ -87,12 +113,20 @@ const cartSlice = createSlice({
 });
 
 export const selectCartTotalPrice = (state: any) => {
-    const totalPrice = state.cart.cartItems.reduce((total: any, item: any) => total + item.price * item.quantity, 0);
-    return totalPrice.toFixed(2);
+    const totalPrice = state.cart.cartItems.reduce((total: number, item: any) => total + item.price * item.quantity, 0);
+    const discount = totalPrice > 1000 ? calculateDiscount(state.cart.cartItems) : 0;
+    const finalPrice = totalPrice - discount;
+    return finalPrice.toFixed(2);
 };
 
+export const selectCartDiscount = (state: any) => {
+    return state.cart.discount.toFixed(2);
+};
+
+
+
 export const selectCartTotalQuantity = (state: any) => {
-    const totalQuantity = state.cart.cartItems.reduce((total: any, item: any) => total + item.quantity, 0);
+    const totalQuantity = state.cart.cartItems.reduce((total: number, item: any) => total + item.quantity, 0);
     return totalQuantity;
 };
 
