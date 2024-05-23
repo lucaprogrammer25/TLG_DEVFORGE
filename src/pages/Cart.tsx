@@ -18,7 +18,6 @@ const Cart: React.FC<Props> = () => {
   const navigate = useNavigate()
   
   const { cartItems } = useTypeSelector((state) => state.cart);
-  console.log(cartItems);
   
   const { data } = useTypeSelector((state) => state.contentful)
   

@@ -4,6 +4,7 @@ import fetchDataProduct from '../redux/fetch/fetchProducts';
 import { useParams } from "react-router-dom";
 import CardPDP from '../components/CardPDP';
 import { addToCart } from '../redux/slice/cartSlice';
+import CarouselPage from './CarouselPage';
 
 const ProductDirectPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -34,7 +35,9 @@ const ProductDirectPage: React.FC = () => {
                 price={selectedProduct.price}
                 image={selectedProduct.image}
                 addToCart={handleAddToCart}
-            />
+                category={selectedProduct.category}
+                />
+                <CarouselPage category={selectedProduct.category} />
         </div>
     );
 };

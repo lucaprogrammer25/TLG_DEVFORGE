@@ -111,6 +111,6 @@ export interface CarouselProps {
   names: string[];
   prices: string[];
   gender: string[];
-  category?:string[];
+  category?:string;
   id: string[];
 }
