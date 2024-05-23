@@ -105,7 +105,7 @@ export interface PromotionProps {
   contents: string[];
 }
 export interface CardProps {
-  imageUrl: string;
+  video: any;
   title: string;
   paragraph: string;
   linkUrl: string;

@@ -1,20 +1,19 @@
 .animatedCardConteiner {
     display: flex;
     justify-content: center;
-    gap: 20px; 
+    gap: 5rem; 
+    margin-block-start: 2rem; 
+    margin-block-end: 2rem; 
   }
   
   .AnimatedCard {
-    width: 300px; 
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 22.625rem;
+    height: 22.625rem;
     overflow: hidden;
   
-    img {
+     .animatedCardVideo {
       width: 100%;
-      height: auto;
-      border-radius: 8px 8px 0 0;
+      height: 12.5rem
     }
   
     .card-content {
