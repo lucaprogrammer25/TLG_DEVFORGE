@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { useState } from 'react';
 import DefaultDisplay from './layout/DefaultDisplay';
-import HeroSection from './pages/HeroSection';
+import HeroSection from './pages/LandingPage/HeroSection';
 import Login from './pages/Login';
 import PLP from './pages/PLP';
 import ProductDirectPage from './pages/ProductDirectPage';
