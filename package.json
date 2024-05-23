@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paypal/paypal-js": "^8.0.5",
+    "@paypal/react-paypal-js": "^8.3.0",
     "@reduxjs/toolkit": "^2.2.3",
     "contentful": "^10.9.3",
     "dotenv": "^16.4.5",

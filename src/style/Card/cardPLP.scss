@@ -11,8 +11,8 @@
 }
 
 .containerImgPLP img {
-    width: 25rem; 
     height: 31.25rem; 
+    width: 19rem;
     object-fit: cover;
     cursor: pointer;
 }
@@ -44,4 +44,14 @@
         background-color: rgba(211, 211, 211, 0.8); 
       }
        
-     
+
+ @media screen and (min-width: 780px) {
+    .containerImgPLP img {
+        height: 31.25rem; 
+        width: 25rem;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    
+
+}

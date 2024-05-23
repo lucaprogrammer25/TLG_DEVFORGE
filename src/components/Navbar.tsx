@@ -118,6 +118,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         setLanguageMenuVisible(false);
     };
 
+
+
     return (
         <>
             <Promotion contents={contents} />
