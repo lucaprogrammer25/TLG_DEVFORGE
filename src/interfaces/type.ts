@@ -104,3 +104,10 @@ export interface Paypal {
 export interface PromotionProps {
   contents: string[];
 }
+export interface CardProps {
+  imageUrl: string;
+  title: string;
+  paragraph: string;
+  linkUrl: string;
+  linkLabel: string;
+}

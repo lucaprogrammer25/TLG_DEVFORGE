@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import Carousel from "../components/Carousel/Carousel";
-import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
-import fetchDataProduct from "../redux/fetch/fetchProducts";
+import Carousel from "../../components/Carousel/Carousel";
+import { useTypeDispatch, useTypeSelector } from "../../redux/typeHooks";
+import fetchDataProduct from "../../redux/fetch/fetchProducts";
 
 interface Product {
   image: string;
@@ -13,7 +13,6 @@ interface Product {
 
 const CarouselPage = () => {
   const { data, error } = useTypeSelector((state) => state.product);
-  console.log(data);
 
   const dispatch = useTypeDispatch();
   useEffect(() => {
