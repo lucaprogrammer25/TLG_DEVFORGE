@@ -17,6 +17,8 @@
         white-space: nowrap;
         opacity: 0; 
         transition: opacity 1s ease-in-out; 
+        text-wrap: wrap;
+        margin-inline: 0.5rem;
         &:hover{
             cursor:pointer;
             border-bottom: 1px solid $white;
