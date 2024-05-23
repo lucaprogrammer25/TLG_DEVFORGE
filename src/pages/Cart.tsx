@@ -18,12 +18,13 @@ const Cart: React.FC<Props> = () => {
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const cartTotalPrice = useTypeSelector(selectCartTotalPrice);
   const discountTotalPrice = useTypeSelector(selectCartDiscount);
-  const discountTotalPriceNumber = Number(discountTotalPrice);
+  const discountTotalPriceNumber = Number(discountTotalPrice)
+  console.log(discountTotalPrice);
+  
   const dispatch = useTypeDispatch();
   const navigate = useNavigate();
 
   const { cartItems } = useTypeSelector((state) => state.cart);
-  console.log(cartItems);
 
   const { data } = useTypeSelector((state) => state.contentful);
 
@@ -52,6 +53,9 @@ const Cart: React.FC<Props> = () => {
   });
 
   const totalPrice = Number(shipmentValue[0]) === 10 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2) : cartTotalPrice;
+  const priceNoDiscount = Number(totalPrice) + Number(discountTotalPriceNumber)
+  console.log(totalPrice);
+  
 
   return (
     <>
@@ -97,7 +101,7 @@ const Cart: React.FC<Props> = () => {
                   <span><FormattedMessage id='summary' defaultMessage="Summary" /></span>
                   <div className='containerCartPrice'>
                     <span><FormattedMessage id="your cart" defaultMessage="Your Cart" /></span>
-                    <span>${cartTotalPrice} </span>
+                    <span>${priceNoDiscount.toFixed(2)}</span>
                   </div>
                   {shipmentValue[0] === 10 ? (
                     <div className='containerCartPrice'>
