@@ -26,7 +26,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
-    
+    const blurOutletElement = document.getElementById('blurOutlet');
+    const blurNavbarElement = document.getElementById('blurNavbar');
     const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
     const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%"});
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
@@ -86,12 +87,20 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
-        setSidebarCartStyle({ display: sidebarCartActive ? "none" : "unset" });
+        setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
+        if (blurOutletElement && blurNavbarElement && cartTotalQuantity !== 0) {
+            blurOutletElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
+            blurNavbarElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
+        }
     };
 
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
-        setSidebarCartStyle({ display: "unset" });
+        setSidebarCartStyle({ display: "flex" });
+        if (blurOutletElement && blurNavbarElement) {
+            blurOutletElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
+            blurNavbarElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
+        }
     };
     const handleSidebarMenu = () => {
         if (!sidebarMenuActive) {
@@ -124,6 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     return (
         <>
+        <div id="blurNavbar">
             <Promotion contents={contents} />
             <nav>
                 <div className="navbar">
@@ -201,6 +211,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                             </div>
                         </div>
 
+                    </div>
                     </div>
 
             {cartTotalQuantity !== 0 ?
