@@ -116,9 +116,15 @@ export interface CarouselProps {
   id: string[];
 }
 export interface CardProps {
-  imageUrl: string;
+  video: any;
   title: string;
   paragraph: string;
   linkUrl: string;
   linkLabel: string;
+}
+
+export interface DropdownProps {
+  options: any;
+  selectedOption: any;
+  handleChange:any;
 }

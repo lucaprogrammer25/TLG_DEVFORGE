@@ -32,6 +32,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
 
     const { data } = useTypeSelector((state) => state.contentful);
+    console.log(data);
+    
     
     
     const dispatch = useTypeDispatch();
