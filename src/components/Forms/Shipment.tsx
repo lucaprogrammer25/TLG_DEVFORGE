@@ -24,11 +24,11 @@ const ShipmentForm: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [phonePrefix, setPhonePrefix] = useState("");
 
+
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    setSelectedCountry(value);
-    setFormData({ ...formData, country: value });
-  };
+    setSelectedCountry(e.target.value);
+  }
+  
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -36,18 +36,15 @@ const ShipmentForm: React.FC = () => {
     const { name, value } = e.target;
     if (name === "prefix") {
       setPhonePrefix(value);
+      console.log(value);
+      
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
 
-  const countryOptions = [
-    (<FormattedMessage id="choose a country" />) as any,
-    <FormattedMessage id="spain" defaultMessage="Spain" />,
-    <FormattedMessage id="germany" defaultMessage="Germany" />,
-    <FormattedMessage id="france" defaultMessage="France" />,
-    <FormattedMessage id="italy" defaultMessage="Italy" />,
-  ];
+  const countryOptions:any = [<FormattedMessage id="choose a country"defaultMessage="Select a country"/> as any,
+ "Germania","Francia","Italia","Spagna"]
 
   const prefixOptions = [
     {
