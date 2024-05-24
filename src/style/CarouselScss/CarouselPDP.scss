@@ -4,7 +4,9 @@
     align-items: center;
     justify-content: space-between;
     p{ 
-      font-size: 0.5rem;
+      font-size: 0.8rem;
+      color: black;
+      text-decoration: dashed;
     }
   }
   
@@ -17,15 +19,12 @@
   }
   
   .carousel-item {
-    margin: 0 10px;
     text-align: center;
-    border: 1px solid pink;
     cursor: pointer;
 
   }
   
   .carousel-item img {
-    max-width: 100px;
-    max-height: 100px;
+    max-height: 20rem;
   }
   

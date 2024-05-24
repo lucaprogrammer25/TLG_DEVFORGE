@@ -1,5 +1,6 @@
 // CarouselPDP.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../style/CarouselScss/CarouselPDP.scss"
 
 interface Product {
@@ -35,11 +36,12 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
       <div className="carousel-items">
         {displayedItems.map((item) => (
           <div key={item.id} className="carousel-item">
-            <img src={item.image} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.price}</p>
-            <p>{item.gender}</p>
-            {item.category && <p>{item.category}</p>}
+            <Link to={`/pdp/${item.id}`}>
+              <img src={item.image} alt={item.name} />
+              <p>{item.name}</p>
+              <p>{item.price}</p>
+              <p>{item.gender}</p>
+            </Link>
           </div>
         ))}
       </div>

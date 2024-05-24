@@ -94,11 +94,6 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   useEffect(() => {
-    const timer = setInterval(goToNext, 5000);
-    return () => clearInterval(timer);
-  }, [totalFilteredImages, itemsToShow]);
-
-  useEffect(() => {
     const handleResize = () => {
       setItemsToShow(getItemsToShow());
     };
@@ -132,20 +127,22 @@ const Carousel: React.FC<CarouselProps> = ({
       <div className="productDescription">
         <Buttontmg3 className="ButtonTmgCss3" onClick={goToPrev} label="Prev" />
         <div>
-        <div className={`carousel-images ${slideDirection}`}>
-          {getVisibleItems().map((item, index) => (
-            <div
-              key={index}
-              className="carousel-image"
-              onClick={() => navigate(`/pdp/${item.id}`)}
-            >
-              <img src={item.src} alt={`Slide ${index}`} />
-              <p className="carousel-image-name">
-                {item.name} <br />€{item.price}
-              </p>
-            </div>
-          ))}
-        </div>
+          <div className={`carousel-images ${slideDirection}`}>
+            {getVisibleItems().map((item, index) => (
+              <div
+                key={index}
+                className="carousel-image"
+                onClick={() => navigate(`/pdp/${item.id}`)}
+              >
+                <img src={item.src} alt={`Slide ${index}`} />
+                <div className="pDiv">
+                  <p className="carousel-image-name">
+                    {item.name} <br />€{item.price}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <Buttontmg3 className="ButtonTmgCss3" onClick={goToNext} label="Next" />
       </div>
