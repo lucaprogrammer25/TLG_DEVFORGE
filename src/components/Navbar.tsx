@@ -33,8 +33,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const { data } = useTypeSelector((state) => state.contentful);
     const dispatch = useTypeDispatch();
-    const logo = data.items && data.items[1]?.fields.logoNavbar.fields.file.url;
-    const contents = data?.items?.[1]?.fields?.promotion ?? [];
+    const logo = data.items && data.items[4]?.fields.logoNavbar.fields.file.url;
+    const contents = data?.items?.[4]?.fields?.promotion ?? [];
 
     const [menDropdown, setMenDropdown] = useState<any[]>(() => {
         const storedMenDropdown = localStorage.getItem("menDropdown");
@@ -53,8 +53,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     useEffect(() => {
         const saveImagesToLocalStorage = async () => {
             if (data?.items) {
-                const menItems = data.items[1]?.fields?.menDropDown ?? [];
-                const womenItems = data.items[1]?.fields?.womenDropDown ?? [];
+                const menItems = data.items[4]?.fields?.menDropDown ?? [];
+                const womenItems = data.items[4]?.fields?.womenDropDown ?? [];
 
                 const menBase64Promises = menItems.map(async (item: any) => {
                     const base64 = await getBase64FromUrl(`https:${item.fields.file.url}`);

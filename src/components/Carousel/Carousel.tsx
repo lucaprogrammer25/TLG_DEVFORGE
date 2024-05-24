@@ -93,10 +93,6 @@ const Carousel: React.FC<CarouselProps> = ({
     setCurrentIndex((prevIndex) => (prevIndex - 1 + maxItems) % maxItems);
   };
 
-  useEffect(() => {
-    const timer = setInterval(goToNext, 5000);
-    return () => clearInterval(timer);
-  }, [totalFilteredImages, itemsToShow]);
 
   useEffect(() => {
     const handleResize = () => {

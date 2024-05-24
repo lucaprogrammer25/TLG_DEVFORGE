@@ -8,7 +8,7 @@ const HeroSection = () => {
   const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
   
-  const landingImage =  data.items && data.items[3]?.fields.bannerImage.fields.file.url;
+  const landingImage =  data.items && data.items[6]?.fields.bannerImage.fields.file.url;
   
   
 

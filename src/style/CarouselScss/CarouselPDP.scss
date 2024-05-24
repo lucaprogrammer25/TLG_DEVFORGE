@@ -3,9 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    p{ 
-      font-size: 0.5rem;
-    }
   }
   
   .carousel-items {
@@ -17,15 +14,14 @@
   }
   
   .carousel-item {
-    margin: 0 10px;
+    max-height: 10rem;
     text-align: center;
-    border: 1px solid pink;
     cursor: pointer;
 
   }
   
   .carousel-item img {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 100%;
+    max-height: 100%;
   }
   
