@@ -7,7 +7,7 @@ import { CardProps } from "../interfaces/type";
         <div className="card-content">
           <h2>{title}</h2>
           <p>{paragraph}</p>
-          <a href={linkUrl}>{linkLabel}</a>
+          <a className="cardContentA"href={linkUrl}>{linkLabel}</a>
         </div>
       </div>
     );
