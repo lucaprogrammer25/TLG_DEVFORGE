@@ -13,7 +13,9 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({changeLocale}) => {
   return (
     <>
     <Navbar changeLocale={changeLocale} />
+    <div id='blurOutlet'>
     <Outlet/>
+    </div>
     <Footer/>
     </>
   );
