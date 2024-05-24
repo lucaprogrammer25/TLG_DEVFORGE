@@ -22,11 +22,13 @@ const Promotion: React.FC<PromotionProps> = ({ contents }) => {
     };
 
     return visible ? (
+        <div className='navbarPromotionWrapper'>
         <div className="navbarPromotion">
             <span className={`navbarPromotionContent ${animateContent ? 'fadeIn' : ''}`}>
                 {contents[contentIndex]}
             </span>
             <button className="navbarPromotionButton" onClick={handleClose}>X</button>
+        </div>
         </div>
     ) : null;
 };

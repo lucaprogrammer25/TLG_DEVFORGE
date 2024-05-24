@@ -31,8 +31,28 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%"});
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
 
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const [navbarBackground, setNavbarBackground] = useState<any>({ backgroundColor: "rgba(255, 255, 255, 0)" });
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const position = window.scrollY;
+            setScrollPosition(position);
+            
+            const opacity = Math.min(1, position / 700); 
+            setNavbarBackground({ backgroundColor: `rgba(255, 255, 255, ${opacity})` });
+        };
+        
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+
     const { data } = useTypeSelector((state) => state.contentful);
-    console.log(data);
+    
     
     
     
@@ -125,8 +145,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     return (
         <>
             <Promotion contents={contents} />
-            <nav>
-                <div className="navbar">
+            <nav  >
+                <div className="navbar" style={navbarBackground}>
                     <div className="navbarLogoContainer">
                         <Link className="linkTag" to='/'>
                             <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
