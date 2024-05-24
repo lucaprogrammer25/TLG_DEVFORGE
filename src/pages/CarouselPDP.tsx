@@ -32,7 +32,7 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <div className="carousel">
-      <button onClick={prevItem}>Previous</button>
+      <button onClick={prevItem} className="ButtonTmgCss3">Previous</button>
       <div className="carousel-items">
         {displayedItems.map((item) => (
           <div key={item.id} className="carousel-item">
@@ -45,7 +45,7 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
           </div>
         ))}
       </div>
-      <button onClick={nextItem}>Next</button>
+      <button onClick={nextItem} className="ButtonTmgCss3">Next</button>
     </div>
   );
 };
