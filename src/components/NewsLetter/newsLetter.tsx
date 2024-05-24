@@ -29,7 +29,11 @@ const NewsletterForm: React.FC = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+      if (
+        formState.status === "submitted" &&
+        formRef.current &&
+        !formRef.current.contains(event.target as Node)
+      ) {
         setFormState((prevState) => ({
           ...prevState,
           visible: false,
@@ -43,7 +47,7 @@ const NewsletterForm: React.FC = () => {
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  }, [formState.status]);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({

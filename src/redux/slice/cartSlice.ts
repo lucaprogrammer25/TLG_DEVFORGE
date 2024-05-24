@@ -120,7 +120,7 @@ export const selectCartTotalPrice = (state: any) => {
 };
 
 export const selectCartDiscount = (state: any) => {
-    return state.cart.discount.toFixed(2);
+    return state.cart.discount;
 };
 
 
