@@ -32,6 +32,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
 
     const { data } = useTypeSelector((state) => state.contentful);
+    
+    
     const dispatch = useTypeDispatch();
     const logo = data.items && data.items[4]?.fields.logoNavbar.fields.file.url;
     const contents = data?.items?.[4]?.fields?.promotion ?? [];

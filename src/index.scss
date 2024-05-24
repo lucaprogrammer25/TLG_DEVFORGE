@@ -14,6 +14,10 @@
 @import "./style/CarouselScss/Carousel.scss";
 @import "./style/Cart/Cart.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
+@import "./style/content.scss";
+@import "./style/Card/animatedCards.scss";
+
+@import url("./style/promoCompontent.scss");
 
 
 * {
@@ -24,6 +28,9 @@
   font-family: $fontSecondary;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {

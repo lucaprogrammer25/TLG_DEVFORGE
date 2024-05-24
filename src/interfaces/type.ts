@@ -68,7 +68,8 @@ export interface CartState {
   shipment: number;
   loading: boolean;
   error: string | null;
-  size: string;
+  size:string
+  discount: number
 }
 
 export interface SidebarCartType {
@@ -113,4 +114,11 @@ export interface CarouselProps {
   gender: string[];
   category?:string;
   id: string[];
+}
+export interface CardProps {
+  imageUrl: string;
+  title: string;
+  paragraph: string;
+  linkUrl: string;
+  linkLabel: string;
 }

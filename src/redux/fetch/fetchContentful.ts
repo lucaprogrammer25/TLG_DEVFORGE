@@ -21,7 +21,6 @@ const fetchDataContentful = createAsyncThunk(
             const avatar = item.fields;
                 return avatar
             })
-         /*    console.log(sanitizedEntries) */
             const data = entries
             return data
         } catch (error) {

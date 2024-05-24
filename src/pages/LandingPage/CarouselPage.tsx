@@ -1,9 +1,15 @@
 import { useEffect } from "react";
+<<<<<<< HEAD:src/pages/CarouselPage.tsx
 import Carousel from "../components/Carousel/Carousel";
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import fetchDataProduct from "../redux/fetch/fetchProducts";
 import "../style/loading.scss"
 import loading from "../assets/icons/loading.png"
+=======
+import Carousel from "../../components/Carousel/Carousel";
+import { useTypeDispatch, useTypeSelector } from "../../redux/typeHooks";
+import fetchDataProduct from "../../redux/fetch/fetchProducts";
+>>>>>>> develop:src/pages/LandingPage/CarouselPage.tsx
 
 interface Product {
   image: string;

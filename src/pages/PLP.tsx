@@ -22,6 +22,11 @@ const PLP: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    window.scrollTo(0, 0); 
+}, []);
+
+
+  useEffect(() => {
     if (product) {
       const count = product.reduce((acc, item:ProductJson) => (item.gender === gender ? acc + 1 : acc), 0);
       setMaxItems(count);

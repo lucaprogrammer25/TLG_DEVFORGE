@@ -1,0 +1,46 @@
+.animatedCardConteiner {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+  }
+  
+  .AnimatedCard {
+    width: 300px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px 8px 0 0;
+    }
+  
+    .card-content {
+      padding: 20px;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+  
+      a {
+        display: block;
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
