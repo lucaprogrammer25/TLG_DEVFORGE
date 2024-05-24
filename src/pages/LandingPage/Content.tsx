@@ -9,8 +9,8 @@ const Content = () => {
     const [hovered, setHovered] = useState("");
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-    const logoMen = data.items && data.items[0].fields.maleImage.fields.file.url;
-    const logoWomen = data.items && data.items[0].fields.womenImage.fields.file.url;
+    const logoMen = data.items && data.items[3].fields.maleImage.fields.file.url;
+    const logoWomen = data.items && data.items[3].fields.womenImage.fields.file.url;
 
     useEffect(() => {
         dispatch(fetchDataContentful());
