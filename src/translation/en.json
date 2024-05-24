@@ -44,7 +44,7 @@
     "name":"Nome:",
     "last name": "Last Name:",
     "choose a country":"Choose a country",
-    "prefix":"Choose a prefix",
+    "prefix":"Prefix",
     "different address":"Choose a different address for billing ",
     "italy":"Italy",
     "france":"France",
@@ -62,7 +62,9 @@
     "carts":"Cart",
     "item":"Items",
     "discount":"Discount",
-    "promotionCart":"Promo active, we'll give you the two least expensive products for free!"
+    "promotionCart":"Promo active, we'll give you the two least expensive products for free!",
+    "errorPayment":"Fill in the fields to continue",
+    "errorCheckedPayment": "Select a payment method"
 }
   
   

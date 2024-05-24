@@ -44,7 +44,7 @@
 "name":"Nome:",
 "last name":"Cognome:",
 "choose a country":"Scegli una nazione:",
-"prefix":"Scelgi un prefisso:",
+"prefix":"Prefisso:",
 "different address":"Scegli un indirizzo diverso per la fatturazione",
 "italy":"Italia",
 "france":"Francia",
@@ -63,6 +63,8 @@
 "carts":"Carrello",
 "item":"Articoli",
 "discount":"Sconto",
-"promotionCart":"Promo attiva, i due prodotti meno cari te li regaliano noi!"
+"promotionCart":"Promo attiva, i due prodotti meno cari te li regaliano noi!",
+"errorPayment": "Compila i campi per proseguire",
+"errorCheckedPayment": "Seleziona un metodo di pagamento"
 
 }

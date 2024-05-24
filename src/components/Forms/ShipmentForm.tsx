@@ -1,9 +1,11 @@
 import React from 'react';
-import { PropsForms} from '../../interfaces/type';
+import { PropsForms } from '../../interfaces/type';
 import { FormattedMessage } from 'react-intl';
+import CustomDropdown from './CustomDropdown';  
 
 
-const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, countryOptions, prefixOptions}) => {
+
+const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, countryOptions, prefixOptions }) => {
   return (
     <ul className='shipmentFormList'>
       <li>
@@ -15,7 +17,7 @@ const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, country
         <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required aria-label="Name" />
       </li>
       <li>
-        <label htmlFor="lastName"><FormattedMessage id="last name"/></label>
+        <label htmlFor="lastName"><FormattedMessage id="last name" defaultMessage="Last Name:"/></label>
         <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleInputChange} required aria-label="Last Name" />
       </li>
       <li>
@@ -27,7 +29,7 @@ const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, country
         <input type="text" id="postalCode" name="postalCode" value={formData.postalCode} onChange={handleInputChange} required aria-label="Postal Code" />
       </li>
       <li>
-        <label htmlFor="country"><FormattedMessage id="country" defaultMessage="Address:"/></label>
+        <label htmlFor="country"><FormattedMessage id="country" defaultMessage="Country:"/></label>
         <select id="country" name="country" value={formData.country} onChange={handleInputChange} required aria-label="Country">
           {countryOptions.map((option) => (
             <option key={option} value={option}>
@@ -37,20 +39,19 @@ const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, country
         </select>
       </li>
       <li>
-        <label htmlFor="province"><FormattedMessage id="city"/></label>
+        <label htmlFor="province"><FormattedMessage id="city" defaultMessage="City:"/></label>
         <input type="text" id="province" name="province" value={formData.province} onChange={handleInputChange} required aria-label="Province" />
       </li>
       <li>
-        <label htmlFor="phoneNumber"><FormattedMessage id="phone number"/></label>
-        <select id="prefix" name="prefix" value={formData.phonePrefix} onChange={handleInputChange} required aria-label="Prefix">
-          <option value=""> </option>
-          {prefixOptions.map((option:any) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <label htmlFor="phoneNumber"><FormattedMessage id="phone number" defaultMessage="Phone Number:"/></label>
+        <div className='numberField'>
+        <CustomDropdown
+          options={prefixOptions}
+          selectedOption={prefixOptions.find(option => option.value === formData.phonePrefix)}
+          handleChange={(option:any) => handleInputChange({ target: { name: 'phonePrefix', value: option.value } })}
+        />
         <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required aria-label="Phone Number" />
+        </div>
       </li>
     </ul>
   );
