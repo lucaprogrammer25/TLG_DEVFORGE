@@ -1,11 +1,24 @@
-
-.heroSectionContainer{
+.heroSectionContainer {
+    position: relative;
     width: 100%;
-    .heroSectionImage{
-        width: 100%;    
+  
+    .heroSectionImage {
+      width: 100%;    
     }
-}
+  
+    .heroSectionVideo {
+      width: 100%;
+    }
+  
+    .heroSectionVideoContainer {
+      transition: transform 1.2s ease-in-out;
+      position: relative;
+      &.zoomOut {
+        transform: scale(1.2);
+      }
+    }
+ }
 
-.heroSectionVideo{
-    width: 100%;
-}
+ .carousel-container{
+    margin-block-start: 6rem;
+ }
