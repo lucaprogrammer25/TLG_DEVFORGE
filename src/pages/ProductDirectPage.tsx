@@ -6,7 +6,6 @@ import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
 
-// Definizione dell'interfaccia ProductPDP
 interface ProductPDP {
   id: number;
   name: string;
