@@ -1,0 +1,30 @@
+/* CarouselPDP.css */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p{ 
+      font-size: 0.8rem;
+      color: black;
+      text-decoration: dashed;
+    }
+  }
+  
+  .carousel-items {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: space-evenly;
+    
+  }
+  
+  .carousel-item {
+    text-align: center;
+    cursor: pointer;
+
+  }
+  
+  .carousel-item img {
+    max-height: 20rem;
+  }
+  
