@@ -8,7 +8,7 @@ const HeroSection = () => {
   const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
   
-  const landingImage =  data.items && data.items[2]?.fields.bannerImage.fields.file.url;
+  const video =  data.items && data.items[6]?.fields.bannerImage.fields.file.url;
   
   
 
@@ -19,8 +19,8 @@ const HeroSection = () => {
   return (
     <>
         <div className="heroSectionContainer">
-           <img  src={landingImage} className="heroSectionImage"alt="landing image"></img>
-          {/* <video src={video} autoPlay muted loop playsInline /> */}
+           {/* <img  src={landingImage} className="heroSectionImage"alt="landing image"></img> */}
+          <video src={video} autoPlay muted loop playsInline />
           <CarouselPage/>
       </div>   
     </>

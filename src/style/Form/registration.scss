@@ -1,0 +1,59 @@
+.registrationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+
+    .registrationTitle {
+      font-weight: normal;
+      font-size: 3rem;
+    }
+
+    .registrationForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+
+ 
+        .formGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            align-items: start;
+
+            .formInput {
+                width: 25rem;
+                border: none;
+                border-bottom: 1px solid $gold;
+                outline: none;
+                font-size: 1.2rem;
+            }
+        }
+        
+        .errorMessage {
+            color: $red;
+            font-size: 1.2rem;
+        }
+
+        .passwordAdvise {
+            color: $red;
+            font-size: 1.2rem;
+        }
+
+        .submitButton {
+            width: 9rem;
+            height: 3rem;
+            font-size: 1.5rem;
+            border: none;
+            background-color: $lightBlack;
+            color: $white;
+            cursor: pointer;
+         }
+ 
+    }
+}
