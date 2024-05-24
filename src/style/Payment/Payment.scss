@@ -30,6 +30,10 @@
     }
   }
 
+  #prefix{
+    width: 3rem;
+  }
+
   .paymentForm{
     display: flex;
     flex-direction: column;
@@ -75,3 +79,62 @@
   }
 }
 
+
+.errorPayment{
+  color: red;
+  text-transform: lowercase;
+  margin-inline-end: .1rem;
+}
+
+.errorPayment::first-letter{
+  text-transform: capitalize;
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 5rem;
+}
+
+.custom-dropdown__selected {
+  cursor: pointer;
+}
+
+.custom-dropdown__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+
+.custom-dropdown__list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.custom-dropdown__list li:hover {
+  background: #f0f0f0;
+}
+
+#phoneNumber{
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.numberField{
+  border-block-end: 1px solid black;
+  max-width: 13rem;
+  margin-block-start: .5rem;
+}
+
+.showBillingAddress{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+}

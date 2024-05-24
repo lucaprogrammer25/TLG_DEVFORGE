@@ -35,6 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     console.log(data);
     
     
+    
     const dispatch = useTypeDispatch();
     const logo = data.items && data.items[4]?.fields.logoNavbar.fields.file.url;
     const contents = data?.items?.[4]?.fields?.promotion ?? [];

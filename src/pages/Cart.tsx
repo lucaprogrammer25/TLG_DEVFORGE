@@ -13,7 +13,7 @@ interface Props {}
 
 const Cart: React.FC<Props> = () => {
   const [shipment, setShipment] = useState(false);
-  const [showPromo, setShowPromo] = useState(false); // Initially false
+  const [showPromo, setShowPromo] = useState(false);
 
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const cartTotalPrice = useTypeSelector(selectCartTotalPrice);

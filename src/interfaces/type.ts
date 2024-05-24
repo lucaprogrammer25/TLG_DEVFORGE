@@ -111,3 +111,9 @@ export interface CardProps {
   linkUrl: string;
   linkLabel: string;
 }
+
+export interface DropdownProps {
+  options: any;
+  selectedOption: any;
+  handleChange:any;
+}
