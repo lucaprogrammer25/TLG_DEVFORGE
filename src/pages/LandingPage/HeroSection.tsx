@@ -3,14 +3,14 @@ import fetchDataContentful from "../../redux/fetch/fetchContentful";
 import { useEffect } from "react"; 
 import CarouselPage from "./CarouselPage";
 import Content from "./Content";
-/* import AnimatedComponent from "./AnimatedCard"; */
-/* import video from "../assets/contenful video.mp4" */
+ import AnimatedComponent from "./AnimatedCard"; 
+
 
 const HeroSection = () => {
   const { data } = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
   
-  const landingImage =  data.items && data.items[3]?.fields.bannerImage.fields.file.url;
+  const landingImage =  data.items && data.items[6]?.fields.bannerImage.fields.file.url;
   
   
 
@@ -25,7 +25,7 @@ const HeroSection = () => {
            <video  className="heroSectionVideo"src={landingImage} autoPlay muted loop playsInline controls={false} disablePictureInPicture/> 
           <CarouselPage/>
           <Content/>
-          {/* <AnimatedComponent/> */}
+          <AnimatedComponent/> 
       </div>   
     </>
   )

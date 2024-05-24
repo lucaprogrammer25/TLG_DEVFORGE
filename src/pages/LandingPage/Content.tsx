@@ -9,8 +9,8 @@ const Content = () => {
     const [hovered, setHovered] = useState("");
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-    const logoMen = data.items && data.items[0].fields.maleImage.fields.file.url;
-    const logoWomen = data.items && data.items[0].fields.womenImage.fields.file.url;
+    const logoMen = data.items && data.items[3].fields.maleImage.fields.file.url;
+    const logoWomen = data.items && data.items[3].fields.womenImage.fields.file.url;
 
     useEffect(() => {
         dispatch(fetchDataContentful());
@@ -25,13 +25,14 @@ const Content = () => {
 
     return (
         <>
+        <h2 className="TitleHomePage">TMB COLLECTIONS </h2>
             <div className="contentImages">
                 <div className="contentMen" onMouseEnter={() => setHovered("men")} onMouseLeave={() => setHovered("")}>
                     <Link to="/men">
                         <img src={logoMen} alt="Men Clothes" />
                     </Link>
                     {(isMobile || hovered === "men") && (
-                        <div className="tooltip top-left">Men Clothes</div>
+                        <div className="tooltip top-left">Men Collection</div>
                     )}
                 </div>
                 <div className="contentWomen" onMouseEnter={() => setHovered("women")} onMouseLeave={() => setHovered("")}>
@@ -39,7 +40,7 @@ const Content = () => {
                         <img src={logoWomen} alt="Women Clothes" />
                     </Link>
                     {(isMobile || hovered === "women") && (
-                        <div className="tooltip top-right">Women Clothes</div>
+                        <div className="tooltip top-right">Women Collection</div>
                     )}
                 </div>
             </div>
