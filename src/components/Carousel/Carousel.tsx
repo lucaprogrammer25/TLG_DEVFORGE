@@ -105,24 +105,24 @@ const Carousel: React.FC<CarouselProps> = ({
   const handleGenderClick = (gender: string) => {
     setCurrentGender(gender);
     setCurrentIndex(0);
-  };
+  }; 
 
   const navigate = useNavigate();
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">
-        <span
+  {/*       <span
           className="ButtonTmgCss3"
           onClick={() => handleGenderClick("women")}
         >
           Women
-        </span>
-        <span
-          className="ButtonTmgCss3"
-          onClick={() => handleGenderClick("men")}
-        >
-          Men
-        </span>
+        </span> */}
+  {/*         <span
+            className="ButtonTmgCss3"
+            onClick={() => handleGenderClick("men")}
+          >
+            Men
+          </span> */}
       </div>
       <div className="productDescription">
         <Buttontmg3 className="ButtonTmgCss3" onClick={goToPrev} label="Prev" />
