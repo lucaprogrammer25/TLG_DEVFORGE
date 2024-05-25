@@ -128,9 +128,12 @@ const CardPDP: React.FC<DefaultProps> = ({
                   value={selectedNumber ?? ""}
                   onChange={(e) => setSelectedNumber(parseInt(e.target.value))}
                 >
-                  {[...Array(21).keys()].map((num) => (
-                    <option key={num + 30} value={num + 30}>
-                      {num + 30}
+                  <option value="" disabled hidden>
+                    Scegli la taglia
+                  </option>
+                  {[...Array(15).keys()].map((num) => (
+                    <option key={num + 34} value={num + 34}>
+                      {num + 34}
                     </option>
                   ))}
                 </select>
