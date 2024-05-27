@@ -62,7 +62,6 @@ const PLP: React.FC = () => {
     {category ? <BreadCrumbs/> : null } 
       <img className="imageProduct" src={plpImage} alt="" />
       <div className="wrapCard">
-        <h1 id="titleProductPage">Product</h1>
         <div className="containerCards">
           {product
             .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category))

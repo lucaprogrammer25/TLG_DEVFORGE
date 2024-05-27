@@ -1,54 +1,58 @@
 /* SIDEBAR */
-
-.navbarPromotion{
-    display: flex;
-    justify-content: space-between;
-    background-color: $lightBlack;
-    color: $white;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    .navbarPromotionContent {
-        display: inline-block;
-        margin: 0 auto;
-        text-align: center;
-        white-space: nowrap;
-        opacity: 0; 
-        transition: opacity 1s ease-in-out; 
-        text-wrap: wrap;
-        margin-inline: 0.5rem;
-        &:hover{
-            cursor:pointer;
-            border-bottom: 1px solid $white;
-        }
-        .fadeIn{
-            opacity: 1;
-        }
-    } 
-    .navbarPromotionButton    {
+.navbarPromotionWrapper{
+    top: 0;
+    z-index: 1000;
+    .navbarPromotion{
+        display: flex;
+        justify-content: space-between;
         background-color: $lightBlack;
         color: $white;
-        border:none;    
-        padding-inline-end: 1rem;
-        font-size: 1.2rem; 
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        .navbarPromotionContent {
+            display: inline-block;
+            margin: 0 auto;
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0; 
+            transition: opacity 1s ease-in-out; 
+            text-wrap: wrap;
+            margin-inline: 0.5rem;
+            &:hover{
+                cursor:pointer;
+                border-bottom: 1px solid $white;
+            }
+            .fadeIn{
+                opacity: 1;
+            }
+        } 
+        .navbarPromotionButton    {
+            background-color: $lightBlack;
+            color: $white;
+            border:none;    
+            padding-inline-end: 1rem;
+            font-size: 1.2rem; 
+        }
     }
-}
-.navbarPromotionButton:hover{
-    cursor:pointer;
-}
-.navbarPromotionContent.fadeIn {
-    opacity: 1;   
+    .navbarPromotionButton:hover{
+        cursor:pointer;
+    }
+    .navbarPromotionContent.fadeIn {
+        opacity: 1;   
+    }
 }
 
 .navbar{
     width: 100%;
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     justify-content: space-between;
-    background-color:$white;
-    height: 100%;
+    background: transparent;
+    z-index: 998;
+    position: fixed;
     .navbarLogoContainer{
         width: max-content;
         padding-inline-start: 1rem;
@@ -110,7 +114,6 @@
 .navbarServiceMenuLanguageMenu {
     position: absolute;
     inset-block-start: 100%; 
-    background-color: white;
     border: 1px solid #ddd;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
     z-index: 1000;
