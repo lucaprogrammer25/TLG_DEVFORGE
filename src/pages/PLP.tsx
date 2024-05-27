@@ -58,10 +58,10 @@ const PLP: React.FC = () => {
 
 
   return (
-    <section>
-    {category ? <BreadCrumbs/> : null } 
+    <>
       <img className="imageProduct" src={plpImage} alt="" />
       <div className="wrapCard">
+        {category ? <BreadCrumbs/> : null } 
         <div className="containerCards">
           {product
             .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category))
@@ -88,7 +88,7 @@ const PLP: React.FC = () => {
             <span>{`${displayedCards} - ${maxItems}`}</span>
           </div>
         )}
-    </section>
+   </>
   );
 };
 
