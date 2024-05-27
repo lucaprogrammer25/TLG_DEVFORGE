@@ -126,8 +126,17 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         changeLocale(newLocale);
     };
     const handleCloseLanguageMenu = () => {
-        setLanguageMenuVisible(false);
+        setLanguageMenuVisible(false)
     };
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleCloseLanguageMenu);
+    },[languageMenuVisible]);
+
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleSidebarCartClose)
+    },[sidebarCartActive]);
 
 
 
