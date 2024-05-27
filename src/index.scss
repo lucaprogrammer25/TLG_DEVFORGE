@@ -58,13 +58,11 @@ html{
 
 
 section{
-  max-width: 2000px;
-  margin: 0 auto;
-  padding-block-start: 4rem;
-  margin-block-end: 4rem;
+  padding-block: 8rem;
 }
 
 .linkTag{
   text-decoration: none;
   color: $black;
 }
+

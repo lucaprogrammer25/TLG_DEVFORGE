@@ -44,15 +44,17 @@
         opacity: 1;   
     }
 }
-
+nav {
+    z-index: 998;
+    position: fixed;
+    width: 100%;
+}
 .navbar{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background: transparent;
-    z-index: 998;
-    position: fixed;
     .navbarLogoContainer{
         width: max-content;
         padding-inline-start: 1rem;
@@ -152,27 +154,20 @@
   
 
 
-
-
-
-
-
-
-/* HAMBURGER MENU  */
-
- 
+/* MOBILE NAV  */
 
 
 .mobileBar {    
     z-index: 2;
     width: 100%;
     display: flex;
-    position: sticky;
+    position: fixed;
     top: 0;
     flex-direction: row ;
     justify-content: space-between;
     background-color:$white;
-    height: 100%;
+    height: max-content;
+    background: transparent;
     .mobileBarLogoContainer {
         width: min-content;
         padding-inline-start: 1rem;
@@ -184,6 +179,7 @@
     }
     .mobileBarServiceMenu {
         display: flex;
+        margin-left: 2rem;
         
 
         .hamburgerLogoContainer {
@@ -221,9 +217,13 @@
     }
 
 }
+
+/* SIDEBAR MENU  */
+
 .sidebarBox {
     z-index: 1;
     position: fixed;
+    top: 3rem;
     width: 50%;
     height: 100%; 
     background-color:$white;
