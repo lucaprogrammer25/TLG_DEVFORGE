@@ -10,7 +10,7 @@
   width: 100%;
   height: 38.5rem;
   position: relative;
-  
+
   .carousel-images {
     display: flex;
     flex-direction: row;
@@ -19,20 +19,21 @@
     height: 100%;
     padding: 2rem;
     gap: 1.25rem;
-    
-    
+
     .carousel-image {
       position: relative;
       display: block;
       width: 20rem;
       max-height: 100%;
-      .pDiv{
+      .pDiv {
         margin-top: 1rem;
       }
 
-
       p {
         color: transparent;
+        @media (max-width: 478px) {
+          color: black;
+        }
       }
 
       &:hover {
@@ -75,6 +76,10 @@
     color: transparent;
     height: 100%;
     z-index: 992;
+
+    @media (max-width: 478px) {
+      color: black;
+    }
 
     &:hover {
       color: black;

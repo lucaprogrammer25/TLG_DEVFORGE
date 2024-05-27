@@ -9,9 +9,10 @@
 
 .containerImgPDP {
   margin: auto;
-    img {
-      height: 22.5rem;
-      object-fit: cover;
+  img {
+      max-width: 20rem;
+      max-height: 22.5rem;
+      object-fit: contain;
     }
   }
 
@@ -27,6 +28,7 @@
 
   .infoCardPDP{
     margin-inline: 2rem;
+
   }
 
   .containerPricePDP {
@@ -98,6 +100,8 @@
     .colorsContainer {
       display: flex;
       flex-direction: row;
+  
+
       gap: 2rem;
       padding-block-end: 0.35rem;
 
@@ -159,12 +163,15 @@
     .contentProducts{
       display: flex;
       flex-direction: row;
+      @media screen {
+        
+      }
     }
 
     .infoCardPDP {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       text-wrap: wrap;
       max-height: 31.5rem;
       margin-inline:0;

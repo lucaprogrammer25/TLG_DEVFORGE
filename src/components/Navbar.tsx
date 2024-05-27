@@ -226,9 +226,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <div className="navbarServiceMenuProfile" onClick={handleLoginForm}>
                             <img src={profile} alt="profile-icon" />
                         </div>
-                        <div className="navbarServiceMenuCart">
-                            <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
-                            <span>{`('${cartTotalQuantity}')`}</span>
+                        <div className="navbarServiceMenuCart" onClick={handleCartClick}>
+                            <img src={shoppingBag} alt="cart-icon"  />
+                            <span >{`('${cartTotalQuantity}')`}</span>
                         </div>
                     </div>
                 </div>

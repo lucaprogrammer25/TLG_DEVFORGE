@@ -3,7 +3,7 @@ import { Props } from "../interfaces/type";
 import Buttontmg3 from "./Buttons/ButtonTmg3";
 
 interface DefaultProps extends Props {
-  category: string; // Assumiamo che 'category' sia una stringa
+  category: string;
 }
 
 const CardPDP: React.FC<DefaultProps> = ({
@@ -32,7 +32,7 @@ const CardPDP: React.FC<DefaultProps> = ({
           setErrorSize(false);
         }, 3500);
       }
-    } else {
+    } else if (category.toLowerCase() !== "accessories") {
       if (selectedSize) {
         addToCart(selectedSize);
       } else {
@@ -41,6 +41,8 @@ const CardPDP: React.FC<DefaultProps> = ({
           setErrorSize(false);
         }, 3500);
       }
+    } else {
+      addToCart();
     }
   };
 
@@ -72,55 +74,56 @@ const CardPDP: React.FC<DefaultProps> = ({
             <h2 className="titleCardPDP">{title}</h2>
             <div className="detailsPDP">
               <h3>Description</h3>
-              <p> {description}</p>
+              <p>{description}</p>
             </div>
-            {category.toLowerCase() !== "shoes" && (
-              <div className="sizeCard">
-                <h3>Size</h3>
-                <div className="sizeContainer">
-                  <p
-                    className={
-                      selectedSize === "XS" ? "itemSizeOnActive" : "itemSize"
-                    }
-                    onClick={() => setSelectedSize("XS")}
-                  >
-                    XS
-                  </p>
-                  <p
-                    className={
-                      selectedSize === "S" ? "itemSizeOnActive" : "itemSize"
-                    }
-                    onClick={() => setSelectedSize("S")}
-                  >
-                    S
-                  </p>
-                  <p
-                    className={
-                      selectedSize === "M" ? "itemSizeOnActive" : "itemSize"
-                    }
-                    onClick={() => setSelectedSize("M")}
-                  >
-                    M
-                  </p>
-                  <p
-                    className={
-                      selectedSize === "L" ? "itemSizeOnActive" : "itemSize"
-                    }
-                    onClick={() => setSelectedSize("L")}
-                  >
-                    L
-                  </p>
-                  <p
-                    className={
-                      selectedSize === "XL" ? "itemSizeOnActive" : "itemSize"
-                    }
-                    onClick={() => setSelectedSize("XL")}
-                  >
-                    XL
-                  </p>
+            {category.toLowerCase() !== "shoes" &&
+              category.toLowerCase() !== "accessories" && (
+                <div className="sizeCard">
+                  <h3>Size</h3>
+                  <div className="sizeContainer">
+                    <p
+                      className={
+                        selectedSize === "XS" ? "itemSizeOnActive" : "itemSize"
+                      }
+                      onClick={() => setSelectedSize("XS")}
+                    >
+                      XS
+                    </p>
+                    <p
+                      className={
+                        selectedSize === "S" ? "itemSizeOnActive" : "itemSize"
+                      }
+                      onClick={() => setSelectedSize("S")}
+                    >
+                      S
+                    </p>
+                    <p
+                      className={
+                        selectedSize === "M" ? "itemSizeOnActive" : "itemSize"
+                      }
+                      onClick={() => setSelectedSize("M")}
+                    >
+                      M
+                    </p>
+                    <p
+                      className={
+                        selectedSize === "L" ? "itemSizeOnActive" : "itemSize"
+                      }
+                      onClick={() => setSelectedSize("L")}
+                    >
+                      L
+                    </p>
+                    <p
+                      className={
+                        selectedSize === "XL" ? "itemSizeOnActive" : "itemSize"
+                      }
+                      onClick={() => setSelectedSize("XL")}
+                    >
+                      XL
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
             {category.toLowerCase() === "shoes" && (
               <div className="numberSelect">
                 <h3>Number</h3>
@@ -139,14 +142,16 @@ const CardPDP: React.FC<DefaultProps> = ({
                 </select>
               </div>
             )}
-            <div className="colorCard">
-              <h3>Colors</h3>
-              <div className="colorsContainer">
-                <div className="squareGreen"></div>
-                <div className="squareYellow"></div>
-                <div className="squareRed"></div>
+            {category.toLowerCase() !== "accessories" && (
+              <div className="colorCard">
+                <h3>Colors</h3>
+                <div className="colorsContainer">
+                  <div className="squareGreen"></div>
+                  <div className="squareYellow"></div>
+                  <div className="squareRed"></div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
