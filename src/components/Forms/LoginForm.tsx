@@ -11,9 +11,7 @@ const LoginForm = ({ closeLoginForm }: any) => {
     password: '',
   });
 
-  const [error, setError]:any = useState('');
-
-
+  const [error, setError]: any = useState('');
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,9 +24,12 @@ const LoginForm = ({ closeLoginForm }: any) => {
   };
 
   const checkCredentials = (data: { email: string; password: string }) => {
-    const savedData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(
+      (user: any) => user.email === data.email && user.password === data.password
+    );
 
-    if (savedData.email === data.email && savedData.password === data.password) {
+    if (user) {
       setIsSubmitEnabled(true);
     } else {
       setIsSubmitEnabled(false);
@@ -38,9 +39,12 @@ const LoginForm = ({ closeLoginForm }: any) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const savedData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(
+      (user: any) => user.email === formData.email && user.password === formData.password
+    );
 
-    if (savedData.email === formData.email && savedData.password === formData.password) {
+    if (user) {
       setError('');
       alert('Login effettuato con successo');
       closeLoginForm();
@@ -48,8 +52,11 @@ const LoginForm = ({ closeLoginForm }: any) => {
         email: '',
         password: '',
       });
+      navigate('/');
     } else {
-      setError(<FormattedMessage id="login error" defaultMessage="Password or e-mail wrong or invalid"/>);
+      setError(
+        <FormattedMessage id="login error" defaultMessage="Password or e-mail wrong or invalid" />
+      );
     }
   };
 
@@ -63,7 +70,12 @@ const LoginForm = ({ closeLoginForm }: any) => {
       <img className="closeButton" src={closeButton} alt="x" onClick={closeLoginForm} />
       <div className="loginFormBox">
         <h2>LOGIN</h2>
-        <h4><FormattedMessage id="login notifications" defaultMessage="Enter your email and password to access the MyAccount section."/></h4>
+        <h4>
+          <FormattedMessage
+            id="login notifications"
+            defaultMessage="Enter your email and password to access the MyAccount section."
+          />
+        </h4>
         <form className="loginForm" onSubmit={handleSubmit}>
           <div className="inputBox">
             <label>e-mail</label>
@@ -88,17 +100,23 @@ const LoginForm = ({ closeLoginForm }: any) => {
             />
           </div>
           {error && <p className="errorMessage">{error}</p>}
-          <button className="loginButton" type="submit">
+          <button className="loginButton" type="submit" disabled={!isSubmitEnabled}>
             Login
           </button>
         </form>
-        <p className="forgotPassword"><FormattedMessage id='forgotten password' defaultMessage="Forgotten Password?"/></p>
-        <div className="separingLine" />
+        <p className="forgotPassword">
+          <FormattedMessage id="forgotten password" defaultMessage="Forgotten Password?" />
+        </p>
+        <div className="separatingLine" />
         <div className="registerQuestion">
-          <h3><FormattedMessage id='registration question' defaultMessage="Are you not registered yet?"/></h3>
-          <p><FormattedMessage id='registration subtitle' defaultMessage="Register now to use our advantages!"/></p>
+          <h3>
+            <FormattedMessage id="registration question" defaultMessage="Are you not registered yet?" />
+          </h3>
+          <p>
+            <FormattedMessage id="registration subtitle" defaultMessage="Register now to use our advantages!" />
+          </p>
           <button className="registerButton" onClick={handleGoToRegistration}>
-            <FormattedMessage id='registration button' defaultMessage="Register"/>
+            <FormattedMessage id="registration button" defaultMessage="Register" />
           </button>
         </div>
       </div>
