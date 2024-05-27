@@ -81,8 +81,8 @@
   }
 }
 .navbarHoverImage {
-  height: 20rem;
-  width: 20rem;
+  max-height: 20rem;
+  max-width: 20rem;
 }
 
 .navbarServiceMenu {
@@ -124,6 +124,13 @@
   }
 }
 
+.imgDropdownItems{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
 .navbarHoverMen,
 .navbarHoverWomen {
   width: 80%;
@@ -139,7 +146,6 @@
   cursor: pointer;
   .navbarHoverImage {
     cursor: pointer;
-    width: 100%;
   }
   a {
     text-decoration: none;

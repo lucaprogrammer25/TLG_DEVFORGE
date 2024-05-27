@@ -9,6 +9,7 @@ const Carousel: React.FC<CarouselProps> = ({
   names,
   prices,
   gender,
+  category,
   id,
 }) => {
   const getItemsToShow = (): number => {
@@ -35,6 +36,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const filteredPrices = prices.filter(
     (_, index) => gender[index] === currentGender
   );
+
   const filteredId = id.filter((_, index) => gender[index] === currentGender);
 
   const totalFilteredImages = filteredImages.length;

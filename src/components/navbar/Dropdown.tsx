@@ -6,8 +6,6 @@ interface DropdownItemProps {
   category: string;
 }
 
-
-
 const DropdownItems: React.FC<DropdownItemProps> = ({ items, category }) => {
   return (
     <>
@@ -16,8 +14,14 @@ const DropdownItems: React.FC<DropdownItemProps> = ({ items, category }) => {
           <Link to={`${category}/${item.fields.description}`} key={index}>
             <div className={`navbarHover${category}${item.fields.name}`}>
               <h1>{item.fields.name}</h1>
-              <img className="navbarHoverImage" src={item.base64} alt={item.fields.name} />
-              <span>{item.fields.description}</span>
+              <div className="imgDropdownItems">
+                <img
+                  className="navbarHoverImage"
+                  src={item.base64}
+                  alt={item.fields.name}
+                />
+                <span>{item.fields.description}</span>
+              </div>
             </div>
           </Link>
         );
