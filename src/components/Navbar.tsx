@@ -26,6 +26,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
+    const blurOutletElement = document.getElementById('blurOutlet');
+    const blurNavbarElement = document.getElementById('blurNavbar');
     const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
     const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%" });
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
@@ -107,12 +109,18 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
 
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
-        setSidebarCartStyle({ display: sidebarCartActive ? "none" : "unset" });
+        setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
+        if (blurOutletElement && blurNavbarElement && cartTotalQuantity !== 0) {
+            blurOutletElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
+        }
     };
 
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
-        setSidebarCartStyle({ display: "unset" });
+        setSidebarCartStyle({ display: "flex" });
+        if (blurOutletElement && blurNavbarElement) {
+            blurOutletElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
+        }
     };
     const handleSidebarMenu = () => {
         if (!sidebarMenuActive) {
@@ -138,13 +146,23 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         changeLocale(newLocale);
     };
     const handleCloseLanguageMenu = () => {
-        setLanguageMenuVisible(false);
+        setLanguageMenuVisible(false)
     };
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleCloseLanguageMenu);
+    },[languageMenuVisible]);
+
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleSidebarCartClose)
+    },[sidebarCartActive]);
 
 
 
     return (
         <>
+        <div id="blurNavbar">
             <Promotion contents={contents} />
             <nav  >
                 <div className="navbar" style={navbarBackground}>
@@ -210,6 +228,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <img src={language} alt="language-icon" />
                         {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
                     </div>
+
                     <div className="mobileBarServiceMenuProfile">
                         <img src={profile} alt="profile-icon" />
                     </div>
@@ -221,9 +240,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <img src={sidebarMenuIcon} alt={hamburgerMenu} className="hamburgerLogo" />
                     </div>
                 </div>
-
             </div>
-
+                    </div>
             {cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
                     <SidebarCart closeSideCart={handleSidebarCartClose} />

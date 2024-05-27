@@ -12,6 +12,8 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
   const CartTotalPrice = useTypeSelector(selectCartTotalPrice)
   const discountTotalPrice = useTypeSelector(selectCartDiscount)
   const discountTotalPriceNumber = Number(discountTotalPrice)
+  const blurOutletElement = document.getElementById('blurOutlet');
+    const blurNavbarElement = document.getElementById('blurNavbar');
   
   const { cartItems } = useTypeSelector((state) => state.cart);
   const dispatch = useTypeDispatch()
@@ -20,6 +22,25 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
   const handleClickCheckout = () => {
     navigate("/cart")
     document.body.classList.remove('sidebar-open');
+  }
+
+  const handleClickDeleteItem = (product: any) => {
+    dispatch(removeFromCart(product));
+    if (blurOutletElement && blurNavbarElement) {
+      blurOutletElement.style.filter =  'blur(0px)';
+      blurNavbarElement.style.filter = 'blur(0px)';
+  }
+  }
+
+  const handleClickDecreaseItem = (product: any) => {
+    dispatch(decrease(product));
+    if(product.quantity <=1){
+      if (blurOutletElement && blurNavbarElement) {
+        blurOutletElement.style.filter =  'blur(0px)';
+        blurNavbarElement.style.filter = 'blur(0px)';
+    }
+    }
+   
   }
 
   return (
@@ -40,11 +61,11 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
               </div>
               <div className='wrapperOptionsCart'>
               <div className='cartDetail'>
-                <button onClick={() => dispatch(decrease(item))} className="cartButton">-</button>
+                <button onClick={() => handleClickDecreaseItem(item)} className="cartButton">-</button>
                 <p>{item.quantity}</p>
                 <button onClick={() => dispatch(addToCart(item))} className="cartButton">+</button>
               </div>
-              <button className='cartButton' onClick={() => dispatch(removeFromCart(item))}><FormattedMessage id="remove" defaultMessage="Remove"/></button>
+              <button className='cartButton' onClick={() => handleClickDeleteItem(item)}><FormattedMessage id="remove" defaultMessage="Remove"/></button>
               </div>
               </div>
             </div>

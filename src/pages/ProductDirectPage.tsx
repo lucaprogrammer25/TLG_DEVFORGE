@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
 import fetchDataProduct from "../redux/fetch/fetchProducts";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
 
-// Definizione dell'interfaccia ProductPDP
 interface ProductPDP {
   id: number;
   name: string;
@@ -21,8 +20,6 @@ const ProductDirectPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data: products, error } = useTypeSelector((state) => state.product);
   const dispatch = useTypeDispatch();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchDataProduct());
