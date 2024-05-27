@@ -5,21 +5,18 @@ import { useParams } from "react-router-dom";
 import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
+import { ProductPDP } from "../interfaces/type";
 import BreadCrumbs from "../components/BreadCrumbs";
-
-interface ProductPDP {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-  gender: string;
+export interface ProductState {
+  data: ProductPDP[];
+  error: string | null;
 }
 
 const ProductDirectPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: products, error } = useTypeSelector((state) => state.product);
+  const { data: products, error } = useTypeSelector(
+    (state) => state.product as ProductState
+  );
   const dispatch = useTypeDispatch();
 
   useEffect(() => {

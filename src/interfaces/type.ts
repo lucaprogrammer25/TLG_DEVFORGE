@@ -128,3 +128,13 @@ export interface DropdownProps {
   selectedOption: any;
   handleChange:any;
 }
+
+export interface ProductPDP {
+  id: number | any;
+  name: number | any;
+  description: string;
+  price: number | any;
+  image: string;
+  category: string;
+  gender: string;
+}
