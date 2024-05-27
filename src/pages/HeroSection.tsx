@@ -5,7 +5,7 @@ import CarouselPage from "./LandingPage/CarouselPage";
 
 
 const HeroSection = () => {
-  const { data } = useTypeSelector((state) => state.contentful)
+  const { data} = useTypeSelector((state) => state.contentful)
   const dispatch = useTypeDispatch();
   
   const video =  data.items && data.items[6]?.fields.bannerImage.fields.file.url;
@@ -16,10 +16,11 @@ const HeroSection = () => {
     dispatch(fetchDataContentful()) 
   },[dispatch]) 
   
+  
   return (
     <>
         <div className="heroSectionContainer">
-           <video src={video} autoPlay muted loop playsInline  disablePictureInPicture controls={false}/> 
+           <video src={video} autoPlay muted loop playsInline  disablePictureInPicture controls={false} /> 
           <CarouselPage/>
       </div>   
     </>

@@ -58,7 +58,7 @@ const PLP: React.FC = () => {
 
   return (
     <section>
-      <img className="imageProduct" src={plpImage} alt="" />
+      <img className="imageProduct" src={plpImage} alt=""  loading="lazy"/>
       <div className="wrapCard">
         <div className="containerCards">
           {product
