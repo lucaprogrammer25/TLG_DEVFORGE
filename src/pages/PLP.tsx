@@ -58,8 +58,8 @@ const PLP: React.FC = () => {
 
 
   return (
-    <>
-      <img className="imageProduct" src={plpImage} alt="" />
+    <section>
+      <img className="imageProduct" src={plpImage} alt=""  loading="lazy"/>
       <div className="wrapCard">
         {category ? <BreadCrumbs/> : null } 
         <div className="containerCards">
@@ -88,7 +88,7 @@ const PLP: React.FC = () => {
             <span>{`${displayedCards} - ${maxItems}`}</span>
           </div>
         )}
-   </>
+   </section>
   );
 };
 

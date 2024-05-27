@@ -29,7 +29,7 @@ const Content = () => {
             <div className="contentImages">
                 <div className="contentMen" onMouseEnter={() => setHovered("men")} onMouseLeave={() => setHovered("")}>
                     <Link to="/men">
-                        <img src={logoMen} alt="Men Clothes" />
+                        <img src={logoMen} alt="Men Clothes" loading="lazy"/>
                     </Link>
                     {(isMobile || hovered === "men") && (
                         <div className="tooltip top-left">Men Collection</div>
@@ -37,7 +37,7 @@ const Content = () => {
                 </div>
                 <div className="contentWomen" onMouseEnter={() => setHovered("women")} onMouseLeave={() => setHovered("")}>
                     <Link to="/women">
-                        <img src={logoWomen} alt="Women Clothes" />
+                        <img src={logoWomen} alt="Women Clothes" loading="lazy"/>
                     </Link>
                     {(isMobile || hovered === "women") && (
                         <div className="tooltip top-right">Women Collection</div>

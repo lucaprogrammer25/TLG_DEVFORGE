@@ -147,38 +147,31 @@
   .navbarHoverImage {
     cursor: pointer;
   }
-  a {
-    text-decoration: none;
-    color: black;
-  }
+  
+
 }
 
-.navbarServiceMenu {
-  position: relative;
-}
+/* MOBILE NAV  */
 
-/* HAMBURGER MENU  */
 
-.mobileBar {
-  z-index: 2;
-  width: 100%;
-  display: flex;
-  position: sticky;
-  top: 0;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: $white;
-  height: 100%;
-  .mobileBarLogoContainer {
-    width: min-content;
-    padding-inline-start: 1rem;
-    margin-right: auto;
-    .mobileBarLogo {
-      width: 15rem;
-    }
-  }
-  .mobileBarServiceMenu {
+.mobileBar {    
+    z-index: 2;
+    width: 100%;
     display: flex;
+    position: fixed;
+    top: 0;
+    flex-direction: row ;
+    justify-content: space-between;
+    background-color:$white;
+    height: max-content;
+    background: transparent;
+    .mobileBarLogoContainer {
+        width: min-content;
+        padding-inline-start: 1rem;
+        margin-right: auto;
+        .mobileBarLogo {
+            width: 15rem;
+        }
 
     .hamburgerLogoContainer {
       display: flex;
@@ -191,12 +184,43 @@
         height: 2rem;
       }
     }
-    .mobileBarServiceMenuLanguage {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      margin-right: 1.5rem;
+    .mobileBarServiceMenu {
+        display: flex;
+        margin-left: 2rem;
+        
+
+        .hamburgerLogoContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 1rem;
+            .hamburgerLogo {
+                width: 1.5rem;
+                height: 2rem;
+            }
+        }
+        .mobileBarServiceMenuLanguage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 1.5rem;
+        }
+
+        .mobileBarServiceMenuProfile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .mobileBarServiceMenuCart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
     }
 
     .mobileBarServiceMenuProfile {
@@ -214,13 +238,17 @@
     }
   }
 }
+
+/* SIDEBAR MENU  */
+
 .sidebarBox {
-  z-index: 1;
-  position: fixed;
-  width: 50%;
-  height: 100%;
-  background-color: $white;
-  transition: right 0.5s ease-in;
+    z-index: 1;
+    position: fixed;
+    top: 3rem;
+    width: 50%;
+    height: 100%; 
+    background-color:$white;
+    transition: right 0.5s ease-in;
 }
 
 .sidebarMenuDropdown {
