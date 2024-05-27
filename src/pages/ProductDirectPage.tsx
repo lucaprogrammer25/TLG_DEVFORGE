@@ -43,6 +43,7 @@ const ProductDirectPage: React.FC = () => {
   };
 
   return (
+    <section>
     <div>
       <BreadCrumbs/>
       <CardPDP
@@ -59,6 +60,7 @@ const ProductDirectPage: React.FC = () => {
         <CarouselPDP items={filteredProducts} />
       </div>
     </div>
+    </section>
   );
 };
 
