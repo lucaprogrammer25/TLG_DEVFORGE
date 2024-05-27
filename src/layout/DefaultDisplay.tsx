@@ -47,9 +47,11 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({ changeLocale }) => {
       ) : (
         <>
           <Navbar changeLocale={changeLocale} />
+          <main>
           <div id="blurOutlet">
             <Outlet />
           </div>
+          </main>
           <ScrollToTopButton />
           <Footer />
         </>

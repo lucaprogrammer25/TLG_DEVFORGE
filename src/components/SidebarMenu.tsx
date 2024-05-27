@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const SidebarMenu = (closeSideMenu:any) => {
+const SidebarMenu = ({closeSideMenu}:any) => {
  
   return (
     <div className="sidebarMenuDropdown">

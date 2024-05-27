@@ -9,7 +9,6 @@ const HeroSection = () => {
   const dispatch = useTypeDispatch();
   
   const video =  data.items && data.items[6]?.fields.bannerImage.fields.file.url;
-
   
 
   useEffect(() => {

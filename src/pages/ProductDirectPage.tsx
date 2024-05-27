@@ -5,20 +5,18 @@ import { useParams } from "react-router-dom";
 import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
-
-interface ProductPDP {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-  gender: string;
+import { ProductPDP } from "../interfaces/type";
+import BreadCrumbs from "../components/BreadCrumbs";
+export interface ProductState {
+  data: ProductPDP[];
+  error: string | null;
 }
 
 const ProductDirectPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: products, error } = useTypeSelector((state) => state.product);
+  const { data: products, error } = useTypeSelector(
+    (state) => state.product as ProductState
+  );
   const dispatch = useTypeDispatch();
 
   useEffect(() => {
@@ -45,7 +43,9 @@ const ProductDirectPage: React.FC = () => {
   };
 
   return (
+    <section>
     <div>
+      <BreadCrumbs/>
       <CardPDP
         id={selectedProduct.id}
         title={selectedProduct.name}
@@ -60,6 +60,7 @@ const ProductDirectPage: React.FC = () => {
         <CarouselPDP items={filteredProducts} />
       </div>
     </div>
+    </section>
   );
 };
 
