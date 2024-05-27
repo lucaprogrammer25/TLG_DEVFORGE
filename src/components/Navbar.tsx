@@ -19,6 +19,7 @@ import shoppingBag from "../assets/icons/bag.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
 import LoginForm from "./Forms/LoginForm";
+import Search from "./Search box/Search";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -219,6 +220,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         </Link>
                     </div>
                     <div className="navbarServiceMenu">
+                        <div className="navbarServiceMenuSearchBox">
+                            <Search/>
+                        </div>
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />
                         </div>

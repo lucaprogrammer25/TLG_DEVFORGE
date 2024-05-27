@@ -138,3 +138,11 @@ export interface ProductPDP {
   category: string;
   gender: string;
 }
+
+export interface  AlgoliaHit {
+  name:string;
+  price:number;
+  id?:number;
+  category?:string;
+  gender?:string;
+}
