@@ -11,6 +11,7 @@ const RegistrationForm = () => {
     password: "",
     confermaPassword: "",
   });
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
@@ -40,7 +41,17 @@ const RegistrationForm = () => {
 
     const { confermaPassword, ...dataToSave } = formData;
 
-    localStorage.setItem("userData", JSON.stringify(dataToSave));
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const userExists = users.some((user: any) => user.email === formData.email);
+
+    if (userExists) {
+      setError("Email già registrata");
+      return;
+    }
+    
+    users.push(dataToSave);
+    localStorage.setItem("users", JSON.stringify(users));
+
     setError("");
     alert("Registrazione avvenuta con successo");
     navigate("/");
@@ -132,4 +143,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-5
