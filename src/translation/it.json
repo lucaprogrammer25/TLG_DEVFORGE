@@ -61,6 +61,23 @@
 "total price":"Prezzo Totale:",
 "go back to shopping":"Torna allo shopping",
 "carts":"Carrello",
-"item":"Articoli"
+"item":"Articoli",
+
+"login notifications": "Inserisci e-mail e password per accedere alla sezione MyAccount.",
+"login error":"Password o e-mail sbagliata",
+"forgotten password":"Hai dimenticato la password ?",
+"registration question": "Non sei ancora registrato ?",
+"registration subtitle": "Crea adesso un account e approfitta dei nostri vantaggi",
+"registration button": "Registrati!",
+
+"registration form": "Modulo di registrazione",
+"registration name": "Nome",
+"registration surname": "Cognome",
+"registration address": "Indirizzo",
+"registration confirmPsswrd": "Conferma password",
+"registration advise": "La password deve essere lunga almeno 8 caratteri e contenere almeno una lettera maiuscola, una lettera minuscola, una cifra e un carattere speciale."
+
+
+
 
 }

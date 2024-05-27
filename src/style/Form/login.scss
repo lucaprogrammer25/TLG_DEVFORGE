@@ -15,7 +15,7 @@
     width: 1.5rem;
     cursor: pointer;
   }
-  .loginForm {
+  .loginFormBox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,21 +30,28 @@
       font-style: normal;
       font-weight: normal;
     }
-    .inputBox {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      input {
-        width: 15rem;
-        height: 2rem;
-        border: none;
-        border-bottom: 1px solid $gold;
-        background-color: $darkerWhite;
-        outline: none;
-        font-size: 1rem;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-      }
+    .loginForm {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 2rem;
+       margin-bottom: 2rem;
+       .inputBox {
+        padding: 1rem;
+        .emailInput,
+        .passwordInput {
+           width: 25rem;
+           border: none;
+           border-bottom: 1px solid $gold;
+           background-color: $darkerWhite;
+           outline: none;
+           font-size: 1.2rem;
+        }
+       }
+        .errorMessage {
+           color: $red;
+           font-size: 1.2rem;
+       }
     }
 
     .loginButton,

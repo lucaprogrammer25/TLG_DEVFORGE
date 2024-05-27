@@ -60,7 +60,20 @@
     "go back to shopping":"Go back to shopping",
     "total price":"Total Price:",
     "carts":"Cart",
-    "item":"Items"
+    "item":"Items",
+    "login notifications": "Enter your email and password to access the MyAccount section.",
+    "login error":"Password or e-mail wrong or invalid",
+    "forgotten password": "Forgotten Password?",
+    "registration question": "Are you not registered yet?",
+    "registration subtitle": "Register now to use our advantages!",
+    "registration button": "Register!",
+
+    "registration form": "Registration form",
+    "registration name": "Name",
+    "registration surname": "Surname",
+    "registration address": "Address",
+    "registration confirmPsswrd": "Confirm Password",
+    "registration advise": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
 }
   
   

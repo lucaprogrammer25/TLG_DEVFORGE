@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -47,10 +48,10 @@ const RegistrationForm = () => {
 
   return (
     <div className="registrationContainer">
-      <h2 className="registrationTitle">Modulo di Registrazione</h2>
+      <h2 className="registrationTitle"><FormattedMessage id="registration form" defaultMessage="Registration form"/></h2>
       <form className="registrationForm" onSubmit={handleSubmit}>
         <div className="formGroup">
-          <label className="formLabel">Nome:</label>
+          <label className="formLabel"><FormattedMessage id="registration name" defaultMessage="Name"/></label>
           <input
             type="text"
             name="nome"
@@ -61,7 +62,7 @@ const RegistrationForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label className="formLabel">Cognome:</label>
+          <label className="formLabel"><FormattedMessage id="registration surname" defaultMessage="Surname"/></label>
           <input
             type="text"
             name="cognome"
@@ -72,7 +73,7 @@ const RegistrationForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label className="formLabel">Indirizzo:</label>
+          <label className="formLabel"><FormattedMessage id="registration address" defaultMessage="Address"/></label>
           <input
             type="text"
             name="indirizzo"
@@ -106,7 +107,7 @@ const RegistrationForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label className="formLabel">Conferma Password:</label>
+          <label className="formLabel"><FormattedMessage id="registration confirmPsswrd" defaultMessage="Confirm Password"/></label>
           <input
             type="password"
             name="confermaPassword"
@@ -118,14 +119,12 @@ const RegistrationForm = () => {
         </div>
         {!isValid && (
           <p className="passwordAdvise">
-            Password must be at least 8 characters long and contain at least one
-            uppercase letter, one lowercase letter, one digit, and one special
-            character.
+            <FormattedMessage id="registration advise" defaultMessage="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character."/>
           </p>
         )}
         {error && <p className="errorMessage">{error}</p>}
         <button type="submit" className="submitButton">
-          Registrati
+          <FormattedMessage id="registration button" defaultMessage="Register!"/>
         </button>
       </form>
     </div>
@@ -133,3 +132,4 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+5
