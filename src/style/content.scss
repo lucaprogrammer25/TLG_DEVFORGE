@@ -6,10 +6,12 @@
     justify-content: center;
     align-items: center;
     width: calc(100% - 1rem); 
-    margin: 0 auto; 
+    margin: 0 auto;
+
     .contentMen,
     .contentWomen {
         position: relative; 
+        z-index: 1; // Ensure both start with the same stacking order
         img {
             width: 100%;
             display: block;
@@ -28,7 +30,7 @@
             color: $black; 
             padding: 0.5rem;  
             opacity: 0; 
-             transition: opacity 0.5s ease; 
+            transition: opacity 0.5s ease; 
             &.top-left {
                 top: 0; 
                 left: 0; 
@@ -38,8 +40,11 @@
                 right: 0;
             }
         }
-        &:hover .tooltip {
-            opacity: 1; 
+        &:hover {
+            z-index: 2; // Bring the hovered element to the front
+            .tooltip {
+                opacity: 1; 
+            }
         }
     }
 

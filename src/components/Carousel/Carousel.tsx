@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Buttontmg3 from "../Buttons/ButtonTmg3";
 import { useNavigate } from "react-router-dom";
-
 import { CarouselProps } from "../../interfaces/type";
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -24,7 +23,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow());
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentGender, setCurrentGender] = useState("women");
+  const [currentGender, setCurrentGender] = useState("women"); //lascaito con errore in quanto era stato utilizzato per poter fare anche il carosello per categoria
   const [slideDirection, setSlideDirection] = useState("");
 
   const filteredImages = images.filter(
@@ -36,11 +35,13 @@ const Carousel: React.FC<CarouselProps> = ({
   const filteredPrices = prices.filter(
     (_, index) => gender[index] === currentGender
   );
-
+  const filteredCategory = category?.filter(
+    (_, index) => gender[index] === currentGender
+  );
   const filteredId = id.filter((_, index) => gender[index] === currentGender);
 
   const totalFilteredImages = filteredImages.length;
-  const maxItems = Math.min(8, totalFilteredImages); // Ensure maxItems doesn't exceed total filtered items
+  const maxItems = Math.min(8, totalFilteredImages);
 
   useEffect(() => {
     const shuffledIndexes = JSON.parse(
@@ -66,6 +67,8 @@ const Carousel: React.FC<CarouselProps> = ({
     name: string;
     price: string;
     id: string;
+    gender: string;
+    category?: string;
   }[] => {
     const shuffledIndexes = JSON.parse(
       sessionStorage.getItem(`shuffledIndexes-${currentGender}`) || "[]"
@@ -76,12 +79,18 @@ const Carousel: React.FC<CarouselProps> = ({
       visibleIndexes.push(shuffledIndexes[(currentIndex + i) % maxItems]);
     }
 
-    return visibleIndexes.map((index: any) => ({
-      src: filteredImages[index],
-      name: filteredNames[index],
-      price: filteredPrices[index],
-      id: filteredId[index],
-    }));
+    return visibleIndexes.map((index: any) => {
+      const item = {
+        src: filteredImages[index],
+        name: filteredNames[index],
+        price: filteredPrices[index],
+        id: filteredId[index],
+        gender: currentGender,
+        category: filteredCategory ? filteredCategory[index] : undefined,
+      };
+      console.log(item); // Debugging log to see the item
+      return item;
+    });
   };
 
   const goToNext = () => {
@@ -103,27 +112,22 @@ const Carousel: React.FC<CarouselProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleGenderClick = (gender: string) => {
-    setCurrentGender(gender);
-    setCurrentIndex(0);
-  }; 
-
   const navigate = useNavigate();
   return (
     <div className="carousel-container">
       <div className="selectorCarouselCategory">
-  {/*       <span
+        {/* <span
           className="ButtonTmgCss3"
           onClick={() => handleGenderClick("women")}
         >
           Women
         </span> */}
-  {/*         <span
-            className="ButtonTmgCss3"
-            onClick={() => handleGenderClick("men")}
-          >
-            Men
-          </span> */}
+        {/* <span
+          className="ButtonTmgCss3"
+          onClick={() => handleGenderClick("men")}
+        >
+          Men
+        </span> */}
       </div>
       <div className="productDescription">
         <Buttontmg3 className="ButtonTmgCss3" onClick={goToPrev} label="Prev" />
@@ -133,7 +137,12 @@ const Carousel: React.FC<CarouselProps> = ({
               <div
                 key={index}
                 className="carousel-image"
-                onClick={() => navigate(`/pdp/${item.id}`)}
+                onClick={() => {
+                  console.log(
+                    `Navigating to: /${item.gender}/${item.category}/${item.id}`
+                  ); // Debugging log for navigate path
+                  navigate(`/${item.gender}/${item.category}/${item.id}`);
+                }}
               >
                 <img src={item.src} alt={`Slide ${index}`} />
                 <div className="pDiv">

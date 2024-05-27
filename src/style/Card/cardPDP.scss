@@ -28,6 +28,7 @@
 
   .infoCardPDP{
     margin-inline: 2rem;
+
   }
 
   .containerPricePDP {
@@ -170,7 +171,7 @@
     .infoCardPDP {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       text-wrap: wrap;
       max-height: 31.5rem;
       margin-inline:0;

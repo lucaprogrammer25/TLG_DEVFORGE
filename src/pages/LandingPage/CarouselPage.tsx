@@ -9,6 +9,7 @@ interface Product {
   price: string;
   gender: string;
   id: string;
+  category: string;
 }
 
 interface Category {
@@ -37,6 +38,7 @@ const CarouselPage: React.FC<Category> = ({ category }) => {
   const dataPrice = data ? data.map((item: Product) => item.price) : [];
   const id = data ? data.map((item: Product) => item.id) : [];
   const dataGender = data ? data.map((item: Product) => item.gender) : [];
+  const dataCategory = data ? data.map((item: Product) => item.category) : [];
 
   if (error) {
     return <div>Error loading data!</div>;
@@ -51,6 +53,7 @@ const CarouselPage: React.FC<Category> = ({ category }) => {
           prices={dataPrice}
           id={id}
           gender={dataGender}
+          category={dataCategory}
         />
       ) : (
         <div>
