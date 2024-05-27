@@ -10,7 +10,7 @@ const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, s
     <>
     <div  className="containerCardPLP">
       <div onClick={goToPDP} className='containerImgPLP'>
-           <img src={image} alt={alternative} />
+           <img src={image} alt={alternative} loading='lazy'/>
       </div> 
           <div className='descriptionCardPLP'>
            <p>{title}</p>

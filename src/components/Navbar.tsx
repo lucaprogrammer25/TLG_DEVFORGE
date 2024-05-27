@@ -187,7 +187,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                 <div className="navbar" style={navbarBackground}>
                     <div className="navbarLogoContainer">
                         <Link className="linkTag" to='/'>
-                            <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
+                            <img className="navbarLogo" src={logo} alt="the modern boutique logo" loading="lazy" />
                         </Link>
                     </div>
                     <div className="navbarMenuItem">
