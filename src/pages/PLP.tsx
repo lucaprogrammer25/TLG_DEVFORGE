@@ -6,6 +6,7 @@ import { ProductJson } from "../interfaces/type";
 import CardPLP from "../components/CardPLP";
 import fetchDataContentful from "../redux/fetch/fetchContentful";
 import fetchDataProduct from "../redux/fetch/fetchProducts";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 const PLP: React.FC = () => {
   const { gender, category = '' } = useParams();
@@ -58,6 +59,7 @@ const PLP: React.FC = () => {
 
   return (
     <section>
+    {category ? <BreadCrumbs/> : null } 
       <img className="imageProduct" src={plpImage} alt="" />
       <div className="wrapCard">
         <h1 id="titleProductPage">Product</h1>
@@ -75,8 +77,8 @@ const PLP: React.FC = () => {
                 price={item.price}
                 image={item.image}
                 alternative={`${item.gender} ${item.category}`}
-                goToPDP={() => navigate(`/pdp/${item.id}`)}
-                seeMoreButton={() => navigate(`/pdp/${item.id}`)}
+                goToPDP={() => navigate(`/${item.gender}/${item.category}/${item.id}`)}
+                seeMoreButton={() => navigate(`/${item.gender}/${item.category}/${item.id}`)}
               />
             ))}
         </div>

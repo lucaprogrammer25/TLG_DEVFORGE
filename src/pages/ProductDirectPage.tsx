@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
+import BreadCrumbs from "../components/BreadCrumbs";
 
 interface ProductPDP {
   id: number;
@@ -48,6 +49,7 @@ const ProductDirectPage: React.FC = () => {
 
   return (
     <div>
+      <BreadCrumbs/>
       <CardPDP
         id={selectedProduct.id}
         title={selectedProduct.name}
