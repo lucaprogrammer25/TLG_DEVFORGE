@@ -1,20 +1,22 @@
 .heroSectionContainer {
     position: relative;
     width: 100%;
-  
+    padding-block-end: 4rem;
+    overflow: hidden;
     .heroSectionImage {
-      width: 100%;    
+      width: 120rem;    
     }
   
     .heroSectionVideo {
       width: 100%;
+
     }
   
     .heroSectionVideoContainer {
       transition: transform 1.2s ease-in-out;
       position: relative;
       &.zoomOut {
-        transform: scale(1.2);
+        transform: scale(1.19);
       }
     }
  }
