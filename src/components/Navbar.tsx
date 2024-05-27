@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
 import fetchDataContentful from "../redux/fetch/fetchContentful";
 import { selectCartTotalQuantity } from "../redux/slice/cartSlice";
@@ -29,14 +29,36 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const blurOutletElement = document.getElementById('blurOutlet');
     const blurNavbarElement = document.getElementById('blurNavbar');
     const [sidebarMenuActive, setSidebarMenuActive] = useState<boolean>(false);
-    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%"});
+    const [sidebarMenuStyle, setSidebarMenuStyle] = useState({ right: "-100%" });
     const [sidebarMenuIcon, setSidebarMenuIcon] = useState(hamburgerMenu)
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const [navbarBackground, setNavbarBackground] = useState<any>({ backgroundColor: "rgba(255, 255, 255, 0)" });
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const position = window.scrollY;
+            setScrollPosition(position);
+            if (["/", "/men", "/women"].includes(location.pathname)) {
+                const opacity = Math.min(1, position / 700);
+                setNavbarBackground({ backgroundColor: `rgba(255, 255, 255, ${opacity})` });
+            } else {
+                setNavbarBackground({ backgroundColor: "white" });
+            }
+        }
+          window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [location.pathname]);
+
 
     const { data } = useTypeSelector((state) => state.contentful);
-    console.log(data);
-    
-    
-    
+
+
+
+
     const dispatch = useTypeDispatch();
     const logo = data.items && data.items[4]?.fields.logoNavbar.fields.file.url;
     const contents = data?.items?.[4]?.fields?.promotion ?? [];
@@ -90,7 +112,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
         if (blurOutletElement && blurNavbarElement && cartTotalQuantity !== 0) {
             blurOutletElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
-            blurNavbarElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
         }
     };
 
@@ -99,19 +120,18 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         setSidebarCartStyle({ display: "flex" });
         if (blurOutletElement && blurNavbarElement) {
             blurOutletElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
-            blurNavbarElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
         }
     };
     const handleSidebarMenu = () => {
         if (!sidebarMenuActive) {
             setSidebarMenuActive(true);
-            setSidebarMenuStyle({ right: "0"});
+            setSidebarMenuStyle({ right: "0" });
             setSidebarMenuIcon(hamburgerMenuClose)
         } else {
             setSidebarMenuActive(false);
-            setSidebarMenuStyle({ right: "-100%"});
+            setSidebarMenuStyle({ right: "-100%" });
             setSidebarMenuIcon(hamburgerMenu)
-        } ;
+        };
     };
 
     useEffect(() => {
@@ -144,8 +164,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         <>
         <div id="blurNavbar">
             <Promotion contents={contents} />
-            <nav>
-                <div className="navbar">
+            <nav  >
+                <div className="navbar" style={navbarBackground}>
                     <div className="navbarLogoContainer">
                         <Link className="linkTag" to='/'>
                             <img className="navbarLogo" src={logo} alt="the modern boutique logo" />
@@ -184,7 +204,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />
                         </div>
-                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu}/>}
+                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
                         <div className="navbarServiceMenuProfile">
                             <img src={profile} alt="profile-icon" />
                         </div>
@@ -195,41 +215,40 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </div>
                 </div>
             </nav>
-                    {/* MOBILE MENU  */}
-                    <div className="mobileBar">
-                        <div className="mobileBarLogoContainer">
-                            <Link className="linkTag" to='/'>
-                                <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
-                                <img className="mobileBarLogo600px" src={mobileLogo} alt="TMB" />
-                            </Link>
-                        </div>
-                        <div className="mobileBarServiceMenu">
-                            <div className="mobileBarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
-                            <img src={language} alt="language-icon" />
-                            {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu}/>}
-                            </div>
-                            <div className="mobileBarServiceMenuProfile">
-                                <img src={profile} alt="profile-icon" />
-                            </div>
-                            <div className="mobileBarServiceMenuCart">
-                                <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
-                                <span>{`('${cartTotalQuantity}')`}</span>
-                            </div>
-                            <div className="hamburgerLogoContainer" onClick={handleSidebarMenu}>
-                                <img src={sidebarMenuIcon} alt={hamburgerMenu} className="hamburgerLogo"/>
-                            </div>
-                        </div>
-
-                    </div>
+            {/* MOBILE MENU  */}
+            <div className="mobileBar">
+                <div className="mobileBarLogoContainer">
+                    <Link className="linkTag" to='/'>
+                        <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
+                        <img className="mobileBarLogo600px" src={mobileLogo} alt="TMB" />
+                    </Link>
+                </div>
+                <div className="mobileBarServiceMenu">
+                    <div className="mobileBarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
+                        <img src={language} alt="language-icon" />
+                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
                     </div>
 
+                    <div className="mobileBarServiceMenuProfile">
+                        <img src={profile} alt="profile-icon" />
+                    </div>
+                    <div className="mobileBarServiceMenuCart">
+                        <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
+                        <span>{`('${cartTotalQuantity}')`}</span>
+                    </div>
+                    <div className="hamburgerLogoContainer" onClick={handleSidebarMenu}>
+                        <img src={sidebarMenuIcon} alt={hamburgerMenu} className="hamburgerLogo" />
+                    </div>
+                </div>
+            </div>
+                    </div>
             {cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
                     <SidebarCart closeSideCart={handleSidebarCartClose} />
                 </div> : null
             }
             <div className="sidebarBox" style={sidebarMenuStyle}>
-                <SidebarMenu closeSideMenu={handleSidebarMenu}/>
+                <SidebarMenu closeSideMenu={handleSidebarMenu} />
             </div>
 
         </>
