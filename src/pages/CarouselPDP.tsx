@@ -32,11 +32,11 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <div className="carousel">
-      <button onClick={prevItem} className="ButtonTmgCss3">Prev</button>
+      <button onClick={prevItem} className="ButtonTmgCss3">Previous</button>
       <div className="carousel-items">
         {displayedItems.map((item) => (
           <div key={item.id} className="carousel-item">
-            <Link to={`/${item.gender}/${item.category}/${item.id}`}>
+            <Link to={`/pdp/${item.id}`}>
               <img src={item.image} alt={item.name} />
               <p>{item.name}</p>
               <p>{item.price}</p>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../../style/CarouselScss/Carousel.scss";
 import Buttontmg3 from "../Buttons/ButtonTmg3";
 import { useNavigate } from "react-router-dom";
 
