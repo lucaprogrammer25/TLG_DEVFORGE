@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { useState } from 'react';
 import DefaultDisplay from './layout/DefaultDisplay';
+import Register from './pages/Register';
 import HeroSection from './pages/LandingPage/HeroSection';
-import Login from './pages/Login';
 import PLP from './pages/PLP';
 import ProductDirectPage from './pages/ProductDirectPage';
 import Cart from './pages/Cart';
@@ -29,8 +29,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<DefaultDisplay changeLocale={changeLocale} />}>
             <Route path="/" element={<HeroSection />} />
+            <Route path='/register' element={<Register/>}/>
             <Route path="/:gender/:category?" element={<PLP />} />
-            <Route path="login" element={<Login />} />
             <Route path="/:gender/:category?/:id" element={<ProductDirectPage />} />
           </Route>
             <Route path="/cart" element={<Cart />} />

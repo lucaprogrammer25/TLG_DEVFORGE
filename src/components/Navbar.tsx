@@ -18,6 +18,7 @@ import hamburgerMenuClose from "../assets/icons/x-close.svg"
 import shoppingBag from "../assets/icons/bag.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
+import LoginForm from "./Forms/LoginForm";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
@@ -53,6 +54,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         };
     }, [location.pathname]);
 
+
+    const [loginFormActive, setLoginFormActive] = useState<boolean>(false);
+    const [loginFormStyle, setLoginFormStyle] = useState({ display: "none" });
 
     const { data } = useTypeSelector((state) => state.contentful);
 
@@ -127,11 +131,26 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
             setSidebarMenuActive(true);
             setSidebarMenuStyle({ right: "0" });
             setSidebarMenuIcon(hamburgerMenuClose)
+            document.body.style.overflow = "hidden";
         } else {
             setSidebarMenuActive(false);
             setSidebarMenuStyle({ right: "-100%" });
             setSidebarMenuIcon(hamburgerMenu)
-        };
+            document.body.style.overflow = "unset";
+        } ;
+    };
+
+    const handleLoginForm = () => {
+        if (!loginFormActive) {
+            setLoginFormActive(true);
+            setLoginFormStyle({display: "unset"});
+            document.body.style.overflow = "hidden";
+        } else if(loginFormActive) {
+            setLoginFormActive(false);
+            setLoginFormStyle({display: "none"});
+            console.log("off")
+            document.body.style.overflow = "unset";
+        } ;
     };
 
     useEffect(() => {
@@ -204,8 +223,8 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />
                         </div>
-                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
-                        <div className="navbarServiceMenuProfile">
+                        {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu}/>}
+                        <div className="navbarServiceMenuProfile" onClick={handleLoginForm}>
                             <img src={profile} alt="profile-icon" />
                         </div>
                         <div className="navbarServiceMenuCart">
@@ -249,6 +268,10 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
             }
             <div className="sidebarBox" style={sidebarMenuStyle}>
                 <SidebarMenu closeSideMenu={handleSidebarMenu} />
+            </div>
+
+            <div className="loginOpening" style={loginFormStyle}>
+                <LoginForm closeLoginForm={handleLoginForm}/>
             </div>
 
         </>
