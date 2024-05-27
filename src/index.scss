@@ -14,9 +14,11 @@
 @import "./style/CarouselScss/Carousel.scss";
 @import "./style/Cart/Cart.scss";
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
+@import "./style/Form/login.scss";
+@import "./style/Form/registration.scss";
 @import "./style/content.scss";
 @import "./style/Card/animatedCards.scss";
-
+@import "./style/breadCrumbs.scss";
 @import url("./style/promoCompontent.scss");
 
 
@@ -58,7 +60,8 @@ html{
 section{
   max-width: 2000px;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  padding-block-start: 4rem;
+  margin-block-end: 4rem;
 }
 
 .linkTag{
