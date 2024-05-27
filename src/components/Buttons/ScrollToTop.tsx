@@ -1,18 +1,40 @@
-import React from 'react';
-import "./ButtonTmg3.css"
-import Buttontmg3 from './ButtonTmg3';
+import React, { useState, useEffect } from "react";
+import "../../style/ButtonsSCSS/scrollToTop.scss";
+import arrowToTop from "../../assets/icons/arrow.png"
 
 const ScrollToTopButton: React.FC = () => {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
+  const [isVisible, setIsVisible] = useState(false);
 
-    return (
-      <Buttontmg3 label={"Scroll Top"} onClick={scrollToTop}/>
-    );
+  const handleScroll = () => {
+    if (window.scrollY > 350) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <button
+      className={`scrollToTopScss ${isVisible ? "" : "hidden"}`}
+      onClick={scrollToTop}
+    >
+      <img src={arrowToTop} alt="arrowToTop" />
+    </button>
+  );
 };
 
 export default ScrollToTopButton;
