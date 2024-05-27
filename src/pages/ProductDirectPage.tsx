@@ -1,42 +1,65 @@
-import React, { useEffect } from 'react';
-import { useTypeDispatch, useTypeSelector } from '../redux/typeHooks';
-import fetchDataProduct from '../redux/fetch/fetchProducts';
+import React, { useEffect } from "react";
+import { useTypeDispatch, useTypeSelector } from "../redux/typeHooks";
+import fetchDataProduct from "../redux/fetch/fetchProducts";
 import { useParams } from "react-router-dom";
-import CardPDP from '../components/CardPDP';
-import { addToCart } from '../redux/slice/cartSlice';
+import CardPDP from "../components/CardPDP";
+import { addToCart } from "../redux/slice/cartSlice";
+import CarouselPDP from "./CarouselPDP";
+import { ProductPDP } from "../interfaces/type";
+import BreadCrumbs from "../components/BreadCrumbs";
+export interface ProductState {
+  data: ProductPDP[];
+  error: string | null;
+}
 
 const ProductDirectPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const { data: product, error } = useTypeSelector((state) => state.product);
-    const dispatch = useTypeDispatch();
+  const { id } = useParams<{ id: string }>();
+  const { data: products, error } = useTypeSelector(
+    (state) => state.product as ProductState
+  );
+  const dispatch = useTypeDispatch();
 
-    useEffect(() => {
-        dispatch(fetchDataProduct());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchDataProduct());
+  }, [dispatch]);
 
-    const selectedProduct: any | undefined = product?.find((item: any) => item.id.toString() === id);
+  const selectedProduct: ProductPDP | undefined = products?.find(
+    (item: ProductPDP) => item.id.toString() === id
+  );
 
-    if (!selectedProduct || error) {
-        return <div>Errore caricamento dati</div>;
-    }
+  if (!selectedProduct || error) {
+    return <div>Errore caricamento dati</div>;
+  }
 
-    const handleAddToCart = (size: string) => {
-        dispatch(addToCart({ ...selectedProduct, size }));
-    };
+  const filteredProducts: ProductPDP[] = products.filter(
+    (item: ProductPDP) =>
+      item.category === selectedProduct.category &&
+      item.gender === selectedProduct.gender &&
+      item.id.toString() !== id
+  );
 
-    return (
-        <div>
-            <CardPDP
-                id={selectedProduct.id}
-                title={selectedProduct.name}
-                alternative={selectedProduct.name}
-                description={selectedProduct.description}
-                price={selectedProduct.price}
-                image={selectedProduct.image}
-                addToCart={handleAddToCart}
-            />
-        </div>
-    );
+  const handleAddToCart = (size: string) => {
+    dispatch(addToCart({ ...selectedProduct, size }));
+  };
+
+  return (
+    <div>
+      <BreadCrumbs/>
+      <CardPDP
+        id={selectedProduct.id}
+        title={selectedProduct.name}
+        alternative={selectedProduct.name}
+        description={selectedProduct.description}
+        price={selectedProduct.price}
+        image={selectedProduct.image}
+        addToCart={handleAddToCart}
+        category={selectedProduct.category}
+      />
+      <div>
+        <CarouselPDP items={filteredProducts} />
+      </div>
+    </div>
+  );
 };
 
 export default ProductDirectPage;

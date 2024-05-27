@@ -44,7 +44,7 @@
     "name":"Nome:",
     "last name": "Last Name:",
     "choose a country":"Choose a country",
-    "prefix":"Choose a prefix",
+    "prefix":"Prefix",
     "different address":"Choose a different address for billing ",
     "italy":"Italy",
     "france":"France",
@@ -61,19 +61,24 @@
     "total price":"Total Price:",
     "carts":"Cart",
     "item":"Items",
+
     "login notifications": "Enter your email and password to access the MyAccount section.",
     "login error":"Password or e-mail wrong or invalid",
     "forgotten password": "Forgotten Password?",
     "registration question": "Are you not registered yet?",
     "registration subtitle": "Register now to use our advantages!",
     "registration button": "Register!",
-
     "registration form": "Registration form",
     "registration name": "Name",
     "registration surname": "Surname",
     "registration address": "Address",
     "registration confirmPsswrd": "Confirm Password",
-    "registration advise": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
+    "registration advise": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.",
+    
+    "discount":"Discount",
+    "promotionCart":"Promo active, we'll give you the two least expensive products for free!",
+    "errorPayment":"Fill in the fields to continue",
+    "errorCheckedPayment": "Select a payment method"
 }
   
   

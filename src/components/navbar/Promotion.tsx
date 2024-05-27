@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import { PromotionProps } from '../../interfaces/type';
-
 
 const Promotion: React.FC<PromotionProps> = ({ contents }) => {
     const [contentIndex, setContentIndex] = useState<number>(0);
@@ -17,16 +15,29 @@ const Promotion: React.FC<PromotionProps> = ({ contents }) => {
         return () => clearInterval(interval);
     }, [contents]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY >= 200) {
+                setVisible(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const handleClose = () => {
         setVisible(false);
     };
 
     return visible ? (
-        <div className="navbarPromotion">
-            <span className={`navbarPromotionContent ${animateContent ? 'fadeIn' : ''}`}>
-                {contents[contentIndex]}
-            </span>
-            <button className="navbarPromotionButton" onClick={handleClose}>X</button>
+        <div className='navbarPromotionWrapper'>
+            <div className="navbarPromotion">
+                <span className={`navbarPromotionContent ${animateContent ? 'fadeIn' : ''}`}>
+                    {contents[contentIndex]}
+                </span>
+                <button className="navbarPromotionButton" onClick={handleClose}>X</button>
+            </div>
         </div>
     ) : null;
 };

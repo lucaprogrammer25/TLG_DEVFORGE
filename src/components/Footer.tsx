@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl"; // Import FormattedMessage
+import NewsletterForm from "./NewsLetter/newsLetter";
 
 const Footer: React.FC = () => {
   return (
     <>
+      <NewsletterForm />
       <footer>
         <h1 className="centerText">The Modern Boutique</h1>
         <div className="linkBox">
@@ -23,10 +25,7 @@ const Footer: React.FC = () => {
                 </Link>
                 <Link className="linkTag" to="/men/trousers">
                   <p>
-                    <FormattedMessage
-                      id="trousers"
-                      defaultMessage="Trousers"
-                    />
+                    <FormattedMessage id="trousers" defaultMessage="Trousers" />
                   </p>
                 </Link>
                 <Link className="linkTag" to="/men/Dresses">
@@ -43,10 +42,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="womanBox">
               <h3>
-                <FormattedMessage
-                  id="women"
-                  defaultMessage="Women Products"
-                />
+                <FormattedMessage id="women" defaultMessage="Women Products" />
               </h3>
               <div className="womanLinkBox">
                 <Link className="linkTag" to="/women/T-shirts">
@@ -56,10 +52,7 @@ const Footer: React.FC = () => {
                 </Link>
                 <Link className="linkTag" to="/women/trousers">
                   <p>
-                    <FormattedMessage
-                      id="trousers"
-                      defaultMessage="Trousers"
-                    />
+                    <FormattedMessage id="trousers" defaultMessage="Trousers" />
                   </p>
                 </Link>
                 <Link className="linkTag" to="/women/Dresses">
@@ -104,19 +97,13 @@ const Footer: React.FC = () => {
                 <FormattedMessage id="payment" defaultMessage="Payments" />
               </p>
               <p>
-                <FormattedMessage
-                  id="contact us"
-                  defaultMessage="Contact Us"
-                />
+                <FormattedMessage id="contact us" defaultMessage="Contact Us" />
               </p>
             </div>
           </div>
           <div className="legalAreaBox">
             <h3>
-              <FormattedMessage
-                id="legal area"
-                defaultMessage="Legal Area"
-              />
+              <FormattedMessage id="legal area" defaultMessage="Legal Area" />
             </h3>
             <div className="legalLinkBox">
               <p>
@@ -219,8 +206,7 @@ const Footer: React.FC = () => {
                 ></path>
               </svg>
             </a>
-            <div>
-            </div>
+            <div></div>
           </div>
         </div>
       </footer>

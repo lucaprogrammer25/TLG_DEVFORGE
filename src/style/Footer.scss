@@ -1,3 +1,4 @@
+@import "./defaultVariables.scss";
 
 footer {
   border-top: 0.3rem solid $gold;
@@ -7,62 +8,71 @@ footer {
   color: $lightBlack;
   display: flex;
   flex-direction: column;
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    @media only screen and (max-width: 920px) {
+      font-size: 1rem;
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: 0.7rem;
+    }
+  }
+
+  p {
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    font-size: 0.9rem;
+    @media only screen and (max-width: 920px) {
+      font-size: 0.7rem;
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: 0.5rem;
+    }
+  }
 }
 
 .centerText {
   text-align: center;
   color: $gold;
-  margin-block-start: 3rem;
 }
 
 .linkBox {
   display: flex;
+  flex-direction: row;
+  height: 100%;
   justify-content: space-evenly;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
-  margin: 2rem;
-  margin-inline-end: 15rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 
   .manBox {
-    h3 {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
     .manLinkBox {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      margin-left: 1.5rem;
-
-      p {
-        margin: 1rem;
-        margin-top: 0;
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
 
   .womanBox {
-    h3 {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.9rem;
     .womanLinkBox {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      margin-inline-start: 1.5rem;
-      p {
-        margin: 1rem;
-        margin-top: 0;
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
 
@@ -73,24 +83,23 @@ footer {
   }
 
   .clientAssistanceBox {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
     .assistanceLinkBox {
-      p {
-        margin-inline-start: 1rem;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      display: flex;
+      flex-direction: column;
     }
   }
-
   .legalAreaBox {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
     .legalLinkBox {
-      p {
-        margin-left: 1rem;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      display: flex;
+      flex-direction: column;
     }
   }
 }
@@ -100,6 +109,12 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
+  svg {
+    @media only screen and (max-width: 480px) {
+      width: 2rem;
+    }
+  }
 
   p {
     font-size: 0.625rem;
@@ -112,17 +127,18 @@ footer {
   .logoBox {
     display: flex;
     margin: 0.3rem;
+    width: auto;
+    height: auto;
 
     .socialLogo {
-      width: 3.75rem;
-      height: 3.75rem;
+      width: 100%;
+      height: 100%;
       margin: 0.01875rem;
       align-items: center;
 
       &:hover {
         cursor: pointer;
       }
-    
     }
   }
 }

@@ -1,16 +1,10 @@
+@import "../defaultVariables.scss";
+
 .divForm {
   display: flex;
   width: 100%;
   height: auto;
-  background-color:$white;
-
-  .ButtonTmgCss2 {
-   font-size: 1rem;
-   margin-block: 0.625rem; 
-   margin-inline: 0.625rem;
-   padding-block: 0.625rem; 
-   padding-inline: 0.625rem; 
-  }
+  background-color: $white;
 }
 
 .form {
@@ -22,6 +16,71 @@
   justify-content: center;
   position: relative;
   font-size: 2rem;
+  padding: 1rem;
+
+  @media (max-width: 800px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 0.5rem;
+  }
+
+  button {
+    font-size: 1.5rem;
+  }
+}
+
+.divForm {
+  h2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+.subscribeInput {
+  background-color: #d9d9d9;
+  border: #989180 0.25rem solid;
+  color: #000; // Use hex value for black
+  height: 2.5rem;
+  max-width: 21.875rem; // 350px
+  width: 100%; // Allow the input to resize
+  font-size: auto;
+  box-sizing: border-box; // Ensures padding and border are included in the element's total width and height
+  padding: 1rem; // Optional padding to ensure text doesn't touch the border
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribeThank {
+  background-color: rgba($black, 1);
+  height: 100%;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $white;
+  position: absolute;
+
+  // Ensure the font size is consistent with the form
+  font-size: 2rem;
+
   @media (max-width: 800px) {
     font-size: 1rem;
   }
@@ -35,70 +94,6 @@
   }
 }
 
-.divForm{
-  h2 {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-}
-
-.subscribeInput {
-  background-color: #d9d9d9;
-  border: #989180 0.25rem solid;
-  color:$black;
-  height: 2.5rem;
-  width: 21.875rem;
-  font-size: 1rem;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.divForm{
-  p {
-    font-size: 1rem;
-  }
-}
-
-.subscribeThank {
-  background-color: rgba($color:$black, $alpha: 0.8);
-  height: 10rem;
-  width: 80%;
-  display: none; 
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: $white;
-  font-size: 1.2rem;
-  position: absolute;
-  p {
-    font-size: clamp(1.5rem, 5vw, 5rem);
-
-    @media (max-width: 1000px) {
-      font-size: 4rem;
-    }
-
-    @media (max-width: 800px) {
-      font-size: 3rem;
-    }
-
-    @media (max-width: 600px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 400px) {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 .subscribeThank.show {
-  display: flex; 
+  display: flex;
 }

@@ -4,7 +4,7 @@ import Buttontmg3 from './Buttons/ButtonTmg3';
 import "../style/ButtonsSCSS/ButtonTmg3.scss"
 
 
-const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, addToCart }:Props) => {
+const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, seeMoreButton }:Props) => {
   
   return (
     <>
@@ -16,7 +16,7 @@ const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, a
            <p>{title}</p>
            <div className='containerPricePLP'>
             <p>{price}€</p>
-           <Buttontmg3 className='ButtonTmgCss3' label={"add to cart"} onClick={addToCart} />
+           <Buttontmg3 className='ButtonTmgCss3' label={"See more"} onClick={seeMoreButton} />
            </div>
            </div>
            </div>    

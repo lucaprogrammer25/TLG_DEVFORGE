@@ -44,7 +44,7 @@
 "name":"Nome:",
 "last name":"Cognome:",
 "choose a country":"Scegli una nazione:",
-"prefix":"Scelgi un prefisso:",
+"prefix":"Prefisso:",
 "different address":"Scegli un indirizzo diverso per la fatturazione",
 "italy":"Italia",
 "france":"Francia",
@@ -69,15 +69,18 @@
 "registration question": "Non sei ancora registrato ?",
 "registration subtitle": "Crea adesso un account e approfitta dei nostri vantaggi",
 "registration button": "Registrati!",
-
 "registration form": "Modulo di registrazione",
 "registration name": "Nome",
 "registration surname": "Cognome",
 "registration address": "Indirizzo",
 "registration confirmPsswrd": "Conferma password",
-"registration advise": "La password deve essere lunga almeno 8 caratteri e contenere almeno una lettera maiuscola, una lettera minuscola, una cifra e un carattere speciale."
+"registration advise": "La password deve essere lunga almeno 8 caratteri e contenere almeno una lettera maiuscola, una lettera minuscola, una cifra e un carattere speciale.",
 
 
 
+"discount":"Sconto",
+"promotionCart":"Promo attiva, i due prodotti meno cari te li regaliano noi!",
+"errorPayment": "Compila i campi per proseguire",
+"errorCheckedPayment": "Seleziona un metodo di pagamento"
 
 }

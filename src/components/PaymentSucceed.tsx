@@ -3,23 +3,27 @@ import { useNavigate } from 'react-router-dom';
 
 const PaymentSucceed = () => {
 
-    const [progressWidth, setProgressWidth] = useState(0);
+    let [progressWidth, setProgressWidth] = useState(0);
 
     const navigate = useNavigate()
 
     useEffect(() => {
-      const interval = setInterval(() => {
-        if (progressWidth <= 100) {
-          setProgressWidth((prevWidth) => prevWidth + 3);
-        }else if (progressWidth > 100) {
-            setInterval(() =>{
-                navigate("/")
-            }, 1000)
-        }
-      }, 100);
-  
-      return () => clearInterval(interval);
-    }, [progressWidth]);
+        const interval = setInterval(() => {
+            setProgressWidth((prevWidth) => {
+                if (prevWidth < 100) {
+                    return prevWidth + 3;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 1000); // Delay of 1 second before redirecting
+                    return prevWidth; // Keep progressWidth at 100
+                }
+            });
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, [navigate]);
 
 
     return (

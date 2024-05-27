@@ -18,12 +18,12 @@ export interface FormData {
   country: string;
   province: string;
   phoneNumber?: string;
-  phonePrefix?:any;
-  
+  phonePrefix?: any;
 }
 
-
-export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+export type InputChangeEvent = React.ChangeEvent<
+  HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+>;
 export type Props = {
   id: number;
   category?: string;
@@ -32,6 +32,7 @@ export type Props = {
   image: string;
   price: number;
   alternative: string;
+  seeMoreButton?: any;
   addToCart?: any;
   goToPDP?: any;
 };
@@ -51,12 +52,12 @@ export interface Contentful {
 export interface Cart {
   id: number;
   price: number;
-  image:string;
-  name:string;
+  image: string;
+  name: string;
   shipment: number;
   cartQuantity: number;
   quantity: number;
-  size:string
+  size: string;
 }
 
 export interface CartState {
@@ -68,6 +69,7 @@ export interface CartState {
   loading: boolean;
   error: string | null;
   size:string
+  discount: number
 }
 
 export interface SidebarCartType {
@@ -76,23 +78,63 @@ export interface SidebarCartType {
 
 export interface PropsForms {
   formData: FormData;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   countryOptions: string[];
-  prefixOptions: any,
-  billing?:string;
-  selectedCountry?:any,
-  handleCountryChange?:any;
+  prefixOptions: any;
+  billing?: string;
+  selectedCountry?: any;
+  handleCountryChange?: any;
 }
 
 export interface LanguageSelectProps {
   handleLanguageChange: (locale: string) => void;
-  handleCloseMenu: () => void; 
+  handleCloseMenu: () => void;
 }
 export interface NavbarProps {
   changeLocale: (newLocale: string) => void;
 }
 
+export interface PaypalButtonProps {
+  totalPrice: number;
+}
 
+export interface Paypal {
+  closeCheckOut: any;
+}
 export interface PromotionProps {
   contents: string[];
+}
+
+export interface CarouselProps {
+  images: string[];
+  names: string[];
+  prices: string[];
+  gender: string[];
+  category?:string;
+  id: string[];
+}
+export interface CardProps {
+  video: any;
+  title: string;
+  paragraph: string;
+  linkUrl: string;
+  linkLabel: string;
+}
+
+export interface DropdownProps {
+  options: any;
+  selectedOption: any;
+  handleChange:any;
+}
+
+export interface ProductPDP {
+  id: number | any;
+  name: number | any;
+  description: string;
+  price: number | any;
+  image: string;
+  category: string;
+  gender: string;
 }
