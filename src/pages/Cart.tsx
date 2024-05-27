@@ -53,6 +53,9 @@ const Cart: React.FC<Props> = () => {
   });
 
 const totalPrice = Number(shipmentValue[0]) == 10 ? (Number(cartTotalPrice) + Number(shipmentValue[0])).toFixed(2): cartTotalPrice;
+const yourCartPrice = (Number(totalPrice) + discountTotalPriceNumber).toFixed(2)
+
+
 
   return (
     <>
@@ -98,7 +101,7 @@ const totalPrice = Number(shipmentValue[0]) == 10 ? (Number(cartTotalPrice) + Nu
                   <span><FormattedMessage id='summary' defaultMessage="Summary" /></span>
                   <div className='containerCartPrice'>
                     <span><FormattedMessage id="your cart" defaultMessage="Your Cart" /></span>
-                    <span>${totalPrice}</span>
+                    <span>${yourCartPrice}</span>
                   </div>
                   {shipmentValue[0] === 10 ? (
                     <div className='containerCartPrice'>

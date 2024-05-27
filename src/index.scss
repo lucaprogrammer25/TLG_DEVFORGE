@@ -16,6 +16,7 @@
 @import "./style/ButtonsSCSS/ButtonTmg3.scss";
 @import "./style/content.scss";
 @import "./style/Card/animatedCards.scss";
+@import "./style/breadCrumbs.scss";
 
 @import url("./style/promoCompontent.scss");
 
@@ -58,7 +59,8 @@ html{
 section{
   max-width: 2000px;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  padding-block-start: 4rem;
+  margin-block-end: 4rem;
 }
 
 .linkTag{

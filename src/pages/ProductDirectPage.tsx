@@ -6,6 +6,7 @@ import CardPDP from "../components/CardPDP";
 import { addToCart } from "../redux/slice/cartSlice";
 import CarouselPDP from "./CarouselPDP";
 import { ProductPDP } from "../interfaces/type";
+import BreadCrumbs from "../components/BreadCrumbs";
 export interface ProductState {
   data: ProductPDP[];
   error: string | null;
@@ -43,6 +44,7 @@ const ProductDirectPage: React.FC = () => {
 
   return (
     <div>
+      <BreadCrumbs/>
       <CardPDP
         id={selectedProduct.id}
         title={selectedProduct.name}

@@ -29,9 +29,9 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<DefaultDisplay changeLocale={changeLocale} />}>
             <Route path="/" element={<HeroSection />} />
-            <Route path="/:gender/:category?/:id?" element={<PLP />} />
+            <Route path="/:gender/:category?" element={<PLP />} />
             <Route path="login" element={<Login />} />
-            <Route path="pdp/:id" element={<ProductDirectPage />} />
+            <Route path="/:gender/:category?/:id" element={<ProductDirectPage />} />
           </Route>
             <Route path="/cart" element={<Cart />} />
             <Route path="/finalcheck" element={<FinalCheck />} />
