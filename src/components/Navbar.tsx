@@ -148,7 +148,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         } else if(loginFormActive) {
             setLoginFormActive(false);
             setLoginFormStyle({display: "none"});
-            console.log("off")
             document.body.style.overflow = "unset";
         } ;
     };
@@ -248,7 +247,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
                     </div>
 
-                    <div className="mobileBarServiceMenuProfile">
+                    <div className="mobileBarServiceMenuProfile" onClick={handleLoginForm}>
                         <img src={profile} alt="profile-icon" />
                     </div>
                     <div className="mobileBarServiceMenuCart">
