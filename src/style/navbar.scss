@@ -1,258 +1,245 @@
 /* SIDEBAR */
-.navbarPromotionWrapper{
-    top: 0;
-    z-index: 1000;
-    .navbarPromotion{
-        display: flex;
-        justify-content: space-between;
-        background-color: $lightBlack;
-        color: $white;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        .navbarPromotionContent {
-            display: inline-block;
-            margin: 0 auto;
-            text-align: center;
-            white-space: nowrap;
-            opacity: 0; 
-            transition: opacity 1s ease-in-out; 
-            text-wrap: wrap;
-            margin-inline: 0.5rem;
-            &:hover{
-                cursor:pointer;
-                border-bottom: 1px solid $white;
-            }
-            .fadeIn{
-                opacity: 1;
-            }
-        } 
-        .navbarPromotionButton    {
-            background-color: $lightBlack;
-            color: $white;
-            border:none;    
-            padding-inline-end: 1rem;
-            font-size: 1.2rem; 
-        }
-    }
-    .navbarPromotionButton:hover{
-        cursor:pointer;
-    }
-    .navbarPromotionContent.fadeIn {
-        opacity: 1;   
-    }
-}
-
-.navbar{
-    width: 100%;
+.navbarPromotionWrapper {
+  top: 0;
+  z-index: 1000;
+  .navbarPromotion {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    background: transparent;
-    z-index: 998;
-    position: fixed;
-    .navbarLogoContainer{
-        width: max-content;
-        padding-inline-start: 1rem;
-        .navbarLogo{
-            width: 15rem;
-            height: 100%;
-        }
-       
+    background-color: $lightBlack;
+    color: $white;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    .navbarPromotionContent {
+      display: inline-block;
+      margin: 0 auto;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      text-wrap: wrap;
+      margin-inline: 0.5rem;
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid $white;
+      }
+      .fadeIn {
+        opacity: 1;
+      }
     }
-    .navbarTitleName{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center; 
-            .navbarTitleNameSubTitle{
-                font-style: italic;
-            }
+    .navbarPromotionButton {
+      background-color: $lightBlack;
+      color: $white;
+      border: none;
+      padding-inline-end: 1rem;
+      font-size: 1.2rem;
     }
-    .navbarMenuItem{
-        display: flex;
-        flex-direction: row;
-        align-items: center;  
-        gap: 12rem;
-        .navbarMenuItemAccessoriesTitle{
-            cursor:pointer;
-        }
-    }
-    
+  }
+  .navbarPromotionButton:hover {
+    cursor: pointer;
+  }
+  .navbarPromotionContent.fadeIn {
+    opacity: 1;
+  }
 }
-    .navbarHoverImage{
-        height: 20rem;
-        width: 20rem;
-    }
 
-.navbarServiceMenu{
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: transparent;
+  z-index: 998;
+  position: fixed;
+  .navbarLogoContainer {
+    width: max-content;
+    padding-inline-start: 1rem;
+    .navbarLogo {
+      width: 15rem;
+      height: 100%;
+    }
+  }
+  .navbarTitleName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .navbarTitleNameSubTitle {
+      font-style: italic;
+    }
+  }
+  .navbarMenuItem {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
-    cursor: pointer;
-    position: relative;
-    .navbarServiceMenuLanguageMenu {
-        position: absolute;
-        inset-inline-start: 0;
-        inset-block-start: 100%; 
-        background-color: $white;
-        border: 1px solid #ddd;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
-        z-index: 1000;
-        & > div {
-          padding: 0.5rem 0.75rem; 
-          cursor: pointer;
-          &:hover {
-            background-color:$hoverGrey;
-          }
-        }
-      }
+    gap: 12rem;
+    .navbarMenuItemAccessoriesTitle {
+      cursor: pointer;
+    }
+  }
 }
-.navbarServiceMenuLanguageMenu {
+.navbarHoverImage {
+  height: 20rem;
+  width: 20rem;
+}
+
+.navbarServiceMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  position: relative;
+  .navbarServiceMenuLanguageMenu {
     position: absolute;
-    inset-block-start: 100%; 
+    inset-inline-start: 0;
+    inset-block-start: 100%;
+    background-color: $white;
     border: 1px solid #ddd;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     z-index: 1000;
     & > div {
-      padding: 0.5rem 0.75rem; 
+      padding: 0.5rem 0.75rem;
       cursor: pointer;
       &:hover {
-        background-color:$hoverGrey;
+        background-color: $hoverGrey;
       }
     }
   }
-
- 
-.navbarHoverMen ,
- .navbarHoverWomen {
-    width: 100%; 
+}
+.navbarServiceMenuLanguageMenu {
+  position: absolute;
+  inset-block-start: 100%;
+  border: 1px solid #ddd;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  & > div {
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
-    position: absolute;
-    background-color:$white; 
-    padding: 1rem;
-    border-top: none;
-    border-radius: 1rem;
-    width:max-content; 
-    top:5rem;
-    left: 10rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    .navbarHoverImage {
-        margin: 1rem;
-        cursor: pointer;
+    &:hover {
+      background-color: $hoverGrey;
     }
   }
-  .navbarServiceMenu {
-    position: relative;   
+}
+
+.navbarHoverMen,
+.navbarHoverWomen {
+  width: 80%;
+  position: absolute;
+  background-color: $white;
+  padding: 0.5rem;
+  border-top: none;
+  border-radius: 1rem;
+  left: 5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  cursor: pointer;
+  .navbarHoverImage {
+    cursor: pointer;
+    width: 100%;
   }
-  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
 
-
-
-
-
-
-
+.navbarServiceMenu {
+  position: relative;
+}
 
 /* HAMBURGER MENU  */
 
- 
-
-
-.mobileBar {    
-    z-index: 2;
-    width: 100%;
+.mobileBar {
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $white;
+  height: 100%;
+  .mobileBarLogoContainer {
+    width: min-content;
+    padding-inline-start: 1rem;
+    margin-right: auto;
+    .mobileBarLogo {
+      width: 15rem;
+    }
+  }
+  .mobileBarServiceMenu {
     display: flex;
-    position: sticky;
-    top: 0;
-    flex-direction: row ;
-    justify-content: space-between;
-    background-color:$white;
-    height: 100%;
-    .mobileBarLogoContainer {
-        width: min-content;
-        padding-inline-start: 1rem;
-        margin-right: auto;
-        .mobileBarLogo {
-            width: 15rem;
-        }
 
+    .hamburgerLogoContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-left: 1rem;
+      .hamburgerLogo {
+        width: 1.5rem;
+        height: 2rem;
+      }
     }
-    .mobileBarServiceMenu {
-        display: flex;
-        
-
-        .hamburgerLogoContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            margin-left: 1rem;
-            .hamburgerLogo {
-                width: 1.5rem;
-                height: 2rem;
-            }
-        }
-        .mobileBarServiceMenuLanguage {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            margin-right: 1.5rem;
-        }
-
-        .mobileBarServiceMenuProfile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .mobileBarServiceMenuCart {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            margin-left: 1rem;
-        }
+    .mobileBarServiceMenuLanguage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 1.5rem;
     }
 
+    .mobileBarServiceMenuProfile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .mobileBarServiceMenuCart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+  }
 }
 .sidebarBox {
-    z-index: 1;
-    position: fixed;
-    width: 50%;
-    height: 100%; 
-    background-color:$white;
-    transition: right 0.5s ease-in;
+  z-index: 1;
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  background-color: $white;
+  transition: right 0.5s ease-in;
 }
 
 .sidebarMenuDropdown {
-    display: flex;
-    flex-direction: column; 
-    gap: 1rem;
-    padding-block-start: 1.875rem;
-    padding-block-end: 1.875rem;
-    padding-inline-start: 1.25rem;
-    padding-inline-end: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block-start: 1.875rem;
+  padding-block-end: 1.875rem;
+  padding-inline-start: 1.25rem;
+  padding-inline-end: 1.25rem;
 
-    .dropDownMan,
-    .dropDownWoman {
-        h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color:$black;
-        }
-        p {
-            font-size: 1.1rem;
-            color:$black;
-            margin-inline-start: 0.5rem;
-            margin-top: 0.2rem;
-        }
+  .dropDownMan,
+  .dropDownWoman {
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $black;
     }
+    p {
+      font-size: 1.1rem;
+      color: $black;
+      margin-inline-start: 0.5rem;
+      margin-top: 0.2rem;
+    }
+  }
 }
 
 .loginOpening {
@@ -267,51 +254,43 @@
 
 /* LINK */
 
-.linkTag{
-    text-decoration: none;
-    color: $black;
+.linkTag {
+  text-decoration: none;
+  color: $black;
 }
 
 /* MEDIA QUERY  */
 
 @media only screen and (max-width: 1060px) {
-    
-    .navbar {
-        display: none;
-    }
+  .navbar {
+    display: none;
+  }
 
-    .mobileBarLogo600px {
-        display: none;
-    }
-
-
+  .mobileBarLogo600px {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1060px) {
-    .sidebarBox {
-        display: none;
-    }
-    .mobileBar {
-        display: none;
-    }
-
-
-
+  .sidebarBox {
+    display: none;
+  }
+  .mobileBar {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  .mobileBarLogo {
+    display: none;
+  }
 
-    .mobileBarLogo {
-        display: none;
-    }
+  .mobileBarLogo600px {
+    display: unset;
+    width: 3.9rem;
+  }
 
-    .mobileBarLogo600px {
-        display: unset;
-        width: 3.9rem ;
-    }
-
-    .sidebarBox {
-        width: 100%;
-    }
+  .sidebarBox {
+    width: 100%;
+  }
 }
-
