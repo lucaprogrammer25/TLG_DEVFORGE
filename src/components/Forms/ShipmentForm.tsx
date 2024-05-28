@@ -3,8 +3,6 @@ import { PropsForms } from '../../interfaces/type';
 import { FormattedMessage } from 'react-intl';
 import CustomDropdown from './CustomDropdown';  
 
-
-
 const FormFields: React.FC<PropsForms> = ({ formData, handleInputChange, countryOptions, prefixOptions }) => {
   return (
     <ul className='shipmentFormList'>

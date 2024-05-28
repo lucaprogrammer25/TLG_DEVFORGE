@@ -1,7 +1,6 @@
 // CarouselPDP.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "../style/CarouselScss/CarouselPDP.scss"
 
 interface Product {
   id: string;

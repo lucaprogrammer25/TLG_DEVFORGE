@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../../style/NewsLetter/SubscribeInput.scss";
-import "../../style/ButtonsSCSS/ButtonTmg3.scss";
 
 interface FormState {
   email: string;

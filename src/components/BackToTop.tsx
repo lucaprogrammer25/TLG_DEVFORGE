@@ -1,5 +1,3 @@
-
-
 interface BackToTopButtonProps {
   onClick: () => void;
 }
