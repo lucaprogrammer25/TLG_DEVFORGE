@@ -114,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
-        if (blurOutletElement && blurNavbarElement && cartTotalQuantity !== 0) {
+        if (blurOutletElement && cartTotalQuantity !== 0) {
             blurOutletElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
         }
     };
@@ -122,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleSidebarCartClose = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "flex" });
-        if (blurOutletElement && blurNavbarElement) {
+        if (blurOutletElement) {
             blurOutletElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
         }
     };

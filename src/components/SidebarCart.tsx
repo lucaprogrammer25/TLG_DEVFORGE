@@ -13,7 +13,6 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
   const discountTotalPrice = useTypeSelector(selectCartDiscount)
   const discountTotalPriceNumber = Number(discountTotalPrice)
   const blurOutletElement = document.getElementById('blurOutlet');
-    const blurNavbarElement = document.getElementById('blurNavbar');
   
   const { cartItems } = useTypeSelector((state) => state.cart);
   const dispatch = useTypeDispatch()
@@ -26,18 +25,16 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
 
   const handleClickDeleteItem = (product: any) => {
     dispatch(removeFromCart(product));
-    if (blurOutletElement && blurNavbarElement) {
+    if (blurOutletElement) {
       blurOutletElement.style.filter =  'blur(0px)';
-      blurNavbarElement.style.filter = 'blur(0px)';
   }
   }
 
   const handleClickDecreaseItem = (product: any) => {
     dispatch(decrease(product));
     if(product.quantity <=1){
-      if (blurOutletElement && blurNavbarElement) {
+      if (blurOutletElement) {
         blurOutletElement.style.filter =  'blur(0px)';
-        blurNavbarElement.style.filter = 'blur(0px)';
     }
     }
    
