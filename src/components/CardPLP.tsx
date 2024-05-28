@@ -1,7 +1,6 @@
 import React from 'react';
 import { Props } from "../interfaces/type";
 import Buttontmg3 from './Buttons/ButtonTmg3';
-import "../style/ButtonsSCSS/ButtonTmg3.scss"
 
 
 const CardPLP: React.FC<Props> = ({ image, title, price, alternative, goToPDP, seeMoreButton }:Props) => {

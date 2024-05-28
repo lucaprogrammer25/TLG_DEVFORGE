@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/ButtonsSCSS/scrollToTop.scss";
-import arrowToTop from "../../assets/icons/arrow.png"
+import arrowToTop from "../../assets/icons/arrow.png";
 
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
