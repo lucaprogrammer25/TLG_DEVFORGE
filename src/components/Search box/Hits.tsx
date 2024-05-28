@@ -1,5 +1,6 @@
 import React from 'react';
 import { AlgoliaHit } from '../../interfaces/type';
+import { useNavigate } from 'react-router-dom';
 
 interface HitProps {
   hit: AlgoliaHit;
@@ -7,52 +8,26 @@ interface HitProps {
 }
 
 const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
+  const navigate = useNavigate(); 
+
+  const handleItemClick = () => {
+    const { gender, category, id } = hit; 
+    const url = `/${gender}/${category}/${id}`;
+    navigate(url); 
+  };
+
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     sendEvent('click', hit, 'Product Clicked');
+    handleItemClick(); 
   };
 
   return (
     <div className="hitSearchBox" onClick={handleClick}>
-      <h2>Name: {hit.name}</h2>
-      <p>Price: {hit.price}</p>
+      <h2> {hit.name}</h2>
+      <p>{hit.price} €</p>
     </div>
   );
 };
 
 export default Hit;
-
-
-/* 
-import React, { useState } from "react";
-import algoliasearch from "algoliasearch/lite";
-import { InstantSearch, SearchBox, Hits, Configure } from  "react-instantsearch";
-import Hit from "./Hits";
-import { AlgoliaHit } from "../../interfaces/type";
-
-const algoliaId = import.meta.env.VITE_REACT_ALGOLIA_ID;
-const searchApi = import.meta.env.VITE_REACT_SEARCH_API_KEY;
-
-const searchClient = algoliasearch(algoliaId, searchApi);
-
-const Search = () => {
-  const [query, setQuery] = useState("");
-
-  const handleSearchStateChange = ({ query }: { query: string }) => {
-    setQuery(query);
-  };
-
-  return (
-    <InstantSearch
-      searchClient={searchClient}
-      indexName="The modern boutique"
-      onSearchStateChange={handleSearchStateChange}
-    >
-      <Configure hitsPerPage={5} />
-      <SearchBox />
-      {query && <Hits hitComponent={Hit as React.ComponentType<{ hit: AlgoliaHit }>} />}
-    </InstantSearch>
-  );
-};
-
-export default Search; */

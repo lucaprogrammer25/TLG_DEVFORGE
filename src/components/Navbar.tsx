@@ -221,7 +221,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </div>
                     <div className="navbarServiceMenu">
                         <div className="navbarServiceMenuSearchBox">
-                            <Search/>
+                            <Search />
                         </div>
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />

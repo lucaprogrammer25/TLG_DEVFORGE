@@ -1,0 +1,32 @@
+.ais-Hits{
+    border: 1px solid  $black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color:$white;
+    cursor: pointer;
+    .ais-Hits-list{
+        list-style-type: none;
+    }
+    .hitTitle {
+      font-weight: bold;
+      margin-bottom: 0.625rem;
+    }
+    
+    .hitPrice {
+      font-size: 1rem;
+    }
+
+  }
+
+  .hitsContainer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid $black;
+    border-top: none;
+    z-index: 1000;
+  }
+
+  
