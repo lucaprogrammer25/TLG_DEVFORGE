@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import emailjs from "emailjs-com";
 
 interface FormState {
   email: string;
@@ -64,7 +65,12 @@ const NewsletterForm: React.FC = () => {
     setFormState({ ...formState, status: "submitting" });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const serviceID = 'service_1euakbp';
+      const templateID = 'template_twxz8ih';
+      const userID = 'pH9R5tTf0GApKPinj';
+
+      await emailjs.send(serviceID, templateID, { email: formState.email }, userID);
+
       setFormState({ email: "", status: "submitted", visible: true });
 
       setTimeout(() => {
@@ -82,6 +88,7 @@ const NewsletterForm: React.FC = () => {
         localStorage.setItem("formVisibility", "hidden");
       }, 20000);
     } catch (error) {
+      console.error("Failed to send email:", error);
       setFormState({ ...formState, status: "error" });
     }
   };
@@ -111,13 +118,25 @@ const NewsletterForm: React.FC = () => {
             >
               <span>Subscribe</span>
             </button>
-            <div className={`subscribeThank ${formState.status === "submitted" ? "show" : ""}`}>
+            <div
+              className={`subscribeThank ${
+                formState.status === "submitted" ? "show" : ""
+              }`}
+            >
               <div>
                 <h3>Thank you for subscribing!</h3>
-                <p>You'll start receiving updates on our latest products and exclusive offers directly in your inbox.</p>
-                <p>If you have any questions, feel free to reach out to our support team at "piccicadavide@gmail.com".</p>
+                <p>
+                  You'll start receiving updates on our latest products and
+                  exclusive offers directly in your inbox.
+                </p>
+                <p>
+                  If you have any questions, feel free to reach out to our
+                  support team at "piccicadavide@gmail.com".
+                </p>
               </div>
-              {formState.status === "error" && <p>Sorry, there was a problem. Please try again later.</p>}
+              {formState.status === "error" && (
+                <p>Sorry, there was a problem. Please try again later.</p>
+              )}
             </div>
           </form>
         </div>
