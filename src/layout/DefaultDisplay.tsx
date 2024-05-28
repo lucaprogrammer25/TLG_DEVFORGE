@@ -28,13 +28,6 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({ changeLocale }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setPageLoading(false);
-    }, 700); 
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,9 +35,6 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({ changeLocale }) => {
 
   return (
     <>
-      {(documentLoading || pageLoading) ? (
-        <Loader />
-      ) : (
         <>
           <Navbar changeLocale={changeLocale} />
           <main>
@@ -55,7 +45,6 @@ const DefaultDisplay: React.FC<DefaultDisplayProps> = ({ changeLocale }) => {
           <ScrollToTopButton />
           <Footer />
         </>
-      )}
     </>
   );
 };

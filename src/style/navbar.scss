@@ -133,6 +133,7 @@
 
 .navbarHoverMen,
 .navbarHoverWomen {
+  a{text-decoration: none;}
   width: 80%;
   position: absolute;
   background-color: $white;

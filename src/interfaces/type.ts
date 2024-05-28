@@ -97,7 +97,7 @@ export interface NavbarProps {
 }
 
 export interface PaypalButtonProps {
-  totalPrice: number;
+  totalPrice: string | number
 }
 
 export interface Paypal {
