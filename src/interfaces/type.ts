@@ -68,8 +68,8 @@ export interface CartState {
   shipment: number;
   loading: boolean;
   error: string | null;
-  size:string
-  discount: number
+  size: string;
+  discount: number;
 }
 
 export interface SidebarCartType {
@@ -112,7 +112,7 @@ export interface CarouselProps {
   names: string[];
   prices: string[];
   gender: string[];
-  category?:string[];
+  category?: string[];
   id: string[];
 }
 export interface CardProps {
@@ -126,7 +126,7 @@ export interface CardProps {
 export interface DropdownProps {
   options: any;
   selectedOption: any;
-  handleChange:any;
+  handleChange: any;
 }
 
 export interface ProductPDP {

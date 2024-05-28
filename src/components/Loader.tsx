@@ -1,6 +1,3 @@
-
-
-
 const Loader = () => {
   return (
     <div className="loaderContainer">

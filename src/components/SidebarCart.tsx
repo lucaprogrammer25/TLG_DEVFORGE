@@ -5,8 +5,6 @@ import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import Buttontmg3 from './Buttons/ButtonTmg3';
 
-
-
 const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType) => {
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const CartTotalPrice = useTypeSelector(selectCartTotalPrice)

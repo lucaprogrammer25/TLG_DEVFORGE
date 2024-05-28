@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 
-
 const BreadCrumbs = () => {
   const location = useLocation();
 
