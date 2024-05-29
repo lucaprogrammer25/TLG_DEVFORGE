@@ -7,7 +7,7 @@ const BreadCrumbs = () => {
   const pathnames = location.pathname.split('/')
     .filter(crumb => crumb !== '');
 
-  // Exclude the last path dynamically
+  
   const crumbs = pathnames.slice(0, -1).map(crumb => {
     let displayCrumb = crumb;
     if (crumb === "unisex") {

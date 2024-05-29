@@ -23,20 +23,23 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
 
   const handleClickDeleteItem = (product: any) => {
     dispatch(removeFromCart(product));
-    if (blurOutletElement) {
-      blurOutletElement.style.filter =  'blur(0px)';
-  }
+    if(cartItems.length === 1){
+      if (blurOutletElement) {
+        blurOutletElement.style.filter =  'blur(0px)';
+     }
+    }
   }
 
   const handleClickDecreaseItem = (product: any) => {
     dispatch(decrease(product));
-    if(product.quantity <=1){
+    if(product.quantity <=1 && cartItems.length === 1){
       if (blurOutletElement) {
         blurOutletElement.style.filter =  'blur(0px)';
+      }
     }
-    }
-   
+    
   }
+  console.log(cartItems);
 
   return (
     <>
