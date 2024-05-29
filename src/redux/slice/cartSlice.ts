@@ -3,14 +3,12 @@ import { CartState } from "../../interfaces/type";
 
 const defaultInitialState: CartState = {
     cartItems: [],
-    quantity: 0,
     cartTotalPrice: 0,
     cartTotalQuantity: 0,
     shipment: 0,
     loading: false,
     error: null,
-    size: "",
-    discount: 0 
+    discount: 0
 };
 
 const loadStateFromLocalStorage = (): CartState => {
@@ -46,7 +44,7 @@ const calculateDiscount = (cartItems: any[]): number => {
         }
     });
 
-    if (itemPrices.length < 2) return 0;
+    if (itemPrices.length <= 2) return 0;
 
     itemPrices.sort((a, b) => a - b);
 
@@ -54,6 +52,15 @@ const calculateDiscount = (cartItems: any[]): number => {
     return discount;
 };
 
+const calculateTotalPrice = (cartItems: any[]): number => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+
+const updateCartState = (state: CartState) => {
+    state.cartTotalPrice = calculateTotalPrice(state.cartItems);
+    state.discount = state.cartTotalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
+    saveStateToLocalStorage(state);
+};
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -66,18 +73,14 @@ const cartSlice = createSlice({
                     item.id === action.payload.id && item.size === action.payload.size ? { ...item, quantity: item.quantity + 1 } : item
                 );
             } else {
-                const newItem = { ...action.payload, quantity: 1, shipment: state.shipment };
+                const newItem = { ...action.payload, quantity: 1 };
                 state.cartItems = [...state.cartItems, newItem];
             }
-            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
-            saveStateToLocalStorage(state);
+            updateCartState(state);
         },
         removeFromCart(state, action) {
             state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
-            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
-            saveStateToLocalStorage(state);
+            updateCartState(state);
         },
         decrease(state, action) {
             const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id && cartItem.size === action.payload.size);
@@ -86,34 +89,25 @@ const cartSlice = createSlice({
             } else {
                 state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id || cartItem.size !== action.payload.size);
             }
-            const totalPrice = state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-            state.discount = totalPrice > 1000 ? calculateDiscount(state.cartItems) : 0;
-            saveStateToLocalStorage(state);
+            updateCartState(state);
         },
         clearCart(state) {
             state.cartItems = [];
-            state.discount = 0;
-            saveStateToLocalStorage(state);
+            updateCartState(state);
         },
         addShipping(state) {
-            state.cartItems = state.cartItems.map(item => ({
-                ...item,
-                shipment: 10
-            }));
-            saveStateToLocalStorage(state);
+            state.shipment = 10;
         },
         removeShipping(state) {
-            state.cartItems = state.cartItems.map(item => ({
-                ...item,
-                shipment: 0
-            }));
-            saveStateToLocalStorage(state);
+            state.shipment = 0;
         }
     }
 });
 
+export const selectShipment = (state: any) => state.cart.shipment;
+
 export const selectCartTotalPrice = (state: any) => {
-    const totalPrice = state.cart.cartItems.reduce((total: number, item: any) => total + item.price * item.quantity, 0);
+    const totalPrice = calculateTotalPrice(state.cart.cartItems);
     const discount = totalPrice > 1000 ? calculateDiscount(state.cart.cartItems) : 0;
     const finalPrice = totalPrice - discount;
     return finalPrice.toFixed(2);
@@ -122,8 +116,6 @@ export const selectCartTotalPrice = (state: any) => {
 export const selectCartDiscount = (state: any) => {
     return state.cart.discount;
 };
-
-
 
 export const selectCartTotalQuantity = (state: any) => {
     const totalQuantity = state.cart.cartItems.reduce((total: number, item: any) => total + item.quantity, 0);

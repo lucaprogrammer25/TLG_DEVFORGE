@@ -62,13 +62,11 @@ export interface Cart {
 
 export interface CartState {
   cartItems: Cart[];
-  quantity: number;
   cartTotalQuantity: number;
   cartTotalPrice: number;
   shipment: number;
   loading: boolean;
   error: string | null;
-  size: string;
   discount: number;
 }
 
