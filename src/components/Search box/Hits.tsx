@@ -25,8 +25,8 @@ const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
 
   return (
     <div className="hitSearchBox" onClick={handleClick}>
-      <h2>Name: {hit.name}</h2>
-      <p>Price: {hit.price}</p>
+      <h2>{hit.name}</h2>
+      <p>{hit.price} $</p>
     </div>
   );
 };

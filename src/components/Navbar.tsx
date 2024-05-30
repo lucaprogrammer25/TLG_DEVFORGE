@@ -277,6 +277,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </Link>
                 </div>
                 <div className="mobileBarServiceMenu">
+                <div className="mobileBarServiceMenuLanguage">
+                            <img onClick={handleSearchBoxOpen} src={searchIcon} alt="icon-search-box" />
+                        </div>
                     <div className="mobileBarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                         <img src={language} alt="language-icon" />
                         {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
@@ -295,9 +298,6 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                 </div>
             </div>
                     </div>
-                    <div className={`sidebarSearchBox ${!sidebarSearchBoxActive ? "inactive" : sidebarSearchBoxActive ? "active" : ""}`} style={sidebarSearchBoxStyle}>
-                    <SidebarSearchBox closeSideCart={handleSearchBoxClose}/>
-                </div> 
             {cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
                     <SidebarCart closeSideCart={handleSidebarCartClose} />
@@ -310,6 +310,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
             <div className="loginOpening" style={loginFormStyle}>
                 <LoginForm closeLoginForm={handleLoginForm}/>
             </div>
+            <div className={`sidebarSearchBox ${!sidebarSearchBoxActive ? "inactive" : sidebarSearchBoxActive ? "active" : ""}`} style={sidebarSearchBoxStyle}>
+                    <SidebarSearchBox closeSideCart={handleSearchBoxClose}/>
+                </div> 
 
         </>
     );

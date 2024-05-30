@@ -81,6 +81,8 @@
 "discount":"Sconto",
 "promotionCart":"Promo attiva, i due prodotti meno cari te li regaliano noi!",
 "errorPayment": "Compila i campi per proseguire",
-"errorCheckedPayment": "Seleziona un metodo di pagamento"
+"errorCheckedPayment": "Seleziona un metodo di pagamento",
+"searchBox":"Cerca",
+"placeholderSearchBox":"Cerca qui"
 
 }

@@ -9,10 +9,13 @@ const SidebarSearchBox: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCar
 
   return (
     <>
+    <div style={{display:"flex", flexDirection:"column", gap:"2rem"}}>
       <div className='titleSidebar'>
+      <p><FormattedMessage id="searchBox" defaultMessage="Search"/></p>
         <p onClick={closeSideCart}><FormattedMessage id="close" defaultMessage="Close"/></p>
       </div>
      <Search/>
+     </div>
      
     </>
   );

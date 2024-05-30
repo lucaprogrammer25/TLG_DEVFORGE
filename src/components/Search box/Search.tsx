@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, Configure } from 'react-instantsearch';
@@ -17,8 +16,13 @@ const Search: React.FC = () => {
     setQuery(uiState['The modern boutique']?.query || '');
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setQuery(value);
+  };
+
   return (
-    <div className="navbar">
+    <div className="searchBoxContainer">
       <InstantSearch
         searchClient={searchClient}
         indexName="The modern boutique"
@@ -26,7 +30,11 @@ const Search: React.FC = () => {
         onStateChange={handleStateChange}
       >
         <Configure hitsPerPage={5} />
-        <SearchBox />
+        <SearchBox 
+          placeholder='Type here' 
+          searchAsYouType={true} 
+          onChange={handleSearchChange}
+        />
         {query && (
           <div className="hitsContainer">
             <Hits<AlgoliaHits> hitComponent={Hit} />

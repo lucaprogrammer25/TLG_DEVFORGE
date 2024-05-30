@@ -78,7 +78,9 @@
     "discount":"Discount",
     "promotionCart":"Promo active, we'll give you the two least expensive products for free!",
     "errorPayment":"Fill in the fields to continue",
-    "errorCheckedPayment": "Select a payment method"
+    "errorCheckedPayment": "Select a payment method",
+    "searchBox":"Search",
+    "placeholderSearchBox":"Search type hire"
 }
   
   
