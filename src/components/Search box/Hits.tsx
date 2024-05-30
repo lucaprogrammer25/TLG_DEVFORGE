@@ -1,31 +1,32 @@
+
 import React from 'react';
-import { AlgoliaHit } from '../../interfaces/type';
+import { AlgoliaHits } from '../../interfaces/type';
 import { useNavigate } from 'react-router-dom';
 
 interface HitProps {
-  hit: AlgoliaHit;
-  sendEvent: (eventType: string, hit: AlgoliaHit, eventName: string) => void;
+  hit: AlgoliaHits;
+  sendEvent: (eventType: string, hit: AlgoliaHits, eventName: string) => void;
 }
 
 const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleItemClick = () => {
-    const { gender, category, id } = hit; 
-    const url = `/${gender}/${category}/${id}`;
-    navigate(url); 
+    const { gender, category, id } = hit;
+    const url = `${gender}/${category}/${id}`;
+    navigate(url);
   };
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     sendEvent('click', hit, 'Product Clicked');
-    handleItemClick(); 
+    handleItemClick();
   };
 
   return (
     <div className="hitSearchBox" onClick={handleClick}>
-      <h2> {hit.name}</h2>
-      <p>{hit.price} €</p>
+      <h2>Name: {hit.name}</h2>
+      <p>Price: {hit.price}</p>
     </div>
   );
 };

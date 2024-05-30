@@ -1,28 +1,41 @@
-import algoliasearch from "algoliasearch";
-import { Hits, InstantSearch,SearchBox ,Configure} from "react-instantsearch";
-import Hit from "./Hits";
 
+import React, { useState } from 'react';
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits, Configure } from 'react-instantsearch';
+import Hit from './Hits';
+import './Search.scss';
+import { AlgoliaHits } from '../../interfaces/type';
 
-const algoliaId = import.meta.env.VITE_REACT_ALGOLIA_ID;
-const searchApi = import.meta.env.VITE_REACT_SEARCH_API_KEY;
+const algoliaId = import.meta.env.VITE_REACT_ALGOLIA_ID as string;
+const searchApi = import.meta.env.VITE_REACT_SEARCH_API_KEY as string;
 
 const searchClient = algoliasearch(algoliaId, searchApi);
 
-const Search = () => {
-  
-  
-  return (
-    <InstantSearch
-      searchClient={searchClient}
-      indexName="The modern boutique"
-      insights={true}
-    >
-      <Configure hitsPerPage={1} />
-      <SearchBox />
-       <Hits hitComponent={Hit} />
-    </InstantSearch>
-  );
-}
+const Search: React.FC = () => {
+  const [query, setQuery] = useState<string>('');
 
+  const handleStateChange = ({ uiState }: { uiState: { [key: string]: { query: string } } }) => {
+    setQuery(uiState['The modern boutique']?.query || '');
+  };
+
+  return (
+    <div className="navbar">
+      <InstantSearch
+        searchClient={searchClient}
+        indexName="The modern boutique"
+        insights={true}
+        onStateChange={handleStateChange}
+      >
+        <Configure hitsPerPage={5} />
+        <SearchBox />
+        {query && (
+          <div className="hitsContainer">
+            <Hits<AlgoliaHits> hitComponent={Hit} />
+          </div>
+        )}
+      </InstantSearch>
+    </div>
+  );
+};
 
 export default Search;

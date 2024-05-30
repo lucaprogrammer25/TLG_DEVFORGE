@@ -139,10 +139,12 @@ export interface ProductPDP {
   gender: string;
 }
 
-export interface  AlgoliaHit {
-  name:string;
-  price:number;
-  id?:number;
-  category?:string;
-  gender?:string;
+
+import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types';
+export interface AlgoliaHits extends AlgoliaHit {
+  name: string;
+  price: number;
+  gender: string;
+  category: string;
+  id: string;
 }
