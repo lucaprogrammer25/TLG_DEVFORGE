@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, Configure } from 'react-instantsearch';
 import Hit from './Hits';
-import './Search.scss';
 import { AlgoliaHits } from '../../interfaces/type';
 
 const algoliaId = import.meta.env.VITE_REACT_ALGOLIA_ID as string;

@@ -16,16 +16,19 @@ import mobileLogo from "../assets/icons/OnlyLogo.png"
 import hamburgerMenu from "../assets/icons/burger-menu.svg"
 import hamburgerMenuClose from "../assets/icons/x-close.svg"
 import shoppingBag from "../assets/icons/bag.svg";
+import searchIcon from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
 import LoginForm from "./Forms/LoginForm";
-import Search from "./Search box/Search";
+import SidebarSearchBox from "./Search box/SidebarSearchBox";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
+    const [sidebarSearchBoxStyle, setSidebarSearchBoxStyle] = useState({ display: "none" });
+    const [sidebarSearchBoxActive, setSidebarSearchBoxActive] = useState<boolean>(false);
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
     const blurOutletElement = document.getElementById('blurOutlet');
@@ -112,6 +115,22 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         saveImagesToLocalStorage();
     }, [data]);
 
+    const handleSearchBoxOpen = () => {
+        setSidebarSearchBoxActive((prevState) => !prevState);
+        setSidebarSearchBoxStyle({ display: sidebarSearchBoxActive ? "none" : "flex" });       
+        if (blurOutletElement && blurNavbarElement) {
+            blurOutletElement.style.filter = sidebarSearchBoxActive ? 'none' : 'blur(2px)';
+        }
+    };
+
+    const handleSearchBoxClose = () => {
+        setSidebarSearchBoxActive(false);
+        setSidebarSearchBoxStyle({ display: "flex" });
+        if (blurOutletElement && blurNavbarElement) {
+            blurOutletElement.style.filter = !sidebarSearchBoxActive ? 'unset' : 'blur(0px)';
+        }
+    };
+
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
@@ -120,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         }
     };
 
-    const handleSidebarCartClose = () => {
+    const handleSidebarCartClose  = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "flex" });
         if (blurOutletElement && blurNavbarElement) {
@@ -161,6 +180,14 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         }
     }, [sidebarCartActive, cartTotalQuantity]);
 
+    useEffect(() => {
+        if (sidebarSearchBoxActive) {
+            document.body.classList.add("sidebar-open");
+        } else {
+            document.body.classList.remove("sidebar-open");
+        }
+    }, [sidebarSearchBoxActive]);
+
     const handleLanguageChange = (newLocale: string) => {
         changeLocale(newLocale);
     };
@@ -176,6 +203,10 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     useEffect(() => {
         blurOutletElement?.addEventListener('click', handleSidebarCartClose)
     },[sidebarCartActive]);
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleSearchBoxClose)
+    },[sidebarSearchBoxActive]);
 
 
 
@@ -221,7 +252,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </div>
                     <div className="navbarServiceMenu">
                         <div className="navbarServiceMenuSearchBox">
-                            <Search />
+                            <img onClick={handleSearchBoxOpen} src={searchIcon} alt="icon-search-box" />
                         </div>
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />
@@ -264,6 +295,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                 </div>
             </div>
                     </div>
+                    <div className={`sidebarSearchBox ${!sidebarSearchBoxActive ? "inactive" : sidebarSearchBoxActive ? "active" : ""}`} style={sidebarSearchBoxStyle}>
+                    <SidebarSearchBox closeSideCart={handleSearchBoxClose}/>
+                </div> 
             {cartTotalQuantity !== 0 ?
                 <div className={`sidebarCart ${!sidebarCartActive ? "inactive" : sidebarCartActive ? "active" : ""}`} style={sidebarCartStyle}>
                     <SidebarCart closeSideCart={handleSidebarCartClose} />
