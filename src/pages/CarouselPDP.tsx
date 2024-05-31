@@ -36,7 +36,7 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
         {displayedItems.map((item) => (
           <div key={item.id} className="carousel-item">
             <Link to={`/${item.gender}/${item.category}/${item.id}`}>
-              <img src={item.image} alt={item.name} />
+              <img src={item.image} alt={item.name} loading='lazy'/>
               <p>{item.name}</p>
               <p>{item.price}</p>
               <p>{item.gender}</p>
