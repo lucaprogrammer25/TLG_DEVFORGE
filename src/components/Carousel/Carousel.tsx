@@ -88,7 +88,6 @@ const Carousel: React.FC<CarouselProps> = ({
         gender: currentGender,
         category: filteredCategory ? filteredCategory[index] : undefined,
       };
-      console.log(item); // Debugging log to see the item
       return item;
     });
   };
@@ -138,9 +137,6 @@ const Carousel: React.FC<CarouselProps> = ({
                 key={index}
                 className="carousel-image"
                 onClick={() => {
-                  console.log(
-                    `Navigating to: /${item.gender}/${item.category}/${item.id}`
-                  ); // Debugging log for navigate path
                   navigate(`/${item.gender}/${item.category}/${item.id}`);
                 }}
               >

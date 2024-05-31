@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
 
 
   const { cartItems } = useTypeSelector((state) => state.cart);
-  console.log(cartItems);
+
   
   const { data } = useTypeSelector((state) => state.contentful);
 

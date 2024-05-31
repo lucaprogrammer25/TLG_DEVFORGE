@@ -6,7 +6,7 @@ Sviluppare un'applicazione e-commerce in cui il cliente può aggiungere prodotti
 
 Integrazione dei Prodotti:
 
-I prodotti saranno integrati tramite l'API https://fakeapi.platzi.com/. La navigazione dell'app includerà:
+I prodotti sono stati intregrati grazie ad un database mongoDB, la parte backend è stta realizzata con nodejs(express,cors,dotenv,mongoose)
 
 Home page
 Pagina dei prodotti
@@ -29,10 +29,10 @@ I metodi di pagamento includeranno "alla consegna" e carta di credito. Se viene 
 Altre Funzionalità:
 
 Implementare un sistema di registrazione con Local Storage per il login.
-La lingua principale dell'app sarà l'inglese.
+La lingua principale dell'app sarà l'inglese, ma grazie alla libreria format js abbiamo tradotto le stringhe hard coded.
 Implementare un possibile sistema di promozione: se nel carrello sono presenti almeno tre prodotti e il totale supera i 1000 euro, i due prodotti meno cari saranno gratuiti.
-Aggiungere un'opzione per il dark mode.
 Dopo il pagamento, reindirizzare alla pagina di ringraziamento.
+Inoltre è stata implementata una searchbar con algolia instantSearchReact. Abbiamo caricato i file json presenti nel database mongoDb nella dashboard di algolia , la search bar rendere piu facile la ricerca dei prodotti e la navigazione nel sito.
 
 
 *****
@@ -47,8 +47,15 @@ Nomenclatura Commit:
 Esempio: git commit -m "TLG-12345:BC:TT:Descrizione" dove:
 TLG-12345: indica il numero del ticket.
 BC: indica il codice del branch (feature o bugfix).
-TT: indica il tipo di ticket (es. AGG per aggiunta, COR per correzione).
+TT: indica il tipo di ticket (es. AGG per aggiunta, FIX per correzione).
 Descrizione: una breve descrizione del commit.
 Questo schema organizzato rende più chiaro il tipo di lavoro svolto e semplifica la gestione del versionamento del codice.
 
 
+*****
+
+Per iniziallizare per la prima volta l'app seguire i seguenti passaggi:
+
+1- Navigare nella cartella principale e installare le necessarie dipendeze tramite npm install
+2- Navigare nella cartella server e installare le necessarie dipendenze tramite npm install e lanciare il server con npm run start
+3- Navigare nella cartella principale e avviare il progetto con npm run dev .

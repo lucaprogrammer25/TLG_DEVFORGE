@@ -39,7 +39,7 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
     }
     
   }
-  console.log(cartItems);
+ 
 
   return (
     <>
