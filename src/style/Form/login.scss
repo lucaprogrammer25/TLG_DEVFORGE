@@ -15,6 +15,7 @@
   .loginFormBox {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 54%;
     padding: 2rem;
@@ -88,8 +89,16 @@
 }
 
 @media only screen and (max-width: 1060px) {
-    .loginBox {
-        width: 100%;
-        margin-left: 0;
-    }
+  .loginBox {
+      width: 100%;
+      margin-left: 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .loginBox {
+    font-size: 0.75rem;
+  }
+  input{
+    width: 20rem !important;
+  }
 }
