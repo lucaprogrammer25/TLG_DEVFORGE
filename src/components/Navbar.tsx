@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTypeSelector, useTypeDispatch } from "../redux/typeHooks";
@@ -134,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
-        if (blurOutletElement && blurNavbarElement && cartTotalQuantity !== 0) {
+        if (blurOutletElement && cartTotalQuantity !== 0) {
             blurOutletElement.style.filter = sidebarCartActive ? 'none' : 'blur(2px)';
         }
     };
@@ -142,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleSidebarCartClose  = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "flex" });
-        if (blurOutletElement && blurNavbarElement) {
+        if (blurOutletElement) {
             blurOutletElement.style.filter = !sidebarCartActive ? 'unset' : 'blur(0px)';
         }
     };
@@ -261,9 +260,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         <div className="navbarServiceMenuProfile" onClick={handleLoginForm}>
                             <img src={profile} alt="profile-icon" />
                         </div>
-                        <div className="navbarServiceMenuCart">
-                            <img src={shoppingBag} alt="cart-icon" onClick={handleCartClick} />
-                            <span>{`('${cartTotalQuantity}')`}</span>
+                        <div className="navbarServiceMenuCart" onClick={handleCartClick}>
+                            <img src={shoppingBag} alt="cart-icon"  />
+                            <span >{`('${cartTotalQuantity}')`}</span>
                         </div>
                     </div>
                 </div>

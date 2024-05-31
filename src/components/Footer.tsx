@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl"; // Import FormattedMessage
+import { FormattedMessage } from "react-intl";
 import NewsletterForm from "./NewsLetter/newsLetter";
 
 const Footer: React.FC = () => {
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                     <FormattedMessage id="dress" defaultMessage="Dress" />
                   </p>
                 </Link>
-                <Link className="linkTag" to="/men/shoes">
+                <Link className="linkTag" to="/men/Shoes">
                   <p>
                     <FormattedMessage id="shoes" defaultMessage="Shoes" />
                   </p>
@@ -41,9 +41,11 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div className="womanBox">
+            <Link className="linkTag" to="/women">
               <h3>
                 <FormattedMessage id="women" defaultMessage="Women Products" />
               </h3>
+              </Link>
               <div className="womanLinkBox">
                 <Link className="linkTag" to="/women/T-shirts">
                   <p>
@@ -67,7 +69,7 @@ const Footer: React.FC = () => {
                 </Link>
               </div>
             </div>
-            <Link className="linkTag" to="/accessories">
+            <Link className="linkTag" to="/unisex">
               <h3 className="accessoriesLink">
                 <FormattedMessage
                   id="accessories"

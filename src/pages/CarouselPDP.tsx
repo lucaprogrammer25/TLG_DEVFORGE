@@ -1,7 +1,6 @@
 // CarouselPDP.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "../style/CarouselScss/CarouselPDP.scss"
 
 interface Product {
   id: string;
@@ -32,7 +31,7 @@ const CarouselPDP: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <div className="carousel">
-      <button onClick={prevItem} className="ButtonTmgCss3">Prev</button>
+      <button onClick={prevItem} className="ButtonTmgCss3">Previous</button>
       <div className="carousel-items">
         {displayedItems.map((item) => (
           <div key={item.id} className="carousel-item">

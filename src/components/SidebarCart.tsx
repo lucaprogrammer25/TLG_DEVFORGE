@@ -5,15 +5,12 @@ import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import Buttontmg3 from './Buttons/ButtonTmg3';
 
-
-
 const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType) => {
   const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
   const CartTotalPrice = useTypeSelector(selectCartTotalPrice)
   const discountTotalPrice = useTypeSelector(selectCartDiscount)
   const discountTotalPriceNumber = Number(discountTotalPrice)
   const blurOutletElement = document.getElementById('blurOutlet');
-    const blurNavbarElement = document.getElementById('blurNavbar');
   
   const { cartItems } = useTypeSelector((state) => state.cart);
   const dispatch = useTypeDispatch()
@@ -26,22 +23,23 @@ const SidebarCart: React.FC<SidebarCartType> = ({ closeSideCart}:SidebarCartType
 
   const handleClickDeleteItem = (product: any) => {
     dispatch(removeFromCart(product));
-    if (blurOutletElement && blurNavbarElement) {
-      blurOutletElement.style.filter =  'blur(0px)';
-      blurNavbarElement.style.filter = 'blur(0px)';
-  }
+    if(cartItems.length === 1){
+      if (blurOutletElement) {
+        blurOutletElement.style.filter =  'blur(0px)';
+     }
+    }
   }
 
   const handleClickDecreaseItem = (product: any) => {
     dispatch(decrease(product));
-    if(product.quantity <=1){
-      if (blurOutletElement && blurNavbarElement) {
+    if(product.quantity <=1 && cartItems.length === 1){
+      if (blurOutletElement) {
         blurOutletElement.style.filter =  'blur(0px)';
-        blurNavbarElement.style.filter = 'blur(0px)';
+      }
     }
-    }
-   
+    
   }
+  console.log(cartItems);
 
   return (
     <>

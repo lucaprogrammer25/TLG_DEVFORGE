@@ -62,14 +62,12 @@ export interface Cart {
 
 export interface CartState {
   cartItems: Cart[];
-  quantity: number;
   cartTotalQuantity: number;
   cartTotalPrice: number;
   shipment: number;
   loading: boolean;
   error: string | null;
-  size:string
-  discount: number
+  discount: number;
 }
 
 export interface SidebarCartType {
@@ -97,7 +95,7 @@ export interface NavbarProps {
 }
 
 export interface PaypalButtonProps {
-  totalPrice: number;
+  totalPrice: string | number
 }
 
 export interface Paypal {
@@ -112,7 +110,7 @@ export interface CarouselProps {
   names: string[];
   prices: string[];
   gender: string[];
-  category?:string;
+  category?: string[];
   id: string[];
 }
 export interface CardProps {
@@ -126,7 +124,7 @@ export interface CardProps {
 export interface DropdownProps {
   options: any;
   selectedOption: any;
-  handleChange:any;
+  handleChange: any;
 }
 
 export interface ProductPDP {
@@ -140,6 +138,8 @@ export interface ProductPDP {
 }
 
 
+
+
 import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types';
 export interface AlgoliaHits extends AlgoliaHit {
   name: string;
@@ -148,3 +148,4 @@ export interface AlgoliaHits extends AlgoliaHit {
   category: string;
   id: string;
 }
+

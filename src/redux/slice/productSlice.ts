@@ -12,21 +12,7 @@ const initialState: Product = {
 const productSlice = createSlice({
     name: 'product',
     initialState,
-    reducers: {
-      setData(state, action: PayloadAction<[] | null>) {
-        state.data = action.payload;
-        state.loading = false;
-        state.error = null;
-      },
-      setLoading(state, action: PayloadAction<boolean>) {
-        state.loading = action.payload;
-        state.error = null;
-      },
-      setError(state, action: PayloadAction<string | null>) {
-        state.error = action.payload;
-        state.loading = false;
-      },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
           .addCase(fetchDataProduct.pending, (state) => {

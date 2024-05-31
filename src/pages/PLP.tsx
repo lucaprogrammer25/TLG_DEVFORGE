@@ -9,8 +9,10 @@ import fetchDataProduct from "../redux/fetch/fetchProducts";
 import BreadCrumbs from "../components/BreadCrumbs";
 
 const PLP: React.FC = () => {
-  const { gender, category = '' } = useParams();
-  const { data: product, error: errorProduct } = useTypeSelector((state) => state.product);
+  const { gender, category = "" } = useParams();
+  const { data: product, error: errorProduct } = useTypeSelector(
+    (state) => state.product
+  );
   const { data } = useTypeSelector((state) => state.contentful);
   const dispatch = useTypeDispatch();
   const navigate = useNavigate();
@@ -23,13 +25,15 @@ const PLP: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    window.scrollTo(0, 0); 
-}, []);
-
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (product) {
-      const count = product.reduce((acc, item:ProductJson) => (item.gender === gender ? acc + 1 : acc), 0);
+      const count = product.reduce(
+        (acc, item: ProductJson) => (item.gender === gender ? acc + 1 : acc),
+        0
+      );
       setMaxItems(count);
     }
   }, [product, gender]);
@@ -40,31 +44,37 @@ const PLP: React.FC = () => {
     !category && gender === "men"
       ? imageMan
       : !category && gender === "women"
-        ? imageWomen
-        : "";
+      ? imageWomen
+      : "";
 
   if (!product || errorProduct) {
-    return <div><FormattedMessage id="error" /></div>;
+    return (
+      <div>
+        <FormattedMessage id="error" />
+      </div>
+    );
   }
 
   const handleLoadMore = () => {
-    setDisplayedCards(prevCount => Math.min(prevCount + 12, product.length));
+    setDisplayedCards((prevCount) => Math.min(prevCount + 12, product.length));
   };
 
- 
   const isLoadMoreVisible =
-  (category === '' || category === 'accessories') && (maxItems ? displayedCards < maxItems : true);
-
-
+    (category === "" || category === "accessories") &&
+    (maxItems ? displayedCards < maxItems : true);
 
   return (
-    <section>
-      <img className="imageProduct" src={plpImage} alt=""  loading="lazy"/>
+    <>
+      <img className="imageProduct" src={plpImage} alt="" loading="lazy" />
       <div className="wrapCard">
-        {category ? <BreadCrumbs/> : null } 
+        {category ? <BreadCrumbs /> : null}
         <div className="containerCards">
           {product
-            .filter((item: ProductJson) => item.gender === gender && (!category || item.category === category))
+            .filter(
+              (item: ProductJson) =>
+                item.gender === gender &&
+                (!category || item.category === category)
+            )
             .slice(0, displayedCards)
             .map((item: ProductJson) => (
               <CardPLP
@@ -76,19 +86,25 @@ const PLP: React.FC = () => {
                 price={item.price}
                 image={item.image}
                 alternative={`${item.gender} ${item.category}`}
-                goToPDP={() => navigate(`/${item.gender}/${item.category}/${item.id}`)}
-                seeMoreButton={() => navigate(`/${item.gender}/${item.category}/${item.id}`)}
+                goToPDP={() =>
+                  navigate(`/${item.gender}/${item.category}/${item.id}`)
+                }
+                seeMoreButton={() =>
+                  navigate(`/${item.gender}/${item.category}/${item.id}`)
+                }
               />
             ))}
         </div>
       </div>
-        {isLoadMoreVisible && (
-          <div onClick={handleLoadMore} className="loadMorePlpButton">
-            <span><FormattedMessage id="load more" defaultMessage="Load more"/></span>
-            <span>{`${displayedCards} - ${maxItems}`}</span>
-          </div>
-        )}
-   </section>
+      {isLoadMoreVisible && (
+        <div onClick={handleLoadMore} className="loadMorePlpButton">
+          <span>
+            <FormattedMessage id="load more" defaultMessage="Load more" />
+          </span>
+          <span>{`${displayedCards} - ${maxItems}`}</span>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Loader from '../components/Loader';
+
 import ScrollToTopButton from '../components/Buttons/ScrollToTop';
 
 interface DefaultDisplayProps {
@@ -11,22 +11,8 @@ interface DefaultDisplayProps {
 
 const DefaultDisplay: React.FC<DefaultDisplayProps> = ({ changeLocale }) => {
   const location = useLocation();
-  const [documentLoading, setDocumentLoading] = useState(true);
-  const [pageLoading, setPageLoading] = useState(true);
+  
 
-  useEffect(() => {
-    const handleDOMContentLoaded = () => {
-      setDocumentLoading(false);
-    };
-    if (document.readyState === 'interactive') {
-      handleDOMContentLoaded();
-    } else {
-      document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
-    }
-    return () => {
-      document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
-    };
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);

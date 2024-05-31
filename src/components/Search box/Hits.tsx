@@ -1,4 +1,4 @@
-// Hits.tsx
+
 import React, { useEffect, useRef } from 'react';
 import { AlgoliaHits } from '../../interfaces/type';
 import { useNavigate } from 'react-router-dom';
@@ -50,3 +50,4 @@ const Hit: React.FC<HitProps> = ({ hit }) => {
 };
 
 export default Hit;
+
