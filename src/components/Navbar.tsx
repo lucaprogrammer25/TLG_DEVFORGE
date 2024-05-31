@@ -118,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleSearchBoxOpen = () => {
         setSidebarSearchBoxActive((prevState) => !prevState);
         setSidebarSearchBoxStyle({ display: sidebarSearchBoxActive ? "none" : "flex" });       
-        if (blurOutletElement && blurNavbarElement) {
+        if (blurOutletElement && sidebarSearchBoxActive) {
             blurOutletElement.style.filter = sidebarSearchBoxActive ? 'none' : 'blur(2px)';
         }
     };

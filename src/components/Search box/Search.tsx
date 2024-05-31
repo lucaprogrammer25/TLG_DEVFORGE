@@ -16,10 +16,7 @@ const Search: React.FC = () => {
     setQuery(uiState['The modern boutique']?.query || '');
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setQuery(value);
-  };
+ 
 
   return (
     <div className="searchBoxContainer">
@@ -33,7 +30,6 @@ const Search: React.FC = () => {
         <SearchBox 
           placeholder='Type here' 
           searchAsYouType={true} 
-          onChange={handleSearchChange}
         />
         {query && (
           <div className="hitsContainer">
