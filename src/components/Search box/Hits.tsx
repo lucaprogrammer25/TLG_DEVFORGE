@@ -1,3 +1,4 @@
+// Hits.tsx
 import React, { useEffect, useRef } from 'react';
 import { AlgoliaHits } from '../../interfaces/type';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +8,7 @@ interface HitProps {
   sendEvent: (eventType: string, hit: AlgoliaHits, eventName: string) => void;
 }
 
-const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
+const Hit: React.FC<HitProps> = ({ hit }) => {
   const navigate = useNavigate();
   const searchBoxRef = useRef<HTMLCollectionOf<Element>>();
   const blurOutletRef = useRef<HTMLElement | null>(null);
@@ -22,7 +23,6 @@ const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
     const url = `${gender}/${category}/${id}`;
     navigate(url);
 
-    
     if (searchBoxRef.current) {
       Array.from(searchBoxRef.current).forEach((element: Element) => {
         (element as HTMLElement).style.display = "none";
@@ -38,7 +38,6 @@ const Hit: React.FC<HitProps> = ({ hit, sendEvent }) => {
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    sendEvent('click', hit, 'Product Clicked');
     handleItemClick();
   };
 

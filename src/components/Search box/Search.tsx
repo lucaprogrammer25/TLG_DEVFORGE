@@ -1,44 +1,49 @@
-import React, { useState } from 'react';
-import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits, Configure } from 'react-instantsearch';
+// Search.tsx
+import React, { useEffect, useState } from 'react';
+import algoliasearch, { SearchClient } from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits, Configure } from 'react-instantsearch-dom';
 import Hit from './Hits';
 import { AlgoliaHits } from '../../interfaces/type';
 
-const algoliaId = import.meta.env.VITE_REACT_ALGOLIA_ID as string;
-const searchApi = import.meta.env.VITE_REACT_SEARCH_API_KEY as string;
-
-const searchClient = algoliasearch(algoliaId, searchApi);
-
 const Search: React.FC = () => {
-  const [query, setQuery] = useState<string>('');
+  const [searchClient, setSearchClient] = useState<SearchClient | null>(null);
+  const [showHits, setShowHits] = useState<boolean>(false);
 
-  const handleStateChange = ({ uiState }: { uiState: { [key: string]: { query: string } } }) => {
-    setQuery(uiState['The modern boutique']?.query || '');
+  useEffect(() => {
+    const client = algoliasearch("44R3Y9FKLI", "6c59b6db37660a28117943ae527cd46a");
+    setSearchClient(client);
+  }, []);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShowHits(event.target.value.trim() !== '');
   };
 
- 
+
 
   return (
     <div className="searchBoxContainer">
-      <InstantSearch
-        searchClient={searchClient}
-        indexName="The modern boutique"
-        insights={true}
-        onStateChange={handleStateChange}
-      >
-        <Configure hitsPerPage={5} />
-        <SearchBox 
-          placeholder='Type here' 
-          searchAsYouType={true} 
-        />
-        {query && (
-          <div className="hitsContainer">
-            <Hits<AlgoliaHits> hitComponent={Hit} />
-          </div>
-        )}
-      </InstantSearch>
+      {searchClient && (
+        <InstantSearch
+          searchClient={searchClient}
+          indexName="The modern boutique"
+          insights={false}
+        >
+          <Configure hitsPerPage={5} />
+          <SearchBox
+            placeholder="Type here"
+            searchAsYouType={true}
+            onChange={handleInputChange}
+          />
+          {showHits && (
+            <div className="hitsContainer">
+              <Hits<AlgoliaHits> hitComponent={(props) => <Hit {...props} />} />
+            </div>
+          )}
+        </InstantSearch>
+      )}
     </div>
   );
 };
 
 export default Search;
+

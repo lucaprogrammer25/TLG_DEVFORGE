@@ -118,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const handleSearchBoxOpen = () => {
         setSidebarSearchBoxActive((prevState) => !prevState);
         setSidebarSearchBoxStyle({ display: sidebarSearchBoxActive ? "none" : "flex" });       
-        if (blurOutletElement && sidebarSearchBoxActive) {
+        if (blurOutletElement) {
             blurOutletElement.style.filter = sidebarSearchBoxActive ? 'none' : 'blur(2px)';
         }
     };
@@ -269,7 +269,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                 </div>
             </nav>
             {/* MOBILE MENU  */}
-            <div className="mobileBar">
+            <div className="mobileBar" style={navbarBackground}>
                 <div className="mobileBarLogoContainer">
                     <Link className="linkTag" to='/'>
                         <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
