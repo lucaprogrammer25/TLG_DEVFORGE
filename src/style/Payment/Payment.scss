@@ -1,6 +1,5 @@
 .shipmentContainer {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row ;
     justify-content: center;
     align-content: center;
@@ -137,4 +136,12 @@
     flex-direction: row;
     align-items: center;
     gap: .3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .shipmentContainer{
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
 }

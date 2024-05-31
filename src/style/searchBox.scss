@@ -1,0 +1,59 @@
+.searchBoxContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: transparent;
+  z-index: 998;
+}
+
+.ais-SearchBox-submit, .ais-SearchBox-reset{
+  display: none;
+}
+
+.ais-SearchBox{
+  width: 100%;
+}
+
+.ais-Hits{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color:$white;
+    cursor: pointer;
+    .ais-Hits-list{
+        list-style-type: none;
+    }
+    .hitTitle {
+      font-weight: bold;
+      margin-bottom: 0.625rem;
+    }
+    
+    .hitPrice {
+      font-size: 1rem;
+    }
+
+  }
+
+  .hitsContainer {
+    position: absolute;
+    margin-block-start: 1.5rem;
+    max-width: 25rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    z-index: 998;
+    position: fixed;
+  }
+
+  .ais-SearchBox-input {
+    width: 100%;
+    border: none;
+    border-block-end: 1px solid $black;
+  
+    &:focus {
+      border: none;
+      outline: none;
+      border-block-end: 1px solid $black;
+    }
+  }
+  

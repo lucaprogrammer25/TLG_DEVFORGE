@@ -15,15 +15,19 @@ import mobileLogo from "../assets/icons/OnlyLogo.png"
 import hamburgerMenu from "../assets/icons/burger-menu.svg"
 import hamburgerMenuClose from "../assets/icons/x-close.svg"
 import shoppingBag from "../assets/icons/bag.svg";
+import searchIcon from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";
 import language from "../assets/icons/world svg.svg";
 import LoginForm from "./Forms/LoginForm";
+import SidebarSearchBox from "./Search box/SidebarSearchBox";
 
 const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     const [hiddenMen, setHiddenMen] = useState<boolean>(true);
     const [hiddenWomen, setHiddenWomen] = useState<boolean>(true);
     const [sidebarCartActive, setSidebarCartActive] = useState<boolean>(false);
     const [sidebarCartStyle, setSidebarCartStyle] = useState({ display: "none" });
+    const [sidebarSearchBoxStyle, setSidebarSearchBoxStyle] = useState({ display: "none" });
+    const [sidebarSearchBoxActive, setSidebarSearchBoxActive] = useState<boolean>(false);
     const [languageMenuVisible, setLanguageMenuVisible] = useState<boolean>(false);
     const cartTotalQuantity = useTypeSelector(selectCartTotalQuantity);
     const blurOutletElement = document.getElementById('blurOutlet');
@@ -110,6 +114,22 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         saveImagesToLocalStorage();
     }, [data]);
 
+    const handleSearchBoxOpen = () => {
+        setSidebarSearchBoxActive((prevState) => !prevState);
+        setSidebarSearchBoxStyle({ display: sidebarSearchBoxActive ? "none" : "flex" });       
+        if (blurOutletElement) {
+            blurOutletElement.style.filter = sidebarSearchBoxActive ? 'none' : 'blur(2px)';
+        }
+    };
+
+    const handleSearchBoxClose = () => {
+        setSidebarSearchBoxActive(false);
+        setSidebarSearchBoxStyle({ display: "flex" });
+        if (blurOutletElement && blurNavbarElement) {
+            blurOutletElement.style.filter = !sidebarSearchBoxActive ? 'unset' : 'blur(0px)';
+        }
+    };
+
     const handleCartClick = () => {
         setSidebarCartActive((prevState) => !prevState);
         setSidebarCartStyle({ display: sidebarCartActive ? "none" : "flex" });       
@@ -118,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         }
     };
 
-    const handleSidebarCartClose = () => {
+    const handleSidebarCartClose  = () => {
         setSidebarCartActive(false);
         setSidebarCartStyle({ display: "flex" });
         if (blurOutletElement) {
@@ -159,6 +179,14 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
         }
     }, [sidebarCartActive, cartTotalQuantity]);
 
+    useEffect(() => {
+        if (sidebarSearchBoxActive) {
+            document.body.classList.add("sidebar-open");
+        } else {
+            document.body.classList.remove("sidebar-open");
+        }
+    }, [sidebarSearchBoxActive]);
+
     const handleLanguageChange = (newLocale: string) => {
         changeLocale(newLocale);
     };
@@ -174,6 +202,10 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
     useEffect(() => {
         blurOutletElement?.addEventListener('click', handleSidebarCartClose)
     },[sidebarCartActive]);
+
+    useEffect(() => {
+        blurOutletElement?.addEventListener('click', handleSearchBoxClose)
+    },[sidebarSearchBoxActive]);
 
 
 
@@ -218,6 +250,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                         </Link>
                     </div>
                     <div className="navbarServiceMenu">
+                        <div className="navbarServiceMenuSearchBox">
+                            <img onClick={handleSearchBoxOpen} src={searchIcon} alt="icon-search-box" />
+                        </div>
                         <div className="navbarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                             <img src={language} alt="language-icon" />
                         </div>
@@ -233,7 +268,7 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                 </div>
             </nav>
             {/* MOBILE MENU  */}
-            <div className="mobileBar">
+            <div className="mobileBar" style={navbarBackground}>
                 <div className="mobileBarLogoContainer">
                     <Link className="linkTag" to='/'>
                         <img className="mobileBarLogo" src={logo} alt="the modern boutique logo" />
@@ -241,6 +276,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
                     </Link>
                 </div>
                 <div className="mobileBarServiceMenu">
+                <div className="mobileBarServiceMenuLanguage">
+                            <img onClick={handleSearchBoxOpen} src={searchIcon} alt="icon-search-box" />
+                        </div>
                     <div className="mobileBarServiceMenuLanguage" onClick={() => setLanguageMenuVisible(!languageMenuVisible)}>
                         <img src={language} alt="language-icon" />
                         {languageMenuVisible && <LanguageSelect handleLanguageChange={handleLanguageChange} handleCloseMenu={handleCloseLanguageMenu} />}
@@ -271,6 +309,9 @@ const Navbar: React.FC<NavbarProps> = ({ changeLocale }) => {
             <div className="loginOpening" style={loginFormStyle}>
                 <LoginForm closeLoginForm={handleLoginForm}/>
             </div>
+            <div className={`sidebarSearchBox ${!sidebarSearchBoxActive ? "inactive" : sidebarSearchBoxActive ? "active" : ""}`} style={sidebarSearchBoxStyle}>
+                    <SidebarSearchBox closeSideCart={handleSearchBoxClose}/>
+                </div> 
 
         </>
     );
