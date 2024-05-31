@@ -15,7 +15,7 @@ const PaymentSucceed = () => {
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        navigate("/");
+                        // navigate("/");
                     }, 1000); // Delay of 1 second before redirecting
                     return prevWidth; // Keep progressWidth at 100
                 }

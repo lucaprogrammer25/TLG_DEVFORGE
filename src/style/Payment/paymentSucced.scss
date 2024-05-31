@@ -8,14 +8,14 @@
     .succeedPBox {
         margin-top: 15rem;
         width: 50%;
-        height: max-content;
+        height: min-content;
         align-items: center;
         text-align: center;
         padding: 5rem;
         .purchaseThanks {
-            font-size: 2.8125rem;
+            font-size: 2.35rem;
             font-style: bolder;
-            margin-bottom: 7rem;
+            margin-bottom: 5rem;
         }
         .purchaseSubtitle {
             font-size: x-large;
@@ -33,5 +33,36 @@
             border-radius: 0px;
             transition: width 0.5s;
           }
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .succeedBox {
+        .succeedPBox {
+            flex-wrap: wrap;
+            width: 100%;
+            h1,
+            h3 {
+                font-size: 1.7rem !important;
+            }
+        }
+        .progress-bar {
+            width: 80%;
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .succeedBox {
+        .succeedPBox {
+            flex-wrap: wrap;
+            width: 100%;
+            h1,
+            h3 {
+                font-size: 1.125rem !important;
+            }
+        }
+        .progress-bar {
+            width: 80%;
+        }
     }
 }
